@@ -1,0 +1,410 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Support
+    url: https://support.sedna.com
+  termsOfService: https://www.sedna.com/terms-of-service
+  title: Sedna Authentication Vessel API API
+  version: '2019-01-01'
+servers:
+- description: Platform endpoint
+  url: https://{tenant}.sednanetwork.com/platform
+  variables:
+    tenant:
+      default: example
+      description: Your tenant's unique identifier
+security:
+- Basic: []
+- OAuth: []
+tags:
+- name: Vessel API
+paths:
+  /2019-01-01/chartering/vessel:
+    post:
+      description: 'null
+
+
+        Required API Permissions: CHARTERING_WRITE'
+      operationId: createVessel
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentFlowVesselResource'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/DocumentFlowVesselResource'
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Vessel API
+components:
+  schemas:
+    Link:
+      type: object
+    DocumentFlowVesselResource:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/FlowVesselResource'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        included:
+          type: array
+          items:
+            type: object
+        includedSerialization$jsonapi_adapters:
+          type: string
+          enum:
+          - NONE
+          - DOCUMENT
+          - PROCESSED
+        jsonapi:
+          $ref: '#/components/schemas/JsonApiObject'
+        links:
+          $ref: '#/components/schemas/Links'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    JsonApiObject:
+      type: object
+      properties:
+        ext:
+          type: array
+          items:
+            type: string
+        meta:
+          $ref: '#/components/schemas/Meta'
+        profile:
+          type: array
+          items:
+            type: string
+        version:
+          type: string
+    Source:
+      type: object
+      properties:
+        header:
+          type: string
+        parameter:
+          type: string
+        pointer:
+          type: string
+    Links:
+      type: object
+      properties:
+        empty:
+          type: boolean
+        members:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Link'
+    Meta:
+      type: object
+      properties:
+        disableSend:
+          type: boolean
+        watched:
+          type: boolean
+    FlowVesselResource:
+      type: object
+      properties:
+        commercialOperator:
+          type: string
+        customColumns:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/FlowCustomColumnData'
+        extraCapacityBale:
+          type: number
+          format: double
+        extraCapacityGas:
+          type: number
+          format: double
+        extraCapacityGrain:
+          type: number
+          format: double
+        extraCapacityLiquid:
+          type: number
+          format: double
+        extraCapacityOre:
+          type: number
+          format: double
+        extraCapacityTeu:
+          type: number
+          format: double
+        extraCommercialOperator:
+          type: string
+        extraComputedBeam:
+          type: number
+          format: double
+        extraDeadWeightTonnage:
+          type: number
+          format: double
+        extraDesignSuperStructureCo2:
+          type: boolean
+        extraDesignSuperStructureGearless:
+          type: boolean
+        extraDesignSuperStructureHullDesign:
+          type: string
+        extraDesignSuperStructureHullType:
+          type: string
+        extraDimensionBreadthExtreme:
+          type: number
+          format: double
+        extraDimensionDraft:
+          type: number
+          format: double
+        extraDimensionLoa:
+          type: number
+          format: double
+        extraDimensionTpcmi:
+          type: number
+          format: double
+        extraFlag:
+          type: string
+        extraGrossTonnage:
+          type: number
+          format: double
+        extraHatchesCount:
+          type: integer
+          format: int32
+        extraHoldsCount:
+          type: integer
+          format: int32
+        extraLiftingGear:
+          type: string
+        extraMaxSwl:
+          type: number
+          format: double
+        extraMmsi:
+          type: string
+        extraNetTonnage:
+          type: number
+          format: double
+        extraThirdpartyOperator:
+          type: string
+        extraType:
+          type: string
+        extraYearBuilt:
+          type: string
+        id:
+          type: string
+        imo:
+          type: string
+        lloydsBeneficialOwner:
+          type: string
+        lloydsCapacityPumpCubic:
+          type: number
+          format: double
+        lloydsCapacityTeu14t:
+          type: number
+          format: double
+        lloydsDecks:
+          type: integer
+          format: int32
+        lloydsDesignSuperStructureReeferPlugs:
+          type: integer
+          format: int32
+        lloydsDesignSuperStructureSpeed:
+          type: number
+          format: double
+        lloydsDesignSuperStructureStrengthened:
+          type: boolean
+        lloydsPanamaNt:
+          type: number
+          format: double
+        lloydsRegisteredOwner:
+          type: string
+        lloydsSuezNt:
+          type: number
+          format: double
+        lloydsTankerAmmonia:
+          type: boolean
+        lloydsTankerCoated:
+          type: string
+        lloydsTankerCoil:
+          type: boolean
+        lloydsTankerCow:
+          type: boolean
+        lloydsTankerEthylene:
+          type: boolean
+        lloydsTankerGasMaxPressure:
+          type: number
+          format: double
+        lloydsTankerGasMinPressure:
+          type: number
+          format: double
+        lloydsTankerGrades:
+          type: integer
+          format: int32
+        lloydsTankerIgs:
+          type: boolean
+        lloydsTankerImoRating1:
+          type: string
+        lloydsTankerImoRating2:
+          type: string
+        lloydsTankerImoRating3:
+          type: string
+        lloydsTankerLngContainment:
+          type: boolean
+        lloydsTankerPressurised:
+          type: boolean
+        lloydsTankerRefrigerated:
+          type: boolean
+        lloydsTankerSbt:
+          type: boolean
+        lloydsTankerSemiPressurised:
+          type: boolean
+        lloydsTankerStainlessSteelTankNo:
+          type: integer
+          format: int32
+        lloydsTankerStainlessSteelTanks:
+          type: boolean
+        lloydsTankerTotalPumps:
+          type: integer
+          format: int32
+        lloydsTankerVcm:
+          type: boolean
+        lloydsTechnicalManager:
+          type: string
+        lloydsVesselId:
+          type: string
+        name:
+          type: string
+        shipSize:
+          type: string
+          enum:
+          - Small Bulker
+          - Handysize
+          - Handymax
+          - Supramax / Ultramax
+          - Panamax
+          - Capesize
+          - VLOC
+          - Coastal Tanker
+          - Handysize Tanker
+          - MR 1
+          - MR 2
+          - Panamax (LR 1)
+          - Aframax (LR 2)
+          - Suezmax
+          - VLCC
+          - ULCC
+          - Small Feeder
+          - Feeder
+          - Feedermax
+          - Panamax Container
+          - Post Panamax
+          - Neo Panamax
+          - VLCS
+          - ULCS
+          - Small LPG
+          - Handy LPG
+          - MGC
+          - LGC
+          - VLGC
+          - Small LNG
+          - Med LNG
+          - Low Conv LNG
+          - Upper Conv LNG
+          - Q-Flex
+          - Q-Max
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        detail:
+          type: string
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/Links'
+        meta:
+          $ref: '#/components/schemas/Meta'
+        source:
+          $ref: '#/components/schemas/Source'
+        status:
+          type: string
+        title:
+          type: string
+    FlowCustomColumnData:
+      type: object
+      properties:
+        link:
+          type: string
+        popover:
+          type: string
+        value:
+          type: object
+  securitySchemes:
+    Basic:
+      description: The basic auth scheme only requires the API-Specific username/password to be set.
+      scheme: basic
+      type: http
+    OAuth:
+      description: This API prefers OAuth 2 with client credentials flow. You can create your credentials in the <a href='https://{tenant}.sednanetwork.com/platform/settings/api-credential-management'>Api Credential Management page</a>.
+      flows:
+        clientCredentials:
+          scopes:
+            CATEGORYTAG_DELETE: Delete category tags
+            CATEGORYTAG_READ: Read category tags
+            CATEGORYTAG_WRITE: Create and update category tags
+            CHARTERING_DELETE: Delete chartering (Pulse) information
+            CHARTERING_READ: Read chartering (Pulse) information
+            CHARTERING_WRITE: Create chartering (Pulse) information
+            COMMENT_READ: Read message comments
+            COMPANY_READ: Read company info
+            COMPANY_WRITE: Update company info (eg. signature)
+            CONTACTGROUP_DELETE: Delete contact groups
+            CONTACTGROUP_READ: Read contact groups
+            CONTACTGROUP_WRITE: Create and update contact groups
+            CONTACT_DELETE: Delete contacts
+            CONTACT_READ: Read contacts
+            CONTACT_WRITE: Create and update contacts
+            CRMENTITY_DELETE: Delete CRM contacts
+            CRMENTITY_READ: Read CRM contacts
+            CRMENTITY_WRITE: Create and update CRM Contacts
+            DOCUMENT_READ: Read and download attachments
+            EVENT_READ: Read events from the events endpoint
+            JOBREFERENCE_DELETE: Delete job references
+            JOBREFERENCE_READ: Read job references
+            JOBREFERENCE_WRITE: Create and update job references
+            KEYWORD_DELETE: Delete custom keywords
+            KEYWORD_READ: Read custom keywords
+            KEYWORD_WRITE: Create and update custom keywords
+            LEGAL_HOLD_DELETE: Delete legal holds
+            LEGAL_HOLD_READ: Read legal holds
+            LEGAL_HOLD_WRITE: Create and update legal holds
+            MESSAGE_DELETE: Archive email messages
+            MESSAGE_READ: Read (draft) email messages
+            MESSAGE_RETENTION_SETTINGS_READ: Read message retention settings
+            MESSAGE_RETENTION_SETTINGS_WRITE: Update message retention settings
+            MESSAGE_WRITE: Create and send (draft) email messages
+            PERSONAL_DATA_UNREDACTED_READ: Read unredacted emails with personal data
+            QUARANTINED_MESSAGE_READ: Read quarantined email messages
+            QUARANTINED_MESSAGE_WRITE: Release quarantined email messages
+            RETENTION_POLICY_DELETE: Delete retention policies
+            RETENTION_POLICY_READ: Read retention policies
+            RETENTION_POLICY_WRITE: Create and update retention policies
+            SAVEDSEARCH_DELETE: Remove saved searches
+            SAVEDSEARCH_READ: Read saved search details
+            SAVEDSEARCH_WRITE: Create and update saved searches
+            TEAM_DELETE: Delete teams
+            TEAM_READ: Read team details
+            TEAM_WRITE: Create and update teams
+            TEMPLATE_READ: Read templates
+            USER_DELETE: Archive users
+            USER_READ: Read user details
+            USER_WRITE: Create and update users
+            WORKFLOW_DELETE: Delete workflows
+            WORKFLOW_READ: Read workflow details
+            WORKFLOW_WRITE: Create and update workflows
+          tokenUrl: https://{tenant}.sednanetwork.com/platform/oauth/token
+      type: oauth2

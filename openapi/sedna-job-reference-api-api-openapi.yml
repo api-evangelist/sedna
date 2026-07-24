@@ -1,0 +1,1321 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Support
+    url: https://support.sedna.com
+  termsOfService: https://www.sedna.com/terms-of-service
+  title: Sedna Authentication Job Reference API API
+  version: '2019-01-01'
+servers:
+- description: Platform endpoint
+  url: https://{tenant}.sednanetwork.com/platform
+  variables:
+    tenant:
+      default: example
+      description: Your tenant's unique identifier
+security:
+- Basic: []
+- OAuth: []
+tags:
+- name: Job Reference API
+paths:
+  /2019-01-01/job-reference:
+    post:
+      description: 'Create a job reference
+
+
+        Required API Permissions: JOBREFERENCE_WRITE'
+      operationId: createJobReference
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobReferenceCreate'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/JobReferenceCreate'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobReferenceSingle'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/JobReferenceSingle'
+          description: default response
+      tags:
+      - Job Reference API
+    get:
+      description: 'Fetch a collection of job references
+
+
+        Required API Permissions: JOBREFERENCE_READ'
+      operationId: getJobReferences
+      parameters:
+      - in: query
+        name: page[limit]
+        schema:
+          type: integer
+          format: int64
+          default: 100
+      - in: query
+        name: page[offset]
+        schema:
+          type: integer
+          format: int64
+          default: 0
+      - in: query
+        name: filter[foreignKey]
+        schema:
+          type: string
+      - in: query
+        name: filter[type]
+        schema:
+          type: string
+      - in: query
+        name: filter[source]
+        schema:
+          type: string
+      - in: query
+        name: filter[name]
+        schema:
+          type: string
+      - in: query
+        name: filter[ids]
+        schema:
+          type: string
+      - in: query
+        name: filter[jobReferenceIds]
+        schema:
+          type: string
+      - in: query
+        name: filter[createdAt][since]
+        schema:
+          type: string
+      - in: query
+        name: filter[createdAt][until]
+        schema:
+          type: string
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobReferenceCollection'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/JobReferenceCollection'
+          description: default response
+      tags:
+      - Job Reference API
+  /2019-01-01/job-reference/{id}:
+    delete:
+      description: 'Delete a job reference
+
+
+        Required API Permissions: JOBREFERENCE_DELETE'
+      operationId: deleteJobReference
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Job Reference API
+    get:
+      description: 'Fetch a job reference
+
+
+        Required API Permissions: JOBREFERENCE_READ'
+      operationId: getJobReference
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobReferenceSingle'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/JobReferenceSingle'
+          description: default response
+      tags:
+      - Job Reference API
+    patch:
+      description: 'Update a job reference
+
+
+        Required API Permissions: JOBREFERENCE_WRITE'
+      operationId: updateJobReference
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobReferenceUpdate'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/JobReferenceUpdate'
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Job Reference API
+  /2019-01-01/job-reference/{id}/message:
+    get:
+      description: 'Fetches a collection of messages that have the given job reference applied. DEPRECATED: please use /{id}/messageV2 instead.
+
+
+        Required API Permissions: JOBREFERENCE_READ, MESSAGE_READ'
+      operationId: getMessagesWithJobReference
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - in: query
+        name: page[limit]
+        schema:
+          type: integer
+          format: int64
+          default: 100
+          maximum: 100
+      - in: query
+        name: page[offset]
+        schema:
+          type: integer
+          format: int64
+          default: 0
+      - description: 'Comma separated list of fields to return. Please include only necessary fields for performance reasons. If this parameter is omitted, API will return all the fields and it can negatively impact the latency. Available fields: subject,snippet,fromName,fromEmail,bodyText,bodyHtml,hasAttachment,receivedAt,sentAt,messageId,inReplyTo,references,from,to,cc,bcc,signed. Id is always returned.'
+        in: query
+        name: fields[message]
+        schema:
+          type: string
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageCollection'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/MessageCollection'
+          description: default response
+      tags:
+      - Job Reference API
+  /2019-01-01/job-reference/{id}/messageV2:
+    get:
+      description: 'Fetch a collection of messages that have the given job reference applied
+
+
+        Required API Permissions: JOBREFERENCE_READ, MESSAGE_READ'
+      operationId: getMessagesWithJobReferenceV2
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - description: the next-page cursor returned as part of a previous call to this endpoint
+        in: query
+        name: page[cursor]
+        schema:
+          type: string
+      - in: query
+        name: page[limit]
+        schema:
+          type: integer
+          format: int64
+          default: 100
+          maximum: 100
+      - description: 'Comma separated list of fields to return. Please include only necessary fields for performance reasons. If this parameter is omitted, API will return all the fields and it can negatively impact the latency. Available fields: subject,snippet,fromName,fromEmail,bodyText,bodyHtml,hasAttachment,receivedAt,sentAt,messageId,inReplyTo,references,from,to,cc,bcc,signed. Id is always returned.'
+        in: query
+        name: fields[message]
+        schema:
+          type: string
+      - in: query
+        name: filter
+        schema:
+          type: string
+      - description: Comma separated list of teams to filter by. Only returns messages that belong to any of the specified teams. If omitted, messages belonging to all teams, including solo inboxes, are returned.
+        in: query
+        name: filter[team]
+        schema:
+          type: string
+      - description: The value to sort the message by. Must be one of 'received_date' or 'activity'. Defaults to 'received_date' if not specified.
+        in: query
+        name: sort
+        schema:
+          type: string
+          default: received_date
+      - description: The order in which to sort the messages, i.e. 'desc' (newest messages first) or 'asc' (oldest messages first). Defaults to 'desc' if not specified.
+        in: query
+        name: order
+        schema:
+          type: string
+          default: desc
+      - description: Array of comma-separated relationships to retrieve entities for if they are present in the retrieved messages' relationships. e.g. 'comment,document,share,team,category,job_reference,assignment,keyword,address'
+        in: query
+        name: include
+        schema:
+          type: string
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WithNextPageCursorMessageCollection'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/WithNextPageCursorMessageCollection'
+          description: default response
+      tags:
+      - Job Reference API
+  /2019-01-01/job-reference/{id}/relationships/message:
+    post:
+      description: 'Add messages to a job reference''s message relationships
+
+
+        Required API Permissions: JOBREFERENCE_WRITE'
+      operationId: addJobReferenceToMessages
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - in: query
+        name: page[limit]
+        schema:
+          type: integer
+          format: int64
+          default: 1000
+          maximum: 1000
+      - in: query
+        name: page[offset]
+        schema:
+          type: integer
+          format: int64
+          default: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateMessageRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UpdateMessageRelToMany'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/MessageRelToMany'
+          description: default response
+      tags:
+      - Job Reference API
+    get:
+      description: 'Fetch a job reference''s message relationships. DEPRECATED: please use /{id}/messageV2 instead.
+
+
+        Required API Permissions: JOBREFERENCE_READ, MESSAGE_READ'
+      operationId: getJobReferenceMessageRelationships
+      parameters:
+      - in: query
+        name: page[limit]
+        schema:
+          type: integer
+          format: int64
+          default: 100
+      - in: query
+        name: page[offset]
+        schema:
+          type: integer
+          format: int64
+          default: 0
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageRelGetToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/MessageRelGetToMany'
+          description: default response
+      tags:
+      - Job Reference API
+    delete:
+      description: 'Delete messages from a job reference''s message relationships
+
+
+        Required API Permissions: JOBREFERENCE_WRITE'
+      operationId: removeJobReferenceFromMessages
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - in: query
+        name: page[limit]
+        schema:
+          type: integer
+          format: int64
+          default: 1000
+          maximum: 1000
+      - in: query
+        name: page[offset]
+        schema:
+          type: integer
+          format: int64
+          default: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateMessageRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UpdateMessageRelToMany'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/MessageRelToMany'
+          description: default response
+      tags:
+      - Job Reference API
+  /2019-01-01/job-reference/{id}/relationships/team:
+    post:
+      description: 'Add teams to a job reference''s team relationships
+
+
+        Required API Permissions: JOBREFERENCE_WRITE'
+      operationId: addJobReferenceTeams
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelToMany'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/TeamRelToMany'
+          description: default response
+      tags:
+      - Job Reference API
+    delete:
+      description: 'Remove teams from a job reference''s team relationships
+
+
+        Required API Permissions: JOBREFERENCE_WRITE'
+      operationId: deleteJobReferenceTeams
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelToMany'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/TeamRelToMany'
+          description: default response
+      tags:
+      - Job Reference API
+    get:
+      description: 'Fetch a job reference''s team relationships
+
+
+        Required API Permissions: JOBREFERENCE_READ'
+      operationId: getJobReferenceTeamRelationships
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/TeamRelToMany'
+          description: default response
+      tags:
+      - Job Reference API
+    patch:
+      description: 'Replace teams in a job reference''s team relationships
+
+
+        Required API Permissions: JOBREFERENCE_WRITE'
+      operationId: replaceJobReferenceTeams
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelToMany'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/TeamRelToMany'
+          description: default response
+      tags:
+      - Job Reference API
+  /2019-01-01/job-reference/{id}/relationships/user:
+    get:
+      description: 'Fetch a job reference''s user relationships
+
+
+        Required API Permissions: JOBREFERENCE_READ'
+      operationId: getJobReferenceUserRelationships
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - in: query
+        name: filter[createdBy]
+        schema:
+          type: string
+          description: Allows filtering on who created this job-reference subscription
+          enum:
+          - api
+          - ui
+          - '{userId}'
+          example: api
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/UserRelToMany'
+          description: default response
+      tags:
+      - Job Reference API
+    delete:
+      description: 'Unsubscribe users from a job reference
+
+
+        Required API Permissions: JOBREFERENCE_WRITE'
+      operationId: removeJobReferenceUserRelationships
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobReferenceToManyUserRelationshipWriteRepresentation'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/JobReferenceToManyUserRelationshipWriteRepresentation'
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Job Reference API
+components:
+  schemas:
+    MessageTag:
+      type: object
+      properties:
+        assignedToUserId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        eventId:
+          $ref: '#/components/schemas/EventId'
+        messageId:
+          type: string
+        messageTagId:
+          $ref: '#/components/schemas/MessageTagId'
+        removedAt:
+          type: string
+          format: date-time
+        removedByUserId:
+          type: string
+        tag:
+          $ref: '#/components/schemas/Tag'
+        tagId:
+          $ref: '#/components/schemas/TagId'
+        userId:
+          type: string
+    MessageRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageRelData'
+        links:
+          $ref: '#/components/schemas/MessageRelLinks'
+    UserRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRelData'
+        links:
+          $ref: '#/components/schemas/UserRelLinks'
+    UserRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    JobReferenceLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    UpdateTeamRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamRelData'
+    CategoryTagRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoryTagRelData'
+        links:
+          $ref: '#/components/schemas/CategoryTagRelLinks'
+    JobReferenceCollection:
+      type: object
+      description: A collection of resources
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobReferenceResource'
+        links:
+          $ref: '#/components/schemas/JobReferenceCollectionLinks'
+    WithNextPageCursorMessageCollection:
+      type: object
+      properties:
+        nextPageCursor:
+          type: string
+        response:
+          $ref: '#/components/schemas/MessageCollection'
+    MessageRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    TeamRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamRelData'
+        links:
+          $ref: '#/components/schemas/TeamRelLinks'
+    DocumentRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    EventId:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+    TagId:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+    UserRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    TagName:
+      type: object
+      properties:
+        value:
+          type: string
+    TeamRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    Tag:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/TagId'
+        name:
+          $ref: '#/components/schemas/TagName'
+        tagLabel:
+          $ref: '#/components/schemas/TagLabel'
+        tagTypeId:
+          type: integer
+          format: int32
+    Company:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceObjectIdentifier'
+    JobReferenceResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/JobReferenceAttributes'
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/JobReferenceLinks'
+        relationships:
+          $ref: '#/components/schemas/JobReferenceRelationships'
+        type:
+          type: string
+          description: the type of the resource
+          enum:
+          - job-reference
+    JobReferenceSingleLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    JobReferenceSingle:
+      type: object
+      description: The resource
+      properties:
+        data:
+          $ref: '#/components/schemas/JobReferenceResource'
+        links:
+          $ref: '#/components/schemas/JobReferenceSingleLinks'
+    TeamRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    JobReferenceRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobReferenceRelData'
+        links:
+          $ref: '#/components/schemas/JobReferenceRelLinks'
+    JobReferenceUpdateAttributes:
+      type: object
+      properties:
+        archived:
+          type: boolean
+        attributes:
+          type: object
+          additionalProperties:
+            type: string
+        date:
+          type: string
+          format: date-time
+        foreignKey:
+          type: string
+        name:
+          type: string
+        source:
+          type: string
+        type:
+          type: string
+          enum:
+          - voyage
+          - head_fixture
+          - spot_fixture
+          - other
+          - ''
+      required:
+      - name
+    Sender:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceObjectIdentifier'
+        meta:
+          $ref: '#/components/schemas/MetaObject'
+    MetaObject:
+      type: object
+    MessageReadResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/MessageReadAttributes'
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/MessageLinks'
+        meta:
+          $ref: '#/components/schemas/MessageMeta'
+        relationships:
+          $ref: '#/components/schemas/MessageRelationships'
+        type:
+          type: string
+    CategoryTagRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        messageTag:
+          $ref: '#/components/schemas/MessageTag'
+        type:
+          type: string
+    MessageLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    MessageMeta:
+      type: object
+      properties:
+        download:
+          type: string
+    JobReferenceCreateResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/JobReferenceCreateAttributes'
+        relationships:
+          $ref: '#/components/schemas/JobReferenceCreateRelationships'
+        type:
+          type: string
+    JobReferenceToManyUserRelationshipWriteRepresentation:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRelationshipWriteData'
+      required:
+      - data
+    UserRelationshipWriteData:
+      type: object
+      properties:
+        id:
+          type: string
+        meta:
+          $ref: '#/components/schemas/UserRelationshipMeta'
+        type:
+          type: string
+    PrivateLabelRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    JobReferenceUpdateResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/JobReferenceUpdateAttributes'
+        type:
+          type: string
+    MessageRelGetToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageRelGetData'
+        links:
+          $ref: '#/components/schemas/MessageRelLinks'
+    ResourceObjectIdentifier:
+      type: object
+      properties:
+        id:
+          type: string
+        meta:
+          $ref: '#/components/schemas/MetaObject'
+        type:
+          type: string
+    MessageRelUpdateData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    JobReferenceCreate:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/JobReferenceCreateResource'
+    UpdateMessageRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageRelUpdateData'
+    MessageReadAttributes:
+      type: object
+      properties:
+        bcc:
+          type: array
+          items:
+            type: string
+        bodyHtml:
+          type: string
+        bodyText:
+          type: string
+        cc:
+          type: array
+          items:
+            type: string
+        from:
+          type: array
+          items:
+            type: string
+        fromEmail:
+          type: string
+        fromName:
+          type: string
+        hasAttachment:
+          type: boolean
+        inReplyTo:
+          type: string
+        messageId:
+          type: string
+        quarantineStatus:
+          type: string
+        receivedAt:
+          type: string
+          format: date-time
+        references:
+          type: string
+        sentAt:
+          type: string
+          format: date-time
+        signed:
+          type: string
+          enum:
+          - UNVERIFIED
+          - UNSIGNED
+          - VERIFIED
+          - FAILED_VERIFICATION
+        snippet:
+          type: string
+        subject:
+          type: string
+        to:
+          type: array
+          items:
+            type: string
+    MessageCollectionLinks:
+      type: object
+      properties:
+        first:
+          type: string
+        next:
+          type: string
+        self:
+          type: string
+    MessageRelationships:
+      type: object
+      properties:
+        category-tag:
+          $ref: '#/components/schemas/CategoryTagRelToMany'
+        document:
+          $ref: '#/components/schemas/DocumentRelToMany'
+        job-reference:
+          $ref: '#/components/schemas/JobReferenceRelToMany'
+        message_thread_summary:
+          $ref: '#/components/schemas/MessageThreadSummary'
+        private-label:
+          $ref: '#/components/schemas/PrivateLabelRelToMany'
+        sender:
+          $ref: '#/components/schemas/Sender'
+        team:
+          $ref: '#/components/schemas/TeamRelToMany'
+    MessageTagId:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+    DocumentRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentRelData'
+        links:
+          $ref: '#/components/schemas/DocumentRelLinks'
+    JobReferenceCollectionLinks:
+      type: object
+      properties:
+        first:
+          type: string
+        next:
+          type: string
+        self:
+          type: string
+    MessageRelGetData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    TagLabel:
+      type: object
+      properties:
+        value:
+          type: string
+    JobReferenceAttributes:
+      type: object
+      properties:
+        archived:
+          type: boolean
+        attributes:
+          type: string
+        createdAt:
+          type: string
+        date:
+          type: string
+        foreignKey:
+          type: string
+        modifiedAt:
+          type: string
+        name:
+          type: string
+        source:
+          type: string
+        tagId:
+          type: string
+        type:
+          type: string
+      required:
+      - name
+    MessageThreadSummary:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceObjectIdentifier'
+    CategoryTagRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    JobReferenceCreateRelationships:
+      type: object
+      properties:
+        team:
+          $ref: '#/components/schemas/UpdateTeamRelToMany'
+        user:
+          $ref: '#/components/schemas/UserRelToMany'
+    MessageCollectionMeta:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+    DocumentRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    PrivateLabelRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PrivateLabelRelData'
+        links:
+          $ref: '#/components/schemas/PrivateLabelRelLinks'
+    JobReferenceRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    JobReferenceCreateAttributes:
+      type: object
+      properties:
+        archived:
+          type: boolean
+        attributes:
+          type: object
+          additionalProperties:
+            type: string
+        date:
+          type: string
+          format: date-time
+        foreignKey:
+          type: string
+        name:
+          type: string
+        source:
+          type: string
+        type:
+          type: string
+          enum:
+          - voyage
+          - head_fixture
+          - spot_fixture
+          - other
+          - ''
+      required:
+      - name
+    UserRelationshipMeta:
+      type: object
+      properties:
+        default:
+          type: boolean
+        disableSend:
+          type: boolean
+        watched:
+          type: boolean
+    MessageRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    JobReferenceRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        messageTag:
+          $ref: '#/components/schemas/MessageTag'
+        type:
+          type: string
+    JobReferenceRelationships:
+      type: object
+      properties:
+        company:
+          $ref: '#/components/schemas/Company'
+        tag:
+          $ref: '#/components/schemas/Tag'
+        team:
+          $ref: '#/components/schemas/TeamRelToMany'
+        user:
+          $ref: '#/components/schemas/UserRelToMany'
+    MessageCollection:
+      type: object
+      description: The resource
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageReadResource'
+        included:
+          type: array
+          items:
+            type: object
+        links:
+          $ref: '#/components/schemas/MessageCollectionLinks'
+        meta:
+          $ref: '#/components/schemas/MessageCollectionMeta'
+    JobReferenceUpdate:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/JobReferenceUpdateResource'
+    PrivateLabelRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+  securitySchemes:
+    Basic:
+      description: The basic auth scheme only requires the API-Specific username/password to be set.
+      scheme: basic
+      type: http
+    OAuth:
+      description: This API prefers OAuth 2 with client credentials flow. You can create your credentials in the <a href='https://{tenant}.sednanetwork.com/platform/settings/api-credential-management'>Api Credential Management page</a>.
+      flows:
+        clientCredentials:
+          scopes:
+            CATEGORYTAG_DELETE: Delete category tags
+            CATEGORYTAG_READ: Read category tags
+            CATEGORYTAG_WRITE: Create and update category tags
+            CHARTERING_DELETE: Delete chartering (Pulse) information
+            CHARTERING_READ: Read chartering (Pulse) information
+            CHARTERING_WRITE: Create chartering (Pulse) information
+            COMMENT_READ: Read message comments
+            COMPANY_READ: Read company info
+            COMPANY_WRITE: Update company info (eg. signature)
+            CONTACTGROUP_DELETE: Delete contact groups
+            CONTACTGROUP_READ: Read contact groups
+            CONTACTGROUP_WRITE: Create and update contact groups
+            CONTACT_DELETE: Delete contacts
+            CONTACT_READ: Read contacts
+            CONTACT_WRITE: Create and update contacts
+            CRMENTITY_DELETE: Delete CRM contacts
+            CRMENTITY_READ: Read CRM contacts
+            CRMENTITY_WRITE: Create and update CRM Contacts
+            DOCUMENT_READ: Read and download attachments
+            EVENT_READ: Read events from the events endpoint
+            JOBREFERENCE_DELETE: Delete job references
+            JOBREFERENCE_READ: Read job references
+            JOBREFERENCE_WRITE: Create and update job references
+            KEYWORD_DELETE: Delete custom keywords
+            KEYWORD_READ: Read custom keywords
+            KEYWORD_WRITE: Create and update custom keywords
+            LEGAL_HOLD_DELETE: Delete legal holds
+            LEGAL_HOLD_READ: Read legal holds
+            LEGAL_HOLD_WRITE: Create and update legal holds
+            MESSAGE_DELETE: Archive email messages
+            MESSAGE_READ: Read (draft) email messages
+            MESSAGE_RETENTION_SETTINGS_READ: Read message retention settings
+            MESSAGE_RETENTION_SETTINGS_WRITE: Update message retention settings
+            MESSAGE_WRITE: Create and send (draft) email messages
+            PERSONAL_DATA_UNREDACTED_READ: Read unredacted emails with personal data
+            QUARANTINED_MESSAGE_READ: Read quarantined email messages
+            QUARANTINED_MESSAGE_WRITE: Release quarantined email messages
+            RETENTION_POLICY_DELETE: Delete retention policies
+            RETENTION_POLICY_READ: Read retention policies
+            RETENTION_POLICY_WRITE: Create and update retention policies
+            SAVEDSEARCH_DELETE: Remove saved searches
+            SAVEDSEARCH_READ: Read saved search details
+            SAVEDSEARCH_WRITE: Create and update saved searches
+            TEAM_DELETE: Delete teams
+            TEAM_READ: Read team details
+            TEAM_WRITE: Create and update teams
+            TEMPLATE_READ: Read templates
+            USER_DELETE: Archive users
+            USER_READ: Read user details
+            USER_WRITE: Create and update users
+            WORKFLOW_DELETE: Delete workflows
+            WORKFLOW_READ: Read workflow details
+            WORKFLOW_WRITE: Create and update workflows
+          tokenUrl: https://{tenant}.sednanetwork.com/platform/oauth/token
+      type: oauth2

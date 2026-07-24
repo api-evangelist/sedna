@@ -1,0 +1,395 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Support
+    url: https://support.sedna.com
+  termsOfService: https://www.sedna.com/terms-of-service
+  title: Sedna Authentication Keyword API API
+  version: '2019-01-01'
+servers:
+- description: Platform endpoint
+  url: https://{tenant}.sednanetwork.com/platform
+  variables:
+    tenant:
+      default: example
+      description: Your tenant's unique identifier
+security:
+- Basic: []
+- OAuth: []
+tags:
+- name: Keyword API
+paths:
+  /2019-01-01/keyword:
+    post:
+      description: 'Create a keyword with at least 1 follower
+
+
+        Required API Permissions: KEYWORD_WRITE'
+      operationId: createKeyword
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KeywordCreate'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/KeywordCreate'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeywordSingle'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/KeywordSingle'
+          description: default response
+      tags:
+      - Keyword API
+    get:
+      description: 'Fetch all keywords
+
+
+        Required API Permissions: KEYWORD_READ'
+      operationId: getKeywords
+      parameters:
+      - in: query
+        name: page[limit]
+        schema:
+          type: integer
+          format: int64
+          default: 100
+      - in: query
+        name: page[offset]
+        schema:
+          type: integer
+          format: int64
+          default: 0
+      - in: query
+        name: filter[name]
+        schema:
+          type: string
+      - in: query
+        name: filter[user]
+        schema:
+          type: string
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeywordCollection'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/KeywordCollection'
+          description: default response
+      tags:
+      - Keyword API
+  /2019-01-01/keyword/{id}:
+    delete:
+      description: 'Delete Keyword and user-keyword relationships
+
+
+        Required API Permissions: KEYWORD_DELETE'
+      operationId: deleteKeyword
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Keyword API
+    get:
+      description: 'Fetch a single keyword
+
+
+        Required API Permissions: KEYWORD_READ'
+      operationId: getKeyword
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeywordSingle'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/KeywordSingle'
+          description: default response
+      tags:
+      - Keyword API
+  /2019-01-01/keyword/{id}/relationships/user:
+    post:
+      description: 'Add user relationship to keyword
+
+
+        Required API Permissions: KEYWORD_WRITE'
+      operationId: addKeywordUsers
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UserRelToMany'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeywordSingle'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/KeywordSingle'
+          description: default response
+      tags:
+      - Keyword API
+    delete:
+      description: 'Remove users relationships to keyword
+
+
+        Required API Permissions: KEYWORD_WRITE'
+      operationId: removeKeywordUsers
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UserRelToMany'
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Keyword API
+components:
+  schemas:
+    KeywordLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    KeywordCreateAttributes:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+      - name
+    UserRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRelData'
+        links:
+          $ref: '#/components/schemas/UserRelLinks'
+    UserRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    UserRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    KeywordAttributes:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 50
+          minLength: 0
+      required:
+      - name
+    KeywordRelationships:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/UserDataObject'
+    KeywordResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/KeywordAttributes'
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/KeywordLinks'
+        relationships:
+          $ref: '#/components/schemas/KeywordRelationships'
+        type:
+          type: string
+          description: type of resource
+          enum:
+          - keyword
+    UserObject:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    KeywordSingleLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    KeywordCreateRelationships:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/UserRelToMany'
+      required:
+      - user
+    KeywordSingle:
+      type: object
+      description: The resource
+      properties:
+        data:
+          $ref: '#/components/schemas/KeywordResource'
+        links:
+          $ref: '#/components/schemas/KeywordSingleLinks'
+    UserDataObject:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserObject'
+    KeywordCreateResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/KeywordCreateAttributes'
+        relationships:
+          $ref: '#/components/schemas/KeywordCreateRelationships'
+        type:
+          type: string
+    KeywordCreate:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/KeywordCreateResource'
+    KeywordCollectionLinks:
+      type: object
+      properties:
+        first:
+          type: string
+        next:
+          type: string
+        self:
+          type: string
+    KeywordCollection:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeywordResource'
+        links:
+          $ref: '#/components/schemas/KeywordCollectionLinks'
+  securitySchemes:
+    Basic:
+      description: The basic auth scheme only requires the API-Specific username/password to be set.
+      scheme: basic
+      type: http
+    OAuth:
+      description: This API prefers OAuth 2 with client credentials flow. You can create your credentials in the <a href='https://{tenant}.sednanetwork.com/platform/settings/api-credential-management'>Api Credential Management page</a>.
+      flows:
+        clientCredentials:
+          scopes:
+            CATEGORYTAG_DELETE: Delete category tags
+            CATEGORYTAG_READ: Read category tags
+            CATEGORYTAG_WRITE: Create and update category tags
+            CHARTERING_DELETE: Delete chartering (Pulse) information
+            CHARTERING_READ: Read chartering (Pulse) information
+            CHARTERING_WRITE: Create chartering (Pulse) information
+            COMMENT_READ: Read message comments
+            COMPANY_READ: Read company info
+            COMPANY_WRITE: Update company info (eg. signature)
+            CONTACTGROUP_DELETE: Delete contact groups
+            CONTACTGROUP_READ: Read contact groups
+            CONTACTGROUP_WRITE: Create and update contact groups
+            CONTACT_DELETE: Delete contacts
+            CONTACT_READ: Read contacts
+            CONTACT_WRITE: Create and update contacts
+            CRMENTITY_DELETE: Delete CRM contacts
+            CRMENTITY_READ: Read CRM contacts
+            CRMENTITY_WRITE: Create and update CRM Contacts
+            DOCUMENT_READ: Read and download attachments
+            EVENT_READ: Read events from the events endpoint
+            JOBREFERENCE_DELETE: Delete job references
+            JOBREFERENCE_READ: Read job references
+            JOBREFERENCE_WRITE: Create and update job references
+            KEYWORD_DELETE: Delete custom keywords
+            KEYWORD_READ: Read custom keywords
+            KEYWORD_WRITE: Create and update custom keywords
+            LEGAL_HOLD_DELETE: Delete legal holds
+            LEGAL_HOLD_READ: Read legal holds
+            LEGAL_HOLD_WRITE: Create and update legal holds
+            MESSAGE_DELETE: Archive email messages
+            MESSAGE_READ: Read (draft) email messages
+            MESSAGE_RETENTION_SETTINGS_READ: Read message retention settings
+            MESSAGE_RETENTION_SETTINGS_WRITE: Update message retention settings
+            MESSAGE_WRITE: Create and send (draft) email messages
+            PERSONAL_DATA_UNREDACTED_READ: Read unredacted emails with personal data
+            QUARANTINED_MESSAGE_READ: Read quarantined email messages
+            QUARANTINED_MESSAGE_WRITE: Release quarantined email messages
+            RETENTION_POLICY_DELETE: Delete retention policies
+            RETENTION_POLICY_READ: Read retention policies
+            RETENTION_POLICY_WRITE: Create and update retention policies
+            SAVEDSEARCH_DELETE: Remove saved searches
+            SAVEDSEARCH_READ: Read saved search details
+            SAVEDSEARCH_WRITE: Create and update saved searches
+            TEAM_DELETE: Delete teams
+            TEAM_READ: Read team details
+            TEAM_WRITE: Create and update teams
+            TEMPLATE_READ: Read templates
+            USER_DELETE: Archive users
+            USER_READ: Read user details
+            USER_WRITE: Create and update users
+            WORKFLOW_DELETE: Delete workflows
+            WORKFLOW_READ: Read workflow details
+            WORKFLOW_WRITE: Create and update workflows
+          tokenUrl: https://{tenant}.sednanetwork.com/platform/oauth/token
+      type: oauth2

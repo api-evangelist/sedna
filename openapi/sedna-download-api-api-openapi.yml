@@ -1,0 +1,162 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Support
+    url: https://support.sedna.com
+  termsOfService: https://www.sedna.com/terms-of-service
+  title: Sedna Authentication Download API API
+  version: '2019-01-01'
+servers:
+- description: Platform endpoint
+  url: https://{tenant}.sednanetwork.com/platform
+  variables:
+    tenant:
+      default: example
+      description: Your tenant's unique identifier
+security:
+- Basic: []
+- OAuth: []
+tags:
+- name: Download API
+paths:
+  /2019-01-01/download/document/{id}:
+    get:
+      description: 'Download a message attachment a.k.a. document.
+
+
+        Required API Permissions: DOCUMENT_READ'
+      operationId: downloadDocument
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '307':
+          description: Redirection to a signed download link valid for 30 minutes
+      tags:
+      - Download API
+  /2019-01-01/download/message/{id}:
+    get:
+      description: 'Download the source file, usually .eml, of a message.
+
+
+        Required API Permissions: MESSAGE_READ'
+      operationId: downloadMessage
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '307':
+          description: Redirection to a signed download link valid for 30 minutes
+      tags:
+      - Download API
+  /2019-01-01/download/message/{id}/attachments/zip:
+    get:
+      description: 'Download all attachments of a message as a zip file, using presigned S3 link if available or generating it otherwise.
+
+
+        Required API Permissions: DOCUMENT_READ'
+      operationId: downloadAllMessageAttachments
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Download API
+  /2019-01-01/download/template/document/{id}:
+    get:
+      description: 'Download a template attachment (document)
+
+
+        Required API Permissions: DOCUMENT_READ'
+      operationId: downloadTemplateDocument
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '307':
+          description: Redirection to a signed download link valid for 30 minutes
+      tags:
+      - Download API
+components:
+  securitySchemes:
+    Basic:
+      description: The basic auth scheme only requires the API-Specific username/password to be set.
+      scheme: basic
+      type: http
+    OAuth:
+      description: This API prefers OAuth 2 with client credentials flow. You can create your credentials in the <a href='https://{tenant}.sednanetwork.com/platform/settings/api-credential-management'>Api Credential Management page</a>.
+      flows:
+        clientCredentials:
+          scopes:
+            CATEGORYTAG_DELETE: Delete category tags
+            CATEGORYTAG_READ: Read category tags
+            CATEGORYTAG_WRITE: Create and update category tags
+            CHARTERING_DELETE: Delete chartering (Pulse) information
+            CHARTERING_READ: Read chartering (Pulse) information
+            CHARTERING_WRITE: Create chartering (Pulse) information
+            COMMENT_READ: Read message comments
+            COMPANY_READ: Read company info
+            COMPANY_WRITE: Update company info (eg. signature)
+            CONTACTGROUP_DELETE: Delete contact groups
+            CONTACTGROUP_READ: Read contact groups
+            CONTACTGROUP_WRITE: Create and update contact groups
+            CONTACT_DELETE: Delete contacts
+            CONTACT_READ: Read contacts
+            CONTACT_WRITE: Create and update contacts
+            CRMENTITY_DELETE: Delete CRM contacts
+            CRMENTITY_READ: Read CRM contacts
+            CRMENTITY_WRITE: Create and update CRM Contacts
+            DOCUMENT_READ: Read and download attachments
+            EVENT_READ: Read events from the events endpoint
+            JOBREFERENCE_DELETE: Delete job references
+            JOBREFERENCE_READ: Read job references
+            JOBREFERENCE_WRITE: Create and update job references
+            KEYWORD_DELETE: Delete custom keywords
+            KEYWORD_READ: Read custom keywords
+            KEYWORD_WRITE: Create and update custom keywords
+            LEGAL_HOLD_DELETE: Delete legal holds
+            LEGAL_HOLD_READ: Read legal holds
+            LEGAL_HOLD_WRITE: Create and update legal holds
+            MESSAGE_DELETE: Archive email messages
+            MESSAGE_READ: Read (draft) email messages
+            MESSAGE_RETENTION_SETTINGS_READ: Read message retention settings
+            MESSAGE_RETENTION_SETTINGS_WRITE: Update message retention settings
+            MESSAGE_WRITE: Create and send (draft) email messages
+            PERSONAL_DATA_UNREDACTED_READ: Read unredacted emails with personal data
+            QUARANTINED_MESSAGE_READ: Read quarantined email messages
+            QUARANTINED_MESSAGE_WRITE: Release quarantined email messages
+            RETENTION_POLICY_DELETE: Delete retention policies
+            RETENTION_POLICY_READ: Read retention policies
+            RETENTION_POLICY_WRITE: Create and update retention policies
+            SAVEDSEARCH_DELETE: Remove saved searches
+            SAVEDSEARCH_READ: Read saved search details
+            SAVEDSEARCH_WRITE: Create and update saved searches
+            TEAM_DELETE: Delete teams
+            TEAM_READ: Read team details
+            TEAM_WRITE: Create and update teams
+            TEMPLATE_READ: Read templates
+            USER_DELETE: Archive users
+            USER_READ: Read user details
+            USER_WRITE: Create and update users
+            WORKFLOW_DELETE: Delete workflows
+            WORKFLOW_READ: Read workflow details
+            WORKFLOW_WRITE: Create and update workflows
+          tokenUrl: https://{tenant}.sednanetwork.com/platform/oauth/token
+      type: oauth2

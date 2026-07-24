@@ -1,0 +1,342 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Support
+    url: https://support.sedna.com
+  termsOfService: https://www.sedna.com/terms-of-service
+  title: Sedna Authentication Saved Search API API
+  version: '2019-01-01'
+servers:
+- description: Platform endpoint
+  url: https://{tenant}.sednanetwork.com/platform
+  variables:
+    tenant:
+      default: example
+      description: Your tenant's unique identifier
+security:
+- Basic: []
+- OAuth: []
+tags:
+- name: Saved Search API
+paths:
+  /2019-01-01/saved-search:
+    post:
+      description: 'Create saved search.
+
+
+        Required API Permissions: SAVEDSEARCH_WRITE'
+      operationId: createSavedSearch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SavedSearchCreate'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/SavedSearchCreate'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SavedSearchSingle'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/SavedSearchSingle'
+          description: default response
+      tags:
+      - Saved Search API
+    get:
+      description: 'Get list of saved searches.
+
+
+        Required API Permissions: SAVEDSEARCH_READ'
+      operationId: getSavedSearches
+      parameters:
+      - in: query
+        name: userId
+        schema:
+          type: string
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SavedSearchCollection'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/SavedSearchCollection'
+          description: default response
+      tags:
+      - Saved Search API
+  /2019-01-01/saved-search/{id}:
+    delete:
+      description: 'Delete a saved search
+
+
+        Required API Permissions: SAVEDSEARCH_DELETE'
+      operationId: deleteSavedSearch
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: userId
+        schema:
+          type: string
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Saved Search API
+    patch:
+      description: 'Update saved search
+
+
+        Required API Permissions: SAVEDSEARCH_WRITE'
+      operationId: updateSavedSearch
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: userId
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SavedSearchUpdate'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/SavedSearchUpdate'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SavedSearchSingle'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/SavedSearchSingle'
+          description: default response
+      tags:
+      - Saved Search API
+components:
+  schemas:
+    TeamRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    SavedSearchCreate:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/SavedSearchCreateResource'
+    UserRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRelData'
+        links:
+          $ref: '#/components/schemas/UserRelLinks'
+    TeamRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    UserRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    SavedSearchUpdate:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/SavedSearchUpdateResource'
+    SavedSearchAttributes:
+      type: object
+      properties:
+        name:
+          type: string
+        notifications:
+          $ref: '#/components/schemas/SavedSearchNotifications'
+        search:
+          type: string
+        userId:
+          type: string
+      required:
+      - name
+      - search
+      - userId
+    SavedSearchCreateResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/SavedSearchAttributes'
+        relationships:
+          $ref: '#/components/schemas/SavedSearchRelationships'
+        type:
+          type: string
+      required:
+      - type
+    TeamRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamRelData'
+        links:
+          $ref: '#/components/schemas/TeamRelLinks'
+    SavedSearchUpdateAttributes:
+      type: object
+      properties:
+        name:
+          type: string
+        notifications:
+          $ref: '#/components/schemas/SavedSearchNotifications'
+        search:
+          type: string
+    SavedSearchSingle:
+      type: object
+      description: a single saved search
+      properties:
+        data:
+          $ref: '#/components/schemas/SavedSearchReadResource'
+    SavedSearchUpdateResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/SavedSearchUpdateAttributes'
+        relationships:
+          $ref: '#/components/schemas/SavedSearchRelationships'
+        type:
+          type: string
+      required:
+      - type
+    SavedSearchCollection:
+      type: object
+      description: a collection of saved searches
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/SavedSearchReadResource'
+    UserRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    SavedSearchRelationships:
+      type: object
+      properties:
+        team:
+          $ref: '#/components/schemas/TeamRelToMany'
+        user:
+          $ref: '#/components/schemas/UserRelToMany'
+    SavedSearchReadResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/SavedSearchAttributes'
+        id:
+          type: string
+        relationships:
+          $ref: '#/components/schemas/SavedSearchRelationships'
+        type:
+          type: string
+      required:
+      - type
+    SavedSearchNotifications:
+      type: object
+      properties:
+        count:
+          type: boolean
+        push:
+          type: boolean
+  securitySchemes:
+    Basic:
+      description: The basic auth scheme only requires the API-Specific username/password to be set.
+      scheme: basic
+      type: http
+    OAuth:
+      description: This API prefers OAuth 2 with client credentials flow. You can create your credentials in the <a href='https://{tenant}.sednanetwork.com/platform/settings/api-credential-management'>Api Credential Management page</a>.
+      flows:
+        clientCredentials:
+          scopes:
+            CATEGORYTAG_DELETE: Delete category tags
+            CATEGORYTAG_READ: Read category tags
+            CATEGORYTAG_WRITE: Create and update category tags
+            CHARTERING_DELETE: Delete chartering (Pulse) information
+            CHARTERING_READ: Read chartering (Pulse) information
+            CHARTERING_WRITE: Create chartering (Pulse) information
+            COMMENT_READ: Read message comments
+            COMPANY_READ: Read company info
+            COMPANY_WRITE: Update company info (eg. signature)
+            CONTACTGROUP_DELETE: Delete contact groups
+            CONTACTGROUP_READ: Read contact groups
+            CONTACTGROUP_WRITE: Create and update contact groups
+            CONTACT_DELETE: Delete contacts
+            CONTACT_READ: Read contacts
+            CONTACT_WRITE: Create and update contacts
+            CRMENTITY_DELETE: Delete CRM contacts
+            CRMENTITY_READ: Read CRM contacts
+            CRMENTITY_WRITE: Create and update CRM Contacts
+            DOCUMENT_READ: Read and download attachments
+            EVENT_READ: Read events from the events endpoint
+            JOBREFERENCE_DELETE: Delete job references
+            JOBREFERENCE_READ: Read job references
+            JOBREFERENCE_WRITE: Create and update job references
+            KEYWORD_DELETE: Delete custom keywords
+            KEYWORD_READ: Read custom keywords
+            KEYWORD_WRITE: Create and update custom keywords
+            LEGAL_HOLD_DELETE: Delete legal holds
+            LEGAL_HOLD_READ: Read legal holds
+            LEGAL_HOLD_WRITE: Create and update legal holds
+            MESSAGE_DELETE: Archive email messages
+            MESSAGE_READ: Read (draft) email messages
+            MESSAGE_RETENTION_SETTINGS_READ: Read message retention settings
+            MESSAGE_RETENTION_SETTINGS_WRITE: Update message retention settings
+            MESSAGE_WRITE: Create and send (draft) email messages
+            PERSONAL_DATA_UNREDACTED_READ: Read unredacted emails with personal data
+            QUARANTINED_MESSAGE_READ: Read quarantined email messages
+            QUARANTINED_MESSAGE_WRITE: Release quarantined email messages
+            RETENTION_POLICY_DELETE: Delete retention policies
+            RETENTION_POLICY_READ: Read retention policies
+            RETENTION_POLICY_WRITE: Create and update retention policies
+            SAVEDSEARCH_DELETE: Remove saved searches
+            SAVEDSEARCH_READ: Read saved search details
+            SAVEDSEARCH_WRITE: Create and update saved searches
+            TEAM_DELETE: Delete teams
+            TEAM_READ: Read team details
+            TEAM_WRITE: Create and update teams
+            TEMPLATE_READ: Read templates
+            USER_DELETE: Archive users
+            USER_READ: Read user details
+            USER_WRITE: Create and update users
+            WORKFLOW_DELETE: Delete workflows
+            WORKFLOW_READ: Read workflow details
+            WORKFLOW_WRITE: Create and update workflows
+          tokenUrl: https://{tenant}.sednanetwork.com/platform/oauth/token
+      type: oauth2

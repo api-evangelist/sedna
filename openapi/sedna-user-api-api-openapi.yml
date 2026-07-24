@@ -1,0 +1,1854 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Support
+    url: https://support.sedna.com
+  termsOfService: https://www.sedna.com/terms-of-service
+  title: Sedna Authentication User API API
+  version: '2019-01-01'
+servers:
+- description: Platform endpoint
+  url: https://{tenant}.sednanetwork.com/platform
+  variables:
+    tenant:
+      default: example
+      description: Your tenant's unique identifier
+security:
+- Basic: []
+- OAuth: []
+tags:
+- name: User API
+paths:
+  /2019-01-01/user:
+    post:
+      description: 'Create a user
+
+
+        Required API Permissions: USER_WRITE'
+      operationId: create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSingle'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/UserSingle'
+          description: default response
+      tags:
+      - User API
+    get:
+      description: 'Fetch a collection of users
+
+
+        Required API Permissions: USER_READ'
+      operationId: list_1
+      parameters:
+      - in: query
+        name: page[limit]
+        schema:
+          type: integer
+          format: int64
+          default: 100
+      - in: query
+        name: page[offset]
+        schema:
+          type: integer
+          format: int64
+          default: 0
+      - in: query
+        name: include
+        schema:
+          type: string
+      - in: query
+        name: fields[user]
+        schema:
+          type: string
+      - in: query
+        name: filter[user.ssoEmail]
+        schema:
+          type: string
+      - example: 3,5,7
+        in: query
+        name: filter[user.id]
+        schema:
+          type: string
+      - deprecated: true
+        in: query
+        name: ssoEmail
+        schema:
+          type: string
+      - in: query
+        name: filter[user.firstName]
+        schema:
+          type: string
+      - in: query
+        name: filter[user.lastName]
+        schema:
+          type: string
+      - in: query
+        name: sortBy
+        schema:
+          type: string
+          enum:
+          - username.asc
+          - username.desc
+          - firstName.asc
+          - firstName.desc
+          - lastName.asc
+          - lastName.desc
+          - initials.asc
+          - initials.desc
+          - ssoEmail.asc
+          - ssoEmail.desc
+          - lastLogin.asc
+          - lastLogin.desc
+          - createdAt.asc
+          - createdAt.desc
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserCollection'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/UserCollection'
+          description: default response
+      tags:
+      - User API
+  /2019-01-01/user/{id}:
+    delete:
+      description: 'Delete a user
+
+
+        Required API Permissions: USER_DELETE'
+      operationId: delete
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - User API
+    get:
+      description: 'Fetch a user
+
+
+        Required API Permissions: USER_READ'
+      operationId: find_2
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - in: query
+        name: include
+        schema:
+          type: string
+      - in: query
+        name: fields[user]
+        schema:
+          type: string
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSingle'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/UserSingle'
+          description: default response
+      tags:
+      - User API
+    patch:
+      description: 'Update a user
+
+
+        Required API Permissions: USER_WRITE'
+      operationId: update
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdate'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UserUpdate'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSingle'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/UserSingle'
+          description: default response
+      tags:
+      - User API
+  /2019-01-01/user/{id}/default-team:
+    get:
+      description: 'Retrieve a user''s primary/default team
+
+
+        Required API Permissions: USER_READ, TEAM_READ'
+      operationId: getUserDefaultTeam
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamSingle'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/TeamSingle'
+          description: default response
+      tags:
+      - User API
+  /2019-01-01/user/{id}/disable-send-teams:
+    get:
+      description: "\nFetch the teams that have sending disabled for the given user.\n\n**This is an enterprise feature.** If you'd like to learn more, please reach out to your account representative.\n    \n\nRequired API Permissions: USER_READ, TEAM_READ"
+      operationId: getUserDisableSendTeams
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamCollection'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/TeamCollection'
+          description: default response
+      tags:
+      - User API
+  /2019-01-01/user/{id}/job-reference:
+    get:
+      description: 'Get a users job reference subscriptions
+
+
+        Required API Permissions: USER_READ, JOBREFERENCE_READ'
+      operationId: getUserJobReferenceSubscriptions
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserJobReferenceCollection'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/UserJobReferenceCollection'
+          description: default response
+      tags:
+      - User API
+  /2019-01-01/user/{id}/notification-device:
+    get:
+      description: 'Fetch a user''s related notification devices
+
+
+        Required API Permissions: USER_READ'
+      operationId: getUserNotificationDevices
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationDeviceCollection'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/NotificationDeviceCollection'
+          description: default response
+      tags:
+      - User API
+  /2019-01-01/user/{id}/relationships/default-team:
+    get:
+      description: 'Retrieve relationship information for a user''s default team - the default team is always ''watched''
+
+
+        Required API Permissions: USER_READ'
+      operationId: getUserDefaultTeamRelationship
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamRelationship'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/TeamRelationship'
+          description: default response
+      tags:
+      - User API
+    patch:
+      description: 'Set a user''s default or primary team
+
+
+        Required API Permissions: USER_WRITE'
+      operationId: setUserDefaultTeamRelationship
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelationship'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelationship'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamRelationship'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/TeamRelationship'
+          description: default response
+      tags:
+      - User API
+  /2019-01-01/user/{id}/relationships/disable-send-teams:
+    post:
+      description: '
+
+        Disable sending for a team for the given user.
+
+        Sending cannot be disabled for a user''s default team.
+
+
+        **This is an enterprise feature.** If you''d like to learn more, please reach out to your account representative.
+
+
+
+        Required API Permissions: USER_WRITE'
+      operationId: addUserDisableSendTeamsRelationships
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelToMany'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/TeamRelToMany'
+          description: default response
+      tags:
+      - User API
+    get:
+      description: "\nFetch the team relationships that have sending disabled for the given user.\n\n**This is an enterprise feature.** If you'd like to learn more, please reach out to your account representative.\n    \n\nRequired API Permissions: USER_READ"
+      operationId: getUserDisableSendTeamsRelationships
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/TeamRelToMany'
+          description: default response
+      tags:
+      - User API
+    delete:
+      description: '
+
+        Turn off disable sending for a team for the given user. (ie. Enable sending)
+
+
+        **This is an enterprise feature.** If you''d like to learn more, please reach out to your account representative.
+
+
+
+        Required API Permissions: USER_WRITE'
+      operationId: removeUserDisableSendTeamsRelationships
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelToMany'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/TeamRelToMany'
+          description: default response
+      tags:
+      - User API
+  /2019-01-01/user/{id}/relationships/job-reference:
+    get:
+      description: 'Get a users job reference relationships
+
+
+        Required API Permissions: USER_READ'
+      operationId: getUserJobReferenceSubscriptionRelationships
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - in: query
+        name: filter[createdBy]
+        schema:
+          type: string
+          enum:
+          - api
+          - ui
+          - '{userId}'
+          example: api
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobReferenceRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/JobReferenceRelToMany'
+          description: default response
+      tags:
+      - User API
+    post:
+      description: 'Subscribe a user to a job reference
+
+
+        Required API Permissions: USER_WRITE'
+      operationId: subscribeToJobReferences
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - description: allow user to manage this subscription
+        in: query
+        name: managedByUser
+        schema:
+          type: boolean
+          default: false
+          enum:
+          - true
+          - false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobReferenceRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/JobReferenceRelToMany'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobReferenceRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/JobReferenceRelToMany'
+          description: default response
+      tags:
+      - User API
+    delete:
+      description: 'Unsubscribe a user to a job reference
+
+
+        Required API Permissions: USER_WRITE'
+      operationId: unsubscribeToJobReferences
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobReferenceRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/JobReferenceRelToMany'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobReferenceRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/JobReferenceRelToMany'
+          description: default response
+      tags:
+      - User API
+  /2019-01-01/user/{id}/relationships/keyword:
+    get:
+      description: 'Get user''s keyword relationships
+
+
+        Required API Permissions: USER_READ'
+      operationId: getUserKeywordRelationships
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeywordRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/KeywordRelToMany'
+          description: default response
+      tags:
+      - User API
+    post:
+      description: 'Add keyword relationships to user
+
+
+        Required API Permissions: USER_WRITE'
+      operationId: subscribeUserToKeyword
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateKeywordRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UpdateKeywordRelToMany'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeywordRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/KeywordRelToMany'
+          description: default response
+      tags:
+      - User API
+    delete:
+      description: 'Delete keyword relationships to user
+
+
+        Required API Permissions: USER_WRITE'
+      operationId: unsubscribeUserFromKeyword
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateKeywordRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UpdateKeywordRelToMany'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeywordRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/KeywordRelToMany'
+          description: default response
+      tags:
+      - User API
+  /2019-01-01/user/{id}/relationships/notification-device:
+    get:
+      description: 'Fetch a users''s notification device relationships
+
+
+        Required API Permissions: USER_WRITE'
+      operationId: getUserNotificationDeviceRelationships
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationDeviceRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/NotificationDeviceRelToMany'
+          description: default response
+      tags:
+      - User API
+  /2019-01-01/user/{id}/relationships/role:
+    post:
+      description: 'Add Roles to User
+
+
+        Required API Permissions: USER_WRITE'
+      operationId: addUserRoleRelationships
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateRoleRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UpdateRoleRelToMany'
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - User API
+    delete:
+      description: 'Remove roles from User
+
+
+        Required API Permissions: USER_WRITE'
+      operationId: removeUserRoleRelationships
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateRoleRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UpdateRoleRelToMany'
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - User API
+  /2019-01-01/user/{id}/relationships/team:
+    post:
+      description: 'Add Teams to User
+
+
+        Required API Permissions: USER_WRITE'
+      operationId: addUserTeamRelationships
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelWithFlags'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelWithFlags'
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - User API
+    get:
+      description: 'Fetch a users''s team relationships
+
+
+        Required API Permissions: USER_READ'
+      operationId: getUserTeamRelationships
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/TeamRelToMany'
+          description: default response
+      tags:
+      - User API
+    delete:
+      description: 'Remove user from teams
+
+
+        Required API Permissions: USER_WRITE'
+      operationId: removeUserTeamRelationships
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelToMany'
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - User API
+  /2019-01-01/user/{id}/relationships/watched-teams:
+    post:
+      description: 'Add a watched team to a user - the user must already be able to access the team
+
+
+        Required API Permissions: USER_WRITE'
+      operationId: addUserWatchedTeamsRelationships
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelToMany'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/TeamRelToMany'
+          description: default response
+      tags:
+      - User API
+    get:
+      description: 'Retrieve relationship data for a user''s watched teams - watched teams'' mail appears in a user''s inbox
+
+
+        Required API Permissions: USER_READ'
+      operationId: getUserWatchedTeamsRelationships
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/TeamRelToMany'
+          description: default response
+      tags:
+      - User API
+    delete:
+      description: 'Remove a watched team or teams from a user''s watched list - the user must be able to access the teams already
+
+
+        Required API Permissions: USER_WRITE'
+      operationId: removeUserWatchedTeamsRelationships
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelToMany'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/TeamRelToMany'
+          description: default response
+      tags:
+      - User API
+  /2019-01-01/user/{id}/team:
+    get:
+      description: 'Fetch a user''s related teams
+
+
+        Required API Permissions: USER_READ, TEAM_READ'
+      operationId: getUserTeams
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamCollection'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/TeamCollection'
+          description: default response
+      tags:
+      - User API
+  /2019-01-01/user/{id}/watched-teams:
+    get:
+      description: 'Retrieve the teams the user is currently ''watching'' - watched teams'' mail will appear in the user''s inbox
+
+
+        Required API Permissions: USER_READ, TEAM_READ'
+      operationId: getUserWatchedTeams
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamCollection'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/TeamCollection'
+          description: default response
+      tags:
+      - User API
+components:
+  schemas:
+    UpdateTeamRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamRelData'
+    TeamRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamRelData'
+        links:
+          $ref: '#/components/schemas/TeamRelLinks'
+    Meta:
+      type: object
+      properties:
+        disableSend:
+          type: boolean
+        watched:
+          type: boolean
+    EventId:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+    UserRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    NotificationDeviceRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    TeamResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/TeamAttributes'
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/TeamLinks'
+        relationships:
+          $ref: '#/components/schemas/TeamRelationships'
+        type:
+          type: string
+          description: the type of the resource
+          enum:
+          - team
+        uuid:
+          type: string
+    SoloInboxCreate:
+      type: object
+      properties:
+        additionalEmailAddresses:
+          type: array
+          items:
+            type: string
+        emailAddress:
+          type: string
+        emailSignature:
+          type: string
+        foreignKey:
+          type: string
+        name:
+          type: string
+        public:
+          type: boolean
+        purpose:
+          type: string
+        sendingName:
+          type: string
+      required:
+      - additionalEmailAddresses
+      - emailAddress
+      - name
+    UserRelationships:
+      type: object
+      properties:
+        deactivationPeriod:
+          $ref: '#/components/schemas/UserDeactivationPeriodRelToMany'
+        defaultTeam:
+          $ref: '#/components/schemas/TeamRelationship'
+        disableSendTeams:
+          $ref: '#/components/schemas/TeamRelToMany'
+        notificationDevice:
+          $ref: '#/components/schemas/NotificationDeviceRelToMany'
+        privateLabel:
+          $ref: '#/components/schemas/PrivateLabelRelToMany'
+        team:
+          $ref: '#/components/schemas/TeamRelToMany'
+        watchedTeams:
+          $ref: '#/components/schemas/TeamRelToMany'
+    UserReadMeta:
+      type: object
+      description: Document-level metadata for user collection/single reads
+    KeywordRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeywordRelData'
+        links:
+          $ref: '#/components/schemas/KeywordRelLinks'
+    UpdateRoleRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleRelData'
+          maxItems: 2147483647
+          minItems: 1
+    TeamAttributeAutoBccEmail:
+      type: object
+      properties:
+        email:
+          type: string
+        name:
+          type: string
+      required:
+      - email
+    UserJobReferenceAttributes:
+      type: object
+      properties:
+        archived:
+          type: boolean
+        attributes:
+          type: string
+        createdAt:
+          type: string
+        date:
+          type: string
+        foreignKey:
+          type: string
+        modifiedAt:
+          type: string
+        name:
+          type: string
+        source:
+          type: string
+        subscribedAt:
+          type: string
+          description: when the user subscribed to this job reference
+          example: '2025-04-23T14:52:54Z'
+        tagId:
+          type: string
+        type:
+          type: string
+      required:
+      - name
+    UserRelToOne:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/UserRelData'
+    JobReferenceRelationships:
+      type: object
+      properties:
+        company:
+          $ref: '#/components/schemas/Company'
+        tag:
+          $ref: '#/components/schemas/Tag'
+        team:
+          $ref: '#/components/schemas/TeamRelToMany'
+        user:
+          $ref: '#/components/schemas/UserRelToMany'
+    UserRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRelData'
+        links:
+          $ref: '#/components/schemas/UserRelLinks'
+    Tag:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/TagId'
+        name:
+          $ref: '#/components/schemas/TagName'
+        tagLabel:
+          $ref: '#/components/schemas/TagLabel'
+        tagTypeId:
+          type: integer
+          format: int32
+    TeamRelationship:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/TeamRelData'
+        links:
+          $ref: '#/components/schemas/TeamRelLinks'
+    UserSingle:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/UserResource'
+        included:
+          type: array
+          items:
+            type: object
+        meta:
+          $ref: '#/components/schemas/UserReadMeta'
+    UserDeactivationPeriodRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserDeactivationPeriodRelData'
+    TeamRelationships:
+      type: object
+      properties:
+        categoryTag:
+          $ref: '#/components/schemas/CategoryTagRelToMany'
+        user:
+          $ref: '#/components/schemas/UserRelToMany'
+    UserCollection:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserResource'
+        included:
+          type: array
+          items:
+            type: object
+          uniqueItems: true
+        links:
+          $ref: '#/components/schemas/UserCollectionLinks'
+        meta:
+          $ref: '#/components/schemas/UserReadMeta'
+    JobReferenceRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    JobReferenceRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        messageTag:
+          $ref: '#/components/schemas/MessageTag'
+        type:
+          type: string
+    KeywordRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    MessageTag:
+      type: object
+      properties:
+        assignedToUserId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        eventId:
+          $ref: '#/components/schemas/EventId'
+        messageId:
+          type: string
+        messageTagId:
+          $ref: '#/components/schemas/MessageTagId'
+        removedAt:
+          type: string
+          format: date-time
+        removedByUserId:
+          type: string
+        tag:
+          $ref: '#/components/schemas/Tag'
+        tagId:
+          $ref: '#/components/schemas/TagId'
+        userId:
+          type: string
+    UserJobReferenceResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/UserJobReferenceAttributes'
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/JobReferenceLinks'
+        relationships:
+          $ref: '#/components/schemas/JobReferenceRelationships'
+        type:
+          type: string
+    CategoryTagRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoryTagRelData'
+        links:
+          $ref: '#/components/schemas/CategoryTagRelLinks'
+    TeamCollection:
+      type: object
+      description: A collection of resources
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamResource'
+        links:
+          $ref: '#/components/schemas/TeamCollectionLinks'
+    TagName:
+      type: object
+      properties:
+        value:
+          type: string
+    TeamRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    Company:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceObjectIdentifier'
+    TeamAttributes:
+      type: object
+      properties:
+        additionalEmailAddresses:
+          type: array
+          items:
+            type: string
+        archived:
+          type: boolean
+        autoBccEmails:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamAttributeAutoBccEmail'
+        createdAt:
+          type: string
+          format: date-time
+        disableSend:
+          type: boolean
+        emailAddress:
+          type: string
+        emailSignature:
+          type: string
+        foreignKey:
+          type: string
+        inboxAssignedToUserId:
+          type: string
+        internalEmailAddress:
+          type: string
+        name:
+          type: string
+        public:
+          type: boolean
+        purpose:
+          type: string
+        sendingName:
+          type: string
+        soloInbox:
+          type: boolean
+    UserAttributes:
+      type: object
+      properties:
+        archived:
+          type: boolean
+        billableFrom:
+          type: string
+          format: date-time
+        billableType:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        deletedAt:
+          type: string
+          format: date-time
+        emailSignature:
+          type: string
+        firstName:
+          type: string
+        foreignId:
+          type: number
+        initials:
+          type: string
+        internal:
+          type: boolean
+        lastLogin:
+          type: string
+          format: date-time
+        lastName:
+          type: string
+        roles:
+          type: array
+          items:
+            type: string
+        ssoEmail:
+          type: string
+        username:
+          type: string
+    TeamRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    CategoryTagRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        messageTag:
+          $ref: '#/components/schemas/MessageTag'
+        type:
+          type: string
+    UserCreateAttributes:
+      type: object
+      properties:
+        defaultTeamId:
+          type: string
+        emailAddress:
+          type: string
+        emailSignature:
+          type: string
+        firstName:
+          type: string
+        foreignId:
+          type: string
+        individualEmail:
+          type: string
+        initials:
+          type: string
+        lastName:
+          type: string
+        password:
+          type: string
+          maxLength: 2147483647
+          minLength: 10
+        roles:
+          type: array
+          items:
+            type: string
+        soloInboxCreate:
+          $ref: '#/components/schemas/SoloInboxCreate'
+        username:
+          type: string
+      required:
+      - defaultTeamId
+      - password
+      - roles
+      - username
+    TeamRelDataWithFlags:
+      type: object
+      properties:
+        id:
+          type: string
+        meta:
+          $ref: '#/components/schemas/Meta'
+    UpdateTeamRelWithFlags:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamRelDataWithFlags'
+    NotificationDeviceRelationships:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/UserRelToOne'
+    RoleRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    TeamSingle:
+      type: object
+      description: The resource
+      properties:
+        data:
+          $ref: '#/components/schemas/TeamResource'
+    TeamLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    NotificationDeviceCollection:
+      type: object
+      description: A collection of resources
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/NotificationDeviceResource'
+        links:
+          $ref: '#/components/schemas/NotificationDeviceCollectionLinks'
+    UserUpdateAttributes:
+      type: object
+      properties:
+        archived:
+          type: boolean
+        emailAddress:
+          type: string
+        emailSignature:
+          type: string
+        firstName:
+          type: string
+        foreignId:
+          type: string
+        individualEmail:
+          type: string
+        initials:
+          type: string
+        lastName:
+          type: string
+        roles:
+          type: array
+          items:
+            type: string
+            maxLength: 2147483647
+            minLength: 1
+          maxItems: 2147483647
+          minItems: 1
+        username:
+          type: string
+        viewAllTeams:
+          type: boolean
+    NotificationDeviceRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/NotificationDeviceRelData'
+        links:
+          $ref: '#/components/schemas/NotificationDeviceRelLinks'
+    UserUpdateResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/UserUpdateAttributes'
+    JobReferenceLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    UserRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    UserJobReferenceCollection:
+      type: object
+      description: A collection of user job reference resources
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserJobReferenceResource'
+        links:
+          $ref: '#/components/schemas/JobReferenceCollectionLinks'
+    UserUpdate:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/UserUpdateResource'
+    NotificationDeviceAttributes:
+      type: object
+      properties:
+        deviceToken:
+          type: string
+        lastSeen:
+          type: string
+          format: date-time
+        subscribedAt:
+          type: string
+          format: date-time
+        userAgent:
+          type: string
+    TagId:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+    NotificationDeviceCollectionLinks:
+      type: object
+      properties:
+        first:
+          type: string
+        next:
+          type: string
+        self:
+          type: string
+    JobReferenceRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobReferenceRelData'
+        links:
+          $ref: '#/components/schemas/JobReferenceRelLinks'
+    MetaObject:
+      type: object
+    TeamCollectionLinks:
+      type: object
+      properties:
+        first:
+          type: string
+        next:
+          type: string
+        self:
+          type: string
+    PrivateLabelRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    NotificationDeviceLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    UpdateKeywordRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeywordRelData'
+    ResourceObjectIdentifier:
+      type: object
+      properties:
+        id:
+          type: string
+        meta:
+          $ref: '#/components/schemas/MetaObject'
+        type:
+          type: string
+    UserLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    UserResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/UserAttributes'
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/UserLinks'
+        relationships:
+          $ref: '#/components/schemas/UserRelationships'
+        type:
+          type: string
+          description: the type of the resource
+          enum:
+          - user
+    UserDeactivationPeriodRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    MessageTagId:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+    JobReferenceCollectionLinks:
+      type: object
+      properties:
+        first:
+          type: string
+        next:
+          type: string
+        self:
+          type: string
+    UserCreate:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/UserCreateResource'
+    UserCreateResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/UserCreateAttributes'
+    TagLabel:
+      type: object
+      properties:
+        value:
+          type: string
+    CategoryTagRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    UpdateTeamRelationship:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/TeamRelData'
+    NotificationDeviceRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    PrivateLabelRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PrivateLabelRelData'
+        links:
+          $ref: '#/components/schemas/PrivateLabelRelLinks'
+    NotificationDeviceResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/NotificationDeviceAttributes'
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/NotificationDeviceLinks'
+        relationships:
+          $ref: '#/components/schemas/NotificationDeviceRelationships'
+        type:
+          type: string
+          description: the type of the resource
+          enum:
+          - notification-device
+    KeywordRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    UserCollectionLinks:
+      type: object
+      properties:
+        first:
+          type: string
+        next:
+          type: string
+        self:
+          type: string
+    PrivateLabelRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+  securitySchemes:
+    Basic:
+      description: The basic auth scheme only requires the API-Specific username/password to be set.
+      scheme: basic
+      type: http
+    OAuth:
+      description: This API prefers OAuth 2 with client credentials flow. You can create your credentials in the <a href='https://{tenant}.sednanetwork.com/platform/settings/api-credential-management'>Api Credential Management page</a>.
+      flows:
+        clientCredentials:
+          scopes:
+            CATEGORYTAG_DELETE: Delete category tags
+            CATEGORYTAG_READ: Read category tags
+            CATEGORYTAG_WRITE: Create and update category tags
+            CHARTERING_DELETE: Delete chartering (Pulse) information
+            CHARTERING_READ: Read chartering (Pulse) information
+            CHARTERING_WRITE: Create chartering (Pulse) information
+            COMMENT_READ: Read message comments
+            COMPANY_READ: Read company info
+            COMPANY_WRITE: Update company info (eg. signature)
+            CONTACTGROUP_DELETE: Delete contact groups
+            CONTACTGROUP_READ: Read contact groups
+            CONTACTGROUP_WRITE: Create and update contact groups
+            CONTACT_DELETE: Delete contacts
+            CONTACT_READ: Read contacts
+            CONTACT_WRITE: Create and update contacts
+            CRMENTITY_DELETE: Delete CRM contacts
+            CRMENTITY_READ: Read CRM contacts
+            CRMENTITY_WRITE: Create and update CRM Contacts
+            DOCUMENT_READ: Read and download attachments
+            EVENT_READ: Read events from the events endpoint
+            JOBREFERENCE_DELETE: Delete job references
+            JOBREFERENCE_READ: Read job references
+            JOBREFERENCE_WRITE: Create and update job references
+            KEYWORD_DELETE: Delete custom keywords
+            KEYWORD_READ: Read custom keywords
+            KEYWORD_WRITE: Create and update custom keywords
+            LEGAL_HOLD_DELETE: Delete legal holds
+            LEGAL_HOLD_READ: Read legal holds
+            LEGAL_HOLD_WRITE: Create and update legal holds
+            MESSAGE_DELETE: Archive email messages
+            MESSAGE_READ: Read (draft) email messages
+            MESSAGE_RETENTION_SETTINGS_READ: Read message retention settings
+            MESSAGE_RETENTION_SETTINGS_WRITE: Update message retention settings
+            MESSAGE_WRITE: Create and send (draft) email messages
+            PERSONAL_DATA_UNREDACTED_READ: Read unredacted emails with personal data
+            QUARANTINED_MESSAGE_READ: Read quarantined email messages
+            QUARANTINED_MESSAGE_WRITE: Release quarantined email messages
+            RETENTION_POLICY_DELETE: Delete retention policies
+            RETENTION_POLICY_READ: Read retention policies
+            RETENTION_POLICY_WRITE: Create and update retention policies
+            SAVEDSEARCH_DELETE: Remove saved searches
+            SAVEDSEARCH_READ: Read saved search details
+            SAVEDSEARCH_WRITE: Create and update saved searches
+            TEAM_DELETE: Delete teams
+            TEAM_READ: Read team details
+            TEAM_WRITE: Create and update teams
+            TEMPLATE_READ: Read templates
+            USER_DELETE: Archive users
+            USER_READ: Read user details
+            USER_WRITE: Create and update users
+            WORKFLOW_DELETE: Delete workflows
+            WORKFLOW_READ: Read workflow details
+            WORKFLOW_WRITE: Create and update workflows
+          tokenUrl: https://{tenant}.sednanetwork.com/platform/oauth/token
+      type: oauth2

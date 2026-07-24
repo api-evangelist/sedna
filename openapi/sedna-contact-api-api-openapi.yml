@@ -1,0 +1,1100 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Support
+    url: https://support.sedna.com
+  termsOfService: https://www.sedna.com/terms-of-service
+  title: Sedna Authentication Contact API API
+  version: '2019-01-01'
+servers:
+- description: Platform endpoint
+  url: https://{tenant}.sednanetwork.com/platform
+  variables:
+    tenant:
+      default: example
+      description: Your tenant's unique identifier
+security:
+- Basic: []
+- OAuth: []
+tags:
+- name: Contact API
+paths:
+  /2019-01-01/contact:
+    post:
+      description: 'Create a new contact
+
+
+        Required API Permissions: CONTACT_WRITE'
+      operationId: createContact
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactCreateRepresentation'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/ContactCreateRepresentation'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactSingle'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ContactSingle'
+          description: default response
+      tags:
+      - Contact API
+    get:
+      description: 'Get many contacts
+
+
+        Required API Permissions: CONTACT_READ'
+      operationId: getContacts
+      parameters:
+      - in: query
+        name: page[page]
+        schema:
+          type: integer
+          format: int64
+          default: 1
+      - in: query
+        name: page[limit]
+        schema:
+          type: integer
+          format: int64
+          default: 100
+      - in: query
+        name: filter[name]
+        schema:
+          type: string
+      - in: query
+        name: filter[foreignKey]
+        schema:
+          type: string
+      - in: query
+        name: currentTeamId
+        schema:
+          type: string
+      - in: query
+        name: filter[id]
+        schema:
+          type: string
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactCollection'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ContactCollection'
+          description: default response
+      tags:
+      - Contact API
+  /2019-01-01/contact-group:
+    post:
+      description: 'Create a new contact group
+
+
+        Required API Permissions: CONTACTGROUP_WRITE'
+      operationId: createContactGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactGroupCreateRepresentation'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/ContactGroupCreateRepresentation'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactGroupSingle'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ContactGroupSingle'
+          description: default response
+      tags:
+      - Contact API
+    get:
+      description: 'Get many contact groups
+
+
+        Required API Permissions: CONTACTGROUP_READ'
+      operationId: getContactGroups
+      parameters:
+      - in: query
+        name: page
+        schema:
+          type: integer
+          format: int64
+          default: 1
+      - in: query
+        name: limit
+        schema:
+          type: integer
+          format: int64
+          default: 100
+      - in: query
+        name: filter[name]
+        schema:
+          type: string
+      - in: query
+        name: filter[foreignKey]
+        schema:
+          type: string
+      - in: query
+        name: include
+        schema:
+          type: string
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactGroupCollection'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ContactGroupCollection'
+          description: default response
+      tags:
+      - Contact API
+  /2019-01-01/contact-group/{id}:
+    delete:
+      description: 'Delete a contact group
+
+
+        Required API Permissions: CONTACTGROUP_DELETE'
+      operationId: deleteContactGroup
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Contact API
+    get:
+      description: 'Get a contact group
+
+
+        Required API Permissions: CONTACTGROUP_READ'
+      operationId: getGroup
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: currentTeamId
+        schema:
+          type: string
+      - in: query
+        name: include
+        schema:
+          type: string
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactGroupSingle'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ContactGroupSingle'
+          description: default response
+      tags:
+      - Contact API
+    patch:
+      description: 'Update a contact group
+
+
+        Required API Permissions: CONTACTGROUP_WRITE'
+      operationId: updateContactGroup
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: currentTeamId
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactGroupCreateRepresentation'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/ContactGroupCreateRepresentation'
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Contact API
+  /2019-01-01/contact-group/{id}/relationships/contact:
+    post:
+      description: 'Add contact(s) to a group
+
+
+        Required API Permissions: CONTACTGROUP_WRITE'
+      operationId: addContactToGroup
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/ContactRelToMany'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ContactRelToMany'
+          description: default response
+      tags:
+      - Contact API
+    delete:
+      description: 'Remove contact(s) from a group
+
+
+        Required API Permissions: CONTACTGROUP_WRITE'
+      operationId: removeContactFromGroup
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/ContactRelToMany'
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Contact API
+    patch:
+      description: 'Fully replace a groups contacts
+
+
+        Required API Permissions: CONTACTGROUP_WRITE'
+      operationId: replaceGroupContacts
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/ContactRelToMany'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ContactRelToMany'
+          description: default response
+      tags:
+      - Contact API
+  /2019-01-01/contact/{id}:
+    delete:
+      description: 'Delete a contact
+
+
+        Required API Permissions: CONTACT_DELETE'
+      operationId: deleteContact
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: currentTeamId
+        schema:
+          type: string
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Contact API
+    get:
+      description: 'Get a contact
+
+
+        Required API Permissions: CONTACT_READ'
+      operationId: getContact
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: currentTeamId
+        schema:
+          type: string
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactSingle'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ContactSingle'
+          description: default response
+      tags:
+      - Contact API
+    put:
+      description: 'Update a contact
+
+
+        Required API Permissions: CONTACT_WRITE'
+      operationId: updateContact
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: currentTeamId
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactCreateRepresentation'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/ContactCreateRepresentation'
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Contact API
+  /2019-01-01/contact/{id}/comment:
+    post:
+      description: 'Add comment to the contact
+
+
+        Required API Permissions: CONTACT_WRITE'
+      operationId: addContactComment
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommentCreateRepresentation'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/CommentCreateRepresentation'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentSingle'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/CommentSingle'
+          description: default response
+      tags:
+      - Contact API
+    delete:
+      description: 'Delete contact comment; unsupported at the time
+
+
+        Required API Permissions: CONTACT_DELETE'
+      operationId: deleteContactComment
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Contact API
+    get:
+      description: 'Get all comments for a contact
+
+
+        Required API Permissions: CONTACT_READ'
+      operationId: getContactComments
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: page
+        schema:
+          type: integer
+          format: int64
+          default: 1
+      - in: query
+        name: limit
+        schema:
+          type: integer
+          format: int64
+          default: 75
+          maximum: 75
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentCollection'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/CommentCollection'
+          description: default response
+      tags:
+      - Contact API
+    put:
+      description: 'Update contact comment; unsupported at the time
+
+
+        Required API Permissions: CONTACT_WRITE'
+      operationId: updateContactComment
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Contact API
+  /2019-01-01/contact/{id}/relationships/contact-group:
+    get:
+      description: 'Fetch a contact''s group relationship
+
+
+        Required API Permissions: CONTACT_READ'
+      operationId: getContactGroupRelationships
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactGroupRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ContactGroupRelToMany'
+          description: default response
+      tags:
+      - Contact API
+  /2019-01-01/contact/{id}/relationships/team:
+    get:
+      description: 'Fetch a contact''s team relationships
+
+
+        Required API Permissions: CONTACT_READ'
+      operationId: getContactTeamRelationships
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: currentTeamId
+        schema:
+          type: string
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/TeamRelToMany'
+          description: default response
+      tags:
+      - Contact API
+components:
+  schemas:
+    ContactSingle:
+      type: object
+      description: The resource
+      properties:
+        data:
+          $ref: '#/components/schemas/ContactResource'
+    ContactResourceAttributes:
+      type: object
+      properties:
+        address1:
+          type: string
+        address2:
+          type: string
+        address3:
+          type: string
+        adminDistrict1:
+          type: string
+        adminDistrict2:
+          type: string
+        city:
+          type: string
+        company:
+          type: string
+        country:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        emailAddresses:
+          type: array
+          items:
+            type: string
+        firstName:
+          type: string
+        foreignKey:
+          type: string
+        lastName:
+          type: string
+        modifiedAt:
+          type: string
+          format: date-time
+        phoneNumbers:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactPhone'
+        postalCode:
+          type: string
+        team:
+          type: string
+        title:
+          type: string
+        type:
+          type: string
+        yahooId:
+          type: string
+    ContactCreateAttributes:
+      type: object
+      properties:
+        address1:
+          type: string
+          maxLength: 100
+          minLength: 0
+        address2:
+          type: string
+          maxLength: 100
+          minLength: 0
+        address3:
+          type: string
+          maxLength: 100
+          minLength: 0
+        city:
+          type: string
+          maxLength: 100
+          minLength: 0
+        company:
+          type: string
+          maxLength: 100
+          minLength: 0
+        country:
+          type: string
+          maxLength: 100
+          minLength: 0
+        emailAddresses:
+          type: array
+          items:
+            type: string
+        firstName:
+          type: string
+          maxLength: 50
+          minLength: 0
+        foreignKey:
+          type: string
+          maxLength: 255
+          minLength: 0
+        lastName:
+          type: string
+          maxLength: 50
+          minLength: 0
+        phoneNumbers:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactPhone'
+        postalCode:
+          type: string
+          maxLength: 20
+          minLength: 0
+        team:
+          type: string
+          maxLength: 255
+          minLength: 0
+        title:
+          type: string
+          maxLength: 255
+          minLength: 0
+        type:
+          type: string
+        yahooId:
+          type: string
+          maxLength: 254
+          minLength: 0
+    ContactGroupCreateResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ContactGroupCreateAttributes'
+        relationships:
+          $ref: '#/components/schemas/ContactGroupCreateRelationships'
+        type:
+          type: string
+    ContactGroupSingle:
+      type: object
+      description: The resource
+      properties:
+        data:
+          $ref: '#/components/schemas/ContactGroupResource'
+        included:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactResource'
+    MessageRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    TeamRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamRelData'
+        links:
+          $ref: '#/components/schemas/TeamRelLinks'
+    CommentCreateResource:
+      type: object
+      description: Data in contact comment
+      properties:
+        content:
+          type: string
+          description: content of the contact comment
+          maxLength: 500
+          minLength: 0
+      required:
+      - content
+    ContactGroupResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ContactGroupAttributes'
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/ContactGroupLinks'
+        relationships:
+          $ref: '#/components/schemas/ContactGroupRelationships'
+        type:
+          type: string
+          description: the type of the resource
+          enum:
+          - contact-group
+    ContactCollectionLinks:
+      type: object
+      properties:
+        first:
+          type: string
+        next:
+          type: string
+        self:
+          type: string
+    ContactResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ContactResourceAttributes'
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/ContactResourceLinks'
+        relationships:
+          $ref: '#/components/schemas/ContactRelationships'
+        type:
+          type: string
+          description: the type of the resource
+          enum:
+          - contact
+    ContactGroupRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactRelData'
+    ContactPhone:
+      type: object
+      properties:
+        countryCode:
+          type: string
+        number:
+          type: string
+          maxLength: 254
+          minLength: 0
+        type:
+          type: string
+          enum:
+          - OFFICE
+          - HOME
+          - MOBILE
+          - SATELLITE
+    UserRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    CommentSingle:
+      type: object
+      description: Response containing single comment
+      properties:
+        data:
+          $ref: '#/components/schemas/CommentResource'
+    ContactRelationships:
+      type: object
+      properties:
+        team:
+          $ref: '#/components/schemas/TeamRelToMany'
+    CommentRelationships:
+      type: object
+      properties:
+        message:
+          $ref: '#/components/schemas/MessageRelToOne'
+        user:
+          $ref: '#/components/schemas/UserRelToOne'
+    ContactCollection:
+      type: object
+      description: A collection of resources
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactResource'
+        links:
+          $ref: '#/components/schemas/ContactCollectionLinks'
+    TeamRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    TeamRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    CommentAttributes:
+      type: object
+      properties:
+        content:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+      required:
+      - content
+      - createdAt
+    ContactGroupAttributes:
+      type: object
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+        foreignKey:
+          type: string
+        modifiedAt:
+          type: string
+          format: date-time
+        name:
+          type: string
+    ContactCreateRepresentation:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ContactCreateResource'
+    ContactGroupCreateAttributes:
+      type: object
+      properties:
+        foreignKey:
+          type: string
+        name:
+          type: string
+    CommentCollection:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CommentReadResource'
+    ContactRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactRelData'
+    ContactCreateResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ContactCreateAttributes'
+        relationships:
+          $ref: '#/components/schemas/ContactRelationships'
+        type:
+          type: string
+    ContactResourceLinks:
+      type: object
+      properties:
+        self:
+          type: string
+          format: uri
+    CommentReadResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/CommentAttributes'
+        id:
+          type: string
+        relationships:
+          $ref: '#/components/schemas/CommentRelationships'
+        type:
+          type: string
+      required:
+      - id
+      - type
+    CommentResource:
+      type: object
+      description: Data related to a single comment
+      properties:
+        attributes:
+          $ref: '#/components/schemas/CommentAttributes'
+        id:
+          type: string
+        relationships:
+          $ref: '#/components/schemas/CommentRelationships'
+        type:
+          type: string
+    ContactGroupCreateRepresentation:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ContactGroupCreateResource'
+    ContactRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    MessageRelToOne:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/MessageRelData'
+        links:
+          $ref: '#/components/schemas/MessageRelLinks'
+    ContactGroupCollectionLinks:
+      type: object
+      properties:
+        first:
+          type: string
+        next:
+          type: string
+        self:
+          type: string
+    ContactGroupCreateRelationships:
+      type: object
+      properties:
+        contact:
+          $ref: '#/components/schemas/ContactRelToMany'
+    ContactGroupRelationships:
+      type: object
+      properties:
+        contact:
+          $ref: '#/components/schemas/ContactRelToMany'
+    ContactGroupLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    MessageRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    UserRelToOne:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/UserRelData'
+    CommentCreateRepresentation:
+      type: object
+      description: Request for contact comment creation
+      properties:
+        data:
+          $ref: '#/components/schemas/CommentCreateResource'
+    ContactGroupCollection:
+      type: object
+      description: A collection of resources
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactGroupResource'
+        links:
+          $ref: '#/components/schemas/ContactGroupCollectionLinks'
+  securitySchemes:
+    Basic:
+      description: The basic auth scheme only requires the API-Specific username/password to be set.
+      scheme: basic
+      type: http
+    OAuth:
+      description: This API prefers OAuth 2 with client credentials flow. You can create your credentials in the <a href='https://{tenant}.sednanetwork.com/platform/settings/api-credential-management'>Api Credential Management page</a>.
+      flows:
+        clientCredentials:
+          scopes:
+            CATEGORYTAG_DELETE: Delete category tags
+            CATEGORYTAG_READ: Read category tags
+            CATEGORYTAG_WRITE: Create and update category tags
+            CHARTERING_DELETE: Delete chartering (Pulse) information
+            CHARTERING_READ: Read chartering (Pulse) information
+            CHARTERING_WRITE: Create chartering (Pulse) information
+            COMMENT_READ: Read message comments
+            COMPANY_READ: Read company info
+            COMPANY_WRITE: Update company info (eg. signature)
+            CONTACTGROUP_DELETE: Delete contact groups
+            CONTACTGROUP_READ: Read contact groups
+            CONTACTGROUP_WRITE: Create and update contact groups
+            CONTACT_DELETE: Delete contacts
+            CONTACT_READ: Read contacts
+            CONTACT_WRITE: Create and update contacts
+            CRMENTITY_DELETE: Delete CRM contacts
+            CRMENTITY_READ: Read CRM contacts
+            CRMENTITY_WRITE: Create and update CRM Contacts
+            DOCUMENT_READ: Read and download attachments
+            EVENT_READ: Read events from the events endpoint
+            JOBREFERENCE_DELETE: Delete job references
+            JOBREFERENCE_READ: Read job references
+            JOBREFERENCE_WRITE: Create and update job references
+            KEYWORD_DELETE: Delete custom keywords
+            KEYWORD_READ: Read custom keywords
+            KEYWORD_WRITE: Create and update custom keywords
+            LEGAL_HOLD_DELETE: Delete legal holds
+            LEGAL_HOLD_READ: Read legal holds
+            LEGAL_HOLD_WRITE: Create and update legal holds
+            MESSAGE_DELETE: Archive email messages
+            MESSAGE_READ: Read (draft) email messages
+            MESSAGE_RETENTION_SETTINGS_READ: Read message retention settings
+            MESSAGE_RETENTION_SETTINGS_WRITE: Update message retention settings
+            MESSAGE_WRITE: Create and send (draft) email messages
+            PERSONAL_DATA_UNREDACTED_READ: Read unredacted emails with personal data
+            QUARANTINED_MESSAGE_READ: Read quarantined email messages
+            QUARANTINED_MESSAGE_WRITE: Release quarantined email messages
+            RETENTION_POLICY_DELETE: Delete retention policies
+            RETENTION_POLICY_READ: Read retention policies
+            RETENTION_POLICY_WRITE: Create and update retention policies
+            SAVEDSEARCH_DELETE: Remove saved searches
+            SAVEDSEARCH_READ: Read saved search details
+            SAVEDSEARCH_WRITE: Create and update saved searches
+            TEAM_DELETE: Delete teams
+            TEAM_READ: Read team details
+            TEAM_WRITE: Create and update teams
+            TEMPLATE_READ: Read templates
+            USER_DELETE: Archive users
+            USER_READ: Read user details
+            USER_WRITE: Create and update users
+            WORKFLOW_DELETE: Delete workflows
+            WORKFLOW_READ: Read workflow details
+            WORKFLOW_WRITE: Create and update workflows
+          tokenUrl: https://{tenant}.sednanetwork.com/platform/oauth/token
+      type: oauth2

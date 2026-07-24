@@ -1,0 +1,2175 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Support
+    url: https://support.sedna.com
+  termsOfService: https://www.sedna.com/terms-of-service
+  title: Sedna Authentication Message API API
+  version: '2019-01-01'
+servers:
+- description: Platform endpoint
+  url: https://{tenant}.sednanetwork.com/platform
+  variables:
+    tenant:
+      default: example
+      description: Your tenant's unique identifier
+security:
+- Basic: []
+- OAuth: []
+tags:
+- name: Message API
+paths:
+  /2019-01-01/download/message/{id}/attachments/zip:
+    get:
+      description: 'Download all attachments of a message as a zip file, using presigned S3 link if available or generating it otherwise.
+
+
+        Required API Permissions: DOCUMENT_READ'
+      operationId: downloadAllMessageAttachments
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Message API
+  /2019-01-01/message:
+    post:
+      description: 'Create a draft message
+
+
+        Required API Permissions: MESSAGE_WRITE'
+      operationId: createMessageDraft
+      parameters:
+      - in: query
+        name: appendSignature
+        schema:
+          type: boolean
+          default: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MessageCreate'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/MessageCreate'
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Message API
+  /2019-01-01/message/quarantine:
+    get:
+      description: 'List messages that have been quarantined/released.
+
+
+        Required API Permissions: QUARANTINED_MESSAGE_READ'
+      operationId: listQuarantinedMessages
+      parameters:
+      - in: query
+        name: page[limit]
+        schema:
+          type: integer
+          format: int32
+          default: 100
+          maximum: 1000
+      - in: query
+        name: page[offset]
+        schema:
+          type: integer
+          format: int64
+          default: 0
+      - in: query
+        name: filter[id]
+        schema:
+          type: string
+      - in: query
+        name: filter[quarantineStatus]
+        schema:
+          type: boolean
+      - in: query
+        name: fields[message]
+        schema:
+          type: string
+      - in: query
+        name: filter[quarantinedDate.from]
+        schema:
+          type: string
+      - in: query
+        name: filter[quarantinedDate.to]
+        schema:
+          type: string
+      - in: query
+        name: filter[releasedDate.from]
+        schema:
+          type: string
+      - in: query
+        name: filter[releasedDate.to]
+        schema:
+          type: string
+      - in: query
+        name: filter[team]
+        schema:
+          type: string
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageCollection'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/MessageCollection'
+          description: default response
+      tags:
+      - Message API
+  /2019-01-01/message/send:
+    post:
+      description: 'Create and send a message
+
+
+        Required API Permissions: MESSAGE_WRITE, MESSAGE_READ'
+      operationId: sendNewMessage
+      parameters:
+      - in: query
+        name: appendSignature
+        schema:
+          type: boolean
+          default: true
+      - in: query
+        name: scanForVirus
+        schema:
+          type: integer
+          format: int32
+      - in: query
+        name: sendDelay
+        schema:
+          type: integer
+          format: int32
+      - in: query
+        name: currentTeamId
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MessageCreate'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/MessageCreate'
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Message API
+  /2019-01-01/message/{id}:
+    get:
+      description: 'Fetch a message
+
+
+        Required API Permissions: MESSAGE_READ'
+      operationId: getMessage
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - description: 'Comma separated list of fields to return. Available fields: subject,snippet,fromName,fromEmail,bodyText,bodyHtml,hasAttachment,receivedAt,sentAt,messageId,inReplyTo,references,from,to,cc,bcc,signed. Id is always returned.'
+        in: query
+        name: fields[message]
+        schema:
+          type: string
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageSingle'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/MessageSingle'
+          description: default response
+      tags:
+      - Message API
+    patch:
+      description: 'Update a draft message
+
+
+        Required API Permissions: MESSAGE_WRITE, MESSAGE_READ'
+      operationId: updateMessageDraft
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - in: query
+        name: noContent
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MessageUpdate'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/MessageUpdate'
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Message API
+  /2019-01-01/message/{id}/assignment:
+    get:
+      description: 'Fetch a message''s related assignments
+
+
+        Required API Permissions: MESSAGE_READ'
+      operationId: getMessageAssignments
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserCollection'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/UserCollection'
+          description: default response
+      tags:
+      - Message API
+  /2019-01-01/message/{id}/category-tag:
+    get:
+      description: 'Fetch a message''s related category tags
+
+
+        Required API Permissions: MESSAGE_READ'
+      operationId: getMessageCategoryTags
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryTagCollection'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/CategoryTagCollection'
+          description: default response
+      tags:
+      - Message API
+  /2019-01-01/message/{id}/comment:
+    get:
+      description: 'Get all comments for the message
+
+
+        Required API Permissions: COMMENT_READ'
+      operationId: getMessageComments
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentCollection'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/CommentCollection'
+          description: default response
+      tags:
+      - Message API
+  /2019-01-01/message/{id}/document:
+    post:
+      description: '
+
+        Adds an attachment to a message.
+
+        Returns an S3 Upload URL that will be valid for 5 minutes. This link can be used to upload the content of the file.
+
+        If a base64 body is provided this link will already contain the content of the file.
+
+
+
+        Required API Permissions: MESSAGE_READ, MESSAGE_WRITE'
+      operationId: addDocumentToMessage
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewDocumentDescription'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/NewDocumentDescription'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewDocumentSingle'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/NewDocumentSingle'
+          description: default response
+      tags:
+      - Message API
+    get:
+      description: 'Fetch a message''s documents
+
+
+        Required API Permissions: MESSAGE_READ'
+      operationId: getMessageDocuments
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - in: query
+        name: includeArchiveAttachment
+        schema:
+          type: boolean
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentCollection'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/DocumentCollection'
+          description: default response
+      tags:
+      - Message API
+  /2019-01-01/message/{id}/job-reference:
+    get:
+      description: 'Fetch a message''s related job references
+
+
+        Required API Permissions: MESSAGE_READ'
+      operationId: getMessageJobReferences
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobReferenceCollection'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/JobReferenceCollection'
+          description: default response
+      tags:
+      - Message API
+  /2019-01-01/message/{id}/quarantine:
+    patch:
+      description: 'Quarantine a message from users until it is released.
+
+
+        Required API Permissions: QUARANTINED_MESSAGE_WRITE'
+      operationId: quarantineMessage
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MessageQuarantineUpdate'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/MessageQuarantineUpdate'
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Message API
+  /2019-01-01/message/{id}/quarantine/event:
+    get:
+      description: 'List quarantine and release events of a message.
+
+
+        Required API Permissions: QUARANTINED_MESSAGE_READ, EVENT_READ'
+      operationId: getMessageQuarantineEvents
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuarantinedMessageEventCollection'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/QuarantinedMessageEventCollection'
+          description: default response
+      tags:
+      - Message API
+  /2019-01-01/message/{id}/relationships/assignment:
+    post:
+      description: 'Add people to a message''s assignment relationships
+
+
+        Required API Permissions: MESSAGE_WRITE'
+      operationId: addAssignments
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAssignmentRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UpdateAssignmentRelToMany'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssignmentRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/AssignmentRelToMany'
+          description: default response
+      tags:
+      - Message API
+  /2019-01-01/message/{id}/relationships/category-tag:
+    post:
+      description: 'Add tags to a message''s category tag relationships
+
+
+        Required API Permissions: MESSAGE_READ, MESSAGE_WRITE'
+      operationId: addMessageCategoryTags
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCategoryTagRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UpdateCategoryTagRelToMany'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryTagRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/CategoryTagRelToMany'
+          description: default response
+      tags:
+      - Message API
+    get:
+      description: 'Fetch a message''s category tag relationships
+
+
+        Required API Permissions: MESSAGE_READ'
+      operationId: getMessageCategoryTagRelationships
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryTagRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/CategoryTagRelToMany'
+          description: default response
+      tags:
+      - Message API
+    delete:
+      description: 'Remove tags from a message''s category tag relationships
+
+
+        Required API Permissions: MESSAGE_READ, MESSAGE_DELETE'
+      operationId: removeMessageCategoryTags
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCategoryTagRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UpdateCategoryTagRelToMany'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryTagRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/CategoryTagRelToMany'
+          description: default response
+      tags:
+      - Message API
+    patch:
+      description: 'Replace teams to a message''s category tag relationships (Note: Forbidden)
+
+
+        Required API Permissions: MESSAGE_READ, MESSAGE_WRITE'
+      operationId: replaceMessageCategoryTags
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Message API
+  /2019-01-01/message/{id}/relationships/document:
+    get:
+      description: 'Fetch a message''s document relationships
+
+
+        Required API Permissions: MESSAGE_READ'
+      operationId: getMessageDocumentRelationships
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/DocumentRelToMany'
+          description: default response
+      tags:
+      - Message API
+  /2019-01-01/message/{id}/relationships/job-reference:
+    post:
+      description: 'Add job references to a message''s job reference relationships
+
+
+        Required API Permissions: MESSAGE_READ, MESSAGE_WRITE'
+      operationId: addMessageJobReferences
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateJobReferenceRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UpdateJobReferenceRelToMany'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobReferenceRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/JobReferenceRelToMany'
+          description: default response
+      tags:
+      - Message API
+    delete:
+      description: 'Remove job references from a message''s job reference relationships
+
+
+        Required API Permissions: MESSAGE_READ, MESSAGE_DELETE'
+      operationId: deleteMessageJobReferences
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateJobReferenceRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UpdateJobReferenceRelToMany'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobReferenceRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/JobReferenceRelToMany'
+          description: default response
+      tags:
+      - Message API
+    get:
+      description: 'Fetch a message''s job reference relationships
+
+
+        Required API Permissions: MESSAGE_READ'
+      operationId: getMessageJobReferenceRelationships
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobReferenceRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/JobReferenceRelToMany'
+          description: default response
+      tags:
+      - Message API
+    patch:
+      description: 'Replace teams to a message''s job reference relationships (Note: Forbidden)
+
+
+        Required API Permissions: MESSAGE_READ, MESSAGE_WRITE'
+      operationId: replaceMessageJobReferences
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Message API
+  /2019-01-01/message/{id}/relationships/team:
+    post:
+      description: 'Add teams to a message''s team relationships
+
+
+        Required API Permissions: MESSAGE_READ, MESSAGE_WRITE'
+      operationId: addMessageTeams
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - in: query
+        name: fromTeamId
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelToMany'
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Message API
+    delete:
+      description: 'Remove teams from a message''s team relationships
+
+
+        Required API Permissions: MESSAGE_READ, MESSAGE_DELETE'
+      operationId: deleteMessageTeams
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelToMany'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateTeamRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/UpdateTeamRelToMany'
+          description: default response
+      tags:
+      - Message API
+    get:
+      description: 'Fetch a message''s team relationships
+
+
+        Required API Permissions: MESSAGE_READ, MESSAGE_DELETE'
+      operationId: getMessageTeamRelationships
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/TeamRelToMany'
+          description: default response
+      tags:
+      - Message API
+    patch:
+      description: 'Replace teams to a message''s team relationships (Note: Forbidden)
+
+
+        Required API Permissions: MESSAGE_READ, MESSAGE_WRITE'
+      operationId: replaceMessageTeams
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Message API
+  /2019-01-01/message/{id}/send:
+    post:
+      description: 'Send a message
+
+
+        Required API Permissions: MESSAGE_WRITE, MESSAGE_READ'
+      operationId: sendMessage
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - in: query
+        name: scanForVirus
+        schema:
+          type: integer
+          format: int32
+      - in: query
+        name: sendDelay
+        schema:
+          type: integer
+          format: int32
+      - in: query
+        name: currentTeamId
+        schema:
+          type: string
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Message API
+    patch:
+      description: 'Update and send a message
+
+
+        Required API Permissions: MESSAGE_WRITE, MESSAGE_READ'
+      operationId: updateAndSendMessagePatch
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - in: query
+        name: scanForVirus
+        schema:
+          type: integer
+          format: int32
+      - in: query
+        name: sendDelay
+        schema:
+          type: integer
+          format: int32
+      - in: query
+        name: currentTeamId
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MessageUpdate'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/MessageUpdate'
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Message API
+  /2019-01-01/message/{id}/team:
+    get:
+      description: 'Fetch a message''s related teams
+
+
+        Required API Permissions: MESSAGE_READ'
+      operationId: getMessageTeams
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamCollection'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/TeamCollection'
+          description: default response
+      tags:
+      - Message API
+components:
+  schemas:
+    UpdateTeamRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamRelData'
+    TeamRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamRelData'
+        links:
+          $ref: '#/components/schemas/TeamRelLinks'
+    DocumentRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    EventId:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+    MessageSingleMeta:
+      type: object
+      properties:
+        composeUrl:
+          type: string
+    UserRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    NotificationDeviceRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    TeamResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/TeamAttributes'
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/TeamLinks'
+        relationships:
+          $ref: '#/components/schemas/TeamRelationships'
+        type:
+          type: string
+          description: the type of the resource
+          enum:
+          - team
+        uuid:
+          type: string
+    JobReferenceResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/JobReferenceAttributes'
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/JobReferenceLinks'
+        relationships:
+          $ref: '#/components/schemas/JobReferenceRelationships'
+        type:
+          type: string
+          description: the type of the resource
+          enum:
+          - job-reference
+    CommentAttributes:
+      type: object
+      properties:
+        content:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+      required:
+      - content
+      - createdAt
+    MessageReadResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/MessageReadAttributes'
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/MessageLinks'
+        meta:
+          $ref: '#/components/schemas/MessageMeta'
+        relationships:
+          $ref: '#/components/schemas/MessageRelationships'
+        type:
+          type: string
+    MessageMeta:
+      type: object
+      properties:
+        download:
+          type: string
+    DocumentMeta:
+      type: object
+      properties:
+        download:
+          type: string
+        publicDownload:
+          type: string
+    UserRelationships:
+      type: object
+      properties:
+        deactivationPeriod:
+          $ref: '#/components/schemas/UserDeactivationPeriodRelToMany'
+        defaultTeam:
+          $ref: '#/components/schemas/TeamRelationship'
+        disableSendTeams:
+          $ref: '#/components/schemas/TeamRelToMany'
+        notificationDevice:
+          $ref: '#/components/schemas/NotificationDeviceRelToMany'
+        privateLabel:
+          $ref: '#/components/schemas/PrivateLabelRelToMany'
+        team:
+          $ref: '#/components/schemas/TeamRelToMany'
+        watchedTeams:
+          $ref: '#/components/schemas/TeamRelToMany'
+    MessageQuarantineUpdateResource:
+      type: object
+      properties:
+        quarantine:
+          type: boolean
+      required:
+      - quarantine
+    CommentCollection:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CommentReadResource'
+    UserReadMeta:
+      type: object
+      description: Document-level metadata for user collection/single reads
+    MessageSingle:
+      type: object
+      description: The resource
+      properties:
+        data:
+          $ref: '#/components/schemas/MessageReadResource'
+        included:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceObjectResponse'
+        links:
+          $ref: '#/components/schemas/MessageSingleLinks'
+        meta:
+          $ref: '#/components/schemas/MessageSingleMeta'
+    CommentReadResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/CommentAttributes'
+        id:
+          type: string
+        relationships:
+          $ref: '#/components/schemas/CommentRelationships'
+        type:
+          type: string
+      required:
+      - id
+      - type
+    TeamAttributeAutoBccEmail:
+      type: object
+      properties:
+        email:
+          type: string
+        name:
+          type: string
+      required:
+      - email
+    CategoryTagResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/CategoryTagAttributes'
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/CategoryTagLinks'
+        relationships:
+          $ref: '#/components/schemas/CategoryTagRelationships'
+        type:
+          type: string
+          description: the type of the resource
+          enum:
+          - category-tag
+    MessageSingleLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    DocumentAttributes:
+      type: object
+      properties:
+        createdAt:
+          type: string
+        hash:
+          type: string
+        name:
+          type: string
+        size:
+          type: number
+        type:
+          type: string
+    UserRelToOne:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/UserRelData'
+    CategoryTagCollectionLinks:
+      type: object
+      properties:
+        first:
+          type: string
+        next:
+          type: string
+        self:
+          type: string
+    JobReferenceRelationships:
+      type: object
+      properties:
+        company:
+          $ref: '#/components/schemas/Company'
+        tag:
+          $ref: '#/components/schemas/Tag'
+        team:
+          $ref: '#/components/schemas/TeamRelToMany'
+        user:
+          $ref: '#/components/schemas/UserRelToMany'
+    DocumentResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/DocumentAttributes'
+        id:
+          type: string
+        meta:
+          $ref: '#/components/schemas/DocumentMeta'
+        type:
+          type: string
+          description: the type of the resource
+          example: '127'
+    UserRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRelData'
+        links:
+          $ref: '#/components/schemas/UserRelLinks'
+    CategoryTagRelationships:
+      type: object
+      properties:
+        team:
+          $ref: '#/components/schemas/TeamRelToMany'
+    MessageCreateResource:
+      type: object
+      description: The resource information included in a request to create a message
+      properties:
+        attributes:
+          $ref: '#/components/schemas/MessageCreateAttributes'
+        type:
+          type: string
+    Tag:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/TagId'
+        name:
+          $ref: '#/components/schemas/TagName'
+        tagLabel:
+          $ref: '#/components/schemas/TagLabel'
+        tagTypeId:
+          type: integer
+          format: int32
+    ResourceObjectResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    TeamRelationship:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/TeamRelData'
+        links:
+          $ref: '#/components/schemas/TeamRelLinks'
+    UpdateCategoryTagRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoryTagRelData'
+    Sender:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceObjectIdentifier'
+        meta:
+          $ref: '#/components/schemas/MetaObject'
+    NewDocumentAttributes:
+      type: object
+      properties:
+        base64Content:
+          type: string
+          description: Optional Base64 encoded data of the file to upload.
+          example: data:image/png;base64,iVBORw0KGgoAA...5CYII=';
+        fileName:
+          type: string
+          description: Filename of the uploaded file.
+          example: image.jpg
+        fileSize:
+          type: integer
+          format: int64
+          description: Filesize of the uploaded file in bytes.
+          example: 10000
+    MessageRelToOne:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/MessageRelData'
+        links:
+          $ref: '#/components/schemas/MessageRelLinks'
+    MessageThreadSummary:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceObjectIdentifier'
+    CategoryTagCollection:
+      type: object
+      description: A collection of resources
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoryTagResource'
+        links:
+          $ref: '#/components/schemas/CategoryTagCollectionLinks'
+    UserDeactivationPeriodRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserDeactivationPeriodRelData'
+    TeamRelationships:
+      type: object
+      properties:
+        categoryTag:
+          $ref: '#/components/schemas/CategoryTagRelToMany'
+        user:
+          $ref: '#/components/schemas/UserRelToMany'
+    UserCollection:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserResource'
+        included:
+          type: array
+          items:
+            type: object
+          uniqueItems: true
+        links:
+          $ref: '#/components/schemas/UserCollectionLinks'
+        meta:
+          $ref: '#/components/schemas/UserReadMeta'
+    JobReferenceRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    MessageCreateAttributes:
+      type: object
+      description: The attributes required to create a message
+      properties:
+        bcc:
+          type: array
+          description: The BCC recipients of the message. Optional.
+          items:
+            $ref: '#/components/schemas/MessageRecipient'
+        body:
+          type: string
+          description: The HTML body of the message.
+          example: <html><body><h1>Some heading</h1>Some text</body></html>
+        cc:
+          type: array
+          description: The CC recipients of the message. Optional.
+          items:
+            $ref: '#/components/schemas/MessageRecipient'
+        fromTeam:
+          type: string
+          description: The identifier of the team sending the message. This can either be the team's internal ID within the SEDNA system (a numeric value, as a string) or the team's default email address. This parameter is optional and, if omitted, will be set to the user's default team.
+        fromUser:
+          type: string
+          description: The identifier of the user sending the message. This can either be the user's internal ID within the SEDNA system (a numeric value, as a string) or the user's email address. This parameter is mandatory for API users.
+        subject:
+          type: string
+          description: The subject of the message. Optional.
+        to:
+          type: array
+          description: The recipients of the message. Optional.
+          items:
+            $ref: '#/components/schemas/MessageRecipient'
+      required:
+      - body
+    JobReferenceRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        messageTag:
+          $ref: '#/components/schemas/MessageTag'
+        type:
+          type: string
+    AssignmentRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssignmentRelData'
+        links:
+          $ref: '#/components/schemas/AssignmentRelLinks'
+    NewDocumentMeta:
+      type: object
+      properties:
+        download:
+          type: string
+        publicDownload:
+          type: string
+        uploadUri:
+          type: string
+    MessageTag:
+      type: object
+      properties:
+        assignedToUserId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        eventId:
+          $ref: '#/components/schemas/EventId'
+        messageId:
+          type: string
+        messageTagId:
+          $ref: '#/components/schemas/MessageTagId'
+        removedAt:
+          type: string
+          format: date-time
+        removedByUserId:
+          type: string
+        tag:
+          $ref: '#/components/schemas/Tag'
+        tagId:
+          $ref: '#/components/schemas/TagId'
+        userId:
+          type: string
+    CategoryTagRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoryTagRelData'
+        links:
+          $ref: '#/components/schemas/CategoryTagRelLinks'
+    JobReferenceCollection:
+      type: object
+      description: A collection of resources
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobReferenceResource'
+        links:
+          $ref: '#/components/schemas/JobReferenceCollectionLinks'
+    QuarantinedMessageEvent:
+      type: object
+      properties:
+        actorId:
+          type: string
+        date:
+          type: string
+          format: date-time
+        eventType:
+          type: string
+        id:
+          type: string
+        uuid:
+          type: string
+    TeamCollection:
+      type: object
+      description: A collection of resources
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamResource'
+        links:
+          $ref: '#/components/schemas/TeamCollectionLinks'
+    DocumentCollectionLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    CategoryTagAttributes:
+      type: object
+      properties:
+        archived:
+          type: boolean
+        disableFollow:
+          type: boolean
+        label:
+          type: string
+        name:
+          type: string
+    TagName:
+      type: object
+      properties:
+        value:
+          type: string
+    TeamRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    Company:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceObjectIdentifier'
+    TeamAttributes:
+      type: object
+      properties:
+        additionalEmailAddresses:
+          type: array
+          items:
+            type: string
+        archived:
+          type: boolean
+        autoBccEmails:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamAttributeAutoBccEmail'
+        createdAt:
+          type: string
+          format: date-time
+        disableSend:
+          type: boolean
+        emailAddress:
+          type: string
+        emailSignature:
+          type: string
+        foreignKey:
+          type: string
+        inboxAssignedToUserId:
+          type: string
+        internalEmailAddress:
+          type: string
+        name:
+          type: string
+        public:
+          type: boolean
+        purpose:
+          type: string
+        sendingName:
+          type: string
+        soloInbox:
+          type: boolean
+    UserAttributes:
+      type: object
+      properties:
+        archived:
+          type: boolean
+        billableFrom:
+          type: string
+          format: date-time
+        billableType:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        deletedAt:
+          type: string
+          format: date-time
+        emailSignature:
+          type: string
+        firstName:
+          type: string
+        foreignId:
+          type: number
+        initials:
+          type: string
+        internal:
+          type: boolean
+        lastLogin:
+          type: string
+          format: date-time
+        lastName:
+          type: string
+        roles:
+          type: array
+          items:
+            type: string
+        ssoEmail:
+          type: string
+        username:
+          type: string
+    TeamRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    CategoryTagRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        messageTag:
+          $ref: '#/components/schemas/MessageTag'
+        type:
+          type: string
+    QuarantinedMessageEventCollection:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuarantinedMessageEvent'
+        links:
+          $ref: '#/components/schemas/MessageCollectionLinks'
+    MessageQuarantineUpdate:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/MessageQuarantineUpdateResource'
+    MessageUpdateAttributes:
+      type: object
+      description: The attributes that can be updated on a message
+      properties:
+        bcc:
+          type: array
+          description: The BCC recipients of the message. Optional.
+          items:
+            $ref: '#/components/schemas/MessageRecipient'
+        body:
+          type: string
+          description: The HTML body of the message. Optional.
+          example: <html><body><h1>Some heading</h1>Some text</body></html>
+        cc:
+          type: array
+          description: The CC recipients of the message. Optional.
+          items:
+            $ref: '#/components/schemas/MessageRecipient'
+        fromEmail:
+          type: string
+          description: The email address the message will be sent from. Optional.
+        fromName:
+          type: string
+          description: The email address name the message will be sent from. Optional.
+        subject:
+          type: string
+          description: The subject of the message. Optional.
+        to:
+          type: array
+          description: The recipients of the message. Optional.
+          items:
+            $ref: '#/components/schemas/MessageRecipient'
+    MessageRelationships:
+      type: object
+      properties:
+        category-tag:
+          $ref: '#/components/schemas/CategoryTagRelToMany'
+        document:
+          $ref: '#/components/schemas/DocumentRelToMany'
+        job-reference:
+          $ref: '#/components/schemas/JobReferenceRelToMany'
+        message_thread_summary:
+          $ref: '#/components/schemas/MessageThreadSummary'
+        private-label:
+          $ref: '#/components/schemas/PrivateLabelRelToMany'
+        sender:
+          $ref: '#/components/schemas/Sender'
+        team:
+          $ref: '#/components/schemas/TeamRelToMany'
+    DocumentRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentRelData'
+        links:
+          $ref: '#/components/schemas/DocumentRelLinks'
+    JobReferenceAttributes:
+      type: object
+      properties:
+        archived:
+          type: boolean
+        attributes:
+          type: string
+        createdAt:
+          type: string
+        date:
+          type: string
+        foreignKey:
+          type: string
+        modifiedAt:
+          type: string
+        name:
+          type: string
+        source:
+          type: string
+        tagId:
+          type: string
+        type:
+          type: string
+      required:
+      - name
+    UpdateAssignmentRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssignmentRelData'
+    MessageCollectionMeta:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+    DocumentRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    DocumentCollection:
+      type: object
+      description: A collection of documents
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentResource'
+        links:
+          $ref: '#/components/schemas/DocumentCollectionLinks'
+    TeamLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    AssignmentRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    MessageRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    NewDocumentDescription:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/NewDocumentAttributes'
+    MessageRecipient:
+      type: object
+      description: A recipient of a message.
+      properties:
+        email:
+          type: string
+          description: The email address of the recipient.
+        name:
+          type: string
+          description: The display-name of the recipient. Optional.
+    NotificationDeviceRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/NotificationDeviceRelData'
+        links:
+          $ref: '#/components/schemas/NotificationDeviceRelLinks'
+    JobReferenceLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    UserRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    NewDocumentResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/DocumentAttributes'
+        id:
+          type: string
+        meta:
+          $ref: '#/components/schemas/NewDocumentMeta'
+        type:
+          type: string
+          description: the type of the resource
+          example: '127'
+    MessageRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    TagId:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+    AssignmentRelMeta:
+      type: object
+      properties:
+        assignedAt:
+          type: string
+        assignedBy:
+          type: string
+    CommentRelationships:
+      type: object
+      properties:
+        message:
+          $ref: '#/components/schemas/MessageRelToOne'
+        user:
+          $ref: '#/components/schemas/UserRelToOne'
+    UpdateJobReferenceRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobReferenceRelData'
+    JobReferenceRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobReferenceRelData'
+        links:
+          $ref: '#/components/schemas/JobReferenceRelLinks'
+    MessageUpdate:
+      type: object
+      description: A request to update attributes of a message
+      properties:
+        data:
+          $ref: '#/components/schemas/MessageUpdateResource'
+    MetaObject:
+      type: object
+    TeamCollectionLinks:
+      type: object
+      properties:
+        first:
+          type: string
+        next:
+          type: string
+        self:
+          type: string
+    MessageLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    PrivateLabelRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    MessageUpdateResource:
+      type: object
+      description: The resource information included in a request to create a message
+      properties:
+        attributes:
+          $ref: '#/components/schemas/MessageUpdateAttributes'
+        type:
+          type: string
+    ResourceObjectIdentifier:
+      type: object
+      properties:
+        id:
+          type: string
+        meta:
+          $ref: '#/components/schemas/MetaObject'
+        type:
+          type: string
+    UserLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    UserResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/UserAttributes'
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/UserLinks'
+        relationships:
+          $ref: '#/components/schemas/UserRelationships'
+        type:
+          type: string
+          description: the type of the resource
+          enum:
+          - user
+    MessageReadAttributes:
+      type: object
+      properties:
+        bcc:
+          type: array
+          items:
+            type: string
+        bodyHtml:
+          type: string
+        bodyText:
+          type: string
+        cc:
+          type: array
+          items:
+            type: string
+        from:
+          type: array
+          items:
+            type: string
+        fromEmail:
+          type: string
+        fromName:
+          type: string
+        hasAttachment:
+          type: boolean
+        inReplyTo:
+          type: string
+        messageId:
+          type: string
+        quarantineStatus:
+          type: string
+        receivedAt:
+          type: string
+          format: date-time
+        references:
+          type: string
+        sentAt:
+          type: string
+          format: date-time
+        signed:
+          type: string
+          enum:
+          - UNVERIFIED
+          - UNSIGNED
+          - VERIFIED
+          - FAILED_VERIFICATION
+        snippet:
+          type: string
+        subject:
+          type: string
+        to:
+          type: array
+          items:
+            type: string
+    UserDeactivationPeriodRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    MessageTagId:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+    JobReferenceCollectionLinks:
+      type: object
+      properties:
+        first:
+          type: string
+        next:
+          type: string
+        self:
+          type: string
+    TagLabel:
+      type: object
+      properties:
+        value:
+          type: string
+    MessageCreate:
+      type: object
+      description: A request to create a message
+      properties:
+        data:
+          $ref: '#/components/schemas/MessageCreateResource'
+    CategoryTagRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    AssignmentRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        meta:
+          $ref: '#/components/schemas/AssignmentRelMeta'
+        type:
+          type: string
+    NotificationDeviceRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    NewDocumentSingle:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/NewDocumentResource'
+    PrivateLabelRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PrivateLabelRelData'
+        links:
+          $ref: '#/components/schemas/PrivateLabelRelLinks'
+    UserCollectionLinks:
+      type: object
+      properties:
+        first:
+          type: string
+        next:
+          type: string
+        self:
+          type: string
+    CategoryTagLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    MessageCollection:
+      type: object
+      description: The resource
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageReadResource'
+        included:
+          type: array
+          items:
+            type: object
+        links:
+          $ref: '#/components/schemas/MessageCollectionLinks'
+        meta:
+          $ref: '#/components/schemas/MessageCollectionMeta'
+    MessageCollectionLinks:
+      type: object
+      properties:
+        first:
+          type: string
+        next:
+          type: string
+        self:
+          type: string
+    PrivateLabelRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+  securitySchemes:
+    Basic:
+      description: The basic auth scheme only requires the API-Specific username/password to be set.
+      scheme: basic
+      type: http
+    OAuth:
+      description: This API prefers OAuth 2 with client credentials flow. You can create your credentials in the <a href='https://{tenant}.sednanetwork.com/platform/settings/api-credential-management'>Api Credential Management page</a>.
+      flows:
+        clientCredentials:
+          scopes:
+            CATEGORYTAG_DELETE: Delete category tags
+            CATEGORYTAG_READ: Read category tags
+            CATEGORYTAG_WRITE: Create and update category tags
+            CHARTERING_DELETE: Delete chartering (Pulse) information
+            CHARTERING_READ: Read chartering (Pulse) information
+            CHARTERING_WRITE: Create chartering (Pulse) information
+            COMMENT_READ: Read message comments
+            COMPANY_READ: Read company info
+            COMPANY_WRITE: Update company info (eg. signature)
+            CONTACTGROUP_DELETE: Delete contact groups
+            CONTACTGROUP_READ: Read contact groups
+            CONTACTGROUP_WRITE: Create and update contact groups
+            CONTACT_DELETE: Delete contacts
+            CONTACT_READ: Read contacts
+            CONTACT_WRITE: Create and update contacts
+            CRMENTITY_DELETE: Delete CRM contacts
+            CRMENTITY_READ: Read CRM contacts
+            CRMENTITY_WRITE: Create and update CRM Contacts
+            DOCUMENT_READ: Read and download attachments
+            EVENT_READ: Read events from the events endpoint
+            JOBREFERENCE_DELETE: Delete job references
+            JOBREFERENCE_READ: Read job references
+            JOBREFERENCE_WRITE: Create and update job references
+            KEYWORD_DELETE: Delete custom keywords
+            KEYWORD_READ: Read custom keywords
+            KEYWORD_WRITE: Create and update custom keywords
+            LEGAL_HOLD_DELETE: Delete legal holds
+            LEGAL_HOLD_READ: Read legal holds
+            LEGAL_HOLD_WRITE: Create and update legal holds
+            MESSAGE_DELETE: Archive email messages
+            MESSAGE_READ: Read (draft) email messages
+            MESSAGE_RETENTION_SETTINGS_READ: Read message retention settings
+            MESSAGE_RETENTION_SETTINGS_WRITE: Update message retention settings
+            MESSAGE_WRITE: Create and send (draft) email messages
+            PERSONAL_DATA_UNREDACTED_READ: Read unredacted emails with personal data
+            QUARANTINED_MESSAGE_READ: Read quarantined email messages
+            QUARANTINED_MESSAGE_WRITE: Release quarantined email messages
+            RETENTION_POLICY_DELETE: Delete retention policies
+            RETENTION_POLICY_READ: Read retention policies
+            RETENTION_POLICY_WRITE: Create and update retention policies
+            SAVEDSEARCH_DELETE: Remove saved searches
+            SAVEDSEARCH_READ: Read saved search details
+            SAVEDSEARCH_WRITE: Create and update saved searches
+            TEAM_DELETE: Delete teams
+            TEAM_READ: Read team details
+            TEAM_WRITE: Create and update teams
+            TEMPLATE_READ: Read templates
+            USER_DELETE: Archive users
+            USER_READ: Read user details
+            USER_WRITE: Create and update users
+            WORKFLOW_DELETE: Delete workflows
+            WORKFLOW_READ: Read workflow details
+            WORKFLOW_WRITE: Create and update workflows
+          tokenUrl: https://{tenant}.sednanetwork.com/platform/oauth/token
+      type: oauth2

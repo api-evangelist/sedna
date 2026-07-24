@@ -1,0 +1,1267 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Support
+    url: https://support.sedna.com
+  termsOfService: https://www.sedna.com/terms-of-service
+  title: Sedna Authentication Category Tag API API
+  version: '2019-01-01'
+servers:
+- description: Platform endpoint
+  url: https://{tenant}.sednanetwork.com/platform
+  variables:
+    tenant:
+      default: example
+      description: Your tenant's unique identifier
+security:
+- Basic: []
+- OAuth: []
+tags:
+- name: Category Tag API
+paths:
+  /2019-01-01/category-tag:
+    post:
+      description: 'Create a category tag
+
+
+        Required API Permissions: CATEGORYTAG_WRITE'
+      operationId: createCategoryTag
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryTagCreate'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/CategoryTagCreate'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryTagSingle'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/CategoryTagSingle'
+          description: default response
+      tags:
+      - Category Tag API
+    get:
+      description: 'Fetch a collection of category tags
+
+
+        Required API Permissions: CATEGORYTAG_READ'
+      operationId: getCategoryTags
+      parameters:
+      - in: query
+        name: page[limit]
+        schema:
+          type: integer
+          format: int64
+          default: 100
+      - in: query
+        name: page[offset]
+        schema:
+          type: integer
+          format: int64
+          default: 0
+      - description: Filter results by name containing given value. Case-insensitive.
+        in: query
+        name: filter[name]
+        schema:
+          type: string
+          default: ''
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryTagCollection'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/CategoryTagCollection'
+          description: default response
+      tags:
+      - Category Tag API
+  /2019-01-01/category-tag/{id}:
+    delete:
+      description: 'Delete a category tag
+
+
+        Required API Permissions: CATEGORYTAG_DELETE'
+      operationId: deleteCategoryTag
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Category Tag API
+    get:
+      description: 'Fetch a category tag
+
+
+        Required API Permissions: CATEGORYTAG_READ'
+      operationId: getCategoryTag
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryTagSingle'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/CategoryTagSingle'
+          description: default response
+      tags:
+      - Category Tag API
+    patch:
+      description: 'Update a category tag
+
+
+        Required API Permissions: CATEGORYTAG_WRITE'
+      operationId: updateCategoryTag
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryTagUpdate'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/CategoryTagUpdate'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryTagSingle'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/CategoryTagSingle'
+          description: default response
+      tags:
+      - Category Tag API
+  /2019-01-01/category-tag/{id}/message:
+    get:
+      description: 'Fetch a collection of messages that have the given category tag applied. DEPRECATED: please use /{id}/messageV2 instead
+
+
+        Required API Permissions: CATEGORYTAG_READ, MESSAGE_READ'
+      operationId: getMessagesWithCategoryTag
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - in: query
+        name: page[limit]
+        schema:
+          type: integer
+          format: int64
+          default: 100
+          maximum: 100
+      - in: query
+        name: page[offset]
+        schema:
+          type: integer
+          format: int64
+          default: 0
+      - description: 'Comma separated list of fields to return. Please include only necessary fields for performance reasons. If this parameter is omitted, API will return all the fields and it can negatively impact the latency. Available fields: subject,snippet,fromName,fromEmail,bodyText,bodyHtml,hasAttachment,receivedAt,sentAt,messageId,inReplyTo,references,from,to,cc,bcc,signed. Id is always returned.'
+        in: query
+        name: fields[message]
+        schema:
+          type: string
+      - in: query
+        name: filter
+        schema:
+          type: string
+      - in: query
+        name: include
+        schema:
+          type: string
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageCollection'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/MessageCollection'
+          description: default response
+      tags:
+      - Category Tag API
+  /2019-01-01/category-tag/{id}/messageV2:
+    get:
+      description: 'Fetch a collection of messages that have the given category tag applied
+
+
+        Required API Permissions: CATEGORYTAG_READ, MESSAGE_READ'
+      operationId: getMessagesWithCategoryTagV2
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - description: the next-page cursor returned as part of a previous call to this endpoint
+        in: query
+        name: page[cursor]
+        schema:
+          type: string
+      - in: query
+        name: page[limit]
+        schema:
+          type: integer
+          format: int64
+          default: 100
+          maximum: 100
+      - description: 'Comma separated list of fields to return. Please include only necessary fields for performance reasons. If this parameter is omitted, API will return all the fields and it can negatively impact the latency. Available fields: subject,snippet,fromName,fromEmail,bodyText,bodyHtml,hasAttachment,receivedAt,sentAt,messageId,inReplyTo,references,from,to,cc,bcc,signed. Id is always returned.'
+        in: query
+        name: fields[message]
+        schema:
+          type: string
+      - in: query
+        name: filter
+        schema:
+          type: string
+      - description: Comma separated list of teams to filter by. Only returns messages that belong to any of the specified teams. If omitted, messages belonging to all teams, including solo inboxes, are returned.
+        in: query
+        name: filter[team]
+        schema:
+          type: string
+      - description: The value to sort the message by. Must be one of 'received_date' or 'activity'. Defaults to 'received_date' if not specified.
+        in: query
+        name: sort
+        schema:
+          type: string
+          default: received_date
+      - description: The order in which to sort the messages, i.e. 'desc' (newest messages first) or 'asc' (oldest messages first). Defaults to 'desc' if not specified.
+        in: query
+        name: order
+        schema:
+          type: string
+          default: desc
+      - description: Array of comma-separated relationships to retrieve entities for if they are present in the retrieved messages' relationships. e.g. 'comment,document,share,team,category,job_reference,assignment,keyword,address'
+        in: query
+        name: include
+        schema:
+          type: string
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WithNextPageCursorMessageCollection'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/WithNextPageCursorMessageCollection'
+          description: default response
+      tags:
+      - Category Tag API
+  /2019-01-01/category-tag/{id}/relationships/message:
+    post:
+      description: 'Add messages to a category tag''s message relationships
+
+
+        Required API Permissions: CATEGORYTAG_WRITE'
+      operationId: addCategoryTagToMessages
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - in: query
+        name: page[limit]
+        schema:
+          type: integer
+          format: int64
+          default: 1000
+          maximum: 1000
+      - in: query
+        name: page[offset]
+        schema:
+          type: integer
+          format: int64
+          default: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateMessageRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UpdateMessageRelToMany'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/MessageRelToMany'
+          description: default response
+      tags:
+      - Category Tag API
+    get:
+      description: 'Fetch a category tag''s message relationships. DEPRECATED: please use /{id}/messageV2 instead
+
+
+        Required API Permissions: CATEGORYTAG_READ'
+      operationId: getCategoryTagMessageRelationships
+      parameters:
+      - in: query
+        name: page[limit]
+        schema:
+          type: integer
+          format: int64
+          default: 100
+      - in: query
+        name: page[offset]
+        schema:
+          type: integer
+          format: int64
+          default: 0
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageRelGetToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/MessageRelGetToMany'
+          description: default response
+      tags:
+      - Category Tag API
+    delete:
+      description: 'Remove messages from a category tag''s message relationships
+
+
+        Required API Permissions: CATEGORYTAG_WRITE'
+      operationId: removeCategoryTagFromMessages
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - in: query
+        name: page[limit]
+        schema:
+          type: integer
+          format: int64
+          default: 1000
+          maximum: 1000
+      - in: query
+        name: page[offset]
+        schema:
+          type: integer
+          format: int64
+          default: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateMessageRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UpdateMessageRelToMany'
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/MessageRelToMany'
+          description: default response
+      tags:
+      - Category Tag API
+  /2019-01-01/category-tag/{id}/relationships/team:
+    post:
+      description: 'Add teams to a category tag''s team relationships, adds to relationships only
+
+
+        Required API Permissions: CATEGORYTAG_WRITE'
+      operationId: addCategoryTagTeams
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelToMany'
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Category Tag API
+    delete:
+      description: 'Remove teams from a category tag''s team relationships, removes relationships only
+
+
+        Required API Permissions: CATEGORYTAG_DELETE'
+      operationId: deleteCategoryTagTeams
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelToMany'
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Category Tag API
+    get:
+      description: 'Fetch a category tag''s team relationships
+
+
+        Required API Permissions: CATEGORYTAG_READ'
+      operationId: getCategoryTagTeamRelationships
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamRelToMany'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/TeamRelToMany'
+          description: default response
+      tags:
+      - Category Tag API
+    patch:
+      description: 'Replace all teams in a category tag''s team relationships, partial update not supported
+
+
+        Required API Permissions: CATEGORYTAG_WRITE'
+      operationId: replaceCategoryTagTeams
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelToMany'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRelToMany'
+      responses:
+        default:
+          content:
+            application/json: {}
+            application/vnd.api+json: {}
+          description: default response
+      tags:
+      - Category Tag API
+  /2019-01-01/category-tag/{id}/team:
+    get:
+      description: 'Fetch a category tag''s related teams
+
+
+        Required API Permissions: CATEGORYTAG_READ, TEAM_READ'
+      operationId: getCategoryTagTeams
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamCollection'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/TeamCollection'
+          description: default response
+      tags:
+      - Category Tag API
+components:
+  schemas:
+    MessageTag:
+      type: object
+      properties:
+        assignedToUserId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        eventId:
+          $ref: '#/components/schemas/EventId'
+        messageId:
+          type: string
+        messageTagId:
+          $ref: '#/components/schemas/MessageTagId'
+        removedAt:
+          type: string
+          format: date-time
+        removedByUserId:
+          type: string
+        tag:
+          $ref: '#/components/schemas/Tag'
+        tagId:
+          $ref: '#/components/schemas/TagId'
+        userId:
+          type: string
+    MessageRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageRelData'
+        links:
+          $ref: '#/components/schemas/MessageRelLinks'
+    UserRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRelData'
+        links:
+          $ref: '#/components/schemas/UserRelLinks'
+    UserRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    CategoryTagRelationships:
+      type: object
+      properties:
+        team:
+          $ref: '#/components/schemas/TeamRelToMany'
+    WithNextPageCursorMessageCollection:
+      type: object
+      properties:
+        nextPageCursor:
+          type: string
+        response:
+          $ref: '#/components/schemas/MessageCollection'
+    CategoryTagRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoryTagRelData'
+        links:
+          $ref: '#/components/schemas/CategoryTagRelLinks'
+    UpdateTeamRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamRelData'
+    MessageRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    TeamRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamRelData'
+        links:
+          $ref: '#/components/schemas/TeamRelLinks'
+    TeamCollection:
+      type: object
+      description: A collection of resources
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamResource'
+        links:
+          $ref: '#/components/schemas/TeamCollectionLinks'
+    DocumentRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    EventId:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+    TagId:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+    UserRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    CategoryTagAttributes:
+      type: object
+      properties:
+        archived:
+          type: boolean
+        disableFollow:
+          type: boolean
+        label:
+          type: string
+        name:
+          type: string
+    TagName:
+      type: object
+      properties:
+        value:
+          type: string
+    TeamRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    Tag:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/TagId'
+        name:
+          $ref: '#/components/schemas/TagName'
+        tagLabel:
+          $ref: '#/components/schemas/TagLabel'
+        tagTypeId:
+          type: integer
+          format: int32
+    TeamResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/TeamAttributes'
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/TeamLinks'
+        relationships:
+          $ref: '#/components/schemas/TeamRelationships'
+        type:
+          type: string
+          description: the type of the resource
+          enum:
+          - team
+        uuid:
+          type: string
+    TeamAttributes:
+      type: object
+      properties:
+        additionalEmailAddresses:
+          type: array
+          items:
+            type: string
+        archived:
+          type: boolean
+        autoBccEmails:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamAttributeAutoBccEmail'
+        createdAt:
+          type: string
+          format: date-time
+        disableSend:
+          type: boolean
+        emailAddress:
+          type: string
+        emailSignature:
+          type: string
+        foreignKey:
+          type: string
+        inboxAssignedToUserId:
+          type: string
+        internalEmailAddress:
+          type: string
+        name:
+          type: string
+        public:
+          type: boolean
+        purpose:
+          type: string
+        sendingName:
+          type: string
+        soloInbox:
+          type: boolean
+    TeamRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    JobReferenceRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobReferenceRelData'
+        links:
+          $ref: '#/components/schemas/JobReferenceRelLinks'
+    Sender:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceObjectIdentifier'
+        meta:
+          $ref: '#/components/schemas/MetaObject'
+    MessageReadResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/MessageReadAttributes'
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/MessageLinks'
+        meta:
+          $ref: '#/components/schemas/MessageMeta'
+        relationships:
+          $ref: '#/components/schemas/MessageRelationships'
+        type:
+          type: string
+    MetaObject:
+      type: object
+    CategoryTagRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        messageTag:
+          $ref: '#/components/schemas/MessageTag'
+        type:
+          type: string
+    MessageLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    MessageMeta:
+      type: object
+      properties:
+        download:
+          type: string
+    TeamCollectionLinks:
+      type: object
+      properties:
+        first:
+          type: string
+        next:
+          type: string
+        self:
+          type: string
+    CategoryTagSingle:
+      type: object
+      description: The resource
+      properties:
+        data:
+          $ref: '#/components/schemas/CategoryTagResource'
+        links:
+          $ref: '#/components/schemas/CategoryTagSingleLinks'
+    CategoryTagSingleLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    PrivateLabelRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    CategoryTagUpdateResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/CategoryTagUpdateAttributes'
+        type:
+          type: string
+    MessageRelGetToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageRelGetData'
+        links:
+          $ref: '#/components/schemas/MessageRelLinks'
+    ResourceObjectIdentifier:
+      type: object
+      properties:
+        id:
+          type: string
+        meta:
+          $ref: '#/components/schemas/MetaObject'
+        type:
+          type: string
+    MessageRelUpdateData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    CategoryTagCreateResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/CategoryTagCreateAttributes'
+        relationships:
+          $ref: '#/components/schemas/CategoryTagCreateRelationships'
+        type:
+          type: string
+    UpdateMessageRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageRelUpdateData'
+    CategoryTagCreateRelationships:
+      type: object
+      properties:
+        team:
+          $ref: '#/components/schemas/UpdateTeamRelToMany'
+    MessageReadAttributes:
+      type: object
+      properties:
+        bcc:
+          type: array
+          items:
+            type: string
+        bodyHtml:
+          type: string
+        bodyText:
+          type: string
+        cc:
+          type: array
+          items:
+            type: string
+        from:
+          type: array
+          items:
+            type: string
+        fromEmail:
+          type: string
+        fromName:
+          type: string
+        hasAttachment:
+          type: boolean
+        inReplyTo:
+          type: string
+        messageId:
+          type: string
+        quarantineStatus:
+          type: string
+        receivedAt:
+          type: string
+          format: date-time
+        references:
+          type: string
+        sentAt:
+          type: string
+          format: date-time
+        signed:
+          type: string
+          enum:
+          - UNVERIFIED
+          - UNSIGNED
+          - VERIFIED
+          - FAILED_VERIFICATION
+        snippet:
+          type: string
+        subject:
+          type: string
+        to:
+          type: array
+          items:
+            type: string
+    CategoryTagCreate:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/CategoryTagCreateResource'
+    MessageRelationships:
+      type: object
+      properties:
+        category-tag:
+          $ref: '#/components/schemas/CategoryTagRelToMany'
+        document:
+          $ref: '#/components/schemas/DocumentRelToMany'
+        job-reference:
+          $ref: '#/components/schemas/JobReferenceRelToMany'
+        message_thread_summary:
+          $ref: '#/components/schemas/MessageThreadSummary'
+        private-label:
+          $ref: '#/components/schemas/PrivateLabelRelToMany'
+        sender:
+          $ref: '#/components/schemas/Sender'
+        team:
+          $ref: '#/components/schemas/TeamRelToMany'
+    MessageTagId:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+    DocumentRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentRelData'
+        links:
+          $ref: '#/components/schemas/DocumentRelLinks'
+    MessageRelGetData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    TagLabel:
+      type: object
+      properties:
+        value:
+          type: string
+    MessageThreadSummary:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceObjectIdentifier'
+    CategoryTagCollection:
+      type: object
+      description: A collection of resources
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoryTagResource'
+        links:
+          $ref: '#/components/schemas/CategoryTagCollectionLinks'
+    TeamAttributeAutoBccEmail:
+      type: object
+      properties:
+        email:
+          type: string
+        name:
+          type: string
+      required:
+      - email
+    CategoryTagRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    CategoryTagCreateAttributes:
+      type: object
+      properties:
+        archived:
+          type: boolean
+        disableFollow:
+          type: boolean
+        label:
+          type: string
+        name:
+          type: string
+      required:
+      - label
+      - name
+    MessageCollectionMeta:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+    DocumentRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    TeamRelationships:
+      type: object
+      properties:
+        categoryTag:
+          $ref: '#/components/schemas/CategoryTagRelToMany'
+        user:
+          $ref: '#/components/schemas/UserRelToMany'
+    PrivateLabelRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PrivateLabelRelData'
+        links:
+          $ref: '#/components/schemas/PrivateLabelRelLinks'
+    CategoryTagResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/CategoryTagAttributes'
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/CategoryTagLinks'
+        relationships:
+          $ref: '#/components/schemas/CategoryTagRelationships'
+        type:
+          type: string
+          description: the type of the resource
+          enum:
+          - category-tag
+    CategoryTagUpdateAttributes:
+      type: object
+      properties:
+        archived:
+          type: boolean
+        disableFollow:
+          type: boolean
+        label:
+          type: string
+        name:
+          type: string
+    TeamLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    JobReferenceRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    MessageRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    JobReferenceRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        messageTag:
+          $ref: '#/components/schemas/MessageTag'
+        type:
+          type: string
+    CategoryTagCollectionLinks:
+      type: object
+      properties:
+        first:
+          type: string
+        next:
+          type: string
+        self:
+          type: string
+    CategoryTagLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    MessageCollection:
+      type: object
+      description: The resource
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageReadResource'
+        included:
+          type: array
+          items:
+            type: object
+        links:
+          $ref: '#/components/schemas/MessageCollectionLinks'
+        meta:
+          $ref: '#/components/schemas/MessageCollectionMeta'
+    CategoryTagUpdate:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/CategoryTagUpdateResource'
+    MessageCollectionLinks:
+      type: object
+      properties:
+        first:
+          type: string
+        next:
+          type: string
+        self:
+          type: string
+    PrivateLabelRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+  securitySchemes:
+    Basic:
+      description: The basic auth scheme only requires the API-Specific username/password to be set.
+      scheme: basic
+      type: http
+    OAuth:
+      description: This API prefers OAuth 2 with client credentials flow. You can create your credentials in the <a href='https://{tenant}.sednanetwork.com/platform/settings/api-credential-management'>Api Credential Management page</a>.
+      flows:
+        clientCredentials:
+          scopes:
+            CATEGORYTAG_DELETE: Delete category tags
+            CATEGORYTAG_READ: Read category tags
+            CATEGORYTAG_WRITE: Create and update category tags
+            CHARTERING_DELETE: Delete chartering (Pulse) information
+            CHARTERING_READ: Read chartering (Pulse) information
+            CHARTERING_WRITE: Create chartering (Pulse) information
+            COMMENT_READ: Read message comments
+            COMPANY_READ: Read company info
+            COMPANY_WRITE: Update company info (eg. signature)
+            CONTACTGROUP_DELETE: Delete contact groups
+            CONTACTGROUP_READ: Read contact groups
+            CONTACTGROUP_WRITE: Create and update contact groups
+            CONTACT_DELETE: Delete contacts
+            CONTACT_READ: Read contacts
+            CONTACT_WRITE: Create and update contacts
+            CRMENTITY_DELETE: Delete CRM contacts
+            CRMENTITY_READ: Read CRM contacts
+            CRMENTITY_WRITE: Create and update CRM Contacts
+            DOCUMENT_READ: Read and download attachments
+            EVENT_READ: Read events from the events endpoint
+            JOBREFERENCE_DELETE: Delete job references
+            JOBREFERENCE_READ: Read job references
+            JOBREFERENCE_WRITE: Create and update job references
+            KEYWORD_DELETE: Delete custom keywords
+            KEYWORD_READ: Read custom keywords
+            KEYWORD_WRITE: Create and update custom keywords
+            LEGAL_HOLD_DELETE: Delete legal holds
+            LEGAL_HOLD_READ: Read legal holds
+            LEGAL_HOLD_WRITE: Create and update legal holds
+            MESSAGE_DELETE: Archive email messages
+            MESSAGE_READ: Read (draft) email messages
+            MESSAGE_RETENTION_SETTINGS_READ: Read message retention settings
+            MESSAGE_RETENTION_SETTINGS_WRITE: Update message retention settings
+            MESSAGE_WRITE: Create and send (draft) email messages
+            PERSONAL_DATA_UNREDACTED_READ: Read unredacted emails with personal data
+            QUARANTINED_MESSAGE_READ: Read quarantined email messages
+            QUARANTINED_MESSAGE_WRITE: Release quarantined email messages
+            RETENTION_POLICY_DELETE: Delete retention policies
+            RETENTION_POLICY_READ: Read retention policies
+            RETENTION_POLICY_WRITE: Create and update retention policies
+            SAVEDSEARCH_DELETE: Remove saved searches
+            SAVEDSEARCH_READ: Read saved search details
+            SAVEDSEARCH_WRITE: Create and update saved searches
+            TEAM_DELETE: Delete teams
+            TEAM_READ: Read team details
+            TEAM_WRITE: Create and update teams
+            TEMPLATE_READ: Read templates
+            USER_DELETE: Archive users
+            USER_READ: Read user details
+            USER_WRITE: Create and update users
+            WORKFLOW_DELETE: Delete workflows
+            WORKFLOW_READ: Read workflow details
+            WORKFLOW_WRITE: Create and update workflows
+          tokenUrl: https://{tenant}.sednanetwork.com/platform/oauth/token
+      type: oauth2
