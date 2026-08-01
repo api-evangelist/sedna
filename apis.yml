@@ -1,25 +1,271 @@
 aid: sedna
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/sedna.png
 name: SEDNA
-description: SEDNA is a company surfaced as a portfolio company of insight-partners and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: SEDNA is the operating system for shipping — a communications and workflow platform that
+  unifies email, voyage and trade operations, and document handling for maritime, commodity trading and
+  logistics teams. Its API (version 2019-01-01) exposes messages, contacts, teams, users, job references,
+  category tags, events and workflows over a JSON:API-style REST interface secured with OAuth 2.0 client-credentials,
+  letting developers automate inbox routing, tagging, subscriptions and third-party integrations. Backed
+  by Insight Partners.
 url: https://raw.githubusercontent.com/api-evangelist/sedna/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - insight-partners
-x-tier: stub
+x-tier: enriched
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- Shipping
+- Maritime
+- Email
+- Communications
+- Workflow
+- Commodity Trading
+- Logistics
+- Messaging
+apis:
+- aid: sedna:sedna-authentication-api
+  name: SEDNA Authentication API
+  description: The Authentication API from SEDNA — 1 operation(s) for authentication.
+  humanURL: https://developers.sedna.com/reference
+  baseURL: https://example.sednanetwork.com/platform
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/sedna-authentication-api-openapi.yml
+- aid: sedna:sedna-category-tag-api-api
+  name: SEDNA Category Tag API API
+  description: The Category Tag API API from SEDNA — 7 operation(s) for category tag api.
+  humanURL: https://developers.sedna.com/reference
+  baseURL: https://example.sednanetwork.com/platform
+  tags:
+  - Category Tag API
+  properties:
+  - type: OpenAPI
+    url: openapi/sedna-category-tag-api-api-openapi.yml
+- aid: sedna:sedna-comment-api-api
+  name: SEDNA Comment API API
+  description: The Comment API API from SEDNA — 1 operation(s) for comment api.
+  humanURL: https://developers.sedna.com/reference
+  baseURL: https://example.sednanetwork.com/platform
+  tags:
+  - Comment API
+  properties:
+  - type: OpenAPI
+    url: openapi/sedna-comment-api-api-openapi.yml
+- aid: sedna:sedna-company-api-api
+  name: SEDNA Company API API
+  description: The Company API API from SEDNA — 1 operation(s) for company api.
+  humanURL: https://developers.sedna.com/reference
+  baseURL: https://example.sednanetwork.com/platform
+  tags:
+  - Company API
+  properties:
+  - type: OpenAPI
+    url: openapi/sedna-company-api-api-openapi.yml
+- aid: sedna:sedna-contact-api-api
+  name: SEDNA Contact API API
+  description: The Contact API API from SEDNA — 8 operation(s) for contact api.
+  humanURL: https://developers.sedna.com/reference
+  baseURL: https://example.sednanetwork.com/platform
+  tags:
+  - Contact API
+  properties:
+  - type: OpenAPI
+    url: openapi/sedna-contact-api-api-openapi.yml
+- aid: sedna:sedna-document-api-api
+  name: SEDNA Document API API
+  description: The Document API API from SEDNA — 1 operation(s) for document api.
+  humanURL: https://developers.sedna.com/reference
+  baseURL: https://example.sednanetwork.com/platform
+  tags:
+  - Document API
+  properties:
+  - type: OpenAPI
+    url: openapi/sedna-document-api-api-openapi.yml
+- aid: sedna:sedna-download-api-api
+  name: SEDNA Download API API
+  description: The Download API API from SEDNA — 4 operation(s) for download api.
+  humanURL: https://developers.sedna.com/reference
+  baseURL: https://example.sednanetwork.com/platform
+  tags:
+  - Download API
+  properties:
+  - type: OpenAPI
+    url: openapi/sedna-download-api-api-openapi.yml
+- aid: sedna:sedna-event-api-api
+  name: SEDNA Event API API
+  description: The Event API API from SEDNA — 9 operation(s) for event api.
+  humanURL: https://developers.sedna.com/reference
+  baseURL: https://example.sednanetwork.com/platform
+  tags:
+  - Event API
+  properties:
+  - type: OpenAPI
+    url: openapi/sedna-event-api-api-openapi.yml
+- aid: sedna:sedna-job-reference-api-api
+  name: SEDNA Job Reference API API
+  description: The Job Reference API API from SEDNA — 7 operation(s) for job reference api.
+  humanURL: https://developers.sedna.com/reference
+  baseURL: https://example.sednanetwork.com/platform
+  tags:
+  - Job Reference API
+  properties:
+  - type: OpenAPI
+    url: openapi/sedna-job-reference-api-api-openapi.yml
+- aid: sedna:sedna-keyword-api-api
+  name: SEDNA Keyword API API
+  description: The Keyword API API from SEDNA — 3 operation(s) for keyword api.
+  humanURL: https://developers.sedna.com/reference
+  baseURL: https://example.sednanetwork.com/platform
+  tags:
+  - Keyword API
+  properties:
+  - type: OpenAPI
+    url: openapi/sedna-keyword-api-api-openapi.yml
+- aid: sedna:sedna-message-api-api
+  name: SEDNA Message API API
+  description: The Message API API from SEDNA — 19 operation(s) for message api.
+  humanURL: https://developers.sedna.com/reference
+  baseURL: https://example.sednanetwork.com/platform
+  tags:
+  - Message API
+  properties:
+  - type: OpenAPI
+    url: openapi/sedna-message-api-api-openapi.yml
+- aid: sedna:sedna-saved-search-api-api
+  name: SEDNA Saved Search API API
+  description: The Saved Search API API from SEDNA — 2 operation(s) for saved search api.
+  humanURL: https://developers.sedna.com/reference
+  baseURL: https://example.sednanetwork.com/platform
+  tags:
+  - Saved Search API
+  properties:
+  - type: OpenAPI
+    url: openapi/sedna-saved-search-api-api-openapi.yml
+- aid: sedna:sedna-team-api-api
+  name: SEDNA Team API API
+  description: The Team API API from SEDNA — 9 operation(s) for team api.
+  humanURL: https://developers.sedna.com/reference
+  baseURL: https://example.sednanetwork.com/platform
+  tags:
+  - Team API
+  properties:
+  - type: OpenAPI
+    url: openapi/sedna-team-api-api-openapi.yml
+- aid: sedna:sedna-template-api-api
+  name: SEDNA Template API API
+  description: The Template API API from SEDNA — 2 operation(s) for template api.
+  humanURL: https://developers.sedna.com/reference
+  baseURL: https://example.sednanetwork.com/platform
+  tags:
+  - Template API
+  properties:
+  - type: OpenAPI
+    url: openapi/sedna-template-api-api-openapi.yml
+- aid: sedna:sedna-user-api-api
+  name: SEDNA User API API
+  description: The User API API from SEDNA — 16 operation(s) for user api.
+  humanURL: https://developers.sedna.com/reference
+  baseURL: https://example.sednanetwork.com/platform
+  tags:
+  - User API
+  properties:
+  - type: OpenAPI
+    url: openapi/sedna-user-api-api-openapi.yml
+- aid: sedna:sedna-vessel-api-api
+  name: SEDNA Vessel API API
+  description: The Vessel API API from SEDNA — 1 operation(s) for vessel api.
+  humanURL: https://developers.sedna.com/reference
+  baseURL: https://example.sednanetwork.com/platform
+  tags:
+  - Vessel API
+  properties:
+  - type: OpenAPI
+    url: openapi/sedna-vessel-api-api-openapi.yml
+- aid: sedna:sedna-workflow-api-api
+  name: SEDNA Workflow API API
+  description: The Workflow API API from SEDNA — 2 operation(s) for workflow api.
+  humanURL: https://developers.sedna.com/reference
+  baseURL: https://example.sednanetwork.com/platform
+  tags:
+  - Workflow API
+  properties:
+  - type: OpenAPI
+    url: openapi/sedna-workflow-api-api-openapi.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DeveloperPortal
+  url: https://developers.sedna.com/
+- type: Documentation
+  url: https://developers.sedna.com/
+- type: APIReference
+  url: https://developers.sedna.com/reference
+- type: Support
+  url: https://support.sedna.com/hc/en-us
+- type: Blog
+  url: https://sedna.com/blog
+- type: TermsOfService
+  url: https://www.sedna.com/terms-of-service
+- type: PrivacyPolicy
+  url: https://www.sedna.com/legal
+- type: StatusPage
+  url: https://status.sedna.com
+- type: Authentication
+  url: authentication/sedna-authentication.yml
+- type: OAuthScopes
+  url: scopes/sedna-scopes.yml
+- type: MCPServer
+  url: mcp/sedna-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/sedna-llms.txt
+- type: ErrorCatalog
+  url: errors/sedna-problem-types.yml
+- type: Conventions
+  url: conventions/sedna-conventions.yml
+- type: Lifecycle
+  url: lifecycle/sedna-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/sedna-lifecycle.yml
+- type: Conformance
+  url: conformance/sedna-conformance.yml
+- type: Compliance
+  url: conformance/sedna-conformance.yml
+- type: DataModel
+  url: data-model/sedna-data-model.yml
+- type: WellKnown
+  url: well-known/sedna-well-known.yml
+- type: AgenticAccess
+  url: agentic-access/sedna-agentic-access.yml
+- type: DomainSecurity
+  url: security/sedna-domain-security.yml
 - type: Website
   url: https://sedna.com/
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 17
+  pass: local-v1

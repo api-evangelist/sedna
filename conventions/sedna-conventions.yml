@@ -1,0 +1,39 @@
+generated: '2026-07-21'
+method: searched
+source: https://developers.sedna.com/reference
+# Cross-cutting request/response semantics for the Sedna API (v2019-01-01),
+# derived from the harvested OpenAPI (openapi/sedna-openapi.json) and the
+# published reference docs.
+authentication:
+  style: oauth2-client-credentials
+  alternative: http-basic
+  token_lifetime: 1h
+  ref: authentication/sedna-authentication.yml
+data_format:
+  style: json:api
+  media_type: application/vnd.api+json
+  notes: >-
+    Resources are returned as JSON:API-style documents with typed resource
+    objects and explicit `relationships` sub-resources
+    (/{resource}/{id}/relationships/{related}). Relationship endpoints support
+    fetch / add / replace / remove semantics.
+pagination:
+  style: cursor-and-offset
+  params: ['page[cursor]', 'page[limit]', 'page[offset]', 'page[page]', 'limit', 'page']
+  notes: JSON:API page-family parameters; cursor and offset pagination both supported.
+versioning:
+  scheme: date-in-path
+  current: '2019-01-01'
+  notes: The API version is a fixed date segment at the root of every path (/2019-01-01/...).
+  ref: lifecycle/sedna-lifecycle.yml
+idempotency:
+  supported: false
+  notes: No idempotency-key header/parameter is documented or present in the OpenAPI.
+rate_limiting:
+  limit: 100 requests per second
+  scope: per API key or IP address
+  signal: HTTP 429 Too Many Requests
+error_envelope:
+  format: http-status + JSON Error object
+  problem_json: false
+  ref: errors/sedna-problem-types.yml

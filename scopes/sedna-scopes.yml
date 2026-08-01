@@ -1,0 +1,331 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/sedna-openapi.json
+schemes:
+- name: OAuth
+  source: openapi/sedna-openapi.json
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://{tenant}.sednanetwork.com/platform/oauth/token
+  description: This API prefers OAuth 2 with client credentials flow. You can create your credentials
+    in the <a href='https://{tenant}.sednanetwork.com/platform/settings/api-credential-management'>Api
+    Credential Management page</a>.
+scopes:
+- scope: CATEGORYTAG_DELETE
+  description: Delete category tags
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: CATEGORYTAG_READ
+  description: Read category tags
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: CATEGORYTAG_WRITE
+  description: Create and update category tags
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: CHARTERING_DELETE
+  description: Delete chartering (Pulse) information
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: CHARTERING_READ
+  description: Read chartering (Pulse) information
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: CHARTERING_WRITE
+  description: Create chartering (Pulse) information
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: COMMENT_READ
+  description: Read message comments
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: COMPANY_READ
+  description: Read company info
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: COMPANY_WRITE
+  description: Update company info (eg. signature)
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: CONTACTGROUP_DELETE
+  description: Delete contact groups
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: CONTACTGROUP_READ
+  description: Read contact groups
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: CONTACTGROUP_WRITE
+  description: Create and update contact groups
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: CONTACT_DELETE
+  description: Delete contacts
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: CONTACT_READ
+  description: Read contacts
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: CONTACT_WRITE
+  description: Create and update contacts
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: CRMENTITY_DELETE
+  description: Delete CRM contacts
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: CRMENTITY_READ
+  description: Read CRM contacts
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: CRMENTITY_WRITE
+  description: Create and update CRM Contacts
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: DOCUMENT_READ
+  description: Read and download attachments
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: EVENT_READ
+  description: Read events from the events endpoint
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: JOBREFERENCE_DELETE
+  description: Delete job references
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: JOBREFERENCE_READ
+  description: Read job references
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: JOBREFERENCE_WRITE
+  description: Create and update job references
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: KEYWORD_DELETE
+  description: Delete custom keywords
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: KEYWORD_READ
+  description: Read custom keywords
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: KEYWORD_WRITE
+  description: Create and update custom keywords
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: LEGAL_HOLD_DELETE
+  description: Delete legal holds
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: LEGAL_HOLD_READ
+  description: Read legal holds
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: LEGAL_HOLD_WRITE
+  description: Create and update legal holds
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: MESSAGE_DELETE
+  description: Archive email messages
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: MESSAGE_READ
+  description: Read (draft) email messages
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: MESSAGE_RETENTION_SETTINGS_READ
+  description: Read message retention settings
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: MESSAGE_RETENTION_SETTINGS_WRITE
+  description: Update message retention settings
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: MESSAGE_WRITE
+  description: Create and send (draft) email messages
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: PERSONAL_DATA_UNREDACTED_READ
+  description: Read unredacted emails with personal data
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: QUARANTINED_MESSAGE_READ
+  description: Read quarantined email messages
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: QUARANTINED_MESSAGE_WRITE
+  description: Release quarantined email messages
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: RETENTION_POLICY_DELETE
+  description: Delete retention policies
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: RETENTION_POLICY_READ
+  description: Read retention policies
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: RETENTION_POLICY_WRITE
+  description: Create and update retention policies
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: SAVEDSEARCH_DELETE
+  description: Remove saved searches
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: SAVEDSEARCH_READ
+  description: Read saved search details
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: SAVEDSEARCH_WRITE
+  description: Create and update saved searches
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: TEAM_DELETE
+  description: Delete teams
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: TEAM_READ
+  description: Read team details
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: TEAM_WRITE
+  description: Create and update teams
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: TEMPLATE_READ
+  description: Read templates
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: USER_DELETE
+  description: Archive users
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: USER_READ
+  description: Read user details
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: USER_WRITE
+  description: Create and update users
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: WORKFLOW_DELETE
+  description: Delete workflows
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: WORKFLOW_READ
+  description: Read workflow details
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json
+- scope: WORKFLOW_WRITE
+  description: Create and update workflows
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sedna-openapi.json

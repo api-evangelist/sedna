@@ -1,0 +1,19 @@
+generated: '2026-07-21'
+method: probed
+# Probed the developer/API and marketing hosts for the /.well-known/ discovery
+# surface. None are published (all 404). Absence is valid recorded data.
+hosts:
+  - host: https://developers.sedna.com
+    documents:
+      - { path: /.well-known/security.txt, status: 404 }
+      - { path: /.well-known/openid-configuration, status: 404 }
+      - { path: /.well-known/oauth-authorization-server, status: 404 }
+      - { path: /.well-known/api-catalog, status: 404 }
+      - { path: /.well-known/ai-plugin.json, status: 404 }
+  - host: https://sedna.com
+    documents:
+      - { path: /.well-known/security.txt, status: 404 }
+      - { path: /.well-known/openid-configuration, status: 404 }
+      - { path: /.well-known/oauth-authorization-server, status: 404 }
+      - { path: /.well-known/api-catalog, status: 404 }
+      - { path: /.well-known/ai-plugin.json, status: 404 }

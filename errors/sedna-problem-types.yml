@@ -1,0 +1,41 @@
+generated: '2026-07-21'
+method: searched
+source: https://developers.sedna.com/reference/errors.md
+format: http-status
+# Sedna signals success/failure with standard HTTP status codes and returns a
+# JSON body carrying an `Error` object (see components.schemas.Error in
+# openapi/sedna-openapi.json). It does NOT use RFC 7807/9457 problem+json.
+envelope:
+  schema: openapi/sedna-openapi.json#/components/schemas/Error
+  media_type: application/json
+problems:
+  - status: 200
+    title: OK
+    detail: The request completed successfully. There is more information in the response body.
+  - status: 204
+    title: No Content
+    detail: The request completed successfully. There is no response body.
+  - status: 400
+    title: Bad Request
+    detail: Something went wrong with the request. There is more detail in the response body.
+  - status: 401
+    title: Unauthorized
+    detail: No valid API credentials were provided.
+  - status: 403
+    title: Forbidden
+    detail: >-
+      The API credentials are not permitted to perform this action. Also returned
+      for a downstream permissions issue (e.g. subscribing a User to a Job they
+      cannot access).
+  - status: 404
+    title: Not Found
+    detail: >-
+      The requested resource does not exist or has been deleted. May also indicate
+      the resource exists but the provided credentials are not permitted to know
+      about it.
+  - status: 429
+    title: Too Many Requests
+    detail: Rate limit exceeded. Sedna allows 100 requests per second per API key or IP address.
+  - status: 500
+    title: Internal Server Error
+    detail: An issue occurred within Sedna (5xx range).

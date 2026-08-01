@@ -1,0 +1,31 @@
+generated: '2026-07-21'
+method: searched
+source: https://developers.sedna.com/
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: OpenAPI securityScheme type oauth2, clientCredentials flow with tokenUrl and 53 scopes
+  - id: http-basic-auth
+    conforms: true
+    evidence: OpenAPI securityScheme Basic (http/basic) offered as an alternative
+  - id: json:api
+    conforms: true
+    evidence: >-
+      Resources modeled as typed JSON:API documents with explicit
+      /relationships/ sub-resources and page[...] pagination parameters
+  - id: openapi-3.0
+    conforms: true
+    evidence: Provider publishes an OpenAPI 3.0.1 definition (harvested to openapi/sedna-openapi.json)
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use HTTP status codes with a JSON Error object, not application/problem+json
+  - id: iso-27001
+    conforms: true
+    evidence: Sedna states it maintains ISO 27001 certification (sedna.com security posture)
+  - id: iso-27701
+    conforms: true
+    evidence: Sedna states it maintains ISO 27701 (privacy information management) certification
+compliance_program:
+  certifications: [ISO 27001, ISO 27701]
+  controls: [end-to-end encryption, multi-factor authentication]
+  source: https://developers.sedna.com/

@@ -1,0 +1,22 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Sedna API
+  version: 1.0.0
+extends: openapi/sedna-openapi.json
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-enriched: '2026-07-21'
+      x-apievangelist-source: https://developers.sedna.com/reference
+      x-apievangelist-notes: >-
+        Spec harvested by merging the per-operation OpenAPI fragments embedded in
+        Sedna's ReadMe reference pages (162 operations, 92 paths, 287 schemas).
+        Operations carry descriptions but no summaries; consider adding summaries
+        and per-operation tags upstream.
+  - target: $.info
+    update:
+      x-authentication: authentication/sedna-authentication.yml
+      x-conventions: conventions/sedna-conventions.yml
+      x-errors: errors/sedna-problem-types.yml
+      x-lifecycle: lifecycle/sedna-lifecycle.yml
+      x-data-model: data-model/sedna-data-model.yml

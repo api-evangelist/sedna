@@ -1,0 +1,169 @@
+# Sedna Documentation
+
+> Documentation for Sedna
+
+## API Reference
+- [Errors](https://developers.sedna.com/reference/errors.md)
+- [Authentication](https://developers.sedna.com/reference/authentication-1.md): How to authenticate with the Sedna API
+- [/2019-01-01/category-tag](https://developers.sedna.com/reference/getcategorytags.md): Fetch a collection of category tags  Required API Permissions: CATEGORYTAG_READ
+- [/2019-01-01/category-tag](https://developers.sedna.com/reference/createcategorytag.md): Create a category tag  Required API Permissions: CATEGORYTAG_WRITE
+- [/2019-01-01/category-tag/{id}](https://developers.sedna.com/reference/deletecategorytag.md): Delete a category tag  Required API Permissions: CATEGORYTAG_DELETE
+- [/2019-01-01/category-tag/{id}](https://developers.sedna.com/reference/getcategorytag.md): Fetch a category tag  Required API Permissions: CATEGORYTAG_READ
+- [/2019-01-01/category-tag/{id}](https://developers.sedna.com/reference/updatecategorytag.md): Update a category tag  Required API Permissions: CATEGORYTAG_WRITE
+- [/2019-01-01/category-tag/{id}/message](https://developers.sedna.com/reference/getmessageswithcategorytag.md): Fetch a collection of messages that have the given category tag applied. DEPRECATED: please use /{id}/messageV2 instead  Required API Permissions: CATEGORYTAG_READ, MESSAGE_READ
+- [/2019-01-01/category-tag/{id}/messageV2](https://developers.sedna.com/reference/getmessageswithcategorytagv2.md): Fetch a collection of messages that have the given category tag applied  Required API Permissions: CATEGORYTAG_READ, MESSAGE_READ
+- [/2019-01-01/category-tag/{id}/relationships/message](https://developers.sedna.com/reference/removecategorytagfrommessages.md): Remove messages from a category tag's message relationships  Required API Permissions: CATEGORYTAG_WRITE
+- [/2019-01-01/category-tag/{id}/relationships/message](https://developers.sedna.com/reference/getcategorytagmessagerelationships.md): Fetch a category tag's message relationships. DEPRECATED: please use /{id}/messageV2 instead  Required API Permissions: CATEGORYTAG_READ
+- [/2019-01-01/category-tag/{id}/relationships/message](https://developers.sedna.com/reference/addcategorytagtomessages.md): Add messages to a category tag's message relationships  Required API Permissions: CATEGORYTAG_WRITE
+- [/2019-01-01/category-tag/{id}/relationships/team](https://developers.sedna.com/reference/deletecategorytagteams.md): Remove teams from a category tag's team relationships, removes relationships only  Required API Permissions: CATEGORYTAG_DELETE
+- [/2019-01-01/category-tag/{id}/relationships/team](https://developers.sedna.com/reference/getcategorytagteamrelationships.md): Fetch a category tag's team relationships  Required API Permissions: CATEGORYTAG_READ
+- [/2019-01-01/category-tag/{id}/relationships/team](https://developers.sedna.com/reference/replacecategorytagteams.md): Replace all teams in a category tag's team relationships, partial update not supported  Required API Permissions: CATEGORYTAG_WRITE
+- [/2019-01-01/category-tag/{id}/relationships/team](https://developers.sedna.com/reference/addcategorytagteams.md): Add teams to a category tag's team relationships, adds to relationships only  Required API Permissions: CATEGORYTAG_WRITE
+- [/2019-01-01/category-tag/{id}/team](https://developers.sedna.com/reference/getcategorytagteams.md): Fetch a category tag's related teams  Required API Permissions: CATEGORYTAG_READ, TEAM_READ
+- [/2019-01-01/chartering/vessel](https://developers.sedna.com/reference/createvessel.md): null  Required API Permissions: CHARTERING_WRITE
+- [/2019-01-01/comment](https://developers.sedna.com/reference/getcomments.md): Get comments across all messages.  Required API Permissions: COMMENT_READ
+- [/2019-01-01/company/me](https://developers.sedna.com/reference/find.md): Fetch company level details  Required API Permissions: COMPANY_READ
+- [/2019-01-01/company/me](https://developers.sedna.com/reference/patchcompany.md): Update a company  Required API Permissions: COMPANY_WRITE
+- [/2019-01-01/contact](https://developers.sedna.com/reference/getcontacts.md): Get many contacts  Required API Permissions: CONTACT_READ
+- [/2019-01-01/contact](https://developers.sedna.com/reference/createcontact.md): Create a new contact  Required API Permissions: CONTACT_WRITE
+- [/2019-01-01/contact-group](https://developers.sedna.com/reference/getcontactgroups.md): Get many contact groups  Required API Permissions: CONTACTGROUP_READ
+- [/2019-01-01/contact-group](https://developers.sedna.com/reference/createcontactgroup.md): Create a new contact group  Required API Permissions: CONTACTGROUP_WRITE
+- [/2019-01-01/contact-group/{id}](https://developers.sedna.com/reference/deletecontactgroup.md): Delete a contact group  Required API Permissions: CONTACTGROUP_DELETE
+- [/2019-01-01/contact-group/{id}](https://developers.sedna.com/reference/getgroup.md): Get a contact group  Required API Permissions: CONTACTGROUP_READ
+- [/2019-01-01/contact-group/{id}](https://developers.sedna.com/reference/updatecontactgroup.md): Update a contact group  Required API Permissions: CONTACTGROUP_WRITE
+- [/2019-01-01/contact-group/{id}/relationships/contact](https://developers.sedna.com/reference/removecontactfromgroup.md): Remove contact(s) from a group  Required API Permissions: CONTACTGROUP_WRITE
+- [/2019-01-01/contact-group/{id}/relationships/contact](https://developers.sedna.com/reference/replacegroupcontacts.md): Fully replace a groups contacts  Required API Permissions: CONTACTGROUP_WRITE
+- [/2019-01-01/contact-group/{id}/relationships/contact](https://developers.sedna.com/reference/addcontacttogroup.md): Add contact(s) to a group  Required API Permissions: CONTACTGROUP_WRITE
+- [/2019-01-01/contact/{id}](https://developers.sedna.com/reference/deletecontact.md): Delete a contact  Required API Permissions: CONTACT_DELETE
+- [/2019-01-01/contact/{id}](https://developers.sedna.com/reference/getcontact.md): Get a contact  Required API Permissions: CONTACT_READ
+- [/2019-01-01/contact/{id}](https://developers.sedna.com/reference/updatecontact.md): Update a contact  Required API Permissions: CONTACT_WRITE
+- [/2019-01-01/contact/{id}/comment](https://developers.sedna.com/reference/deletecontactcomment.md): Delete contact comment; unsupported at the time  Required API Permissions: CONTACT_DELETE
+- [/2019-01-01/contact/{id}/comment](https://developers.sedna.com/reference/getcontactcomments.md): Get all comments for a contact  Required API Permissions: CONTACT_READ
+- [/2019-01-01/contact/{id}/comment](https://developers.sedna.com/reference/addcontactcomment.md): Add comment to the contact  Required API Permissions: CONTACT_WRITE
+- [/2019-01-01/contact/{id}/comment](https://developers.sedna.com/reference/updatecontactcomment.md): Update contact comment; unsupported at the time  Required API Permissions: CONTACT_WRITE
+- [/2019-01-01/contact/{id}/relationships/contact-group](https://developers.sedna.com/reference/getcontactgrouprelationships.md): Fetch a contact's group relationship  Required API Permissions: CONTACT_READ
+- [/2019-01-01/contact/{id}/relationships/team](https://developers.sedna.com/reference/getcontactteamrelationships.md): Fetch a contact's team relationships  Required API Permissions: CONTACT_READ
+- [/2019-01-01/document/{id}](https://developers.sedna.com/reference/getdocumentdetails.md): Get details of the document  Required API Permissions: DOCUMENT_READ
+- [/2019-01-01/download/document/{id}](https://developers.sedna.com/reference/downloaddocument.md): Download a message attachment a.k.a. document.  Required API Permissions: DOCUMENT_READ
+- [/2019-01-01/download/message/{id}](https://developers.sedna.com/reference/downloadmessage.md): Download the source file, usually .eml, of a message.  Required API Permissions: MESSAGE_READ
+- [/2019-01-01/download/template/document/{id}](https://developers.sedna.com/reference/downloadtemplatedocument.md): Download a template attachment (document)  Required API Permissions: DOCUMENT_READ
+- [/2019-01-01/message](https://developers.sedna.com/reference/createmessagedraft.md): Create a draft message  Required API Permissions: MESSAGE_WRITE
+- [/2019-01-01/message/quarantine](https://developers.sedna.com/reference/listquarantinedmessages.md): List messages that have been quarantined/released.  Required API Permissions: QUARANTINED_MESSAGE_READ
+- [/2019-01-01/message/send](https://developers.sedna.com/reference/sendnewmessage-1.md): Create and send a message  Required API Permissions: MESSAGE_WRITE, MESSAGE_READ
+- [/2019-01-01/message/{id}](https://developers.sedna.com/reference/getmessage.md): Fetch a message  Required API Permissions: MESSAGE_READ
+- [/2019-01-01/message/{id}](https://developers.sedna.com/reference/updatemessagedraft.md): Update a draft message  Required API Permissions: MESSAGE_WRITE, MESSAGE_READ
+- [/2019-01-01/message/{id}/assignment](https://developers.sedna.com/reference/getmessageassignments.md): Fetch a message's related assignments  Required API Permissions: MESSAGE_READ
+- [/2019-01-01/message/{id}/category-tag](https://developers.sedna.com/reference/getmessagecategorytags.md): Fetch a message's related category tags  Required API Permissions: MESSAGE_READ
+- [/2019-01-01/message/{id}/comment](https://developers.sedna.com/reference/getmessagecomments.md): Get all comments for the message  Required API Permissions: COMMENT_READ
+- [/2019-01-01/message/{id}/document](https://developers.sedna.com/reference/getmessagedocuments.md): Fetch a message's documents  Required API Permissions: MESSAGE_READ
+- [/2019-01-01/message/{id}/document](https://developers.sedna.com/reference/adddocumenttomessage.md): Adds an attachment to a message. Returns an S3 Upload URL that will be valid for 5 minutes. This link can be used to upload the content of the file. If a base64 body is provided this link will already contain the content of the file.   Required API Permissions: MESSAGE_READ, MESSAGE_WRITE
+- [/2019-01-01/message/{id}/job-reference](https://developers.sedna.com/reference/getmessagejobreferences.md): Fetch a message's related job references  Required API Permissions: MESSAGE_READ
+- [/2019-01-01/message/{id}/quarantine](https://developers.sedna.com/reference/quarantinemessage.md): Quarantine a message from users until it is released.  Required API Permissions: QUARANTINED_MESSAGE_WRITE
+- [/2019-01-01/message/{id}/quarantine/event](https://developers.sedna.com/reference/getmessagequarantineevents.md): List quarantine and release events of a message.  Required API Permissions: QUARANTINED_MESSAGE_READ, EVENT_READ
+- [/2019-01-01/message/{id}/relationships/category-tag](https://developers.sedna.com/reference/removemessagecategorytags.md): Remove tags from a message's category tag relationships  Required API Permissions: MESSAGE_READ, MESSAGE_DELETE
+- [/2019-01-01/message/{id}/relationships/category-tag](https://developers.sedna.com/reference/getmessagecategorytagrelationships.md): Fetch a message's category tag relationships  Required API Permissions: MESSAGE_READ
+- [/2019-01-01/message/{id}/relationships/category-tag](https://developers.sedna.com/reference/replacemessagecategorytags.md): Replace teams to a message's category tag relationships (Note: Forbidden)  Required API Permissions: MESSAGE_READ, MESSAGE_WRITE
+- [/2019-01-01/message/{id}/relationships/category-tag](https://developers.sedna.com/reference/addmessagecategorytags.md): Add tags to a message's category tag relationships  Required API Permissions: MESSAGE_READ, MESSAGE_WRITE
+- [/2019-01-01/message/{id}/relationships/document](https://developers.sedna.com/reference/getmessagedocumentrelationships.md): Fetch a message's document relationships  Required API Permissions: MESSAGE_READ
+- [/2019-01-01/message/{id}/relationships/job-reference](https://developers.sedna.com/reference/deletemessagejobreferences.md): Remove job references from a message's job reference relationships  Required API Permissions: MESSAGE_READ, MESSAGE_DELETE
+- [/2019-01-01/message/{id}/relationships/job-reference](https://developers.sedna.com/reference/getmessagejobreferencerelationships.md): Fetch a message's job reference relationships  Required API Permissions: MESSAGE_READ
+- [/2019-01-01/message/{id}/relationships/job-reference](https://developers.sedna.com/reference/replacemessagejobreferences.md): Replace teams to a message's job reference relationships (Note: Forbidden)  Required API Permissions: MESSAGE_READ, MESSAGE_WRITE
+- [/2019-01-01/message/{id}/relationships/job-reference](https://developers.sedna.com/reference/addmessagejobreferences.md): Add job references to a message's job reference relationships  Required API Permissions: MESSAGE_READ, MESSAGE_WRITE
+- [/2019-01-01/message/{id}/relationships/team](https://developers.sedna.com/reference/deletemessageteams.md): Remove teams from a message's team relationships  Required API Permissions: MESSAGE_READ, MESSAGE_DELETE
+- [/2019-01-01/message/{id}/relationships/team](https://developers.sedna.com/reference/getmessageteamrelationships.md): Fetch a message's team relationships  Required API Permissions: MESSAGE_READ, MESSAGE_DELETE
+- [/2019-01-01/message/{id}/relationships/team](https://developers.sedna.com/reference/replacemessageteams.md): Replace teams to a message's team relationships (Note: Forbidden)  Required API Permissions: MESSAGE_READ, MESSAGE_WRITE
+- [/2019-01-01/message/{id}/relationships/team](https://developers.sedna.com/reference/addmessageteams.md): Add teams to a message's team relationships  Required API Permissions: MESSAGE_READ, MESSAGE_WRITE
+- [/2019-01-01/message/{id}/send](https://developers.sedna.com/reference/updateandsendmessagepatch.md): Update and send a message  Required API Permissions: MESSAGE_WRITE, MESSAGE_READ
+- [/2019-01-01/message/{id}/send](https://developers.sedna.com/reference/sendmessage.md): Send a message  Required API Permissions: MESSAGE_WRITE, MESSAGE_READ
+- [/2019-01-01/message/{id}/team](https://developers.sedna.com/reference/getmessageteams.md): Fetch a message's related teams  Required API Permissions: MESSAGE_READ
+- [/2019-01-01/download/message/{id}/attachments/zip](https://developers.sedna.com/reference/downloadallmessageattachments.md): Download all attachments of a message as a zip file, using presigned S3 link if available or generating it otherwise.  Required API Permissions: DOCUMENT_READ
+- [/2019-01-01/message/{id}/relationships/assignment](https://developers.sedna.com/reference/addassignments.md): Add people to a message's assignment relationships  Required API Permissions: MESSAGE_WRITE
+- [/2019-01-01/event](https://developers.sedna.com/reference/getevents.md): Fetch a collection of events  Required API Permissions: EVENT_READ
+- [/2019-01-01/event/latest](https://developers.sedna.com/reference/getlatestevent.md): Fetch the latest event  Required API Permissions: EVENT_READ
+- [/2019-01-01/event/{id}](https://developers.sedna.com/reference/getevent.md): Fetch an event  Required API Permissions: EVENT_READ
+- [/2019-01-01/event/{id}/category-tag](https://developers.sedna.com/reference/geteventcategorytag.md): Fetch an event's related category tag  Required API Permissions: EVENT_READ, CATEGORYTAG_READ
+- [/2019-01-01/event/{id}/job-reference](https://developers.sedna.com/reference/geteventjobreference.md): Fetch the job reference related to the event  Required API Permissions: EVENT_READ, JOBREFERENCE_READ
+- [/2019-01-01/event/{id}/message](https://developers.sedna.com/reference/geteventmessage.md): Fetch the message related to the event  Required API Permissions: EVENT_READ, MESSAGE_READ
+- [/2019-01-01/event/{id}/relationships/category-tag](https://developers.sedna.com/reference/geteventcategorytagrelationships.md): Fetch an event's category tag relationship  Required API Permissions: EVENT_READ
+- [/2019-01-01/event/{id}/relationships/job-reference](https://developers.sedna.com/reference/geteventjobreferencerelationships.md): Fetch the job reference relationship related to the event  Required API Permissions: EVENT_READ
+- [/2019-01-01/event/{id}/relationships/message](https://developers.sedna.com/reference/geteventmessagerelationships.md): Fetch the message relationship related to the event  Required API Permissions: EVENT_READ
+- [/2019-01-01/job-reference](https://developers.sedna.com/reference/getjobreferences.md): Fetch a collection of job references  Required API Permissions: JOBREFERENCE_READ
+- [/2019-01-01/job-reference](https://developers.sedna.com/reference/createjobreference.md): Create a job reference  Required API Permissions: JOBREFERENCE_WRITE
+- [/2019-01-01/job-reference/{id}](https://developers.sedna.com/reference/deletejobreference.md): Delete a job reference  Required API Permissions: JOBREFERENCE_DELETE
+- [/2019-01-01/job-reference/{id}](https://developers.sedna.com/reference/getjobreference.md): Fetch a job reference  Required API Permissions: JOBREFERENCE_READ
+- [/2019-01-01/job-reference/{id}](https://developers.sedna.com/reference/updatejobreference.md): Update a job reference  Required API Permissions: JOBREFERENCE_WRITE
+- [/2019-01-01/job-reference/{id}/message](https://developers.sedna.com/reference/getmessageswithjobreference.md): Fetches a collection of messages that have the given job reference applied. DEPRECATED: please use /{id}/messageV2 instead.  Required API Permissions: JOBREFERENCE_READ, MESSAGE_READ
+- [/2019-01-01/job-reference/{id}/messageV2](https://developers.sedna.com/reference/getmessageswithjobreferencev2.md): Fetch a collection of messages that have the given job reference applied  Required API Permissions: JOBREFERENCE_READ, MESSAGE_READ
+- [/2019-01-01/job-reference/{id}/relationships/message](https://developers.sedna.com/reference/removejobreferencefrommessages.md): Delete messages from a job reference's message relationships  Required API Permissions: JOBREFERENCE_WRITE
+- [/2019-01-01/job-reference/{id}/relationships/message](https://developers.sedna.com/reference/getjobreferencemessagerelationships.md): Fetch a job reference's message relationships. DEPRECATED: please use /{id}/messageV2 instead.  Required API Permissions: JOBREFERENCE_READ, MESSAGE_READ
+- [/2019-01-01/job-reference/{id}/relationships/message](https://developers.sedna.com/reference/addjobreferencetomessages.md): Add messages to a job reference's message relationships  Required API Permissions: JOBREFERENCE_WRITE
+- [/2019-01-01/job-reference/{id}/relationships/team](https://developers.sedna.com/reference/deletejobreferenceteams.md): Remove teams from a job reference's team relationships  Required API Permissions: JOBREFERENCE_WRITE
+- [/2019-01-01/job-reference/{id}/relationships/team](https://developers.sedna.com/reference/getjobreferenceteamrelationships.md): Fetch a job reference's team relationships  Required API Permissions: JOBREFERENCE_READ
+- [/2019-01-01/job-reference/{id}/relationships/team](https://developers.sedna.com/reference/replacejobreferenceteams.md): Replace teams in a job reference's team relationships  Required API Permissions: JOBREFERENCE_WRITE
+- [/2019-01-01/job-reference/{id}/relationships/team](https://developers.sedna.com/reference/addjobreferenceteams.md): Add teams to a job reference's team relationships  Required API Permissions: JOBREFERENCE_WRITE
+- [/2019-01-01/job-reference/{id}/relationships/user](https://developers.sedna.com/reference/removejobreferenceuserrelationships.md): Unsubscribe users from a job reference  Required API Permissions: JOBREFERENCE_WRITE
+- [/2019-01-01/job-reference/{id}/relationships/user](https://developers.sedna.com/reference/getjobreferenceuserrelationships.md): Fetch a job reference's user relationships  Required API Permissions: JOBREFERENCE_READ
+- [/2019-01-01/keyword](https://developers.sedna.com/reference/getkeywords.md): Fetch all keywords  Required API Permissions: KEYWORD_READ
+- [/2019-01-01/keyword](https://developers.sedna.com/reference/createkeyword.md): Create a keyword with at least 1 follower  Required API Permissions: KEYWORD_WRITE
+- [/2019-01-01/keyword/{id}](https://developers.sedna.com/reference/deletekeyword.md): Delete Keyword and user-keyword relationships  Required API Permissions: KEYWORD_DELETE
+- [/2019-01-01/keyword/{id}](https://developers.sedna.com/reference/getkeyword.md): Fetch a single keyword  Required API Permissions: KEYWORD_READ
+- [/2019-01-01/keyword/{id}/relationships/user](https://developers.sedna.com/reference/removekeywordusers.md): Remove users relationships to keyword  Required API Permissions: KEYWORD_WRITE
+- [/2019-01-01/keyword/{id}/relationships/user](https://developers.sedna.com/reference/addkeywordusers.md): Add user relationship to keyword  Required API Permissions: KEYWORD_WRITE
+- [/2019-01-01/saved-search](https://developers.sedna.com/reference/getsavedsearches.md): Get list of saved searches.  Required API Permissions: SAVEDSEARCH_READ
+- [/2019-01-01/saved-search](https://developers.sedna.com/reference/createsavedsearch.md): Create saved search.  Required API Permissions: SAVEDSEARCH_WRITE
+- [/2019-01-01/saved-search/{id}](https://developers.sedna.com/reference/deletesavedsearch.md): Delete a saved search  Required API Permissions: SAVEDSEARCH_DELETE
+- [/2019-01-01/saved-search/{id}](https://developers.sedna.com/reference/updatesavedsearch.md): Update saved search  Required API Permissions: SAVEDSEARCH_WRITE
+- [/2019-01-01/team](https://developers.sedna.com/reference/getall.md): Fetch all teams  Required API Permissions: TEAM_READ
+- [/2019-01-01/team](https://developers.sedna.com/reference/createteam.md): Create a team  Required API Permissions: TEAM_WRITE
+- [/2019-01-01/team/inboxesWithSoloInboxLimitReached](https://developers.sedna.com/reference/getinboxeswithsoloinboxlimitreached.md): Fetch team ids for teams that reached solo inbox limit  Required API Permissions: TEAM_READ
+- [/2019-01-01/team/{id}](https://developers.sedna.com/reference/get.md): Fetch a team  Required API Permissions: TEAM_READ
+- [/2019-01-01/team/{id}](https://developers.sedna.com/reference/patchteam.md): Update a team  Required API Permissions: TEAM_WRITE
+- [/2019-01-01/team/{id}/category-tag](https://developers.sedna.com/reference/getteamcategorytags.md): Fetch all category tags related to a team  Required API Permissions: TEAM_READ, CATEGORYTAG_READ
+- [/2019-01-01/team/{id}/relationships/category-tag](https://developers.sedna.com/reference/getteamcategorytagrelationships.md): Fetch all category tags relationships to a team  Required API Permissions: TEAM_READ
+- [/2019-01-01/team/{id}/relationships/user](https://developers.sedna.com/reference/removeteamuserrelationships.md): Remove users from a team  Required API Permissions: TEAM_WRITE
+- [/2019-01-01/team/{id}/relationships/user](https://developers.sedna.com/reference/getteamuserrelationships.md): Fetch all users in a team  Required API Permissions: TEAM_READ
+- [/2019-01-01/team/{id}/relationships/user](https://developers.sedna.com/reference/addteamuserrelationships.md): Add users to a team  Required API Permissions: TEAM_WRITE
+- [/2019-01-01/team/{id}/relationships/user/count](https://developers.sedna.com/reference/getteamusercount.md): Fetch count of all users in a team  Required API Permissions: TEAM_READ
+- [/2019-01-01/team/{id}/disable-send-users](https://developers.sedna.com/reference/getteamdisablesendusers.md): Fetch the users that have sending disabled for the given team.  **This is an enterprise feature.** If you'd like to learn more, please reach out to your account representative.   Required API Permissions: TEAM_READ
+- [/2019-01-01/team/{id}/relationships/disable-send-users](https://developers.sedna.com/reference/removeteamdisablesendusersrelationships.md): Turn off disable sending for a user for the given team. (ie. Enable sending)  **This is an enterprise feature.** If you'd like to learn more, please reach out to your account representative.   Required API Permissions: TEAM_WRITE
+- [/2019-01-01/team/{id}/relationships/disable-send-users](https://developers.sedna.com/reference/getteamdisablesendusersrelationships.md): Fetch the user relationships that have sending disabled for the given team.  **This is an enterprise feature.** If you'd like to learn more, please reach out to your account representative.   Required API Permissions: TEAM_READ
+- [/2019-01-01/team/{id}/relationships/disable-send-users](https://developers.sedna.com/reference/addteamdisablesendusersrelationships.md): Disable sending for a user for the given team. Sending cannot be disabled for any users who have this team as their default team.  **This is an enterprise feature.** If you'd like to learn more, please reach out to your account representative.   Required API Permissions: TEAM_WRITE
+- [/2019-01-01/template](https://developers.sedna.com/reference/list.md): null  Required API Permissions: TEMPLATE_READ
+- [/2019-01-01/template/{id}](https://developers.sedna.com/reference/find_1.md): Fetch a template  Required API Permissions: TEMPLATE_READ
+- [/2019-01-01/user](https://developers.sedna.com/reference/list_1.md): Fetch a collection of users  Required API Permissions: USER_READ
+- [/2019-01-01/user](https://developers.sedna.com/reference/create.md): Create a user  Required API Permissions: USER_WRITE
+- [/2019-01-01/user/{id}](https://developers.sedna.com/reference/delete.md): Delete a user  Required API Permissions: USER_DELETE
+- [/2019-01-01/user/{id}](https://developers.sedna.com/reference/find_2.md): Fetch a user  Required API Permissions: USER_READ
+- [/2019-01-01/user/{id}](https://developers.sedna.com/reference/update.md): Update a user  Required API Permissions: USER_WRITE
+- [/2019-01-01/user/{id}/default-team](https://developers.sedna.com/reference/getuserdefaultteam.md): Retrieve a user's primary/default team  Required API Permissions: USER_READ, TEAM_READ
+- [/2019-01-01/user/{id}/job-reference](https://developers.sedna.com/reference/getuserjobreferencesubscriptions.md): Get a users job reference subscriptions  Required API Permissions: USER_READ, JOBREFERENCE_READ
+- [/2019-01-01/user/{id}/notification-device](https://developers.sedna.com/reference/getusernotificationdevices.md): Fetch a user's related notification devices  Required API Permissions: USER_READ
+- [/2019-01-01/user/{id}/relationships/default-team](https://developers.sedna.com/reference/getuserdefaultteamrelationship.md): Retrieve relationship information for a user's default team - the default team is always 'watched'  Required API Permissions: USER_READ
+- [/2019-01-01/user/{id}/relationships/default-team](https://developers.sedna.com/reference/setuserdefaultteamrelationship.md): Set a user's default or primary team  Required API Permissions: USER_WRITE
+- [/2019-01-01/user/{id}/relationships/job-reference](https://developers.sedna.com/reference/unsubscribetojobreferences.md): Unsubscribe a user to a job reference  Required API Permissions: USER_WRITE
+- [/2019-01-01/user/{id}/relationships/job-reference](https://developers.sedna.com/reference/getuserjobreferencesubscriptionrelationships.md): Get a users job reference relationships  Required API Permissions: USER_READ
+- [/2019-01-01/user/{id}/relationships/job-reference](https://developers.sedna.com/reference/subscribetojobreferences.md): Subscribe a user to a job reference  Required API Permissions: USER_WRITE
+- [/2019-01-01/user/{id}/relationships/keyword](https://developers.sedna.com/reference/unsubscribeuserfromkeyword.md): Delete keyword relationships to user  Required API Permissions: USER_WRITE
+- [/2019-01-01/user/{id}/relationships/keyword](https://developers.sedna.com/reference/getuserkeywordrelationships.md): Get user's keyword relationships  Required API Permissions: USER_READ
+- [/2019-01-01/user/{id}/relationships/keyword](https://developers.sedna.com/reference/subscribeusertokeyword.md): Add keyword relationships to user  Required API Permissions: USER_WRITE
+- [/2019-01-01/user/{id}/relationships/notification-device](https://developers.sedna.com/reference/getusernotificationdevicerelationships.md): Fetch a users's notification device relationships  Required API Permissions: USER_WRITE
+- [/2019-01-01/user/{id}/relationships/role](https://developers.sedna.com/reference/removeuserrolerelationships.md): Remove roles from User  Required API Permissions: USER_WRITE
+- [/2019-01-01/user/{id}/relationships/role](https://developers.sedna.com/reference/adduserrolerelationships.md): Add Roles to User  Required API Permissions: USER_WRITE
+- [/2019-01-01/user/{id}/relationships/team](https://developers.sedna.com/reference/removeuserteamrelationships.md): Remove user from teams  Required API Permissions: USER_WRITE
+- [/2019-01-01/user/{id}/relationships/team](https://developers.sedna.com/reference/getuserteamrelationships.md): Fetch a users's team relationships  Required API Permissions: USER_READ
+- [/2019-01-01/user/{id}/relationships/team](https://developers.sedna.com/reference/adduserteamrelationships.md): Add Teams to User  Required API Permissions: USER_WRITE
+- [/2019-01-01/user/{id}/relationships/watched-teams](https://developers.sedna.com/reference/removeuserwatchedteamsrelationships.md): Remove a watched team or teams from a user's watched list - the user must be able to access the teams already  Required API Permissions: USER_WRITE
+- [/2019-01-01/user/{id}/relationships/watched-teams](https://developers.sedna.com/reference/getuserwatchedteamsrelationships.md): Retrieve relationship data for a user's watched teams - watched teams' mail appears in a user's inbox  Required API Permissions: USER_READ
+- [/2019-01-01/user/{id}/relationships/watched-teams](https://developers.sedna.com/reference/adduserwatchedteamsrelationships.md): Add a watched team to a user - the user must already be able to access the team  Required API Permissions: USER_WRITE
+- [/2019-01-01/user/{id}/team](https://developers.sedna.com/reference/getuserteams.md): Fetch a user's related teams  Required API Permissions: USER_READ, TEAM_READ
+- [/2019-01-01/user/{id}/watched-teams](https://developers.sedna.com/reference/getuserwatchedteams.md): Retrieve the teams the user is currently 'watching' - watched teams' mail will appear in the user's inbox  Required API Permissions: USER_READ, TEAM_READ
+- [/2019-01-01/user/{id}/disable-send-teams](https://developers.sedna.com/reference/getuserdisablesendteams.md): Fetch the teams that have sending disabled for the given user.  **This is an enterprise feature.** If you'd like to learn more, please reach out to your account representative.       Required API Permissions: USER_READ, TEAM_READ
+- [/2019-01-01/user/{id}/relationships/disable-send-teams](https://developers.sedna.com/reference/removeuserdisablesendteamsrelationships.md): Turn off disable sending for a team for the given user. (ie. Enable sending)  **This is an enterprise feature.** If you'd like to learn more, please reach out to your account representative.   Required API Permissions: USER_WRITE
+- [/2019-01-01/user/{id}/relationships/disable-send-teams](https://developers.sedna.com/reference/getuserdisablesendteamsrelationships.md): Fetch the team relationships that have sending disabled for the given user.  **This is an enterprise feature.** If you'd like to learn more, please reach out to your account representative.       Required API Permissions: USER_READ
+- [/2019-01-01/user/{id}/relationships/disable-send-teams](https://developers.sedna.com/reference/adduserdisablesendteamsrelationships.md): Disable sending for a team for the given user. Sending cannot be disabled for a user's default team.  **This is an enterprise feature.** If you'd like to learn more, please reach out to your account representative.   Required API Permissions: USER_WRITE
+- [/2019-01-01/workflow](https://developers.sedna.com/reference/getworkflows.md): Fetch all WorkFlows belonging to a tenant  Required API Permissions: WORKFLOW_READ
+- [/2019-01-01/workflow](https://developers.sedna.com/reference/createworkflow.md): Create a workflow  Required API Permissions: WORKFLOW_WRITE
+- [/2019-01-01/workflow/{id}](https://developers.sedna.com/reference/deleteworkflow.md): Delete a Workflow  Required API Permissions: WORKFLOW_DELETE
+- [/2019-01-01/workflow/{id}](https://developers.sedna.com/reference/getworkflow.md): Fetch a single Workflow from its id  Required API Permissions: WORKFLOW_READ
+- [/2019-01-01/workflow/{id}](https://developers.sedna.com/reference/updateworkflow.md): Update a Workflow  Required API Permissions: WORKFLOW_WRITE
+- [/oauth/token](https://developers.sedna.com/reference/createoauthtokenoriginal.md): Get OAUTH token for authentication in the Sedna API using Header entries or form data

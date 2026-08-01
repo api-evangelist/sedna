@@ -1,0 +1,29 @@
+generated: '2026-07-21'
+method: searched
+source: https://developers.sedna.com/reference
+versioning:
+  scheme: date-in-path
+  current: '2019-01-01'
+  docs: https://developers.sedna.com/reference
+deprecation:
+  policy: >-
+    Individual operations are marked DEPRECATED in their reference descriptions
+    with a pointer to the replacement (typically a V2 endpoint). No dated sunset
+    policy is published.
+  sunset_header: false
+sla:
+  notes: No public SLA/uptime target document found.
+status_page: https://status.sedna.com
+deprecated_operations:
+  - operation: getMessagesWithCategoryTag
+    replacement: getMessagesWithCategoryTagV2
+    source: openapi/sedna-openapi.json
+  - operation: getCategoryTagMessageRelationships
+    replacement: getMessagesWithCategoryTagV2
+    source: openapi/sedna-openapi.json
+  - operation: getMessagesWithJobReference
+    replacement: getMessagesWithJobReferenceV2
+    source: openapi/sedna-openapi.json
+  - operation: getJobReferenceMessageRelationships
+    replacement: getMessagesWithJobReferenceV2
+    source: openapi/sedna-openapi.json

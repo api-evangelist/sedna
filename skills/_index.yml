@@ -1,0 +1,16 @@
+generated: '2026-07-21'
+method: generated
+source: openapi/sedna-openapi.json
+skills:
+  - file: sedna-send-message.md
+    name: Send an email message
+    api: openapi/sedna-openapi.json
+    operations: [createMessageDraft, updateMessageDraft, sendNewMessage, sendMessage, getMessage]
+  - file: sedna-tag-and-route-message.md
+    name: Tag and route a message to a job
+    api: openapi/sedna-openapi.json
+    operations: [getCategoryTags, createCategoryTag, addCategoryTagToMessages, getJobReferences, createJobReference, addJobReferenceToMessages]
+  - file: sedna-poll-events.md
+    name: Poll the event stream
+    api: openapi/sedna-openapi.json
+    operations: [getEvents, getLatestEvent, getEvent, getEventMessage, getEventJobReference, getEventCategoryTag]

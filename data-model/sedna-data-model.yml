@@ -1,0 +1,67 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/sedna-openapi.json
+# Entity-relationship graph derived from OpenAPI paths, JSON:API /relationships/
+# sub-resources, and related-resource endpoints.
+entities:
+  - name: Message
+    description: An email message (draft or sent) — the core object of the Sedna platform.
+  - name: Contact
+    description: An address-book contact.
+  - name: ContactGroup
+    description: A named grouping of contacts.
+  - name: Team
+    description: A shared inbox / team; users watch teams to receive mail.
+  - name: User
+    description: A platform user with roles, subscriptions and notification devices.
+  - name: JobReference
+    description: A job/deal reference used to tag and route messages.
+  - name: CategoryTag
+    description: A tag applied to messages, teams and events.
+  - name: Event
+    description: An activity/audit event linked to messages, job references and tags.
+  - name: Document
+    description: A message attachment / downloadable document.
+  - name: Comment
+    description: A comment on a message or contact.
+  - name: Keyword
+    description: A watched keyword with user subscriptions.
+  - name: SavedSearch
+    description: A stored search definition.
+  - name: Template
+    description: A message template (read-only via API).
+  - name: Workflow
+    description: An automation workflow belonging to a tenant.
+  - name: Company
+    description: Tenant/company-level configuration (/company/me).
+  - name: Vessel
+    description: A chartering (Pulse) vessel record.
+relationships:
+  - { from: Message, to: Team, type: has_many, via: relationships/team }
+  - { from: Message, to: CategoryTag, type: has_many, via: relationships/category-tag }
+  - { from: Message, to: JobReference, type: has_many, via: relationships/job-reference }
+  - { from: Message, to: Document, type: has_many, via: relationships/document }
+  - { from: Message, to: Comment, type: has_many, via: comment }
+  - { from: Message, to: User, type: has_many, via: relationships/assignment }
+  - { from: Contact, to: ContactGroup, type: has_many, via: relationships/contact-group }
+  - { from: Contact, to: Team, type: has_many, via: relationships/team }
+  - { from: Contact, to: Comment, type: has_many, via: comment }
+  - { from: ContactGroup, to: Contact, type: has_many, via: relationships/contact }
+  - { from: JobReference, to: Message, type: has_many, via: messageV2 }
+  - { from: JobReference, to: Team, type: has_many, via: relationships/team }
+  - { from: JobReference, to: User, type: has_many, via: relationships/user }
+  - { from: CategoryTag, to: Message, type: has_many, via: messageV2 }
+  - { from: CategoryTag, to: Team, type: has_many, via: relationships/team }
+  - { from: Event, to: Message, type: belongs_to, via: message }
+  - { from: Event, to: JobReference, type: belongs_to, via: job-reference }
+  - { from: Event, to: CategoryTag, type: belongs_to, via: category-tag }
+  - { from: Team, to: User, type: has_many, via: relationships/user }
+  - { from: Team, to: CategoryTag, type: has_many, via: category-tag }
+  - { from: User, to: Team, type: has_many, via: relationships/team }
+  - { from: User, to: Team, type: has_one, via: default-team }
+  - { from: User, to: Team, type: has_many, via: watched-teams }
+  - { from: User, to: JobReference, type: has_many, via: relationships/job-reference }
+  - { from: User, to: Keyword, type: has_many, via: relationships/keyword }
+  - { from: User, to: NotificationDevice, type: has_many, via: relationships/notification-device }
+  - { from: User, to: Role, type: has_many, via: relationships/role }
+  - { from: Keyword, to: User, type: has_many, via: relationships/user }

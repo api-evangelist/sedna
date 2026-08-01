@@ -1,0 +1,43 @@
+generated: '2026-07-21'
+method: searched
+status: published
+source: https://developers.sedna.com/mcp
+server:
+  name: sedna
+  transport: http
+  url: https://developers.sedna.com/mcp
+  authentication: required
+  notes: >-
+    ReadMe-hosted MCP server for the Sedna developer documentation and API.
+    A GET returns "This URL can only be accessed with a MCP client"; an
+    unauthenticated JSON-RPC initialize returns {"error":{"code":-32001,
+    "message":"Authorization required"}}. Exposes the Sedna API reference
+    (OpenAPI 2019-01-01) to MCP clients. Underlying API auth is OAuth 2.0
+    client-credentials (see authentication/sedna-authentication.yml).
+# Standard ReadMe MCP tool surface (documentation-index reserved tools observed
+# on the portal): list-specs, list-endpoints, get-endpoint, search-endpoints,
+# search, get-server-variables, execute-request. Candidate per-operation tools
+# below are DERIVED from the harvested OpenAPI operations for reference.
+tools_source: openapi/sedna-openapi.json
+candidate_tools:
+  - name: getMessage
+    description: Fetch a message
+    source_operation: openapi/sedna-openapi.json#getMessage
+  - name: createMessageDraft
+    description: Create a draft message
+    source_operation: openapi/sedna-openapi.json#createMessageDraft
+  - name: sendNewMessage
+    description: Create and send a message
+    source_operation: openapi/sedna-openapi.json#sendNewMessage
+  - name: getContacts
+    description: Get many contacts
+    source_operation: openapi/sedna-openapi.json#getContacts
+  - name: getJobReferences
+    description: Fetch a collection of job references
+    source_operation: openapi/sedna-openapi.json#getJobReferences
+  - name: getEvents
+    description: Fetch a collection of events
+    source_operation: openapi/sedna-openapi.json#getEvents
+  - name: getCategoryTags
+    description: Fetch a collection of category tags
+    source_operation: openapi/sedna-openapi.json#getCategoryTags

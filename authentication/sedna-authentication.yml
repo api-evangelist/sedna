@@ -1,0 +1,28 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/sedna-openapi.json
+summary:
+  types:
+  - http
+  - oauth2
+  oauth2_flows:
+  - clientCredentials
+schemes:
+- name: Basic
+  type: http
+  scheme: basic
+  description: The basic auth scheme only requires the API-Specific username/password to be
+    set.
+  sources:
+  - openapi/sedna-openapi.json
+- name: OAuth
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://{tenant}.sednanetwork.com/platform/oauth/token
+    scopes: 53
+  description: This API prefers OAuth 2 with client credentials flow. You can create your credentials
+    in the <a href='https://{tenant}.sednanetwork.com/platform/settings/api-credential-management'>Api
+    Credential Management page</a>.
+  sources:
+  - openapi/sedna-openapi.json
