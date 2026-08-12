@@ -216,6 +216,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/sedna-openapi-overlay.yaml
 - type: DeveloperPortal
   url: https://developers.sedna.com/
 - type: Documentation
