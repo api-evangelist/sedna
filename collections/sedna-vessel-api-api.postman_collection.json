@@ -1,0 +1,171 @@
+{
+  "item": [
+    {
+      "id": "9fa7f501-ccd5-442c-b842-1d93012f3db7",
+      "name": "Vessel API",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7807f66a-f164-4567-8651-dd1ff0e8862c",
+          "name": "create Vessel",
+          "request": {
+            "name": "create Vessel",
+            "description": {
+              "content": "null\n\nRequired API Permissions: CHARTERING_WRITE",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "chartering",
+                "vessel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"commercialOperator\": \"<string>\",\n    \"customColumns\": {\n      \"key_0\": {\n        \"link\": \"<string>\",\n        \"popover\": \"<string>\",\n        \"value\": \"<object>\"\n      },\n      \"key_1\": {\n        \"link\": \"<string>\",\n        \"popover\": \"<string>\",\n        \"value\": \"<object>\"\n      },\n      \"key_2\": {\n        \"link\": \"<string>\",\n        \"popover\": \"<string>\",\n        \"value\": \"<object>\"\n      },\n      \"key_3\": {\n        \"link\": \"<string>\",\n        \"popover\": \"<string>\",\n        \"value\": \"<object>\"\n      }\n    },\n    \"extraCapacityBale\": \"<double>\",\n    \"extraCapacityGas\": \"<double>\",\n    \"extraCapacityGrain\": \"<double>\",\n    \"extraCapacityLiquid\": \"<double>\",\n    \"extraCapacityOre\": \"<double>\",\n    \"extraCapacityTeu\": \"<double>\",\n    \"extraCommercialOperator\": \"<string>\",\n    \"extraComputedBeam\": \"<double>\",\n    \"extraDeadWeightTonnage\": \"<double>\",\n    \"extraDesignSuperStructureCo2\": \"<boolean>\",\n    \"extraDesignSuperStructureGearless\": \"<boolean>\",\n    \"extraDesignSuperStructureHullDesign\": \"<string>\",\n    \"extraDesignSuperStructureHullType\": \"<string>\",\n    \"extraDimensionBreadthExtreme\": \"<double>\",\n    \"extraDimensionDraft\": \"<double>\",\n    \"extraDimensionLoa\": \"<double>\",\n    \"extraDimensionTpcmi\": \"<double>\",\n    \"extraFlag\": \"<string>\",\n    \"extraGrossTonnage\": \"<double>\",\n    \"extraHatchesCount\": \"<integer>\",\n    \"extraHoldsCount\": \"<integer>\",\n    \"extraLiftingGear\": \"<string>\",\n    \"extraMaxSwl\": \"<double>\",\n    \"extraMmsi\": \"<string>\",\n    \"extraNetTonnage\": \"<double>\",\n    \"extraThirdpartyOperator\": \"<string>\",\n    \"extraType\": \"<string>\",\n    \"extraYearBuilt\": \"<string>\",\n    \"id\": \"<string>\",\n    \"imo\": \"<string>\",\n    \"lloydsBeneficialOwner\": \"<string>\",\n    \"lloydsCapacityPumpCubic\": \"<double>\",\n    \"lloydsCapacityTeu14t\": \"<double>\",\n    \"lloydsDecks\": \"<integer>\",\n    \"lloydsDesignSuperStructureReeferPlugs\": \"<integer>\",\n    \"lloydsDesignSuperStructureSpeed\": \"<double>\",\n    \"lloydsDesignSuperStructureStrengthened\": \"<boolean>\",\n    \"lloydsPanamaNt\": \"<double>\",\n    \"lloydsRegisteredOwner\": \"<string>\",\n    \"lloydsSuezNt\": \"<double>\",\n    \"lloydsTankerAmmonia\": \"<boolean>\",\n    \"lloydsTankerCoated\": \"<string>\",\n    \"lloydsTankerCoil\": \"<boolean>\",\n    \"lloydsTankerCow\": \"<boolean>\",\n    \"lloydsTankerEthylene\": \"<boolean>\",\n    \"lloydsTankerGasMaxPressure\": \"<double>\",\n    \"lloydsTankerGasMinPressure\": \"<double>\",\n    \"lloydsTankerGrades\": \"<integer>\",\n    \"lloydsTankerIgs\": \"<boolean>\",\n    \"lloydsTankerImoRating1\": \"<string>\",\n    \"lloydsTankerImoRating2\": \"<string>\",\n    \"lloydsTankerImoRating3\": \"<string>\",\n    \"lloydsTankerLngContainment\": \"<boolean>\",\n    \"lloydsTankerPressurised\": \"<boolean>\",\n    \"lloydsTankerRefrigerated\": \"<boolean>\",\n    \"lloydsTankerSbt\": \"<boolean>\",\n    \"lloydsTankerSemiPressurised\": \"<boolean>\",\n    \"lloydsTankerStainlessSteelTankNo\": \"<integer>\",\n    \"lloydsTankerStainlessSteelTanks\": \"<boolean>\",\n    \"lloydsTankerTotalPumps\": \"<integer>\",\n    \"lloydsTankerVcm\": \"<boolean>\",\n    \"lloydsTechnicalManager\": \"<string>\",\n    \"lloydsVesselId\": \"<string>\",\n    \"name\": \"<string>\",\n    \"shipSize\": \"<string>\"\n  },\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"id\": \"<string>\",\n      \"links\": {\n        \"empty\": \"<boolean>\",\n        \"members\": {\n          \"key_0\": \"<object>\",\n          \"key_1\": \"<object>\"\n        }\n      },\n      \"meta\": {\n        \"disableSend\": \"<boolean>\",\n        \"watched\": \"<boolean>\"\n      },\n      \"source\": {\n        \"header\": \"<string>\",\n        \"parameter\": \"<string>\",\n        \"pointer\": \"<string>\"\n      },\n      \"status\": \"<string>\",\n      \"title\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"id\": \"<string>\",\n      \"links\": {\n        \"empty\": \"<boolean>\",\n        \"members\": {\n          \"key_0\": \"<object>\"\n        }\n      },\n      \"meta\": {\n        \"disableSend\": \"<boolean>\",\n        \"watched\": \"<boolean>\"\n      },\n      \"source\": {\n        \"header\": \"<string>\",\n        \"parameter\": \"<string>\",\n        \"pointer\": \"<string>\"\n      },\n      \"status\": \"<string>\",\n      \"title\": \"<string>\"\n    }\n  ],\n  \"included\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"includedSerialization$jsonapi_adapters\": \"<string>\",\n  \"jsonapi\": {\n    \"ext\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"meta\": {\n      \"disableSend\": \"<boolean>\",\n      \"watched\": \"<boolean>\"\n    },\n    \"profile\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"version\": \"<string>\"\n  },\n  \"links\": {\n    \"empty\": \"<boolean>\",\n    \"members\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    }\n  },\n  \"meta\": {\n    \"disableSend\": \"<boolean>\",\n    \"watched\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "76426e0a-e99e-4ae0-8ad9-b8b32b914bf4",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "chartering",
+                    "vessel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"commercialOperator\": \"<string>\",\n    \"customColumns\": {\n      \"key_0\": {\n        \"link\": \"<string>\",\n        \"popover\": \"<string>\",\n        \"value\": \"<object>\"\n      }\n    },\n    \"extraCapacityBale\": \"<double>\",\n    \"extraCapacityGas\": \"<double>\",\n    \"extraCapacityGrain\": \"<double>\",\n    \"extraCapacityLiquid\": \"<double>\",\n    \"extraCapacityOre\": \"<double>\",\n    \"extraCapacityTeu\": \"<double>\",\n    \"extraCommercialOperator\": \"<string>\",\n    \"extraComputedBeam\": \"<double>\",\n    \"extraDeadWeightTonnage\": \"<double>\",\n    \"extraDesignSuperStructureCo2\": \"<boolean>\",\n    \"extraDesignSuperStructureGearless\": \"<boolean>\",\n    \"extraDesignSuperStructureHullDesign\": \"<string>\",\n    \"extraDesignSuperStructureHullType\": \"<string>\",\n    \"extraDimensionBreadthExtreme\": \"<double>\",\n    \"extraDimensionDraft\": \"<double>\",\n    \"extraDimensionLoa\": \"<double>\",\n    \"extraDimensionTpcmi\": \"<double>\",\n    \"extraFlag\": \"<string>\",\n    \"extraGrossTonnage\": \"<double>\",\n    \"extraHatchesCount\": \"<integer>\",\n    \"extraHoldsCount\": \"<integer>\",\n    \"extraLiftingGear\": \"<string>\",\n    \"extraMaxSwl\": \"<double>\",\n    \"extraMmsi\": \"<string>\",\n    \"extraNetTonnage\": \"<double>\",\n    \"extraThirdpartyOperator\": \"<string>\",\n    \"extraType\": \"<string>\",\n    \"extraYearBuilt\": \"<string>\",\n    \"id\": \"<string>\",\n    \"imo\": \"<string>\",\n    \"lloydsBeneficialOwner\": \"<string>\",\n    \"lloydsCapacityPumpCubic\": \"<double>\",\n    \"lloydsCapacityTeu14t\": \"<double>\",\n    \"lloydsDecks\": \"<integer>\",\n    \"lloydsDesignSuperStructureReeferPlugs\": \"<integer>\",\n    \"lloydsDesignSuperStructureSpeed\": \"<double>\",\n    \"lloydsDesignSuperStructureStrengthened\": \"<boolean>\",\n    \"lloydsPanamaNt\": \"<double>\",\n    \"lloydsRegisteredOwner\": \"<string>\",\n    \"lloydsSuezNt\": \"<double>\",\n    \"lloydsTankerAmmonia\": \"<boolean>\",\n    \"lloydsTankerCoated\": \"<string>\",\n    \"lloydsTankerCoil\": \"<boolean>\",\n    \"lloydsTankerCow\": \"<boolean>\",\n    \"lloydsTankerEthylene\": \"<boolean>\",\n    \"lloydsTankerGasMaxPressure\": \"<double>\",\n    \"lloydsTankerGasMinPressure\": \"<double>\",\n    \"lloydsTankerGrades\": \"<integer>\",\n    \"lloydsTankerIgs\": \"<boolean>\",\n    \"lloydsTankerImoRating1\": \"<string>\",\n    \"lloydsTankerImoRating2\": \"<string>\",\n    \"lloydsTankerImoRating3\": \"<string>\",\n    \"lloydsTankerLngContainment\": \"<boolean>\",\n    \"lloydsTankerPressurised\": \"<boolean>\",\n    \"lloydsTankerRefrigerated\": \"<boolean>\",\n    \"lloydsTankerSbt\": \"<boolean>\",\n    \"lloydsTankerSemiPressurised\": \"<boolean>\",\n    \"lloydsTankerStainlessSteelTankNo\": \"<integer>\",\n    \"lloydsTankerStainlessSteelTanks\": \"<boolean>\",\n    \"lloydsTankerTotalPumps\": \"<integer>\",\n    \"lloydsTankerVcm\": \"<boolean>\",\n    \"lloydsTechnicalManager\": \"<string>\",\n    \"lloydsVesselId\": \"<string>\",\n    \"name\": \"<string>\",\n    \"shipSize\": \"<string>\"\n  },\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"id\": \"<string>\",\n      \"links\": {\n        \"empty\": \"<boolean>\",\n        \"members\": {\n          \"key_0\": \"<object>\",\n          \"key_1\": \"<object>\",\n          \"key_2\": \"<object>\"\n        }\n      },\n      \"meta\": {\n        \"disableSend\": \"<boolean>\",\n        \"watched\": \"<boolean>\"\n      },\n      \"source\": {\n        \"header\": \"<string>\",\n        \"parameter\": \"<string>\",\n        \"pointer\": \"<string>\"\n      },\n      \"status\": \"<string>\",\n      \"title\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"id\": \"<string>\",\n      \"links\": {\n        \"empty\": \"<boolean>\",\n        \"members\": {\n          \"key_0\": \"<object>\",\n          \"key_1\": \"<object>\"\n        }\n      },\n      \"meta\": {\n        \"disableSend\": \"<boolean>\",\n        \"watched\": \"<boolean>\"\n      },\n      \"source\": {\n        \"header\": \"<string>\",\n        \"parameter\": \"<string>\",\n        \"pointer\": \"<string>\"\n      },\n      \"status\": \"<string>\",\n      \"title\": \"<string>\"\n    }\n  ],\n  \"included\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"includedSerialization$jsonapi_adapters\": \"<string>\",\n  \"jsonapi\": {\n    \"ext\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"meta\": {\n      \"disableSend\": \"<boolean>\",\n      \"watched\": \"<boolean>\"\n    },\n    \"profile\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"version\": \"<string>\"\n  },\n  \"links\": {\n    \"empty\": \"<boolean>\",\n    \"members\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\"\n    }\n  },\n  \"meta\": {\n    \"disableSend\": \"<boolean>\",\n    \"watched\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your tenant's unique identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "example",
+      "key": "tenant"
+    },
+    {
+      "type": "string",
+      "value": "https://{{tenant}}.sednanetwork.com/platform",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "19760b37-396b-4b25-a623-27704b81bed1",
+    "name": "Sedna Authentication Vessel API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Name: Support",
+      "type": "text/plain"
+    }
+  }
+}

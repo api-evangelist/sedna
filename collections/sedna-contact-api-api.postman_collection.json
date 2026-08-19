@@ -1,0 +1,2474 @@
+{
+  "item": [
+    {
+      "id": "83749ad0-c70c-431d-a704-8f1f704429c8",
+      "name": "Contact API",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "41af83a1-040c-44de-9908-529b0f9d8f23",
+          "name": "create Contact",
+          "request": {
+            "name": "create Contact",
+            "description": {
+              "content": "Create a new contact\n\nRequired API Permissions: CONTACT_WRITE",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "contact"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"attributes\": {\n      \"address1\": \"<string>\",\n      \"address2\": \"<string>\",\n      \"address3\": \"<string>\",\n      \"city\": \"<string>\",\n      \"company\": \"<string>\",\n      \"country\": \"<string>\",\n      \"emailAddresses\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"firstName\": \"<string>\",\n      \"foreignKey\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"phoneNumbers\": [\n        {\n          \"countryCode\": \"<string>\",\n          \"number\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"countryCode\": \"<string>\",\n          \"number\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"postalCode\": \"<string>\",\n      \"team\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"yahooId\": \"<string>\"\n    },\n    \"relationships\": {\n      \"team\": {\n        \"data\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"links\": {\n          \"related\": \"<string>\",\n          \"self\": \"<string>\"\n        }\n      }\n    },\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "78c0369c-94a7-428d-b8fc-70c26db2bb35",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "contact"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"attributes\": {\n      \"address1\": \"<string>\",\n      \"address2\": \"<string>\",\n      \"address3\": \"<string>\",\n      \"city\": \"<string>\",\n      \"company\": \"<string>\",\n      \"country\": \"<string>\",\n      \"emailAddresses\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"firstName\": \"<string>\",\n      \"foreignKey\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"phoneNumbers\": [\n        {\n          \"countryCode\": \"<string>\",\n          \"number\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"countryCode\": \"<string>\",\n          \"number\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"postalCode\": \"<string>\",\n      \"team\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"yahooId\": \"<string>\"\n    },\n    \"relationships\": {\n      \"team\": {\n        \"data\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"links\": {\n          \"related\": \"<string>\",\n          \"self\": \"<string>\"\n        }\n      }\n    },\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"attributes\": {\n      \"address1\": \"string\",\n      \"address2\": \"string\",\n      \"address3\": \"string\",\n      \"adminDistrict1\": \"string\",\n      \"adminDistrict2\": \"string\",\n      \"city\": \"string\",\n      \"company\": \"string\",\n      \"country\": \"string\",\n      \"createdAt\": \"1970-05-10T11:27:38.239Z\",\n      \"emailAddresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"firstName\": \"string\",\n      \"foreignKey\": \"string\",\n      \"lastName\": \"string\",\n      \"modifiedAt\": \"1962-11-12T21:01:57.199Z\",\n      \"phoneNumbers\": [\n        {\n          \"countryCode\": \"<string>\",\n          \"number\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"countryCode\": \"<string>\",\n          \"number\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"postalCode\": \"string\",\n      \"team\": \"string\",\n      \"title\": \"string\",\n      \"type\": \"string\",\n      \"yahooId\": \"string\"\n    },\n    \"id\": \"string\",\n    \"links\": {\n      \"self\": \"http://OkwEIscwoQnOeS.bavsyTxA+FxsgGgLaaeEz7,YyU2CaMPcjz0+zj9\"\n    },\n    \"relationships\": {\n      \"team\": {\n        \"data\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"links\": {\n          \"related\": \"<string>\",\n          \"self\": \"<string>\"\n        }\n      }\n    },\n    \"type\": \"contact\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a0eaf859-a53a-4952-b3c9-c365902dafaf",
+          "name": "get Contacts",
+          "request": {
+            "name": "get Contacts",
+            "description": {
+              "content": "Get many contacts\n\nRequired API Permissions: CONTACT_READ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "contact"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[page]",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[limit]",
+                  "value": "100"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[name]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[foreignKey]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "currentTeamId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[id]",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "359373a6-7193-4399-b75a-c61f5567a408",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "contact"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[page]",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page[limit]",
+                      "value": "100"
+                    },
+                    {
+                      "key": "filter[name]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[foreignKey]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currentTeamId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[id]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"attributes\": {\n        \"address1\": \"string\",\n        \"address2\": \"string\",\n        \"address3\": \"string\",\n        \"adminDistrict1\": \"string\",\n        \"adminDistrict2\": \"string\",\n        \"city\": \"string\",\n        \"company\": \"string\",\n        \"country\": \"string\",\n        \"createdAt\": \"2015-05-02T09:52:05.118Z\",\n        \"emailAddresses\": [\n          \"string\",\n          \"string\"\n        ],\n        \"firstName\": \"string\",\n        \"foreignKey\": \"string\",\n        \"lastName\": \"string\",\n        \"modifiedAt\": \"2014-01-22T17:28:04.912Z\",\n        \"phoneNumbers\": [\n          {\n            \"countryCode\": \"<string>\",\n            \"number\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"countryCode\": \"<string>\",\n            \"number\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"postalCode\": \"string\",\n        \"team\": \"string\",\n        \"title\": \"string\",\n        \"type\": \"string\",\n        \"yahooId\": \"string\"\n      },\n      \"id\": \"string\",\n      \"links\": {\n        \"self\": \"https://QNLZudfSjdCA.vatav-R49f\"\n      },\n      \"relationships\": {\n        \"team\": {\n          \"data\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"links\": {\n            \"related\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"self\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      \"type\": \"contact\"\n    },\n    {\n      \"attributes\": {\n        \"address1\": \"string\",\n        \"address2\": \"string\",\n        \"address3\": \"string\",\n        \"adminDistrict1\": \"string\",\n        \"adminDistrict2\": \"string\",\n        \"city\": \"string\",\n        \"company\": \"string\",\n        \"country\": \"string\",\n        \"createdAt\": \"2015-02-19T18:16:46.486Z\",\n        \"emailAddresses\": [\n          \"string\",\n          \"string\"\n        ],\n        \"firstName\": \"string\",\n        \"foreignKey\": \"string\",\n        \"lastName\": \"string\",\n        \"modifiedAt\": \"1955-08-12T10:25:18.184Z\",\n        \"phoneNumbers\": [\n          {\n            \"countryCode\": \"<string>\",\n            \"number\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"countryCode\": \"<string>\",\n            \"number\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"postalCode\": \"string\",\n        \"team\": \"string\",\n        \"title\": \"string\",\n        \"type\": \"string\",\n        \"yahooId\": \"string\"\n      },\n      \"id\": \"string\",\n      \"links\": {\n        \"self\": \"https://zF.bytD.+tWyE,VELxr\"\n      },\n      \"relationships\": {\n        \"team\": {\n          \"data\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"links\": {\n            \"related\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"self\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      \"type\": \"contact\"\n    }\n  ],\n  \"links\": {\n    \"first\": \"string\",\n    \"next\": \"string\",\n    \"self\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d5d9974-8000-4cf4-9c71-a0d8009f2894",
+          "name": "create Contact Group",
+          "request": {
+            "name": "create Contact Group",
+            "description": {
+              "content": "Create a new contact group\n\nRequired API Permissions: CONTACTGROUP_WRITE",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "contact-group"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"attributes\": {\n      \"foreignKey\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    \"relationships\": {\n      \"contact\": {\n        \"data\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    },\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3aa696b4-d1fe-4ab2-a623-0760618f80ea",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "contact-group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"attributes\": {\n      \"foreignKey\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    \"relationships\": {\n      \"contact\": {\n        \"data\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    },\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"attributes\": {\n      \"createdAt\": \"1967-10-21T21:51:16.856Z\",\n      \"foreignKey\": \"string\",\n      \"modifiedAt\": \"1987-12-03T07:12:14.221Z\",\n      \"name\": \"string\"\n    },\n    \"id\": \"string\",\n    \"links\": {\n      \"self\": \"string\"\n    },\n    \"relationships\": {\n      \"contact\": {\n        \"data\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    },\n    \"type\": \"contact-group\"\n  },\n  \"included\": [\n    {\n      \"attributes\": {\n        \"address1\": \"string\",\n        \"address2\": \"string\",\n        \"address3\": \"string\",\n        \"adminDistrict1\": \"string\",\n        \"adminDistrict2\": \"string\",\n        \"city\": \"string\",\n        \"company\": \"string\",\n        \"country\": \"string\",\n        \"createdAt\": \"1947-11-13T21:12:33.131Z\",\n        \"emailAddresses\": [\n          \"string\",\n          \"string\"\n        ],\n        \"firstName\": \"string\",\n        \"foreignKey\": \"string\",\n        \"lastName\": \"string\",\n        \"modifiedAt\": \"1952-03-03T09:50:37.361Z\",\n        \"phoneNumbers\": [\n          {\n            \"countryCode\": \"<string>\",\n            \"number\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"countryCode\": \"<string>\",\n            \"number\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"postalCode\": \"string\",\n        \"team\": \"string\",\n        \"title\": \"string\",\n        \"type\": \"string\",\n        \"yahooId\": \"string\"\n      },\n      \"id\": \"string\",\n      \"links\": {\n        \"self\": \"http://UGJzclTFvkDwVCLjpXvGewj.rtknzhIg8+KvnG-w9vaosjsmFlRJK+5jiFIyOpzWjxkOoswZdt\"\n      },\n      \"relationships\": {\n        \"team\": {\n          \"data\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"links\": {\n            \"related\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"self\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      \"type\": \"contact\"\n    },\n    {\n      \"attributes\": {\n        \"address1\": \"string\",\n        \"address2\": \"string\",\n        \"address3\": \"string\",\n        \"adminDistrict1\": \"string\",\n        \"adminDistrict2\": \"string\",\n        \"city\": \"string\",\n        \"company\": \"string\",\n        \"country\": \"string\",\n        \"createdAt\": \"2007-08-28T04:21:28.526Z\",\n        \"emailAddresses\": [\n          \"string\",\n          \"string\"\n        ],\n        \"firstName\": \"string\",\n        \"foreignKey\": \"string\",\n        \"lastName\": \"string\",\n        \"modifiedAt\": \"1991-07-23T00:21:25.869Z\",\n        \"phoneNumbers\": [\n          {\n            \"countryCode\": \"<string>\",\n            \"number\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"countryCode\": \"<string>\",\n            \"number\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"postalCode\": \"string\",\n        \"team\": \"string\",\n        \"title\": \"string\",\n        \"type\": \"string\",\n        \"yahooId\": \"string\"\n      },\n      \"id\": \"string\",\n      \"links\": {\n        \"self\": \"http://RKPFcYFEZqtzBDjHqxz.acV\"\n      },\n      \"relationships\": {\n        \"team\": {\n          \"data\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"links\": {\n            \"related\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"self\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      \"type\": \"contact\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c5a501ea-448e-4498-8281-be979605a1fa",
+          "name": "get Contact Groups",
+          "request": {
+            "name": "get Contact Groups",
+            "description": {
+              "content": "Get many contact groups\n\nRequired API Permissions: CONTACTGROUP_READ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "contact-group"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[name]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[foreignKey]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7050a0da-8565-498c-82aa-0c3254b1443a",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "contact-group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "filter[name]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[foreignKey]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"attributes\": {\n        \"createdAt\": \"1992-02-14T07:20:39.076Z\",\n        \"foreignKey\": \"string\",\n        \"modifiedAt\": \"1991-01-31T00:00:05.242Z\",\n        \"name\": \"string\"\n      },\n      \"id\": \"string\",\n      \"links\": {\n        \"self\": \"string\"\n      },\n      \"relationships\": {\n        \"contact\": {\n          \"data\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      \"type\": \"contact-group\"\n    },\n    {\n      \"attributes\": {\n        \"createdAt\": \"1978-11-08T22:45:36.289Z\",\n        \"foreignKey\": \"string\",\n        \"modifiedAt\": \"1991-10-12T09:35:37.287Z\",\n        \"name\": \"string\"\n      },\n      \"id\": \"string\",\n      \"links\": {\n        \"self\": \"string\"\n      },\n      \"relationships\": {\n        \"contact\": {\n          \"data\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      \"type\": \"contact-group\"\n    }\n  ],\n  \"links\": {\n    \"first\": \"string\",\n    \"next\": \"string\",\n    \"self\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "660f3828-81d0-4626-b5df-59a5de3f12c3",
+          "name": "delete Contact Group",
+          "request": {
+            "name": "delete Contact Group",
+            "description": {
+              "content": "Delete a contact group\n\nRequired API Permissions: CONTACTGROUP_DELETE",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "contact-group",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cc1f028a-490f-4990-982e-c787f8883ecb",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "contact-group",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c54f2aad-ef94-4eb8-a6a9-6213cdaf3f2e",
+          "name": "get Group",
+          "request": {
+            "name": "get Group",
+            "description": {
+              "content": "Get a contact group\n\nRequired API Permissions: CONTACTGROUP_READ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "contact-group",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "currentTeamId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5f475b86-db4f-4212-ba4b-c241e1b71c1a",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "contact-group",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "currentTeamId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"attributes\": {\n      \"createdAt\": \"2009-02-02T08:06:35.850Z\",\n      \"foreignKey\": \"string\",\n      \"modifiedAt\": \"2024-02-23T18:16:08.192Z\",\n      \"name\": \"string\"\n    },\n    \"id\": \"string\",\n    \"links\": {\n      \"self\": \"string\"\n    },\n    \"relationships\": {\n      \"contact\": {\n        \"data\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    },\n    \"type\": \"contact-group\"\n  },\n  \"included\": [\n    {\n      \"attributes\": {\n        \"address1\": \"string\",\n        \"address2\": \"string\",\n        \"address3\": \"string\",\n        \"adminDistrict1\": \"string\",\n        \"adminDistrict2\": \"string\",\n        \"city\": \"string\",\n        \"company\": \"string\",\n        \"country\": \"string\",\n        \"createdAt\": \"2025-06-07T00:08:17.695Z\",\n        \"emailAddresses\": [\n          \"string\",\n          \"string\"\n        ],\n        \"firstName\": \"string\",\n        \"foreignKey\": \"string\",\n        \"lastName\": \"string\",\n        \"modifiedAt\": \"1996-02-11T19:39:46.540Z\",\n        \"phoneNumbers\": [\n          {\n            \"countryCode\": \"<string>\",\n            \"number\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"countryCode\": \"<string>\",\n            \"number\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"postalCode\": \"string\",\n        \"team\": \"string\",\n        \"title\": \"string\",\n        \"type\": \"string\",\n        \"yahooId\": \"string\"\n      },\n      \"id\": \"string\",\n      \"links\": {\n        \"self\": \"http://uhoEJFhwpdXBxjZ.jcpjisV6tkRvqPCI7S4t06Lf2GkDHkZgj6Ax\"\n      },\n      \"relationships\": {\n        \"team\": {\n          \"data\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"links\": {\n            \"related\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"self\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      \"type\": \"contact\"\n    },\n    {\n      \"attributes\": {\n        \"address1\": \"string\",\n        \"address2\": \"string\",\n        \"address3\": \"string\",\n        \"adminDistrict1\": \"string\",\n        \"adminDistrict2\": \"string\",\n        \"city\": \"string\",\n        \"company\": \"string\",\n        \"country\": \"string\",\n        \"createdAt\": \"2004-09-12T20:49:02.782Z\",\n        \"emailAddresses\": [\n          \"string\",\n          \"string\"\n        ],\n        \"firstName\": \"string\",\n        \"foreignKey\": \"string\",\n        \"lastName\": \"string\",\n        \"modifiedAt\": \"2015-01-01T15:55:48.974Z\",\n        \"phoneNumbers\": [\n          {\n            \"countryCode\": \"<string>\",\n            \"number\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"countryCode\": \"<string>\",\n            \"number\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"postalCode\": \"string\",\n        \"team\": \"string\",\n        \"title\": \"string\",\n        \"type\": \"string\",\n        \"yahooId\": \"string\"\n      },\n      \"id\": \"string\",\n      \"links\": {\n        \"self\": \"http://WKguPokrXBb.omteLhJBU8+hdwXZSIPEE.-3WN9vbh+1LfgoSY\"\n      },\n      \"relationships\": {\n        \"team\": {\n          \"data\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"links\": {\n            \"related\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"self\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      \"type\": \"contact\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea5898ca-e815-4e60-a994-789ed585d428",
+          "name": "update Contact Group",
+          "request": {
+            "name": "update Contact Group",
+            "description": {
+              "content": "Update a contact group\n\nRequired API Permissions: CONTACTGROUP_WRITE",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "contact-group",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "currentTeamId",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"attributes\": {\n      \"foreignKey\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    \"relationships\": {\n      \"contact\": {\n        \"data\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    },\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f2586df0-61d0-4e47-a39f-cf1baf9f0e1e",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "contact-group",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "currentTeamId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"attributes\": {\n      \"foreignKey\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    \"relationships\": {\n      \"contact\": {\n        \"data\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    },\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "78de1df4-13c8-451a-a22f-d710fba3edd1",
+          "name": "add Contact To Group",
+          "request": {
+            "name": "add Contact To Group",
+            "description": {
+              "content": "Add contact(s) to a group\n\nRequired API Permissions: CONTACTGROUP_WRITE",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "contact-group",
+                ":id",
+                "relationships",
+                "contact"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7d35c1b8-a869-4076-93ef-6c6f173fb14c",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "contact-group",
+                    ":id",
+                    "relationships",
+                    "contact"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bfc8b301-2131-4300-b586-073377e5f300",
+          "name": "remove Contact From Group",
+          "request": {
+            "name": "remove Contact From Group",
+            "description": {
+              "content": "Remove contact(s) from a group\n\nRequired API Permissions: CONTACTGROUP_WRITE",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "contact-group",
+                ":id",
+                "relationships",
+                "contact"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "986bb672-dc34-4b5a-a661-9890be7a3d1b",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "contact-group",
+                    ":id",
+                    "relationships",
+                    "contact"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "42a9fd58-c508-4c1c-9334-35ef2781d44c",
+          "name": "replace Group Contacts",
+          "request": {
+            "name": "replace Group Contacts",
+            "description": {
+              "content": "Fully replace a groups contacts\n\nRequired API Permissions: CONTACTGROUP_WRITE",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "contact-group",
+                ":id",
+                "relationships",
+                "contact"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "09af60ab-20b6-4d6b-982a-861295ef68e8",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "contact-group",
+                    ":id",
+                    "relationships",
+                    "contact"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "89bf8c3e-54ce-4253-8b8e-6d97a7e066cc",
+          "name": "delete Contact",
+          "request": {
+            "name": "delete Contact",
+            "description": {
+              "content": "Delete a contact\n\nRequired API Permissions: CONTACT_DELETE",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "contact",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "currentTeamId",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "460de7ce-32a2-44e9-891e-5b10e0edb462",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "contact",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "currentTeamId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a51d4e8d-84ee-440c-9a35-6f629cf76261",
+          "name": "get Contact",
+          "request": {
+            "name": "get Contact",
+            "description": {
+              "content": "Get a contact\n\nRequired API Permissions: CONTACT_READ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "contact",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "currentTeamId",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "621da8eb-4204-4828-84db-0a36b90372c6",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "contact",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "currentTeamId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"attributes\": {\n      \"address1\": \"string\",\n      \"address2\": \"string\",\n      \"address3\": \"string\",\n      \"adminDistrict1\": \"string\",\n      \"adminDistrict2\": \"string\",\n      \"city\": \"string\",\n      \"company\": \"string\",\n      \"country\": \"string\",\n      \"createdAt\": \"2005-09-07T12:28:08.632Z\",\n      \"emailAddresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"firstName\": \"string\",\n      \"foreignKey\": \"string\",\n      \"lastName\": \"string\",\n      \"modifiedAt\": \"1983-09-08T10:15:45.607Z\",\n      \"phoneNumbers\": [\n        {\n          \"countryCode\": \"<string>\",\n          \"number\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"countryCode\": \"<string>\",\n          \"number\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"postalCode\": \"string\",\n      \"team\": \"string\",\n      \"title\": \"string\",\n      \"type\": \"string\",\n      \"yahooId\": \"string\"\n    },\n    \"id\": \"string\",\n    \"links\": {\n      \"self\": \"http://zulfHsXnlYeVVNnUfKIYkv.vxehnRRGGXGjCCKFHz4\"\n    },\n    \"relationships\": {\n      \"team\": {\n        \"data\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"links\": {\n          \"related\": \"<string>\",\n          \"self\": \"<string>\"\n        }\n      }\n    },\n    \"type\": \"contact\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bb88de4d-50cf-48fc-9c51-7a5901e93db2",
+          "name": "update Contact",
+          "request": {
+            "name": "update Contact",
+            "description": {
+              "content": "Update a contact\n\nRequired API Permissions: CONTACT_WRITE",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "contact",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "currentTeamId",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"attributes\": {\n      \"address1\": \"<string>\",\n      \"address2\": \"<string>\",\n      \"address3\": \"<string>\",\n      \"city\": \"<string>\",\n      \"company\": \"<string>\",\n      \"country\": \"<string>\",\n      \"emailAddresses\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"firstName\": \"<string>\",\n      \"foreignKey\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"phoneNumbers\": [\n        {\n          \"countryCode\": \"<string>\",\n          \"number\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"countryCode\": \"<string>\",\n          \"number\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"postalCode\": \"<string>\",\n      \"team\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"yahooId\": \"<string>\"\n    },\n    \"relationships\": {\n      \"team\": {\n        \"data\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"links\": {\n          \"related\": \"<string>\",\n          \"self\": \"<string>\"\n        }\n      }\n    },\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b4c70ffc-de48-4e28-9326-8620595df783",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "contact",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "currentTeamId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"attributes\": {\n      \"address1\": \"<string>\",\n      \"address2\": \"<string>\",\n      \"address3\": \"<string>\",\n      \"city\": \"<string>\",\n      \"company\": \"<string>\",\n      \"country\": \"<string>\",\n      \"emailAddresses\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"firstName\": \"<string>\",\n      \"foreignKey\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"phoneNumbers\": [\n        {\n          \"countryCode\": \"<string>\",\n          \"number\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"countryCode\": \"<string>\",\n          \"number\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"postalCode\": \"<string>\",\n      \"team\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"yahooId\": \"<string>\"\n    },\n    \"relationships\": {\n      \"team\": {\n        \"data\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"links\": {\n          \"related\": \"<string>\",\n          \"self\": \"<string>\"\n        }\n      }\n    },\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d7ba31b7-4f66-4645-bdbd-ed1c79e381d4",
+          "name": "add Contact Comment",
+          "request": {
+            "name": "add Contact Comment",
+            "description": {
+              "content": "Add comment to the contact\n\nRequired API Permissions: CONTACT_WRITE",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "contact",
+                ":id",
+                "comment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"content\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f6b12317-a99c-4aab-b8c1-857751e97b82",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "contact",
+                    ":id",
+                    "comment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"content\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"attributes\": {\n      \"content\": \"string\",\n      \"createdAt\": \"2006-04-21T10:44:45.861Z\"\n    },\n    \"id\": \"string\",\n    \"relationships\": {\n      \"message\": {\n        \"data\": {\n          \"id\": \"string\",\n          \"type\": \"string\"\n        },\n        \"links\": {\n          \"related\": \"string\",\n          \"self\": \"string\"\n        }\n      },\n      \"user\": {\n        \"data\": {\n          \"id\": \"string\",\n          \"type\": \"string\"\n        }\n      }\n    },\n    \"type\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b63d603f-b238-4aaa-adf9-0d646ba2f2ca",
+          "name": "delete Contact Comment",
+          "request": {
+            "name": "delete Contact Comment",
+            "description": {
+              "content": "Delete contact comment; unsupported at the time\n\nRequired API Permissions: CONTACT_DELETE",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "contact",
+                ":id",
+                "comment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ab864b54-b37b-403d-9a6f-1ca3773165d7",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "contact",
+                    ":id",
+                    "comment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "672de286-ed36-403d-a9bd-7cc1273819ad",
+          "name": "get Contact Comments",
+          "request": {
+            "name": "get Contact Comments",
+            "description": {
+              "content": "Get all comments for a contact\n\nRequired API Permissions: CONTACT_READ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "contact",
+                ":id",
+                "comment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "75"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3b834159-8148-40be-8b94-064f34326ee6",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "contact",
+                    ":id",
+                    "comment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "75"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"attributes\": {\n        \"content\": \"string\",\n        \"createdAt\": \"2023-04-08T05:32:14.304Z\"\n      },\n      \"relationships\": {\n        \"message\": {\n          \"data\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"links\": {\n            \"related\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"self\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"user\": {\n          \"data\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"attributes\": {\n        \"content\": \"string\",\n        \"createdAt\": \"2002-03-17T11:39:51.488Z\"\n      },\n      \"relationships\": {\n        \"message\": {\n          \"data\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"links\": {\n            \"related\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"self\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"user\": {\n          \"data\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8457491-d0ee-49d1-a8aa-7e0390cbba9e",
+          "name": "update Contact Comment",
+          "request": {
+            "name": "update Contact Comment",
+            "description": {
+              "content": "Update contact comment; unsupported at the time\n\nRequired API Permissions: CONTACT_WRITE",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "contact",
+                ":id",
+                "comment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "42a7278c-9451-445d-9b82-956a5601a93c",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "contact",
+                    ":id",
+                    "comment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a9882c8e-6566-422f-b34c-eb9429b986d8",
+          "name": "get Contact Group Relationships",
+          "request": {
+            "name": "get Contact Group Relationships",
+            "description": {
+              "content": "Fetch a contact's group relationship\n\nRequired API Permissions: CONTACT_READ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "contact",
+                ":id",
+                "relationships",
+                "contact-group"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ed4fd842-711e-4d39-94d0-2c6c0d23dad5",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "contact",
+                    ":id",
+                    "relationships",
+                    "contact-group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4e7d898-7473-45d9-9e3b-5c4478b69486",
+          "name": "get Contact Team Relationships",
+          "request": {
+            "name": "get Contact Team Relationships",
+            "description": {
+              "content": "Fetch a contact's team relationships\n\nRequired API Permissions: CONTACT_READ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "contact",
+                ":id",
+                "relationships",
+                "team"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "currentTeamId",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9027b509-5330-4fbc-ba36-bdbe9fd0a797",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "contact",
+                    ":id",
+                    "relationships",
+                    "team"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "currentTeamId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"string\"\n    }\n  ],\n  \"links\": {\n    \"related\": \"<string>\",\n    \"self\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your tenant's unique identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "example",
+      "key": "tenant"
+    },
+    {
+      "type": "string",
+      "value": "https://{{tenant}}.sednanetwork.com/platform",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d8894b63-c9d6-4e33-b65a-a3e897b31103",
+    "name": "Sedna Authentication Contact API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Name: Support",
+      "type": "text/plain"
+    }
+  }
+}

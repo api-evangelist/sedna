@@ -1,0 +1,120 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sedna Authentication Workflow API API",
+    "version": "2019-01-01"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Workflow API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getWorkflows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/workflow",
+            "params": [
+              {
+                "name": "include",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetch all WorkFlows belonging to a tenant\n\nRequired API Permissions: WORKFLOW_READ"
+        },
+        {
+          "info": {
+            "name": "createWorkflow",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/workflow",
+            "params": [
+              {
+                "name": "include",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Create a workflow\n\nRequired API Permissions: WORKFLOW_WRITE"
+        },
+        {
+          "info": {
+            "name": "getWorkflow",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/workflow/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetch a single Workflow from its id\n\nRequired API Permissions: WORKFLOW_READ"
+        },
+        {
+          "info": {
+            "name": "updateWorkflow",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/workflow/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a Workflow\n\nRequired API Permissions: WORKFLOW_WRITE"
+        },
+        {
+          "info": {
+            "name": "deleteWorkflow",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/workflow/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Workflow\n\nRequired API Permissions: WORKFLOW_DELETE"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,702 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sedna Authentication User API API",
+    "version": "2019-01-01"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "list_1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user",
+            "params": [
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields[user]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[user.ssoEmail]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[user.id]",
+                "value": "3,5,7",
+                "type": "query"
+              },
+              {
+                "name": "ssoEmail",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[user.firstName]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[user.lastName]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetch a collection of users\n\nRequired API Permissions: USER_READ"
+        },
+        {
+          "info": {
+            "name": "create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a user\n\nRequired API Permissions: USER_WRITE"
+        },
+        {
+          "info": {
+            "name": "find_2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields[user]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetch a user\n\nRequired API Permissions: USER_READ"
+        },
+        {
+          "info": {
+            "name": "update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a user\n\nRequired API Permissions: USER_WRITE"
+        },
+        {
+          "info": {
+            "name": "delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a user\n\nRequired API Permissions: USER_DELETE"
+        },
+        {
+          "info": {
+            "name": "getUserDefaultTeam",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user/:id/default-team",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a user's primary/default team\n\nRequired API Permissions: USER_READ, TEAM_READ"
+        },
+        {
+          "info": {
+            "name": "getUserDisableSendTeams",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user/:id/disable-send-teams",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "\nFetch the teams that have sending disabled for the given user.\n\n**This is an enterprise feature.** If you'd like to learn more, please reach out to your account representative.\n    \n\nRequired API Permissions: USER_READ, TEAM_READ"
+        },
+        {
+          "info": {
+            "name": "getUserJobReferenceSubscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user/:id/job-reference",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a users job reference subscriptions\n\nRequired API Permissions: USER_READ, JOBREFERENCE_READ"
+        },
+        {
+          "info": {
+            "name": "getUserNotificationDevices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user/:id/notification-device",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch a user's related notification devices\n\nRequired API Permissions: USER_READ"
+        },
+        {
+          "info": {
+            "name": "getUserDefaultTeamRelationship",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user/:id/relationships/default-team",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve relationship information for a user's default team - the default team is always 'watched'\n\nRequired API Permissions: USER_READ"
+        },
+        {
+          "info": {
+            "name": "setUserDefaultTeamRelationship",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user/:id/relationships/default-team",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set a user's default or primary team\n\nRequired API Permissions: USER_WRITE"
+        },
+        {
+          "info": {
+            "name": "getUserDisableSendTeamsRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user/:id/relationships/disable-send-teams",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "\nFetch the team relationships that have sending disabled for the given user.\n\n**This is an enterprise feature.** If you'd like to learn more, please reach out to your account representative.\n    \n\nRequired API Permissions: USER_READ"
+        },
+        {
+          "info": {
+            "name": "addUserDisableSendTeamsRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user/:id/relationships/disable-send-teams",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "\nDisable sending for a team for the given user.\nSending cannot be disabled for a user's default team.\n\n**This is an enterprise feature.** If you'd like to learn more, please reach out to your account representative.\n\n\nRequired API Permissions: USER_WRITE"
+        },
+        {
+          "info": {
+            "name": "removeUserDisableSendTeamsRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user/:id/relationships/disable-send-teams",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "\nTurn off disable sending for a team for the given user. (ie. Enable sending)\n\n**This is an enterprise feature.** If you'd like to learn more, please reach out to your account representative.\n\n\nRequired API Permissions: USER_WRITE"
+        },
+        {
+          "info": {
+            "name": "getUserJobReferenceSubscriptionRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user/:id/relationships/job-reference",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "filter[createdBy]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a users job reference relationships\n\nRequired API Permissions: USER_READ"
+        },
+        {
+          "info": {
+            "name": "subscribeToJobReferences",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user/:id/relationships/job-reference",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "managedByUser",
+                "value": "",
+                "type": "query",
+                "description": "allow user to manage this subscription"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Subscribe a user to a job reference\n\nRequired API Permissions: USER_WRITE"
+        },
+        {
+          "info": {
+            "name": "unsubscribeToJobReferences",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user/:id/relationships/job-reference",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Unsubscribe a user to a job reference\n\nRequired API Permissions: USER_WRITE"
+        },
+        {
+          "info": {
+            "name": "getUserKeywordRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user/:id/relationships/keyword",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get user's keyword relationships\n\nRequired API Permissions: USER_READ"
+        },
+        {
+          "info": {
+            "name": "subscribeUserToKeyword",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user/:id/relationships/keyword",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add keyword relationships to user\n\nRequired API Permissions: USER_WRITE"
+        },
+        {
+          "info": {
+            "name": "unsubscribeUserFromKeyword",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user/:id/relationships/keyword",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete keyword relationships to user\n\nRequired API Permissions: USER_WRITE"
+        },
+        {
+          "info": {
+            "name": "getUserNotificationDeviceRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user/:id/relationships/notification-device",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch a users's notification device relationships\n\nRequired API Permissions: USER_WRITE"
+        },
+        {
+          "info": {
+            "name": "addUserRoleRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user/:id/relationships/role",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add Roles to User\n\nRequired API Permissions: USER_WRITE"
+        },
+        {
+          "info": {
+            "name": "removeUserRoleRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user/:id/relationships/role",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove roles from User\n\nRequired API Permissions: USER_WRITE"
+        },
+        {
+          "info": {
+            "name": "getUserTeamRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user/:id/relationships/team",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch a users's team relationships\n\nRequired API Permissions: USER_READ"
+        },
+        {
+          "info": {
+            "name": "addUserTeamRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user/:id/relationships/team",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add Teams to User\n\nRequired API Permissions: USER_WRITE"
+        },
+        {
+          "info": {
+            "name": "removeUserTeamRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user/:id/relationships/team",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove user from teams\n\nRequired API Permissions: USER_WRITE"
+        },
+        {
+          "info": {
+            "name": "getUserWatchedTeamsRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user/:id/relationships/watched-teams",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve relationship data for a user's watched teams - watched teams' mail appears in a user's inbox\n\nRequired API Permissions: USER_READ"
+        },
+        {
+          "info": {
+            "name": "addUserWatchedTeamsRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user/:id/relationships/watched-teams",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a watched team to a user - the user must already be able to access the team\n\nRequired API Permissions: USER_WRITE"
+        },
+        {
+          "info": {
+            "name": "removeUserWatchedTeamsRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user/:id/relationships/watched-teams",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove a watched team or teams from a user's watched list - the user must be able to access the teams already\n\nRequired API Permissions: USER_WRITE"
+        },
+        {
+          "info": {
+            "name": "getUserTeams",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user/:id/team",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch a user's related teams\n\nRequired API Permissions: USER_READ, TEAM_READ"
+        },
+        {
+          "info": {
+            "name": "getUserWatchedTeams",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/user/:id/watched-teams",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the teams the user is currently 'watching' - watched teams' mail will appear in the user's inbox\n\nRequired API Permissions: USER_READ, TEAM_READ"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sedna Authentication Comment API API",
+    "version": "2019-01-01"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Comment API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getComments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/comment",
+            "params": [
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[user.id]",
+                "value": "",
+                "type": "query",
+                "description": "Show comments created by this user."
+              },
+              {
+                "name": "filter[content]",
+                "value": "",
+                "type": "query",
+                "description": "Show comments that contain these terms."
+              },
+              {
+                "name": "filter[since]",
+                "value": "",
+                "type": "query",
+                "description": "Show comments created after this time. Must be ISO 8601 timestamp."
+              },
+              {
+                "name": "filter[until]",
+                "value": "",
+                "type": "query",
+                "description": "Show comments created before this time. Must be ISO-8601 timestamp."
+              }
+            ]
+          },
+          "docs": "Get comments across all messages.\n\nRequired API Permissions: COMMENT_READ"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

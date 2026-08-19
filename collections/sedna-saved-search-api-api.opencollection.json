@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sedna Authentication Saved Search API API",
+    "version": "2019-01-01"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Saved Search API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getSavedSearches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/saved-search",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get list of saved searches.\n\nRequired API Permissions: SAVEDSEARCH_READ"
+        },
+        {
+          "info": {
+            "name": "createSavedSearch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/saved-search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create saved search.\n\nRequired API Permissions: SAVEDSEARCH_WRITE"
+        },
+        {
+          "info": {
+            "name": "updateSavedSearch",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/saved-search/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update saved search\n\nRequired API Permissions: SAVEDSEARCH_WRITE"
+        },
+        {
+          "info": {
+            "name": "deleteSavedSearch",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/saved-search/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete a saved search\n\nRequired API Permissions: SAVEDSEARCH_DELETE"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

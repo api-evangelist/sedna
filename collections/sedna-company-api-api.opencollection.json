@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sedna Authentication Company API API",
+    "version": "2019-01-01"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Company API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "find",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/company/me"
+          },
+          "docs": "Fetch company level details\n\nRequired API Permissions: COMPANY_READ"
+        },
+        {
+          "info": {
+            "name": "patchCompany",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/company/me",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a company\n\nRequired API Permissions: COMPANY_WRITE"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,153 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sedna Authentication Keyword API API",
+    "version": "2019-01-01"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Keyword API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getKeywords",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/keyword",
+            "params": [
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[name]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[user]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetch all keywords\n\nRequired API Permissions: KEYWORD_READ"
+        },
+        {
+          "info": {
+            "name": "createKeyword",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/keyword",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a keyword with at least 1 follower\n\nRequired API Permissions: KEYWORD_WRITE"
+        },
+        {
+          "info": {
+            "name": "getKeyword",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/keyword/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch a single keyword\n\nRequired API Permissions: KEYWORD_READ"
+        },
+        {
+          "info": {
+            "name": "deleteKeyword",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/keyword/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Keyword and user-keyword relationships\n\nRequired API Permissions: KEYWORD_DELETE"
+        },
+        {
+          "info": {
+            "name": "addKeywordUsers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/keyword/:id/relationships/user",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add user relationship to keyword\n\nRequired API Permissions: KEYWORD_WRITE"
+        },
+        {
+          "info": {
+            "name": "removeKeywordUsers",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/keyword/:id/relationships/user",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove users relationships to keyword\n\nRequired API Permissions: KEYWORD_WRITE"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

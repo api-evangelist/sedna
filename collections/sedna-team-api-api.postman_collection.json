@@ -1,0 +1,1882 @@
+{
+  "item": [
+    {
+      "id": "85cd81f1-4618-47d3-9a6a-35479e0d2f12",
+      "name": "Team API",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "883bc17d-ed7e-4031-bfca-cbdc5673c318",
+          "name": "create Team",
+          "request": {
+            "name": "create Team",
+            "description": {
+              "content": "Create a team\n\nRequired API Permissions: TEAM_WRITE",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "team"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"attributes\": {\n      \"name\": \"<string>\",\n      \"additionalEmailAddresses\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"archived\": \"<boolean>\",\n      \"autoBccEmails\": [\n        {\n          \"email\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"email\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"disableSend\": \"<boolean>\",\n      \"emailAddress\": \"<string>\",\n      \"emailSignature\": \"<string>\",\n      \"foreignKey\": \"<string>\",\n      \"inboxAssignedToUserId\": \"<string>\",\n      \"public\": \"<boolean>\",\n      \"purpose\": \"<string>\",\n      \"sendingName\": \"<string>\"\n    },\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9b4a75f4-0d27-4e63-ba61-0e1847e673f1",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "team"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"attributes\": {\n      \"name\": \"<string>\",\n      \"additionalEmailAddresses\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"archived\": \"<boolean>\",\n      \"autoBccEmails\": [\n        {\n          \"email\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"email\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"disableSend\": \"<boolean>\",\n      \"emailAddress\": \"<string>\",\n      \"emailSignature\": \"<string>\",\n      \"foreignKey\": \"<string>\",\n      \"inboxAssignedToUserId\": \"<string>\",\n      \"public\": \"<boolean>\",\n      \"purpose\": \"<string>\",\n      \"sendingName\": \"<string>\"\n    },\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"attributes\": {\n      \"additionalEmailAddresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"archived\": false,\n      \"autoBccEmails\": [\n        {\n          \"email\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"email\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"createdAt\": \"1963-12-02T18:58:12.427Z\",\n      \"disableSend\": false,\n      \"emailAddress\": \"string\",\n      \"emailSignature\": \"string\",\n      \"foreignKey\": \"string\",\n      \"inboxAssignedToUserId\": \"string\",\n      \"internalEmailAddress\": \"string\",\n      \"name\": \"string\",\n      \"public\": false,\n      \"purpose\": \"string\",\n      \"sendingName\": \"string\",\n      \"soloInbox\": true\n    },\n    \"id\": \"string\",\n    \"links\": {\n      \"self\": \"string\"\n    },\n    \"relationships\": {\n      \"categoryTag\": {\n        \"data\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"messageTag\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"messageTag\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"links\": {\n          \"related\": \"string\",\n          \"self\": \"string\"\n        }\n      },\n      \"user\": {\n        \"data\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"links\": {\n          \"related\": \"string\",\n          \"self\": \"string\"\n        }\n      }\n    },\n    \"type\": \"team\",\n    \"uuid\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4cb11df7-c69e-42f9-9a53-54a47dfe0502",
+          "name": "get All",
+          "request": {
+            "name": "get All",
+            "description": {
+              "content": "Fetch all teams\n\nRequired API Permissions: TEAM_READ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "team"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "36dfc483-6e3b-40dc-962b-64f4185e9a68",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "team"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"attributes\": {\n        \"additionalEmailAddresses\": [\n          \"string\",\n          \"string\"\n        ],\n        \"archived\": false,\n        \"autoBccEmails\": [\n          {\n            \"email\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          {\n            \"email\": \"<string>\",\n            \"name\": \"<string>\"\n          }\n        ],\n        \"createdAt\": \"1989-07-15T03:03:56.948Z\",\n        \"disableSend\": false,\n        \"emailAddress\": \"string\",\n        \"emailSignature\": \"string\",\n        \"foreignKey\": \"string\",\n        \"inboxAssignedToUserId\": \"string\",\n        \"internalEmailAddress\": \"string\",\n        \"name\": \"string\",\n        \"public\": false,\n        \"purpose\": \"string\",\n        \"sendingName\": \"string\",\n        \"soloInbox\": true\n      },\n      \"id\": \"string\",\n      \"links\": {\n        \"self\": \"string\"\n      },\n      \"relationships\": {\n        \"categoryTag\": {\n          \"data\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"links\": {\n            \"related\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"self\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"user\": {\n          \"data\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"links\": {\n            \"related\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"self\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      \"type\": \"team\",\n      \"uuid\": \"string\"\n    },\n    {\n      \"attributes\": {\n        \"additionalEmailAddresses\": [\n          \"string\",\n          \"string\"\n        ],\n        \"archived\": true,\n        \"autoBccEmails\": [\n          {\n            \"email\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          {\n            \"email\": \"<string>\",\n            \"name\": \"<string>\"\n          }\n        ],\n        \"createdAt\": \"2017-10-07T04:23:30.353Z\",\n        \"disableSend\": true,\n        \"emailAddress\": \"string\",\n        \"emailSignature\": \"string\",\n        \"foreignKey\": \"string\",\n        \"inboxAssignedToUserId\": \"string\",\n        \"internalEmailAddress\": \"string\",\n        \"name\": \"string\",\n        \"public\": false,\n        \"purpose\": \"string\",\n        \"sendingName\": \"string\",\n        \"soloInbox\": true\n      },\n      \"id\": \"string\",\n      \"links\": {\n        \"self\": \"string\"\n      },\n      \"relationships\": {\n        \"categoryTag\": {\n          \"data\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"links\": {\n            \"related\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"self\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"user\": {\n          \"data\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"links\": {\n            \"related\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"self\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      \"type\": \"team\",\n      \"uuid\": \"string\"\n    }\n  ],\n  \"links\": {\n    \"first\": \"string\",\n    \"next\": \"string\",\n    \"self\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "22607643-77bf-4e51-9bc7-969657202556",
+          "name": "get Inboxes With Solo Inbox Limit Reached",
+          "request": {
+            "name": "get Inboxes With Solo Inbox Limit Reached",
+            "description": {
+              "content": "Fetch team ids for teams that reached solo inbox limit\n\nRequired API Permissions: TEAM_READ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "team",
+                "inboxesWithSoloInboxLimitReached"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "585773ac-d170-4a4d-b555-26ec8e0e97cb",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "team",
+                    "inboxesWithSoloInboxLimitReached"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"string\",\n  \"string\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e559059-27d0-4262-9a23-c5a58ee8d63b",
+          "name": "get",
+          "request": {
+            "name": "get",
+            "description": {
+              "content": "Fetch a team\n\nRequired API Permissions: TEAM_READ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "team",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "13c5a5ac-d443-4a12-a090-6ff4188cd79f",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "team",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"attributes\": {\n      \"additionalEmailAddresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"archived\": false,\n      \"autoBccEmails\": [\n        {\n          \"email\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"email\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"createdAt\": \"1967-03-22T14:58:52.059Z\",\n      \"disableSend\": false,\n      \"emailAddress\": \"string\",\n      \"emailSignature\": \"string\",\n      \"foreignKey\": \"string\",\n      \"inboxAssignedToUserId\": \"string\",\n      \"internalEmailAddress\": \"string\",\n      \"name\": \"string\",\n      \"public\": false,\n      \"purpose\": \"string\",\n      \"sendingName\": \"string\",\n      \"soloInbox\": false\n    },\n    \"id\": \"string\",\n    \"links\": {\n      \"self\": \"string\"\n    },\n    \"relationships\": {\n      \"categoryTag\": {\n        \"data\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"messageTag\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"messageTag\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"links\": {\n          \"related\": \"string\",\n          \"self\": \"string\"\n        }\n      },\n      \"user\": {\n        \"data\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"links\": {\n          \"related\": \"string\",\n          \"self\": \"string\"\n        }\n      }\n    },\n    \"type\": \"team\",\n    \"uuid\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ffe6848-c5f0-49ec-b8fc-020ce0e09f4f",
+          "name": "patch Team",
+          "request": {
+            "name": "patch Team",
+            "description": {
+              "content": "Update a team\n\nRequired API Permissions: TEAM_WRITE",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "team",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"attributes\": {\n      \"additionalEmailAddresses\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"archived\": \"<boolean>\",\n      \"autoBccEmails\": [\n        {\n          \"email\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"email\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"disableSend\": \"<boolean>\",\n      \"emailAddress\": \"<string>\",\n      \"emailSignature\": \"<string>\",\n      \"foreignKey\": \"<string>\",\n      \"inboxAssignedToUserId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"public\": \"<boolean>\",\n      \"purpose\": \"<string>\",\n      \"sendingName\": \"<string>\",\n      \"soloInbox\": \"<boolean>\"\n    },\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d93985cf-4129-41ce-93d1-263c95ee5bf5",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "team",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"attributes\": {\n      \"additionalEmailAddresses\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"archived\": \"<boolean>\",\n      \"autoBccEmails\": [\n        {\n          \"email\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"email\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"disableSend\": \"<boolean>\",\n      \"emailAddress\": \"<string>\",\n      \"emailSignature\": \"<string>\",\n      \"foreignKey\": \"<string>\",\n      \"inboxAssignedToUserId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"public\": \"<boolean>\",\n      \"purpose\": \"<string>\",\n      \"sendingName\": \"<string>\",\n      \"soloInbox\": \"<boolean>\"\n    },\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"attributes\": {\n      \"additionalEmailAddresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"archived\": false,\n      \"autoBccEmails\": [\n        {\n          \"email\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"email\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"createdAt\": \"1967-03-22T14:58:52.059Z\",\n      \"disableSend\": false,\n      \"emailAddress\": \"string\",\n      \"emailSignature\": \"string\",\n      \"foreignKey\": \"string\",\n      \"inboxAssignedToUserId\": \"string\",\n      \"internalEmailAddress\": \"string\",\n      \"name\": \"string\",\n      \"public\": false,\n      \"purpose\": \"string\",\n      \"sendingName\": \"string\",\n      \"soloInbox\": false\n    },\n    \"id\": \"string\",\n    \"links\": {\n      \"self\": \"string\"\n    },\n    \"relationships\": {\n      \"categoryTag\": {\n        \"data\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"messageTag\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"messageTag\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"links\": {\n          \"related\": \"string\",\n          \"self\": \"string\"\n        }\n      },\n      \"user\": {\n        \"data\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"links\": {\n          \"related\": \"string\",\n          \"self\": \"string\"\n        }\n      }\n    },\n    \"type\": \"team\",\n    \"uuid\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cce7dd4e-efe7-455f-b5c0-214f8126b2ba",
+          "name": "get Team Category Tags",
+          "request": {
+            "name": "get Team Category Tags",
+            "description": {
+              "content": "Fetch all category tags related to a team\n\nRequired API Permissions: TEAM_READ, CATEGORYTAG_READ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "team",
+                ":id",
+                "category-tag"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[limit]",
+                  "value": "100"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[offset]",
+                  "value": "0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6060245f-d022-4af2-be7b-9023fe8f06e9",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "team",
+                    ":id",
+                    "category-tag"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[limit]",
+                      "value": "100"
+                    },
+                    {
+                      "key": "page[offset]",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"attributes\": {\n        \"archived\": true,\n        \"disableFollow\": false,\n        \"label\": \"string\",\n        \"name\": \"string\"\n      },\n      \"id\": \"string\",\n      \"links\": {\n        \"self\": \"string\"\n      },\n      \"relationships\": {\n        \"team\": {\n          \"data\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"links\": {\n            \"related\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"self\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      \"type\": \"category-tag\"\n    },\n    {\n      \"attributes\": {\n        \"archived\": true,\n        \"disableFollow\": false,\n        \"label\": \"string\",\n        \"name\": \"string\"\n      },\n      \"id\": \"string\",\n      \"links\": {\n        \"self\": \"string\"\n      },\n      \"relationships\": {\n        \"team\": {\n          \"data\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"links\": {\n            \"related\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"self\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      \"type\": \"category-tag\"\n    }\n  ],\n  \"links\": {\n    \"first\": \"string\",\n    \"next\": \"string\",\n    \"self\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e94e0df2-30c8-4e50-81d2-46847f3c1502",
+          "name": "get Team Disable Send Users",
+          "request": {
+            "name": "get Team Disable Send Users",
+            "description": {
+              "content": "\nFetch the users that have sending disabled for the given team.\n\n**This is an enterprise feature.** If you'd like to learn more, please reach out to your account representative.\n\n\nRequired API Permissions: TEAM_READ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "team",
+                ":id",
+                "disable-send-users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ddcb38a0-497c-4ee5-ab42-36d40441da86",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "team",
+                    ":id",
+                    "disable-send-users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"attributes\": {\n        \"archived\": true,\n        \"billableFrom\": \"2013-05-20T03:12:57.831Z\",\n        \"billableType\": \"string\",\n        \"createdAt\": \"1971-06-20T07:52:33.073Z\",\n        \"deletedAt\": \"1956-09-08T05:36:18.997Z\",\n        \"emailSignature\": \"string\",\n        \"firstName\": \"string\",\n        \"foreignId\": 6722.379656337446,\n        \"initials\": \"string\",\n        \"internal\": false,\n        \"lastLogin\": \"2001-10-23T01:23:46.664Z\",\n        \"lastName\": \"string\",\n        \"roles\": [\n          \"string\",\n          \"string\"\n        ],\n        \"ssoEmail\": \"string\",\n        \"username\": \"string\"\n      },\n      \"id\": \"string\",\n      \"links\": {\n        \"self\": \"string\"\n      },\n      \"relationships\": {\n        \"deactivationPeriod\": {\n          \"data\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"defaultTeam\": {\n          \"data\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"links\": {\n            \"related\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"self\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"disableSendTeams\": {\n          \"data\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"links\": {\n            \"related\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"self\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"notificationDevice\": {\n          \"data\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"links\": {\n            \"related\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"self\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"privateLabel\": {\n          \"data\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"links\": {\n            \"related\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"self\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"team\": {\n          \"data\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"links\": {\n            \"related\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"self\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"watchedTeams\": {\n          \"data\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"links\": {\n            \"related\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"self\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      \"type\": \"user\"\n    },\n    {\n      \"attributes\": {\n        \"archived\": true,\n        \"billableFrom\": \"1999-06-17T14:58:51.058Z\",\n        \"billableType\": \"string\",\n        \"createdAt\": \"2004-11-02T23:24:12.193Z\",\n        \"deletedAt\": \"1996-05-30T00:48:57.385Z\",\n        \"emailSignature\": \"string\",\n        \"firstName\": \"string\",\n        \"foreignId\": 871.5732218830608,\n        \"initials\": \"string\",\n        \"internal\": true,\n        \"lastLogin\": \"2005-03-27T09:01:53.378Z\",\n        \"lastName\": \"string\",\n        \"roles\": [\n          \"string\",\n          \"string\"\n        ],\n        \"ssoEmail\": \"string\",\n        \"username\": \"string\"\n      },\n      \"id\": \"string\",\n      \"links\": {\n        \"self\": \"string\"\n      },\n      \"relationships\": {\n        \"deactivationPeriod\": {\n          \"data\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"defaultTeam\": {\n          \"data\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"links\": {\n            \"related\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"self\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"disableSendTeams\": {\n          \"data\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"links\": {\n            \"related\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"self\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"notificationDevice\": {\n          \"data\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"links\": {\n            \"related\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"self\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"privateLabel\": {\n          \"data\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"links\": {\n            \"related\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"self\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"team\": {\n          \"data\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"links\": {\n            \"related\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"self\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"watchedTeams\": {\n          \"data\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"links\": {\n            \"related\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"self\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      \"type\": \"user\"\n    }\n  ],\n  \"links\": {\n    \"first\": \"string\",\n    \"next\": \"string\",\n    \"self\": \"string\"\n  },\n  \"meta\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "131d3bd0-3af2-4cef-b729-dee83b8485ac",
+          "name": "get Team Category Tag Relationships",
+          "request": {
+            "name": "get Team Category Tag Relationships",
+            "description": {
+              "content": "Fetch all category tags relationships to a team\n\nRequired API Permissions: TEAM_READ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "team",
+                ":id",
+                "relationships",
+                "category-tag"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[limit]",
+                  "value": "100"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[offset]",
+                  "value": "0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9b050a81-84c4-4d2e-ab9d-e5ea920caaab",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "team",
+                    ":id",
+                    "relationships",
+                    "category-tag"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[limit]",
+                      "value": "100"
+                    },
+                    {
+                      "key": "page[offset]",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"messageTag\": {\n        \"assignedToUserId\": \"string\",\n        \"createdAt\": \"1951-06-29T12:13:26.076Z\",\n        \"eventId\": {\n          \"id\": 6856\n        },\n        \"messageId\": \"string\",\n        \"messageTagId\": {\n          \"id\": 4886\n        },\n        \"removedAt\": \"2018-08-03T04:40:29.624Z\",\n        \"removedByUserId\": \"string\",\n        \"tag\": {\n          \"id\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"name\": {\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"tagLabel\": {\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"tagTypeId\": 4362\n        },\n        \"tagId\": {\n          \"id\": 5482\n        },\n        \"userId\": \"string\"\n      },\n      \"type\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"messageTag\": {\n        \"assignedToUserId\": \"string\",\n        \"createdAt\": \"2023-04-29T02:54:15.704Z\",\n        \"eventId\": {\n          \"id\": 1310\n        },\n        \"messageId\": \"string\",\n        \"messageTagId\": {\n          \"id\": 2454\n        },\n        \"removedAt\": \"2017-09-15T18:27:36.481Z\",\n        \"removedByUserId\": \"string\",\n        \"tag\": {\n          \"id\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"name\": {\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"tagLabel\": {\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"tagTypeId\": 7404\n        },\n        \"tagId\": {\n          \"id\": 7700\n        },\n        \"userId\": \"string\"\n      },\n      \"type\": \"string\"\n    }\n  ],\n  \"links\": {\n    \"related\": \"string\",\n    \"self\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "63d23199-31cc-43c6-a40c-f81266356e67",
+          "name": "add Team Disable Send Users Relationships",
+          "request": {
+            "name": "add Team Disable Send Users Relationships",
+            "description": {
+              "content": "\nDisable sending for a user for the given team.\nSending cannot be disabled for any users who have this team as their default team.\n\n**This is an enterprise feature.** If you'd like to learn more, please reach out to your account representative.\n\n\nRequired API Permissions: TEAM_WRITE",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "team",
+                ":id",
+                "relationships",
+                "disable-send-users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bb60c335-7efd-4580-b27d-f2f237e0fcdf",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "team",
+                    ":id",
+                    "relationships",
+                    "disable-send-users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"links\": {\n    \"related\": \"string\",\n    \"self\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d2ea60c-2e5b-4952-b842-7775226cbd30",
+          "name": "get Team Disable Send Users Relationships",
+          "request": {
+            "name": "get Team Disable Send Users Relationships",
+            "description": {
+              "content": "\nFetch the user relationships that have sending disabled for the given team.\n\n**This is an enterprise feature.** If you'd like to learn more, please reach out to your account representative.\n\n\nRequired API Permissions: TEAM_READ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "team",
+                ":id",
+                "relationships",
+                "disable-send-users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7e6dabca-1158-4557-97a4-8e651407652d",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "team",
+                    ":id",
+                    "relationships",
+                    "disable-send-users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"links\": {\n    \"related\": \"string\",\n    \"self\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "275d2122-c517-41ac-963a-9717cee7800e",
+          "name": "remove Team Disable Send Users Relationships",
+          "request": {
+            "name": "remove Team Disable Send Users Relationships",
+            "description": {
+              "content": "\nTurn off disable sending for a user for the given team. (ie. Enable sending)\n\n**This is an enterprise feature.** If you'd like to learn more, please reach out to your account representative.\n\n\nRequired API Permissions: TEAM_WRITE",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "team",
+                ":id",
+                "relationships",
+                "disable-send-users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7a211e5f-55ca-4833-a179-e433310ea18b",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "team",
+                    ":id",
+                    "relationships",
+                    "disable-send-users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"links\": {\n    \"related\": \"string\",\n    \"self\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7e74ce9c-a8e1-4a85-8f91-c021eb5e5eb9",
+          "name": "add Team User Relationships",
+          "request": {
+            "name": "add Team User Relationships",
+            "description": {
+              "content": "Add users to a team\n\nRequired API Permissions: TEAM_WRITE",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "team",
+                ":id",
+                "relationships",
+                "user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"meta\": {\n        \"default\": \"<boolean>\",\n        \"disableSend\": \"<boolean>\",\n        \"watched\": \"<boolean>\"\n      },\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"meta\": {\n        \"default\": \"<boolean>\",\n        \"disableSend\": \"<boolean>\",\n        \"watched\": \"<boolean>\"\n      },\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e91dcd70-0512-4c1b-9e2f-e4413cf54d6a",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "team",
+                    ":id",
+                    "relationships",
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"meta\": {\n        \"default\": \"<boolean>\",\n        \"disableSend\": \"<boolean>\",\n        \"watched\": \"<boolean>\"\n      },\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"meta\": {\n        \"default\": \"<boolean>\",\n        \"disableSend\": \"<boolean>\",\n        \"watched\": \"<boolean>\"\n      },\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f1368d84-9e2e-4213-b2d3-c6487d1f3d12",
+          "name": "get Team User Relationships",
+          "request": {
+            "name": "get Team User Relationships",
+            "description": {
+              "content": "Fetch all users in a team\n\nRequired API Permissions: TEAM_READ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "team",
+                ":id",
+                "relationships",
+                "user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[limit]",
+                  "value": "100"
+                },
+                {
+                  "disabled": false,
+                  "key": "page[offset]",
+                  "value": "0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0ffb77df-b663-4e20-ac19-fe4477b0a22b",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "team",
+                    ":id",
+                    "relationships",
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[limit]",
+                      "value": "100"
+                    },
+                    {
+                      "key": "page[offset]",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"meta\": {\n        \"default\": \"<boolean>\",\n        \"disableSend\": \"<boolean>\",\n        \"watched\": \"<boolean>\"\n      },\n      \"type\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"meta\": {\n        \"default\": \"<boolean>\",\n        \"disableSend\": \"<boolean>\",\n        \"watched\": \"<boolean>\"\n      },\n      \"type\": \"string\"\n    }\n  ],\n  \"links\": {\n    \"first\": \"string\",\n    \"last\": \"string\",\n    \"next\": \"string\",\n    \"prev\": \"string\",\n    \"self\": \"string\"\n  },\n  \"meta\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0251ff4-f1ad-4715-9bfd-17dd18bfd63e",
+          "name": "remove Team User Relationships",
+          "request": {
+            "name": "remove Team User Relationships",
+            "description": {
+              "content": "Remove users from a team\n\nRequired API Permissions: TEAM_WRITE",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "team",
+                ":id",
+                "relationships",
+                "user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"meta\": {\n        \"default\": \"<boolean>\",\n        \"disableSend\": \"<boolean>\",\n        \"watched\": \"<boolean>\"\n      },\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"meta\": {\n        \"default\": \"<boolean>\",\n        \"disableSend\": \"<boolean>\",\n        \"watched\": \"<boolean>\"\n      },\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "90147fc7-83da-4e28-b657-0485827a5c4b",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "team",
+                    ":id",
+                    "relationships",
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"meta\": {\n        \"default\": \"<boolean>\",\n        \"disableSend\": \"<boolean>\",\n        \"watched\": \"<boolean>\"\n      },\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"meta\": {\n        \"default\": \"<boolean>\",\n        \"disableSend\": \"<boolean>\",\n        \"watched\": \"<boolean>\"\n      },\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5d8877d4-6f6d-42d2-ae94-d17ed11487dc",
+          "name": "get Team User Count",
+          "request": {
+            "name": "get Team User Count",
+            "description": {
+              "content": "Fetch count of all users in a team\n\nRequired API Permissions: TEAM_READ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "2019-01-01",
+                "team",
+                ":id",
+                "relationships",
+                "user",
+                "count"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your tenant's unique identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "609653ea-c0ff-4b21-96a3-d225c40e1800",
+              "name": "default response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "2019-01-01",
+                    "team",
+                    ":id",
+                    "relationships",
+                    "user",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your tenant's unique identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"count\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your tenant's unique identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "example",
+      "key": "tenant"
+    },
+    {
+      "type": "string",
+      "value": "https://{{tenant}}.sednanetwork.com/platform",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "cf0e1ba3-a058-4ac8-9415-30d0caa3ace4",
+    "name": "Sedna Authentication Team API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Name: Support",
+      "type": "text/plain"
+    }
+  }
+}

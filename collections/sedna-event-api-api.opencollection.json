@@ -1,0 +1,185 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sedna Authentication Event API API",
+    "version": "2019-01-01"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Event API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getEvents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/event",
+            "params": [
+              {
+                "name": "filter[eventType]",
+                "value": "event.message.received",
+                "type": "query"
+              },
+              {
+                "name": "page[cursor]",
+                "value": "160573430553538575444254826660000016384",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetch a collection of events\n\nRequired API Permissions: EVENT_READ"
+        },
+        {
+          "info": {
+            "name": "getLatestEvent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/event/latest"
+          },
+          "docs": "Fetch the latest event\n\nRequired API Permissions: EVENT_READ"
+        },
+        {
+          "info": {
+            "name": "getEvent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/event/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch an event\n\nRequired API Permissions: EVENT_READ"
+        },
+        {
+          "info": {
+            "name": "getEventCategoryTag",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/event/:id/category-tag",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch an event's related category tag\n\nRequired API Permissions: EVENT_READ, CATEGORYTAG_READ"
+        },
+        {
+          "info": {
+            "name": "getEventJobReference",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/event/:id/job-reference",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch the job reference related to the event\n\nRequired API Permissions: EVENT_READ, JOBREFERENCE_READ"
+        },
+        {
+          "info": {
+            "name": "getEventMessage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/event/:id/message",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch the message related to the event\n\nRequired API Permissions: EVENT_READ, MESSAGE_READ"
+        },
+        {
+          "info": {
+            "name": "getEventCategoryTagRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/event/:id/relationships/category-tag",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch an event's category tag relationship\n\nRequired API Permissions: EVENT_READ"
+        },
+        {
+          "info": {
+            "name": "getEventJobReferenceRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/event/:id/relationships/job-reference",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch the job reference relationship related to the event\n\nRequired API Permissions: EVENT_READ"
+        },
+        {
+          "info": {
+            "name": "getEventMessageRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/event/:id/relationships/message",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch the message relationship related to the event\n\nRequired API Permissions: EVENT_READ"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

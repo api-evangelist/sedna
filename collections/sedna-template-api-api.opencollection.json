@@ -1,0 +1,91 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sedna Authentication Template API API",
+    "version": "2019-01-01"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Template API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/template",
+            "params": [
+              {
+                "name": "fields[template]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[team]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[enabled]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[type]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "null\n\nRequired API Permissions: TEMPLATE_READ"
+        },
+        {
+          "info": {
+            "name": "find_1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/template/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields[template]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetch a template\n\nRequired API Permissions: TEMPLATE_READ"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

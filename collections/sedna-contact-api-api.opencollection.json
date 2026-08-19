@@ -1,0 +1,475 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sedna Authentication Contact API API",
+    "version": "2019-01-01"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contact API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getContacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/contact",
+            "params": [
+              {
+                "name": "page[page]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[name]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[foreignKey]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "currentTeamId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[id]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get many contacts\n\nRequired API Permissions: CONTACT_READ"
+        },
+        {
+          "info": {
+            "name": "createContact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/contact",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new contact\n\nRequired API Permissions: CONTACT_WRITE"
+        },
+        {
+          "info": {
+            "name": "getContactGroups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/contact-group",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[name]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[foreignKey]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get many contact groups\n\nRequired API Permissions: CONTACTGROUP_READ"
+        },
+        {
+          "info": {
+            "name": "createContactGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/contact-group",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new contact group\n\nRequired API Permissions: CONTACTGROUP_WRITE"
+        },
+        {
+          "info": {
+            "name": "getGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/contact-group/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "currentTeamId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a contact group\n\nRequired API Permissions: CONTACTGROUP_READ"
+        },
+        {
+          "info": {
+            "name": "updateContactGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/contact-group/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "currentTeamId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a contact group\n\nRequired API Permissions: CONTACTGROUP_WRITE"
+        },
+        {
+          "info": {
+            "name": "deleteContactGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/contact-group/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a contact group\n\nRequired API Permissions: CONTACTGROUP_DELETE"
+        },
+        {
+          "info": {
+            "name": "addContactToGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/contact-group/:id/relationships/contact",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add contact(s) to a group\n\nRequired API Permissions: CONTACTGROUP_WRITE"
+        },
+        {
+          "info": {
+            "name": "replaceGroupContacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/contact-group/:id/relationships/contact",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fully replace a groups contacts\n\nRequired API Permissions: CONTACTGROUP_WRITE"
+        },
+        {
+          "info": {
+            "name": "removeContactFromGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/contact-group/:id/relationships/contact",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove contact(s) from a group\n\nRequired API Permissions: CONTACTGROUP_WRITE"
+        },
+        {
+          "info": {
+            "name": "getContact",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/contact/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "currentTeamId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a contact\n\nRequired API Permissions: CONTACT_READ"
+        },
+        {
+          "info": {
+            "name": "updateContact",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/contact/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "currentTeamId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a contact\n\nRequired API Permissions: CONTACT_WRITE"
+        },
+        {
+          "info": {
+            "name": "deleteContact",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/contact/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "currentTeamId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete a contact\n\nRequired API Permissions: CONTACT_DELETE"
+        },
+        {
+          "info": {
+            "name": "getContactComments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/contact/:id/comment",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get all comments for a contact\n\nRequired API Permissions: CONTACT_READ"
+        },
+        {
+          "info": {
+            "name": "addContactComment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/contact/:id/comment",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add comment to the contact\n\nRequired API Permissions: CONTACT_WRITE"
+        },
+        {
+          "info": {
+            "name": "updateContactComment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/contact/:id/comment",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update contact comment; unsupported at the time\n\nRequired API Permissions: CONTACT_WRITE"
+        },
+        {
+          "info": {
+            "name": "deleteContactComment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/contact/:id/comment",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete contact comment; unsupported at the time\n\nRequired API Permissions: CONTACT_DELETE"
+        },
+        {
+          "info": {
+            "name": "getContactGroupRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/contact/:id/relationships/contact-group",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch a contact's group relationship\n\nRequired API Permissions: CONTACT_READ"
+        },
+        {
+          "info": {
+            "name": "getContactTeamRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/contact/:id/relationships/team",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "currentTeamId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetch a contact's team relationships\n\nRequired API Permissions: CONTACT_READ"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,429 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sedna Authentication Category Tag API API",
+    "version": "2019-01-01"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Category Tag API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getCategoryTags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/category-tag",
+            "params": [
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[name]",
+                "value": "",
+                "type": "query",
+                "description": "Filter results by name containing given value. Case-insensitive."
+              }
+            ]
+          },
+          "docs": "Fetch a collection of category tags\n\nRequired API Permissions: CATEGORYTAG_READ"
+        },
+        {
+          "info": {
+            "name": "createCategoryTag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/category-tag",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a category tag\n\nRequired API Permissions: CATEGORYTAG_WRITE"
+        },
+        {
+          "info": {
+            "name": "getCategoryTag",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/category-tag/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch a category tag\n\nRequired API Permissions: CATEGORYTAG_READ"
+        },
+        {
+          "info": {
+            "name": "updateCategoryTag",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/category-tag/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a category tag\n\nRequired API Permissions: CATEGORYTAG_WRITE"
+        },
+        {
+          "info": {
+            "name": "deleteCategoryTag",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/category-tag/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a category tag\n\nRequired API Permissions: CATEGORYTAG_DELETE"
+        },
+        {
+          "info": {
+            "name": "getMessagesWithCategoryTag",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/category-tag/:id/message",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields[message]",
+                "value": "",
+                "type": "query",
+                "description": "Comma separated list of fields to return. Please include only necessary fields for performance reasons. If this parameter is omitted, API will return all the fields and it can negatively impact the latency. Available fields: subject,snippet,fromName,fromEmail,bodyText,bodyHtml,hasAttachment,receivedAt,sentAt,messageId,inReplyTo,references,from,to,cc,bcc,signed. Id is always returned."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetch a collection of messages that have the given category tag applied. DEPRECATED: please use /{id}/messageV2 instead\n\nRequired API Permissions: CATEGORYTAG_READ, MESSAGE_READ"
+        },
+        {
+          "info": {
+            "name": "getMessagesWithCategoryTagV2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/category-tag/:id/messageV2",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page[cursor]",
+                "value": "",
+                "type": "query",
+                "description": "the next-page cursor returned as part of a previous call to this endpoint"
+              },
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields[message]",
+                "value": "",
+                "type": "query",
+                "description": "Comma separated list of fields to return. Please include only necessary fields for performance reasons. If this parameter is omitted, API will return all the fields and it can negatively impact the latency. Available fields: subject,snippet,fromName,fromEmail,bodyText,bodyHtml,hasAttachment,receivedAt,sentAt,messageId,inReplyTo,references,from,to,cc,bcc,signed. Id is always returned."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[team]",
+                "value": "",
+                "type": "query",
+                "description": "Comma separated list of teams to filter by. Only returns messages that belong to any of the specified teams. If omitted, messages belonging to all teams, including solo inboxes, are returned."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The value to sort the message by. Must be one of 'received_date' or 'activity'. Defaults to 'received_date' if not specified."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The order in which to sort the messages, i.e. 'desc' (newest messages first) or 'asc' (oldest messages first). Defaults to 'desc' if not specified."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Array of comma-separated relationships to retrieve entities for if they are present in the retrieved messages' relationships. e.g. 'comment,document,share,team,category,job_reference,assignment,keyword,address'"
+              }
+            ]
+          },
+          "docs": "Fetch a collection of messages that have the given category tag applied\n\nRequired API Permissions: CATEGORYTAG_READ, MESSAGE_READ"
+        },
+        {
+          "info": {
+            "name": "getCategoryTagMessageRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/category-tag/:id/relationships/message",
+            "params": [
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch a category tag's message relationships. DEPRECATED: please use /{id}/messageV2 instead\n\nRequired API Permissions: CATEGORYTAG_READ"
+        },
+        {
+          "info": {
+            "name": "addCategoryTagToMessages",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/category-tag/:id/relationships/message",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add messages to a category tag's message relationships\n\nRequired API Permissions: CATEGORYTAG_WRITE"
+        },
+        {
+          "info": {
+            "name": "removeCategoryTagFromMessages",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/category-tag/:id/relationships/message",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove messages from a category tag's message relationships\n\nRequired API Permissions: CATEGORYTAG_WRITE"
+        },
+        {
+          "info": {
+            "name": "getCategoryTagTeamRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/category-tag/:id/relationships/team",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch a category tag's team relationships\n\nRequired API Permissions: CATEGORYTAG_READ"
+        },
+        {
+          "info": {
+            "name": "addCategoryTagTeams",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/category-tag/:id/relationships/team",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add teams to a category tag's team relationships, adds to relationships only\n\nRequired API Permissions: CATEGORYTAG_WRITE"
+        },
+        {
+          "info": {
+            "name": "replaceCategoryTagTeams",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/category-tag/:id/relationships/team",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replace all teams in a category tag's team relationships, partial update not supported\n\nRequired API Permissions: CATEGORYTAG_WRITE"
+        },
+        {
+          "info": {
+            "name": "deleteCategoryTagTeams",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/category-tag/:id/relationships/team",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove teams from a category tag's team relationships, removes relationships only\n\nRequired API Permissions: CATEGORYTAG_DELETE"
+        },
+        {
+          "info": {
+            "name": "getCategoryTagTeams",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/category-tag/:id/team",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch a category tag's related teams\n\nRequired API Permissions: CATEGORYTAG_READ, TEAM_READ"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

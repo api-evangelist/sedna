@@ -1,0 +1,97 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sedna Authentication Download API API",
+    "version": "2019-01-01"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Download API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "downloadDocument",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/download/document/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Download a message attachment a.k.a. document.\n\nRequired API Permissions: DOCUMENT_READ"
+        },
+        {
+          "info": {
+            "name": "downloadMessage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/download/message/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Download the source file, usually .eml, of a message.\n\nRequired API Permissions: MESSAGE_READ"
+        },
+        {
+          "info": {
+            "name": "downloadAllMessageAttachments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/download/message/:id/attachments/zip",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Download all attachments of a message as a zip file, using presigned S3 link if available or generating it otherwise.\n\nRequired API Permissions: DOCUMENT_READ"
+        },
+        {
+          "info": {
+            "name": "downloadTemplateDocument",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/download/template/document/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Download a template attachment (document)\n\nRequired API Permissions: DOCUMENT_READ"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,328 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sedna Authentication Team API API",
+    "version": "2019-01-01"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Team API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getAll",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/team"
+          },
+          "docs": "Fetch all teams\n\nRequired API Permissions: TEAM_READ"
+        },
+        {
+          "info": {
+            "name": "createTeam",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/team",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a team\n\nRequired API Permissions: TEAM_WRITE"
+        },
+        {
+          "info": {
+            "name": "getInboxesWithSoloInboxLimitReached",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/team/inboxesWithSoloInboxLimitReached"
+          },
+          "docs": "Fetch team ids for teams that reached solo inbox limit\n\nRequired API Permissions: TEAM_READ"
+        },
+        {
+          "info": {
+            "name": "get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/team/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch a team\n\nRequired API Permissions: TEAM_READ"
+        },
+        {
+          "info": {
+            "name": "patchTeam",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/team/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a team\n\nRequired API Permissions: TEAM_WRITE"
+        },
+        {
+          "info": {
+            "name": "getTeamCategoryTags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/team/:id/category-tag",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetch all category tags related to a team\n\nRequired API Permissions: TEAM_READ, CATEGORYTAG_READ"
+        },
+        {
+          "info": {
+            "name": "getTeamDisableSendUsers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/team/:id/disable-send-users",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "\nFetch the users that have sending disabled for the given team.\n\n**This is an enterprise feature.** If you'd like to learn more, please reach out to your account representative.\n\n\nRequired API Permissions: TEAM_READ"
+        },
+        {
+          "info": {
+            "name": "getTeamCategoryTagRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/team/:id/relationships/category-tag",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetch all category tags relationships to a team\n\nRequired API Permissions: TEAM_READ"
+        },
+        {
+          "info": {
+            "name": "getTeamDisableSendUsersRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/team/:id/relationships/disable-send-users",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "\nFetch the user relationships that have sending disabled for the given team.\n\n**This is an enterprise feature.** If you'd like to learn more, please reach out to your account representative.\n\n\nRequired API Permissions: TEAM_READ"
+        },
+        {
+          "info": {
+            "name": "addTeamDisableSendUsersRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/team/:id/relationships/disable-send-users",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "\nDisable sending for a user for the given team.\nSending cannot be disabled for any users who have this team as their default team.\n\n**This is an enterprise feature.** If you'd like to learn more, please reach out to your account representative.\n\n\nRequired API Permissions: TEAM_WRITE"
+        },
+        {
+          "info": {
+            "name": "removeTeamDisableSendUsersRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/team/:id/relationships/disable-send-users",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "\nTurn off disable sending for a user for the given team. (ie. Enable sending)\n\n**This is an enterprise feature.** If you'd like to learn more, please reach out to your account representative.\n\n\nRequired API Permissions: TEAM_WRITE"
+        },
+        {
+          "info": {
+            "name": "getTeamUserRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/team/:id/relationships/user",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetch all users in a team\n\nRequired API Permissions: TEAM_READ"
+        },
+        {
+          "info": {
+            "name": "addTeamUserRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/team/:id/relationships/user",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add users to a team\n\nRequired API Permissions: TEAM_WRITE"
+        },
+        {
+          "info": {
+            "name": "removeTeamUserRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/team/:id/relationships/user",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove users from a team\n\nRequired API Permissions: TEAM_WRITE"
+        },
+        {
+          "info": {
+            "name": "getTeamUserCount",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/team/:id/relationships/user/count",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch count of all users in a team\n\nRequired API Permissions: TEAM_READ"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

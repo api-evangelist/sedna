@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sedna Authentication Vessel API API",
+    "version": "2019-01-01"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Vessel API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "createVessel",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/chartering/vessel",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "null\n\nRequired API Permissions: CHARTERING_WRITE"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

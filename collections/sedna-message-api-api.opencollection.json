@@ -1,0 +1,746 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sedna Authentication Message API API",
+    "version": "2019-01-01"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Message API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "downloadAllMessageAttachments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/download/message/:id/attachments/zip",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Download all attachments of a message as a zip file, using presigned S3 link if available or generating it otherwise.\n\nRequired API Permissions: DOCUMENT_READ"
+        },
+        {
+          "info": {
+            "name": "createMessageDraft",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message",
+            "params": [
+              {
+                "name": "appendSignature",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a draft message\n\nRequired API Permissions: MESSAGE_WRITE"
+        },
+        {
+          "info": {
+            "name": "listQuarantinedMessages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message/quarantine",
+            "params": [
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[quarantineStatus]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields[message]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[quarantinedDate.from]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[quarantinedDate.to]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[releasedDate.from]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[releasedDate.to]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[team]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List messages that have been quarantined/released.\n\nRequired API Permissions: QUARANTINED_MESSAGE_READ"
+        },
+        {
+          "info": {
+            "name": "sendNewMessage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message/send",
+            "params": [
+              {
+                "name": "appendSignature",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scanForVirus",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sendDelay",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "currentTeamId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create and send a message\n\nRequired API Permissions: MESSAGE_WRITE, MESSAGE_READ"
+        },
+        {
+          "info": {
+            "name": "getMessage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields[message]",
+                "value": "",
+                "type": "query",
+                "description": "Comma separated list of fields to return. Available fields: subject,snippet,fromName,fromEmail,bodyText,bodyHtml,hasAttachment,receivedAt,sentAt,messageId,inReplyTo,references,from,to,cc,bcc,signed. Id is always returned."
+              }
+            ]
+          },
+          "docs": "Fetch a message\n\nRequired API Permissions: MESSAGE_READ"
+        },
+        {
+          "info": {
+            "name": "updateMessageDraft",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "noContent",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a draft message\n\nRequired API Permissions: MESSAGE_WRITE, MESSAGE_READ"
+        },
+        {
+          "info": {
+            "name": "getMessageAssignments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message/:id/assignment",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch a message's related assignments\n\nRequired API Permissions: MESSAGE_READ"
+        },
+        {
+          "info": {
+            "name": "getMessageCategoryTags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message/:id/category-tag",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch a message's related category tags\n\nRequired API Permissions: MESSAGE_READ"
+        },
+        {
+          "info": {
+            "name": "getMessageComments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message/:id/comment",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get all comments for the message\n\nRequired API Permissions: COMMENT_READ"
+        },
+        {
+          "info": {
+            "name": "getMessageDocuments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message/:id/document",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "includeArchiveAttachment",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetch a message's documents\n\nRequired API Permissions: MESSAGE_READ"
+        },
+        {
+          "info": {
+            "name": "addDocumentToMessage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message/:id/document",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "\nAdds an attachment to a message.\nReturns an S3 Upload URL that will be valid for 5 minutes. This link can be used to upload the content of the file.\nIf a base64 body is provided this link will already contain the content of the file.\n\n\nRequired API Permissions: MESSAGE_READ, MESSAGE_WRITE"
+        },
+        {
+          "info": {
+            "name": "getMessageJobReferences",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message/:id/job-reference",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch a message's related job references\n\nRequired API Permissions: MESSAGE_READ"
+        },
+        {
+          "info": {
+            "name": "quarantineMessage",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message/:id/quarantine",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Quarantine a message from users until it is released.\n\nRequired API Permissions: QUARANTINED_MESSAGE_WRITE"
+        },
+        {
+          "info": {
+            "name": "getMessageQuarantineEvents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message/:id/quarantine/event",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List quarantine and release events of a message.\n\nRequired API Permissions: QUARANTINED_MESSAGE_READ, EVENT_READ"
+        },
+        {
+          "info": {
+            "name": "addAssignments",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message/:id/relationships/assignment",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add people to a message's assignment relationships\n\nRequired API Permissions: MESSAGE_WRITE"
+        },
+        {
+          "info": {
+            "name": "getMessageCategoryTagRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message/:id/relationships/category-tag",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch a message's category tag relationships\n\nRequired API Permissions: MESSAGE_READ"
+        },
+        {
+          "info": {
+            "name": "addMessageCategoryTags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message/:id/relationships/category-tag",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add tags to a message's category tag relationships\n\nRequired API Permissions: MESSAGE_READ, MESSAGE_WRITE"
+        },
+        {
+          "info": {
+            "name": "replaceMessageCategoryTags",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message/:id/relationships/category-tag",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Replace teams to a message's category tag relationships (Note: Forbidden)\n\nRequired API Permissions: MESSAGE_READ, MESSAGE_WRITE"
+        },
+        {
+          "info": {
+            "name": "removeMessageCategoryTags",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message/:id/relationships/category-tag",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove tags from a message's category tag relationships\n\nRequired API Permissions: MESSAGE_READ, MESSAGE_DELETE"
+        },
+        {
+          "info": {
+            "name": "getMessageDocumentRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message/:id/relationships/document",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch a message's document relationships\n\nRequired API Permissions: MESSAGE_READ"
+        },
+        {
+          "info": {
+            "name": "getMessageJobReferenceRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message/:id/relationships/job-reference",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch a message's job reference relationships\n\nRequired API Permissions: MESSAGE_READ"
+        },
+        {
+          "info": {
+            "name": "addMessageJobReferences",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message/:id/relationships/job-reference",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add job references to a message's job reference relationships\n\nRequired API Permissions: MESSAGE_READ, MESSAGE_WRITE"
+        },
+        {
+          "info": {
+            "name": "replaceMessageJobReferences",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message/:id/relationships/job-reference",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Replace teams to a message's job reference relationships (Note: Forbidden)\n\nRequired API Permissions: MESSAGE_READ, MESSAGE_WRITE"
+        },
+        {
+          "info": {
+            "name": "deleteMessageJobReferences",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message/:id/relationships/job-reference",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove job references from a message's job reference relationships\n\nRequired API Permissions: MESSAGE_READ, MESSAGE_DELETE"
+        },
+        {
+          "info": {
+            "name": "getMessageTeamRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message/:id/relationships/team",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch a message's team relationships\n\nRequired API Permissions: MESSAGE_READ, MESSAGE_DELETE"
+        },
+        {
+          "info": {
+            "name": "addMessageTeams",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message/:id/relationships/team",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fromTeamId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add teams to a message's team relationships\n\nRequired API Permissions: MESSAGE_READ, MESSAGE_WRITE"
+        },
+        {
+          "info": {
+            "name": "replaceMessageTeams",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message/:id/relationships/team",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Replace teams to a message's team relationships (Note: Forbidden)\n\nRequired API Permissions: MESSAGE_READ, MESSAGE_WRITE"
+        },
+        {
+          "info": {
+            "name": "deleteMessageTeams",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message/:id/relationships/team",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove teams from a message's team relationships\n\nRequired API Permissions: MESSAGE_READ, MESSAGE_DELETE"
+        },
+        {
+          "info": {
+            "name": "sendMessage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message/:id/send",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "scanForVirus",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sendDelay",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "currentTeamId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Send a message\n\nRequired API Permissions: MESSAGE_WRITE, MESSAGE_READ"
+        },
+        {
+          "info": {
+            "name": "updateAndSendMessagePatch",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message/:id/send",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "scanForVirus",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sendDelay",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "currentTeamId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update and send a message\n\nRequired API Permissions: MESSAGE_WRITE, MESSAGE_READ"
+        },
+        {
+          "info": {
+            "name": "getMessageTeams",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.sednanetwork.com/platform/2019-01-01/message/:id/team",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch a message's related teams\n\nRequired API Permissions: MESSAGE_READ"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
