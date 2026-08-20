@@ -35,6 +35,16 @@ tags:
 - Maritime
 - Email
 - Communications
+- Workflows
+- Commodity Trading
+- Logistics
+- Messaging
+tags_raw:
+- Company
+- Shipping
+- Maritime
+- Email
+- Communications
 - Workflow
 - Commodity Trading
 - Logistics
@@ -96,6 +106,8 @@ apis:
   humanURL: https://developers.sedna.com/reference
   baseURL: https://example.sednanetwork.com/platform
   tags:
+  - Document-Api
+  tags_raw:
   - Document API
   properties:
   - type: OpenAPI
