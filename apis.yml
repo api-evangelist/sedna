@@ -118,7 +118,7 @@ apis:
   humanURL: https://developers.sedna.com/reference
   baseURL: https://example.sednanetwork.com/platform
   tags:
-  - Document API
+  - Document-Api
   tags_raw:
   - Document API
   properties:
