@@ -40,7 +40,7 @@ x-tier: enriched
 x-tier-reason: portfolio-lead
 specificationVersion: '0.23'
 created: '2026-07-17'
-modified: '2026-07-21'
+modified: '2026-09-16'
 tags:
 - Company
 - Shipping
@@ -73,7 +73,7 @@ apis:
   - type: OpenAPI
     url: openapi/sedna-authentication-api-openapi.yml
 - aid: sedna:sedna-category-tag-api-api
-  name: SEDNA Category Tag API API
+  name: SEDNA Category Tag API
   description: The Category Tag API API from SEDNA — 7 operation(s) for category tag api.
   humanURL: https://developers.sedna.com/reference
   baseURL: https://example.sednanetwork.com/platform
@@ -83,7 +83,7 @@ apis:
   - type: OpenAPI
     url: openapi/sedna-category-tag-api-api-openapi.yml
 - aid: sedna:sedna-comment-api-api
-  name: SEDNA Comment API API
+  name: SEDNA Comment API
   description: The Comment API API from SEDNA — 1 operation(s) for comment api.
   humanURL: https://developers.sedna.com/reference
   baseURL: https://example.sednanetwork.com/platform
@@ -93,7 +93,7 @@ apis:
   - type: OpenAPI
     url: openapi/sedna-comment-api-api-openapi.yml
 - aid: sedna:sedna-company-api-api
-  name: SEDNA Company API API
+  name: SEDNA Company API
   description: The Company API API from SEDNA — 1 operation(s) for company api.
   humanURL: https://developers.sedna.com/reference
   baseURL: https://example.sednanetwork.com/platform
@@ -103,7 +103,7 @@ apis:
   - type: OpenAPI
     url: openapi/sedna-company-api-api-openapi.yml
 - aid: sedna:sedna-contact-api-api
-  name: SEDNA Contact API API
+  name: SEDNA Contact API
   description: The Contact API API from SEDNA — 8 operation(s) for contact api.
   humanURL: https://developers.sedna.com/reference
   baseURL: https://example.sednanetwork.com/platform
@@ -113,7 +113,7 @@ apis:
   - type: OpenAPI
     url: openapi/sedna-contact-api-api-openapi.yml
 - aid: sedna:sedna-document-api-api
-  name: SEDNA Document API API
+  name: SEDNA Document API
   description: The Document API API from SEDNA — 1 operation(s) for document api.
   humanURL: https://developers.sedna.com/reference
   baseURL: https://example.sednanetwork.com/platform
@@ -125,7 +125,7 @@ apis:
   - type: OpenAPI
     url: openapi/sedna-document-api-api-openapi.yml
 - aid: sedna:sedna-download-api-api
-  name: SEDNA Download API API
+  name: SEDNA Download API
   description: The Download API API from SEDNA — 4 operation(s) for download api.
   humanURL: https://developers.sedna.com/reference
   baseURL: https://example.sednanetwork.com/platform
@@ -135,7 +135,7 @@ apis:
   - type: OpenAPI
     url: openapi/sedna-download-api-api-openapi.yml
 - aid: sedna:sedna-event-api-api
-  name: SEDNA Event API API
+  name: SEDNA Event API
   description: The Event API API from SEDNA — 9 operation(s) for event api.
   humanURL: https://developers.sedna.com/reference
   baseURL: https://example.sednanetwork.com/platform
@@ -145,7 +145,7 @@ apis:
   - type: OpenAPI
     url: openapi/sedna-event-api-api-openapi.yml
 - aid: sedna:sedna-job-reference-api-api
-  name: SEDNA Job Reference API API
+  name: SEDNA Job Reference API
   description: The Job Reference API API from SEDNA — 7 operation(s) for job reference api.
   humanURL: https://developers.sedna.com/reference
   baseURL: https://example.sednanetwork.com/platform
@@ -155,7 +155,7 @@ apis:
   - type: OpenAPI
     url: openapi/sedna-job-reference-api-api-openapi.yml
 - aid: sedna:sedna-keyword-api-api
-  name: SEDNA Keyword API API
+  name: SEDNA Keyword API
   description: The Keyword API API from SEDNA — 3 operation(s) for keyword api.
   humanURL: https://developers.sedna.com/reference
   baseURL: https://example.sednanetwork.com/platform
@@ -165,7 +165,7 @@ apis:
   - type: OpenAPI
     url: openapi/sedna-keyword-api-api-openapi.yml
 - aid: sedna:sedna-message-api-api
-  name: SEDNA Message API API
+  name: SEDNA Message API
   description: The Message API API from SEDNA — 19 operation(s) for message api.
   humanURL: https://developers.sedna.com/reference
   baseURL: https://example.sednanetwork.com/platform
@@ -175,7 +175,7 @@ apis:
   - type: OpenAPI
     url: openapi/sedna-message-api-api-openapi.yml
 - aid: sedna:sedna-saved-search-api-api
-  name: SEDNA Saved Search API API
+  name: SEDNA Saved Search API
   description: The Saved Search API API from SEDNA — 2 operation(s) for saved search api.
   humanURL: https://developers.sedna.com/reference
   baseURL: https://example.sednanetwork.com/platform
@@ -185,7 +185,7 @@ apis:
   - type: OpenAPI
     url: openapi/sedna-saved-search-api-api-openapi.yml
 - aid: sedna:sedna-team-api-api
-  name: SEDNA Team API API
+  name: SEDNA Team API
   description: The Team API API from SEDNA — 9 operation(s) for team api.
   humanURL: https://developers.sedna.com/reference
   baseURL: https://example.sednanetwork.com/platform
@@ -195,7 +195,7 @@ apis:
   - type: OpenAPI
     url: openapi/sedna-team-api-api-openapi.yml
 - aid: sedna:sedna-template-api-api
-  name: SEDNA Template API API
+  name: SEDNA Template API
   description: The Template API API from SEDNA — 2 operation(s) for template api.
   humanURL: https://developers.sedna.com/reference
   baseURL: https://example.sednanetwork.com/platform
@@ -205,7 +205,7 @@ apis:
   - type: OpenAPI
     url: openapi/sedna-template-api-api-openapi.yml
 - aid: sedna:sedna-user-api-api
-  name: SEDNA User API API
+  name: SEDNA User API
   description: The User API API from SEDNA — 16 operation(s) for user api.
   humanURL: https://developers.sedna.com/reference
   baseURL: https://example.sednanetwork.com/platform
@@ -215,7 +215,7 @@ apis:
   - type: OpenAPI
     url: openapi/sedna-user-api-api-openapi.yml
 - aid: sedna:sedna-vessel-api-api
-  name: SEDNA Vessel API API
+  name: SEDNA Vessel API
   description: The Vessel API API from SEDNA — 1 operation(s) for vessel api.
   humanURL: https://developers.sedna.com/reference
   baseURL: https://example.sednanetwork.com/platform
@@ -225,7 +225,7 @@ apis:
   - type: OpenAPI
     url: openapi/sedna-vessel-api-api-openapi.yml
 - aid: sedna:sedna-workflow-api-api
-  name: SEDNA Workflow API API
+  name: SEDNA Workflow API
   description: The Workflow API API from SEDNA — 2 operation(s) for workflow api.
   humanURL: https://developers.sedna.com/reference
   baseURL: https://example.sednanetwork.com/platform
