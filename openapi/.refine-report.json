@@ -1,23 +1,7 @@
 {
   "provider": "sedna",
   "sources": [
-    "sedna-authentication-api-openapi.yml",
-    "sedna-category-tag-api-api-openapi.yml",
-    "sedna-comment-api-api-openapi.yml",
-    "sedna-company-api-api-openapi.yml",
-    "sedna-contact-api-api-openapi.yml",
-    "sedna-document-api-api-openapi.yml",
-    "sedna-download-api-api-openapi.yml",
-    "sedna-event-api-api-openapi.yml",
-    "sedna-job-reference-api-api-openapi.yml",
-    "sedna-keyword-api-api-openapi.yml",
-    "sedna-message-api-api-openapi.yml",
-    "sedna-saved-search-api-api-openapi.yml",
-    "sedna-team-api-api-openapi.yml",
-    "sedna-template-api-api-openapi.yml",
-    "sedna-user-api-api-openapi.yml",
-    "sedna-vessel-api-api-openapi.yml",
-    "sedna-workflow-api-api-openapi.yml"
+    "_original/sedna-openapi.json"
   ],
   "outputs": [
     "sedna-authentication-api-openapi.yml",
@@ -41,6 +25,28 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "sedna-openapi.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "sedna-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sedna-category-tag-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sedna-comment-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sedna-company-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sedna-contact-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sedna-document-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sedna-download-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sedna-event-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sedna-job-reference-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sedna-keyword-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sedna-message-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sedna-saved-search-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sedna-team-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sedna-template-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sedna-user-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sedna-vessel-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sedna-workflow-api-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

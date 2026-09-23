@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Support
@@ -53,6 +53,8 @@ paths:
       security: []
       tags:
       - Authentication
+      summary: Create OAuth token original
+      x-summary-source: derived
 components:
   schemas:
     OAuthTokenResult:

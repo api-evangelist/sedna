@@ -1,10 +1,10 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Support
     url: https://support.sedna.com
   termsOfService: https://www.sedna.com/terms-of-service
-  title: Sedna Authentication Document API API
+  title: Sedna Document API
   version: '2019-01-01'
 servers:
 - description: Platform endpoint
@@ -44,15 +44,10 @@ paths:
           description: default response
       tags:
       - Document API
+      summary: Get document details
+      x-summary-source: derived
 components:
   schemas:
-    DocumentMeta:
-      type: object
-      properties:
-        download:
-          type: string
-        publicDownload:
-          type: string
     DocumentResource:
       type: object
       properties:
@@ -66,6 +61,13 @@ components:
           type: string
           description: the type of the resource
           example: '127'
+    DocumentMeta:
+      type: object
+      properties:
+        download:
+          type: string
+        publicDownload:
+          type: string
     DocumentAttributes:
       type: object
       properties:

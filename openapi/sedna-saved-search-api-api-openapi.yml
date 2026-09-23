@@ -1,10 +1,10 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Support
     url: https://support.sedna.com
   termsOfService: https://www.sedna.com/terms-of-service
-  title: Sedna Authentication Saved Search API API
+  title: Sedna Saved Search API
   version: '2019-01-01'
 servers:
 - description: Platform endpoint
@@ -46,6 +46,8 @@ paths:
           description: default response
       tags:
       - Saved Search API
+      summary: Create saved search
+      x-summary-source: derived
     get:
       description: 'Get list of saved searches.
 
@@ -69,6 +71,8 @@ paths:
           description: default response
       tags:
       - Saved Search API
+      summary: Get saved searches
+      x-summary-source: derived
   /2019-01-01/saved-search/{id}:
     delete:
       description: 'Delete a saved search
@@ -94,6 +98,8 @@ paths:
           description: default response
       tags:
       - Saved Search API
+      summary: Delete saved search
+      x-summary-source: derived
     patch:
       description: 'Update saved search
 
@@ -130,20 +136,41 @@ paths:
           description: default response
       tags:
       - Saved Search API
+      summary: Update saved search
+      x-summary-source: derived
 components:
   schemas:
-    TeamRelData:
+    SavedSearchUpdateResource:
       type: object
       properties:
-        id:
-          type: string
+        attributes:
+          $ref: '#/components/schemas/SavedSearchUpdateAttributes'
+        relationships:
+          $ref: '#/components/schemas/SavedSearchRelationships'
         type:
           type: string
+      required:
+      - type
+    SavedSearchSingle:
+      type: object
+      description: a single saved search
+      properties:
+        data:
+          $ref: '#/components/schemas/SavedSearchReadResource'
     SavedSearchCreate:
       type: object
       properties:
         data:
           $ref: '#/components/schemas/SavedSearchCreateResource'
+    SavedSearchUpdateAttributes:
+      type: object
+      properties:
+        name:
+          type: string
+        notifications:
+          $ref: '#/components/schemas/SavedSearchNotifications'
+        search:
+          type: string
     UserRelToMany:
       type: object
       properties:
@@ -153,25 +180,14 @@ components:
             $ref: '#/components/schemas/UserRelData'
         links:
           $ref: '#/components/schemas/UserRelLinks'
-    TeamRelLinks:
+    SavedSearchCollection:
       type: object
-      properties:
-        related:
-          type: string
-        self:
-          type: string
-    UserRelLinks:
-      type: object
-      properties:
-        related:
-          type: string
-        self:
-          type: string
-    SavedSearchUpdate:
-      type: object
+      description: a collection of saved searches
       properties:
         data:
-          $ref: '#/components/schemas/SavedSearchUpdateResource'
+          type: array
+          items:
+            $ref: '#/components/schemas/SavedSearchReadResource'
     SavedSearchAttributes:
       type: object
       properties:
@@ -187,61 +203,14 @@ components:
       - name
       - search
       - userId
-    SavedSearchCreateResource:
+    SavedSearchNotifications:
       type: object
       properties:
-        attributes:
-          $ref: '#/components/schemas/SavedSearchAttributes'
-        relationships:
-          $ref: '#/components/schemas/SavedSearchRelationships'
-        type:
-          type: string
-      required:
-      - type
-    TeamRelToMany:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/TeamRelData'
-        links:
-          $ref: '#/components/schemas/TeamRelLinks'
-    SavedSearchUpdateAttributes:
-      type: object
-      properties:
-        name:
-          type: string
-        notifications:
-          $ref: '#/components/schemas/SavedSearchNotifications'
-        search:
-          type: string
-    SavedSearchSingle:
-      type: object
-      description: a single saved search
-      properties:
-        data:
-          $ref: '#/components/schemas/SavedSearchReadResource'
-    SavedSearchUpdateResource:
-      type: object
-      properties:
-        attributes:
-          $ref: '#/components/schemas/SavedSearchUpdateAttributes'
-        relationships:
-          $ref: '#/components/schemas/SavedSearchRelationships'
-        type:
-          type: string
-      required:
-      - type
-    SavedSearchCollection:
-      type: object
-      description: a collection of saved searches
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/SavedSearchReadResource'
-    UserRelData:
+        count:
+          type: boolean
+        push:
+          type: boolean
+    TeamRelData:
       type: object
       properties:
         id:
@@ -255,6 +224,15 @@ components:
           $ref: '#/components/schemas/TeamRelToMany'
         user:
           $ref: '#/components/schemas/UserRelToMany'
+    TeamRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamRelData'
+        links:
+          $ref: '#/components/schemas/TeamRelLinks'
     SavedSearchReadResource:
       type: object
       properties:
@@ -268,13 +246,43 @@ components:
           type: string
       required:
       - type
-    SavedSearchNotifications:
+    SavedSearchUpdate:
       type: object
       properties:
-        count:
-          type: boolean
-        push:
-          type: boolean
+        data:
+          $ref: '#/components/schemas/SavedSearchUpdateResource'
+    UserRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    TeamRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    SavedSearchCreateResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/SavedSearchAttributes'
+        relationships:
+          $ref: '#/components/schemas/SavedSearchRelationships'
+        type:
+          type: string
+      required:
+      - type
+    UserRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
   securitySchemes:
     Basic:
       description: The basic auth scheme only requires the API-Specific username/password to be set.

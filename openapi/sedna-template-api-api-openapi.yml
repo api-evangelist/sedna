@@ -1,10 +1,10 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Support
     url: https://support.sedna.com
   termsOfService: https://www.sedna.com/terms-of-service
-  title: Sedna Authentication Template API API
+  title: Sedna Template API
   version: '2019-01-01'
 servers:
 - description: Platform endpoint
@@ -59,6 +59,8 @@ paths:
           description: default response
       tags:
       - Template API
+      summary: List
+      x-summary-source: derived
   /2019-01-01/template/{id}:
     get:
       description: 'Fetch a template
@@ -92,29 +94,26 @@ paths:
           description: default response
       tags:
       - Template API
+      summary: Find 1
+      x-summary-source: derived
 components:
   schemas:
-    TemplateReadAttributes:
+    ResourceObjectResponse:
       type: object
       properties:
-        allTeams:
-          type: boolean
-        body:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        modifiedAt:
-          type: string
-          format: date-time
-        name:
-          type: string
-        status:
+        id:
           type: string
         type:
           type: string
-    RelationshipObject:
+    TemplateSingle:
       type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/TemplateResource'
+        included:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceObjectResponse'
     TemplateResource:
       type: object
       description: The resource
@@ -140,22 +139,27 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ResourceObjectResponse'
-    TemplateSingle:
+    TemplateReadAttributes:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/TemplateResource'
-        included:
-          type: array
-          items:
-            $ref: '#/components/schemas/ResourceObjectResponse'
-    ResourceObjectResponse:
-      type: object
-      properties:
-        id:
+        allTeams:
+          type: boolean
+        body:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        modifiedAt:
+          type: string
+          format: date-time
+        name:
+          type: string
+        status:
           type: string
         type:
           type: string
+    RelationshipObject:
+      type: object
   securitySchemes:
     Basic:
       description: The basic auth scheme only requires the API-Specific username/password to be set.

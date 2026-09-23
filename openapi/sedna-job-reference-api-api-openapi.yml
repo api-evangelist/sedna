@@ -1,10 +1,10 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Support
     url: https://support.sedna.com
   termsOfService: https://www.sedna.com/terms-of-service
-  title: Sedna Authentication Job Reference API API
+  title: Sedna Job Reference API
   version: '2019-01-01'
 servers:
 - description: Platform endpoint
@@ -46,6 +46,8 @@ paths:
           description: default response
       tags:
       - Job Reference API
+      summary: Create job reference
+      x-summary-source: derived
     get:
       description: 'Fetch a collection of job references
 
@@ -109,6 +111,8 @@ paths:
           description: default response
       tags:
       - Job Reference API
+      summary: Get job references
+      x-summary-source: derived
   /2019-01-01/job-reference/{id}:
     delete:
       description: 'Delete a job reference
@@ -131,6 +135,8 @@ paths:
           description: default response
       tags:
       - Job Reference API
+      summary: Delete job reference
+      x-summary-source: derived
     get:
       description: 'Fetch a job reference
 
@@ -156,6 +162,8 @@ paths:
           description: default response
       tags:
       - Job Reference API
+      summary: Get job reference
+      x-summary-source: derived
     patch:
       description: 'Update a job reference
 
@@ -185,6 +193,8 @@ paths:
           description: default response
       tags:
       - Job Reference API
+      summary: Update job reference
+      x-summary-source: derived
   /2019-01-01/job-reference/{id}/message:
     get:
       description: 'Fetches a collection of messages that have the given job reference applied. DEPRECATED: please use /{id}/messageV2 instead.
@@ -229,6 +239,8 @@ paths:
           description: default response
       tags:
       - Job Reference API
+      summary: Get messages with job reference
+      x-summary-source: derived
   /2019-01-01/job-reference/{id}/messageV2:
     get:
       description: 'Fetch a collection of messages that have the given job reference applied
@@ -298,6 +310,8 @@ paths:
           description: default response
       tags:
       - Job Reference API
+      summary: Get messages with job reference V2
+      x-summary-source: derived
   /2019-01-01/job-reference/{id}/relationships/message:
     post:
       description: 'Add messages to a job reference''s message relationships
@@ -345,6 +359,8 @@ paths:
           description: default response
       tags:
       - Job Reference API
+      summary: Add job reference to messages
+      x-summary-source: derived
     get:
       description: 'Fetch a job reference''s message relationships. DEPRECATED: please use /{id}/messageV2 instead.
 
@@ -382,6 +398,8 @@ paths:
           description: default response
       tags:
       - Job Reference API
+      summary: Get job reference message relationships
+      x-summary-source: derived
     delete:
       description: 'Delete messages from a job reference''s message relationships
 
@@ -428,6 +446,8 @@ paths:
           description: default response
       tags:
       - Job Reference API
+      summary: Remove job reference from messages
+      x-summary-source: derived
   /2019-01-01/job-reference/{id}/relationships/team:
     post:
       description: 'Add teams to a job reference''s team relationships
@@ -462,6 +482,8 @@ paths:
           description: default response
       tags:
       - Job Reference API
+      summary: Add job reference teams
+      x-summary-source: derived
     delete:
       description: 'Remove teams from a job reference''s team relationships
 
@@ -495,6 +517,8 @@ paths:
           description: default response
       tags:
       - Job Reference API
+      summary: Delete job reference teams
+      x-summary-source: derived
     get:
       description: 'Fetch a job reference''s team relationships
 
@@ -520,6 +544,8 @@ paths:
           description: default response
       tags:
       - Job Reference API
+      summary: Get job reference team relationships
+      x-summary-source: derived
     patch:
       description: 'Replace teams in a job reference''s team relationships
 
@@ -553,6 +579,8 @@ paths:
           description: default response
       tags:
       - Job Reference API
+      summary: Replace job reference teams
+      x-summary-source: derived
   /2019-01-01/job-reference/{id}/relationships/user:
     get:
       description: 'Fetch a job reference''s user relationships
@@ -589,6 +617,8 @@ paths:
           description: default response
       tags:
       - Job Reference API
+      summary: Get job reference user relationships
+      x-summary-source: derived
     delete:
       description: 'Unsubscribe users from a job reference
 
@@ -618,212 +648,26 @@ paths:
           description: default response
       tags:
       - Job Reference API
+      summary: Remove job reference user relationships
+      x-summary-source: derived
 components:
   schemas:
-    MessageTag:
-      type: object
-      properties:
-        assignedToUserId:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        eventId:
-          $ref: '#/components/schemas/EventId'
-        messageId:
-          type: string
-        messageTagId:
-          $ref: '#/components/schemas/MessageTagId'
-        removedAt:
-          type: string
-          format: date-time
-        removedByUserId:
-          type: string
-        tag:
-          $ref: '#/components/schemas/Tag'
-        tagId:
-          $ref: '#/components/schemas/TagId'
-        userId:
-          type: string
-    MessageRelToMany:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/MessageRelData'
-        links:
-          $ref: '#/components/schemas/MessageRelLinks'
-    UserRelToMany:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserRelData'
-        links:
-          $ref: '#/components/schemas/UserRelLinks'
-    UserRelLinks:
-      type: object
-      properties:
-        related:
-          type: string
-        self:
-          type: string
-    JobReferenceLinks:
-      type: object
-      properties:
-        self:
-          type: string
-    UpdateTeamRelToMany:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/TeamRelData'
-    CategoryTagRelToMany:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CategoryTagRelData'
-        links:
-          $ref: '#/components/schemas/CategoryTagRelLinks'
-    JobReferenceCollection:
-      type: object
-      description: A collection of resources
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/JobReferenceResource'
-        links:
-          $ref: '#/components/schemas/JobReferenceCollectionLinks'
-    WithNextPageCursorMessageCollection:
-      type: object
-      properties:
-        nextPageCursor:
-          type: string
-        response:
-          $ref: '#/components/schemas/MessageCollection'
-    MessageRelData:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-    TeamRelToMany:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/TeamRelData'
-        links:
-          $ref: '#/components/schemas/TeamRelLinks'
-    DocumentRelData:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-    EventId:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-    TagId:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-    UserRelData:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-    TagName:
-      type: object
-      properties:
-        value:
-          type: string
-    TeamRelLinks:
-      type: object
-      properties:
-        related:
-          type: string
-        self:
-          type: string
-    Tag:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/TagId'
-        name:
-          $ref: '#/components/schemas/TagName'
-        tagLabel:
-          $ref: '#/components/schemas/TagLabel'
-        tagTypeId:
-          type: integer
-          format: int32
-    Company:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceObjectIdentifier'
-    JobReferenceResource:
-      type: object
-      properties:
-        attributes:
-          $ref: '#/components/schemas/JobReferenceAttributes'
-        id:
-          type: string
-        links:
-          $ref: '#/components/schemas/JobReferenceLinks'
-        relationships:
-          $ref: '#/components/schemas/JobReferenceRelationships'
-        type:
-          type: string
-          description: the type of the resource
-          enum:
-          - job-reference
-    JobReferenceSingleLinks:
-      type: object
-      properties:
-        self:
-          type: string
-    JobReferenceSingle:
+    MessageCollection:
       type: object
       description: The resource
       properties:
         data:
-          $ref: '#/components/schemas/JobReferenceResource'
-        links:
-          $ref: '#/components/schemas/JobReferenceSingleLinks'
-    TeamRelData:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-    JobReferenceRelToMany:
-      type: object
-      properties:
-        data:
           type: array
           items:
-            $ref: '#/components/schemas/JobReferenceRelData'
+            $ref: '#/components/schemas/MessageReadResource'
+        included:
+          type: array
+          items:
+            type: object
         links:
-          $ref: '#/components/schemas/JobReferenceRelLinks'
+          $ref: '#/components/schemas/MessageCollectionLinks'
+        meta:
+          $ref: '#/components/schemas/MessageCollectionMeta'
     JobReferenceUpdateAttributes:
       type: object
       properties:
@@ -852,15 +696,31 @@ components:
           - ''
       required:
       - name
-    Sender:
+    MessageRelGetToMany:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/ResourceObjectIdentifier'
-        meta:
-          $ref: '#/components/schemas/MetaObject'
-    MetaObject:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageRelGetData'
+        links:
+          $ref: '#/components/schemas/MessageRelLinks'
+    JobReferenceResource:
       type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/JobReferenceAttributes'
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/JobReferenceLinks'
+        relationships:
+          $ref: '#/components/schemas/JobReferenceRelationships'
+        type:
+          type: string
+          description: the type of the resource
+          enum:
+          - job-reference
     MessageReadResource:
       type: object
       properties:
@@ -876,7 +736,35 @@ components:
           $ref: '#/components/schemas/MessageRelationships'
         type:
           type: string
-    CategoryTagRelData:
+    JobReferenceCreate:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/JobReferenceCreateResource'
+    PrivateLabelRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    WithNextPageCursorMessageCollection:
+      type: object
+      properties:
+        nextPageCursor:
+          type: string
+        response:
+          $ref: '#/components/schemas/MessageCollection'
+    JobReferenceCollectionLinks:
+      type: object
+      properties:
+        first:
+          type: string
+        next:
+          type: string
+        self:
+          type: string
+    JobReferenceRelData:
       type: object
       properties:
         id:
@@ -885,24 +773,34 @@ components:
           $ref: '#/components/schemas/MessageTag'
         type:
           type: string
+    UserRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    MessageRelationships:
+      type: object
+      properties:
+        category-tag:
+          $ref: '#/components/schemas/CategoryTagRelToMany'
+        document:
+          $ref: '#/components/schemas/DocumentRelToMany'
+        job-reference:
+          $ref: '#/components/schemas/JobReferenceRelToMany'
+        message_thread_summary:
+          $ref: '#/components/schemas/MessageThreadSummary'
+        private-label:
+          $ref: '#/components/schemas/PrivateLabelRelToMany'
+        sender:
+          $ref: '#/components/schemas/Sender'
+        team:
+          $ref: '#/components/schemas/TeamRelToMany'
     MessageLinks:
       type: object
       properties:
         self:
-          type: string
-    MessageMeta:
-      type: object
-      properties:
-        download:
-          type: string
-    JobReferenceCreateResource:
-      type: object
-      properties:
-        attributes:
-          $ref: '#/components/schemas/JobReferenceCreateAttributes'
-        relationships:
-          $ref: '#/components/schemas/JobReferenceCreateRelationships'
-        type:
           type: string
     JobReferenceToManyUserRelationshipWriteRepresentation:
       type: object
@@ -913,6 +811,88 @@ components:
             $ref: '#/components/schemas/UserRelationshipWriteData'
       required:
       - data
+    CategoryTagRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoryTagRelData'
+        links:
+          $ref: '#/components/schemas/CategoryTagRelLinks'
+    PrivateLabelRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PrivateLabelRelData'
+        links:
+          $ref: '#/components/schemas/PrivateLabelRelLinks'
+    JobReferenceCreateAttributes:
+      type: object
+      properties:
+        archived:
+          type: boolean
+        attributes:
+          type: object
+          additionalProperties:
+            type: string
+        date:
+          type: string
+          format: date-time
+        foreignKey:
+          type: string
+        name:
+          type: string
+        source:
+          type: string
+        type:
+          type: string
+          enum:
+          - voyage
+          - head_fixture
+          - spot_fixture
+          - other
+          - ''
+      required:
+      - name
+    JobReferenceLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    JobReferenceCreateResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/JobReferenceCreateAttributes'
+        relationships:
+          $ref: '#/components/schemas/JobReferenceCreateRelationships'
+        type:
+          type: string
+    MessageThreadSummary:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceObjectIdentifier'
+    JobReferenceCollection:
+      type: object
+      description: A collection of resources
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobReferenceResource'
+        links:
+          $ref: '#/components/schemas/JobReferenceCollectionLinks'
+    MessageRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
     UserRelationshipWriteData:
       type: object
       properties:
@@ -922,29 +902,220 @@ components:
           $ref: '#/components/schemas/UserRelationshipMeta'
         type:
           type: string
-    PrivateLabelRelLinks:
+    DocumentRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentRelData'
+        links:
+          $ref: '#/components/schemas/DocumentRelLinks'
+    JobReferenceSingleLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    TeamRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    Company:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceObjectIdentifier'
+    MessageCollectionLinks:
+      type: object
+      properties:
+        first:
+          type: string
+        next:
+          type: string
+        self:
+          type: string
+    JobReferenceAttributes:
+      type: object
+      properties:
+        archived:
+          type: boolean
+        attributes:
+          type: string
+        createdAt:
+          type: string
+        date:
+          type: string
+        foreignKey:
+          type: string
+        modifiedAt:
+          type: string
+        name:
+          type: string
+        source:
+          type: string
+        tagId:
+          type: string
+        type:
+          type: string
+      required:
+      - name
+    MetaObject:
+      type: object
+    TagName:
+      type: object
+      properties:
+        value:
+          type: string
+    UpdateMessageRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageRelUpdateData'
+    DocumentRelLinks:
       type: object
       properties:
         related:
           type: string
         self:
           type: string
-    JobReferenceUpdateResource:
+    TeamRelLinks:
       type: object
       properties:
-        attributes:
-          $ref: '#/components/schemas/JobReferenceUpdateAttributes'
+        related:
+          type: string
+        self:
+          type: string
+    MessageRelGetData:
+      type: object
+      properties:
+        id:
+          type: string
         type:
           type: string
-    MessageRelGetToMany:
+    MessageRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    CategoryTagRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        messageTag:
+          $ref: '#/components/schemas/MessageTag'
+        type:
+          type: string
+    UserRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    MessageTagId:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+    JobReferenceCreateRelationships:
+      type: object
+      properties:
+        team:
+          $ref: '#/components/schemas/UpdateTeamRelToMany'
+        user:
+          $ref: '#/components/schemas/UserRelToMany'
+    MessageTag:
+      type: object
+      properties:
+        assignedToUserId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        eventId:
+          $ref: '#/components/schemas/EventId'
+        messageId:
+          type: string
+        messageTagId:
+          $ref: '#/components/schemas/MessageTagId'
+        removedAt:
+          type: string
+          format: date-time
+        removedByUserId:
+          type: string
+        tag:
+          $ref: '#/components/schemas/Tag'
+        tagId:
+          $ref: '#/components/schemas/TagId'
+        userId:
+          type: string
+    JobReferenceRelToMany:
       type: object
       properties:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/MessageRelGetData'
+            $ref: '#/components/schemas/JobReferenceRelData'
         links:
-          $ref: '#/components/schemas/MessageRelLinks'
+          $ref: '#/components/schemas/JobReferenceRelLinks'
+    UpdateTeamRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamRelData'
+    MessageMeta:
+      type: object
+      properties:
+        download:
+          type: string
+    DocumentRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    UserRelationshipMeta:
+      type: object
+      properties:
+        default:
+          type: boolean
+        disableSend:
+          type: boolean
+        watched:
+          type: boolean
+    Sender:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceObjectIdentifier'
+        meta:
+          $ref: '#/components/schemas/MetaObject'
+    JobReferenceSingle:
+      type: object
+      description: The resource
+      properties:
+        data:
+          $ref: '#/components/schemas/JobReferenceResource'
+        links:
+          $ref: '#/components/schemas/JobReferenceSingleLinks'
+    MessageCollectionMeta:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
     ResourceObjectIdentifier:
       type: object
       properties:
@@ -954,25 +1125,13 @@ components:
           $ref: '#/components/schemas/MetaObject'
         type:
           type: string
-    MessageRelUpdateData:
+    CategoryTagRelLinks:
       type: object
       properties:
-        id:
+        related:
           type: string
-        type:
+        self:
           type: string
-    JobReferenceCreate:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/JobReferenceCreateResource'
-    UpdateMessageRelToMany:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/MessageRelUpdateData'
     MessageReadAttributes:
       type: object
       properties:
@@ -1027,134 +1186,20 @@ components:
           type: array
           items:
             type: string
-    MessageCollectionLinks:
-      type: object
-      properties:
-        first:
-          type: string
-        next:
-          type: string
-        self:
-          type: string
-    MessageRelationships:
-      type: object
-      properties:
-        category-tag:
-          $ref: '#/components/schemas/CategoryTagRelToMany'
-        document:
-          $ref: '#/components/schemas/DocumentRelToMany'
-        job-reference:
-          $ref: '#/components/schemas/JobReferenceRelToMany'
-        message_thread_summary:
-          $ref: '#/components/schemas/MessageThreadSummary'
-        private-label:
-          $ref: '#/components/schemas/PrivateLabelRelToMany'
-        sender:
-          $ref: '#/components/schemas/Sender'
-        team:
-          $ref: '#/components/schemas/TeamRelToMany'
-    MessageTagId:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-    DocumentRelToMany:
+    UserRelToMany:
       type: object
       properties:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/DocumentRelData'
+            $ref: '#/components/schemas/UserRelData'
         links:
-          $ref: '#/components/schemas/DocumentRelLinks'
-    JobReferenceCollectionLinks:
-      type: object
-      properties:
-        first:
-          type: string
-        next:
-          type: string
-        self:
-          type: string
-    MessageRelGetData:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
+          $ref: '#/components/schemas/UserRelLinks'
     TagLabel:
       type: object
       properties:
         value:
           type: string
-    JobReferenceAttributes:
-      type: object
-      properties:
-        archived:
-          type: boolean
-        attributes:
-          type: string
-        createdAt:
-          type: string
-        date:
-          type: string
-        foreignKey:
-          type: string
-        modifiedAt:
-          type: string
-        name:
-          type: string
-        source:
-          type: string
-        tagId:
-          type: string
-        type:
-          type: string
-      required:
-      - name
-    MessageThreadSummary:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceObjectIdentifier'
-    CategoryTagRelLinks:
-      type: object
-      properties:
-        related:
-          type: string
-        self:
-          type: string
-    JobReferenceCreateRelationships:
-      type: object
-      properties:
-        team:
-          $ref: '#/components/schemas/UpdateTeamRelToMany'
-        user:
-          $ref: '#/components/schemas/UserRelToMany'
-    MessageCollectionMeta:
-      type: object
-      properties:
-        count:
-          type: integer
-          format: int32
-    DocumentRelLinks:
-      type: object
-      properties:
-        related:
-          type: string
-        self:
-          type: string
-    PrivateLabelRelToMany:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/PrivateLabelRelData'
-        links:
-          $ref: '#/components/schemas/PrivateLabelRelLinks'
     JobReferenceRelLinks:
       type: object
       properties:
@@ -1162,59 +1207,18 @@ components:
           type: string
         self:
           type: string
-    JobReferenceCreateAttributes:
-      type: object
-      properties:
-        archived:
-          type: boolean
-        attributes:
-          type: object
-          additionalProperties:
-            type: string
-        date:
-          type: string
-          format: date-time
-        foreignKey:
-          type: string
-        name:
-          type: string
-        source:
-          type: string
-        type:
-          type: string
-          enum:
-          - voyage
-          - head_fixture
-          - spot_fixture
-          - other
-          - ''
-      required:
-      - name
-    UserRelationshipMeta:
-      type: object
-      properties:
-        default:
-          type: boolean
-        disableSend:
-          type: boolean
-        watched:
-          type: boolean
-    MessageRelLinks:
-      type: object
-      properties:
-        related:
-          type: string
-        self:
-          type: string
-    JobReferenceRelData:
+    PrivateLabelRelData:
       type: object
       properties:
         id:
           type: string
-        messageTag:
-          $ref: '#/components/schemas/MessageTag'
         type:
           type: string
+    JobReferenceUpdate:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/JobReferenceUpdateResource'
     JobReferenceRelationships:
       type: object
       properties:
@@ -1226,34 +1230,62 @@ components:
           $ref: '#/components/schemas/TeamRelToMany'
         user:
           $ref: '#/components/schemas/UserRelToMany'
-    MessageCollection:
-      type: object
-      description: The resource
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/MessageReadResource'
-        included:
-          type: array
-          items:
-            type: object
-        links:
-          $ref: '#/components/schemas/MessageCollectionLinks'
-        meta:
-          $ref: '#/components/schemas/MessageCollectionMeta'
-    JobReferenceUpdate:
+    EventId:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/JobReferenceUpdateResource'
-    PrivateLabelRelData:
+        id:
+          type: integer
+          format: int64
+    JobReferenceUpdateResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/JobReferenceUpdateAttributes'
+        type:
+          type: string
+    MessageRelUpdateData:
       type: object
       properties:
         id:
           type: string
         type:
           type: string
+    TeamRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamRelData'
+        links:
+          $ref: '#/components/schemas/TeamRelLinks'
+    TagId:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+    MessageRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageRelData'
+        links:
+          $ref: '#/components/schemas/MessageRelLinks'
+    Tag:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/TagId'
+        name:
+          $ref: '#/components/schemas/TagName'
+        tagLabel:
+          $ref: '#/components/schemas/TagLabel'
+        tagTypeId:
+          type: integer
+          format: int32
   securitySchemes:
     Basic:
       description: The basic auth scheme only requires the API-Specific username/password to be set.

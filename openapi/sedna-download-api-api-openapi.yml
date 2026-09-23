@@ -1,10 +1,10 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Support
     url: https://support.sedna.com
   termsOfService: https://www.sedna.com/terms-of-service
-  title: Sedna Authentication Download API API
+  title: Sedna Download API
   version: '2019-01-01'
 servers:
 - description: Platform endpoint
@@ -37,6 +37,8 @@ paths:
           description: Redirection to a signed download link valid for 30 minutes
       tags:
       - Download API
+      summary: Download document
+      x-summary-source: derived
   /2019-01-01/download/message/{id}:
     get:
       description: 'Download the source file, usually .eml, of a message.
@@ -55,6 +57,8 @@ paths:
           description: Redirection to a signed download link valid for 30 minutes
       tags:
       - Download API
+      summary: Download message
+      x-summary-source: derived
   /2019-01-01/download/message/{id}/attachments/zip:
     get:
       description: 'Download all attachments of a message as a zip file, using presigned S3 link if available or generating it otherwise.
@@ -76,6 +80,8 @@ paths:
           description: default response
       tags:
       - Download API
+      summary: Download all message attachments
+      x-summary-source: derived
   /2019-01-01/download/template/document/{id}:
     get:
       description: 'Download a template attachment (document)
@@ -94,6 +100,8 @@ paths:
           description: Redirection to a signed download link valid for 30 minutes
       tags:
       - Download API
+      summary: Download template document
+      x-summary-source: derived
 components:
   securitySchemes:
     Basic:

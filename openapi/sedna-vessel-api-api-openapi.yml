@@ -1,10 +1,10 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Support
     url: https://support.sedna.com
   termsOfService: https://www.sedna.com/terms-of-service
-  title: Sedna Authentication Vessel API API
+  title: Sedna Vessel API
   version: '2019-01-01'
 servers:
 - description: Platform endpoint
@@ -42,10 +42,10 @@ paths:
           description: default response
       tags:
       - Vessel API
+      summary: Create vessel
+      x-summary-source: derived
 components:
   schemas:
-    Link:
-      type: object
     DocumentFlowVesselResource:
       type: object
       properties:
@@ -71,46 +71,25 @@ components:
           $ref: '#/components/schemas/Links'
         meta:
           $ref: '#/components/schemas/Meta'
-    JsonApiObject:
+    Error:
       type: object
       properties:
-        ext:
-          type: array
-          items:
-            type: string
+        code:
+          type: string
+        detail:
+          type: string
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/Links'
         meta:
           $ref: '#/components/schemas/Meta'
-        profile:
-          type: array
-          items:
-            type: string
-        version:
+        source:
+          $ref: '#/components/schemas/Source'
+        status:
           type: string
-    Source:
-      type: object
-      properties:
-        header:
+        title:
           type: string
-        parameter:
-          type: string
-        pointer:
-          type: string
-    Links:
-      type: object
-      properties:
-        empty:
-          type: boolean
-        members:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/Link'
-    Meta:
-      type: object
-      properties:
-        disableSend:
-          type: boolean
-        watched:
-          type: boolean
     FlowVesselResource:
       type: object
       properties:
@@ -315,25 +294,15 @@ components:
           - Upper Conv LNG
           - Q-Flex
           - Q-Max
-    Error:
+    Links:
       type: object
       properties:
-        code:
-          type: string
-        detail:
-          type: string
-        id:
-          type: string
-        links:
-          $ref: '#/components/schemas/Links'
-        meta:
-          $ref: '#/components/schemas/Meta'
-        source:
-          $ref: '#/components/schemas/Source'
-        status:
-          type: string
-        title:
-          type: string
+        empty:
+          type: boolean
+        members:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Link'
     FlowCustomColumnData:
       type: object
       properties:
@@ -343,6 +312,39 @@ components:
           type: string
         value:
           type: object
+    Link:
+      type: object
+    JsonApiObject:
+      type: object
+      properties:
+        ext:
+          type: array
+          items:
+            type: string
+        meta:
+          $ref: '#/components/schemas/Meta'
+        profile:
+          type: array
+          items:
+            type: string
+        version:
+          type: string
+    Source:
+      type: object
+      properties:
+        header:
+          type: string
+        parameter:
+          type: string
+        pointer:
+          type: string
+    Meta:
+      type: object
+      properties:
+        disableSend:
+          type: boolean
+        watched:
+          type: boolean
   securitySchemes:
     Basic:
       description: The basic auth scheme only requires the API-Specific username/password to be set.

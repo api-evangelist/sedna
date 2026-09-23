@@ -1,10 +1,10 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Support
     url: https://support.sedna.com
   termsOfService: https://www.sedna.com/terms-of-service
-  title: Sedna Authentication Company API API
+  title: Sedna Company API
   version: '2019-01-01'
 servers:
 - description: Platform endpoint
@@ -38,6 +38,8 @@ paths:
           description: default response
       tags:
       - Company API
+      summary: Find
+      x-summary-source: derived
     patch:
       description: 'Update a company
 
@@ -64,21 +66,15 @@ paths:
           description: default response
       tags:
       - Company API
+      summary: Patch company
+      x-summary-source: derived
 components:
   schemas:
-    CompanyResource:
+    CompanyUpdate:
       type: object
       properties:
-        attributes:
-          $ref: '#/components/schemas/CompanyReadAttributes'
-        id:
-          type: string
-        relationships:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/RelationshipObject'
-        type:
-          type: string
+        data:
+          $ref: '#/components/schemas/CompanyUpdateResource'
     CompanyUpdateResource:
       type: object
       properties:
@@ -94,8 +90,6 @@ components:
       properties:
         emailSignature:
           type: string
-    RelationshipObject:
-      type: object
     CompanyReadAttributes:
       type: object
       properties:
@@ -108,16 +102,26 @@ components:
           type: string
         name:
           type: string
+    RelationshipObject:
+      type: object
+    CompanyResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/CompanyReadAttributes'
+        id:
+          type: string
+        relationships:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/RelationshipObject'
+        type:
+          type: string
     CompanyReadRepresentation:
       type: object
       properties:
         data:
           $ref: '#/components/schemas/CompanyResource'
-    CompanyUpdate:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/CompanyUpdateResource'
   securitySchemes:
     Basic:
       description: The basic auth scheme only requires the API-Specific username/password to be set.
