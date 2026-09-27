@@ -98,22 +98,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ResourceObjectResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-    TemplateSingle:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/TemplateResource'
-        included:
-          type: array
-          items:
-            $ref: '#/components/schemas/ResourceObjectResponse'
     TemplateResource:
       type: object
       description: The resource
@@ -128,6 +112,17 @@ components:
             $ref: '#/components/schemas/RelationshipObject'
         type:
           type: string
+    RelationshipObject:
+      type: object
+    TemplateSingle:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/TemplateResource'
+        included:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceObjectResponse'
     TemplateCollection:
       type: object
       properties:
@@ -139,6 +134,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ResourceObjectResponse'
+    ResourceObjectResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
     TemplateReadAttributes:
       type: object
       properties:
@@ -158,8 +160,6 @@ components:
           type: string
         type:
           type: string
-    RelationshipObject:
-      type: object
   securitySchemes:
     Basic:
       description: The basic auth scheme only requires the API-Specific username/password to be set.

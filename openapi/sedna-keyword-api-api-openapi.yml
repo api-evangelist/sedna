@@ -209,70 +209,7 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    KeywordCollectionLinks:
-      type: object
-      properties:
-        first:
-          type: string
-        next:
-          type: string
-        self:
-          type: string
-    KeywordAttributes:
-      type: object
-      properties:
-        name:
-          type: string
-          maxLength: 50
-          minLength: 0
-      required:
-      - name
-    UserRelToMany:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserRelData'
-        links:
-          $ref: '#/components/schemas/UserRelLinks'
-    KeywordCollection:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/KeywordResource'
-        links:
-          $ref: '#/components/schemas/KeywordCollectionLinks'
-    KeywordSingle:
-      type: object
-      description: The resource
-      properties:
-        data:
-          $ref: '#/components/schemas/KeywordResource'
-        links:
-          $ref: '#/components/schemas/KeywordSingleLinks'
-    KeywordCreateRelationships:
-      type: object
-      properties:
-        user:
-          $ref: '#/components/schemas/UserRelToMany'
-      required:
-      - user
-    UserDataObject:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserObject'
-    KeywordCreate:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/KeywordCreateResource'
-    UserObject:
+    UserRelData:
       type: object
       properties:
         id:
@@ -288,9 +225,68 @@ components:
           $ref: '#/components/schemas/KeywordCreateRelationships'
         type:
           type: string
-    KeywordLinks:
+    KeywordRelationships:
       type: object
       properties:
+        user:
+          $ref: '#/components/schemas/UserDataObject'
+    KeywordCreate:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/KeywordCreateResource'
+    KeywordCreateAttributes:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+      - name
+    KeywordCreateRelationships:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/UserRelToMany'
+      required:
+      - user
+    UserObject:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    UserDataObject:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserObject'
+    KeywordSingle:
+      type: object
+      description: The resource
+      properties:
+        data:
+          $ref: '#/components/schemas/KeywordResource'
+        links:
+          $ref: '#/components/schemas/KeywordSingleLinks'
+    KeywordCollection:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeywordResource'
+        links:
+          $ref: '#/components/schemas/KeywordCollectionLinks'
+    KeywordCollectionLinks:
+      type: object
+      properties:
+        first:
+          type: string
+        next:
+          type: string
         self:
           type: string
     UserRelLinks:
@@ -300,23 +296,6 @@ components:
           type: string
         self:
           type: string
-    KeywordCreateAttributes:
-      type: object
-      properties:
-        name:
-          type: string
-      required:
-      - name
-    KeywordSingleLinks:
-      type: object
-      properties:
-        self:
-          type: string
-    KeywordRelationships:
-      type: object
-      properties:
-        user:
-          $ref: '#/components/schemas/UserDataObject'
     KeywordResource:
       type: object
       properties:
@@ -333,12 +312,33 @@ components:
           description: type of resource
           enum:
           - keyword
-    UserRelData:
+    UserRelToMany:
       type: object
       properties:
-        id:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRelData'
+        links:
+          $ref: '#/components/schemas/UserRelLinks'
+    KeywordAttributes:
+      type: object
+      properties:
+        name:
           type: string
-        type:
+          maxLength: 50
+          minLength: 0
+      required:
+      - name
+    KeywordSingleLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    KeywordLinks:
+      type: object
+      properties:
+        self:
           type: string
   securitySchemes:
     Basic:

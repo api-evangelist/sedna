@@ -75,16 +75,19 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/CompanyUpdateResource'
-    CompanyUpdateResource:
+    CompanyResource:
       type: object
       properties:
         attributes:
-          $ref: '#/components/schemas/CompanyUpdateAttributes'
+          $ref: '#/components/schemas/CompanyReadAttributes'
+        id:
+          type: string
+        relationships:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/RelationshipObject'
         type:
           type: string
-          description: the type of the resource
-          enum:
-          - company
     CompanyUpdateAttributes:
       type: object
       properties:
@@ -104,24 +107,21 @@ components:
           type: string
     RelationshipObject:
       type: object
-    CompanyResource:
-      type: object
-      properties:
-        attributes:
-          $ref: '#/components/schemas/CompanyReadAttributes'
-        id:
-          type: string
-        relationships:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/RelationshipObject'
-        type:
-          type: string
     CompanyReadRepresentation:
       type: object
       properties:
         data:
           $ref: '#/components/schemas/CompanyResource'
+    CompanyUpdateResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/CompanyUpdateAttributes'
+        type:
+          type: string
+          description: the type of the resource
+          enum:
+          - company
   securitySchemes:
     Basic:
       description: The basic auth scheme only requires the API-Specific username/password to be set.

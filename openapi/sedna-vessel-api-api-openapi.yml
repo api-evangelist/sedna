@@ -46,6 +46,69 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        detail:
+          type: string
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/Links'
+        meta:
+          $ref: '#/components/schemas/Meta'
+        source:
+          $ref: '#/components/schemas/Source'
+        status:
+          type: string
+        title:
+          type: string
+    Link:
+      type: object
+    JsonApiObject:
+      type: object
+      properties:
+        ext:
+          type: array
+          items:
+            type: string
+        meta:
+          $ref: '#/components/schemas/Meta'
+        profile:
+          type: array
+          items:
+            type: string
+        version:
+          type: string
+    FlowCustomColumnData:
+      type: object
+      properties:
+        link:
+          type: string
+        popover:
+          type: string
+        value:
+          type: object
+    Links:
+      type: object
+      properties:
+        empty:
+          type: boolean
+        members:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Link'
+    Source:
+      type: object
+      properties:
+        header:
+          type: string
+        parameter:
+          type: string
+        pointer:
+          type: string
     DocumentFlowVesselResource:
       type: object
       properties:
@@ -71,25 +134,6 @@ components:
           $ref: '#/components/schemas/Links'
         meta:
           $ref: '#/components/schemas/Meta'
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        detail:
-          type: string
-        id:
-          type: string
-        links:
-          $ref: '#/components/schemas/Links'
-        meta:
-          $ref: '#/components/schemas/Meta'
-        source:
-          $ref: '#/components/schemas/Source'
-        status:
-          type: string
-        title:
-          type: string
     FlowVesselResource:
       type: object
       properties:
@@ -294,50 +338,6 @@ components:
           - Upper Conv LNG
           - Q-Flex
           - Q-Max
-    Links:
-      type: object
-      properties:
-        empty:
-          type: boolean
-        members:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/Link'
-    FlowCustomColumnData:
-      type: object
-      properties:
-        link:
-          type: string
-        popover:
-          type: string
-        value:
-          type: object
-    Link:
-      type: object
-    JsonApiObject:
-      type: object
-      properties:
-        ext:
-          type: array
-          items:
-            type: string
-        meta:
-          $ref: '#/components/schemas/Meta'
-        profile:
-          type: array
-          items:
-            type: string
-        version:
-          type: string
-    Source:
-      type: object
-      properties:
-        header:
-          type: string
-        parameter:
-          type: string
-        pointer:
-          type: string
     Meta:
       type: object
       properties:

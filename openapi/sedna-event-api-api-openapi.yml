@@ -263,36 +263,28 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    JobReferenceResource:
+    JobReferenceRelData:
       type: object
       properties:
-        attributes:
-          $ref: '#/components/schemas/JobReferenceAttributes'
         id:
           type: string
-        links:
-          $ref: '#/components/schemas/JobReferenceLinks'
-        relationships:
-          $ref: '#/components/schemas/JobReferenceRelationships'
+        messageTag:
+          $ref: '#/components/schemas/MessageTag'
         type:
           type: string
-          description: the type of the resource
-          enum:
-          - job-reference
-    MessageReadResource:
+    JobReferenceRelToMany:
       type: object
       properties:
-        attributes:
-          $ref: '#/components/schemas/MessageReadAttributes'
-        id:
-          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobReferenceRelData'
         links:
-          $ref: '#/components/schemas/MessageLinks'
-        meta:
-          $ref: '#/components/schemas/MessageMeta'
-        relationships:
-          $ref: '#/components/schemas/MessageRelationships'
-        type:
+          $ref: '#/components/schemas/JobReferenceRelLinks'
+    MessageSingleLinks:
+      type: object
+      properties:
+        self:
           type: string
     EventResource:
       type: object
@@ -310,27 +302,6 @@ components:
           description: the type of the resource
           enum:
           - event
-    EventAttributes:
-      type: object
-      properties:
-        eventType:
-          type: string
-        time:
-          type: string
-    ResourceObjectResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-    PrivateLabelRelLinks:
-      type: object
-      properties:
-        related:
-          type: string
-        self:
-          type: string
     CategoryTagAttributes:
       type: object
       properties:
@@ -342,6 +313,82 @@ components:
           type: string
         name:
           type: string
+    EventAttributes:
+      type: object
+      properties:
+        eventType:
+          type: string
+        time:
+          type: string
+    PrivateLabelRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    JobReferenceResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/JobReferenceAttributes'
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/JobReferenceLinks'
+        relationships:
+          $ref: '#/components/schemas/JobReferenceRelationships'
+        type:
+          type: string
+          description: the type of the resource
+          enum:
+          - job-reference
+    Company:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceObjectIdentifier'
+    MessageMeta:
+      type: object
+      properties:
+        download:
+          type: string
+    TeamRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    EventSingle:
+      type: object
+      description: The resource
+      properties:
+        data:
+          $ref: '#/components/schemas/EventResource'
+        links:
+          $ref: '#/components/schemas/EventSingleLinks'
+    CategoryTagRelToOne:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/CategoryTagRelData'
+        links:
+          $ref: '#/components/schemas/CategoryTagRelLinks'
+    CategoryTagSingle:
+      type: object
+      description: The resource
+      properties:
+        data:
+          $ref: '#/components/schemas/CategoryTagResource'
+        links:
+          $ref: '#/components/schemas/CategoryTagSingleLinks'
+    MessageTagId:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
     EventCollectionLinks:
       type: object
       properties:
@@ -351,45 +398,10 @@ components:
           type: string
         self:
           type: string
-    EventCollection:
-      type: object
-      description: A collection of resources
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/EventResource'
-        links:
-          $ref: '#/components/schemas/EventCollectionLinks'
-    MessageSingle:
-      type: object
-      description: The resource
-      properties:
-        data:
-          $ref: '#/components/schemas/MessageReadResource'
-        included:
-          type: array
-          items:
-            $ref: '#/components/schemas/ResourceObjectResponse'
-        links:
-          $ref: '#/components/schemas/MessageSingleLinks'
-        meta:
-          $ref: '#/components/schemas/MessageSingleMeta'
-    UserRelLinks:
+    TagLabel:
       type: object
       properties:
-        related:
-          type: string
-        self:
-          type: string
-    JobReferenceRelData:
-      type: object
-      properties:
-        id:
-          type: string
-        messageTag:
-          $ref: '#/components/schemas/MessageTag'
-        type:
+        value:
           type: string
     MessageRelationships:
       type: object
@@ -408,285 +420,19 @@ components:
           $ref: '#/components/schemas/Sender'
         team:
           $ref: '#/components/schemas/TeamRelToMany'
-    MessageLinks:
-      type: object
-      properties:
-        self:
-          type: string
-    CategoryTagRelToMany:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CategoryTagRelData'
-        links:
-          $ref: '#/components/schemas/CategoryTagRelLinks'
-    PrivateLabelRelToMany:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/PrivateLabelRelData'
-        links:
-          $ref: '#/components/schemas/PrivateLabelRelLinks'
-    JobReferenceLinks:
-      type: object
-      properties:
-        self:
-          type: string
-    MessageRelLinks:
-      type: object
-      properties:
-        related:
-          type: string
-        self:
-          type: string
-    MessageThreadSummary:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceObjectIdentifier'
-    CategoryTagSingle:
-      type: object
-      description: The resource
-      properties:
-        data:
-          $ref: '#/components/schemas/CategoryTagResource'
-        links:
-          $ref: '#/components/schemas/CategoryTagSingleLinks'
-    CategoryTagRelationships:
-      type: object
-      properties:
-        team:
-          $ref: '#/components/schemas/TeamRelToMany'
-    DocumentRelToMany:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentRelData'
-        links:
-          $ref: '#/components/schemas/DocumentRelLinks'
-    JobReferenceRelToOne:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/JobReferenceRelData'
-        links:
-          $ref: '#/components/schemas/JobReferenceRelLinks'
-    EventSingleLinks:
-      type: object
-      properties:
-        self:
-          type: string
-    JobReferenceSingleLinks:
-      type: object
-      properties:
-        self:
-          type: string
-    CategoryTagResource:
-      type: object
-      properties:
-        attributes:
-          $ref: '#/components/schemas/CategoryTagAttributes'
-        id:
-          type: string
-        links:
-          $ref: '#/components/schemas/CategoryTagLinks'
-        relationships:
-          $ref: '#/components/schemas/CategoryTagRelationships'
-        type:
-          type: string
-          description: the type of the resource
-          enum:
-          - category-tag
-    TeamRelData:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-    Company:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceObjectIdentifier'
-    JobReferenceAttributes:
-      type: object
-      properties:
-        archived:
-          type: boolean
-        attributes:
-          type: string
-        createdAt:
-          type: string
-        date:
-          type: string
-        foreignKey:
-          type: string
-        modifiedAt:
-          type: string
-        name:
-          type: string
-        source:
-          type: string
-        tagId:
-          type: string
-        type:
-          type: string
-      required:
-      - name
     MetaObject:
       type: object
-    TagName:
+    CategoryTagSingleLinks:
       type: object
       properties:
-        value:
-          type: string
-    DocumentRelLinks:
-      type: object
-      properties:
-        related:
-          type: string
         self:
           type: string
-    EventRelationships:
-      type: object
-      properties:
-        category-tag:
-          $ref: '#/components/schemas/CategoryTagRelToOne'
-        job-reference:
-          $ref: '#/components/schemas/JobReferenceRelToOne'
-        message:
-          $ref: '#/components/schemas/MessageRelToOne'
-    TeamRelLinks:
-      type: object
-      properties:
-        related:
-          type: string
-        self:
-          type: string
-    MessageRelData:
+    PrivateLabelRelData:
       type: object
       properties:
         id:
           type: string
         type:
-          type: string
-    CategoryTagRelData:
-      type: object
-      properties:
-        id:
-          type: string
-        messageTag:
-          $ref: '#/components/schemas/MessageTag'
-        type:
-          type: string
-    UserRelData:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-    MessageTagId:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-    MessageRelToOne:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/MessageRelData'
-        links:
-          $ref: '#/components/schemas/MessageRelLinks'
-    MessageTag:
-      type: object
-      properties:
-        assignedToUserId:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        eventId:
-          $ref: '#/components/schemas/EventId'
-        messageId:
-          type: string
-        messageTagId:
-          $ref: '#/components/schemas/MessageTagId'
-        removedAt:
-          type: string
-          format: date-time
-        removedByUserId:
-          type: string
-        tag:
-          $ref: '#/components/schemas/Tag'
-        tagId:
-          $ref: '#/components/schemas/TagId'
-        userId:
-          type: string
-    JobReferenceRelToMany:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/JobReferenceRelData'
-        links:
-          $ref: '#/components/schemas/JobReferenceRelLinks'
-    MessageMeta:
-      type: object
-      properties:
-        download:
-          type: string
-    MessageSingleMeta:
-      type: object
-      properties:
-        composeUrl:
-          type: string
-    DocumentRelData:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-    Sender:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceObjectIdentifier'
-        meta:
-          $ref: '#/components/schemas/MetaObject'
-    JobReferenceSingle:
-      type: object
-      description: The resource
-      properties:
-        data:
-          $ref: '#/components/schemas/JobReferenceResource'
-        links:
-          $ref: '#/components/schemas/JobReferenceSingleLinks'
-    ResourceObjectIdentifier:
-      type: object
-      properties:
-        id:
-          type: string
-        meta:
-          $ref: '#/components/schemas/MetaObject'
-        type:
-          type: string
-    CategoryTagRelLinks:
-      type: object
-      properties:
-        related:
-          type: string
-        self:
           type: string
     MessageReadAttributes:
       type: object
@@ -742,69 +488,199 @@ components:
           type: array
           items:
             type: string
-    UserRelToMany:
+    JobReferenceRelToOne:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/JobReferenceRelData'
+        links:
+          $ref: '#/components/schemas/JobReferenceRelLinks'
+    JobReferenceSingle:
+      type: object
+      description: The resource
+      properties:
+        data:
+          $ref: '#/components/schemas/JobReferenceResource'
+        links:
+          $ref: '#/components/schemas/JobReferenceSingleLinks'
+    MessageReadResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/MessageReadAttributes'
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/MessageLinks'
+        meta:
+          $ref: '#/components/schemas/MessageMeta'
+        relationships:
+          $ref: '#/components/schemas/MessageRelationships'
+        type:
+          type: string
+    JobReferenceAttributes:
+      type: object
+      properties:
+        archived:
+          type: boolean
+        attributes:
+          type: string
+        createdAt:
+          type: string
+        date:
+          type: string
+        foreignKey:
+          type: string
+        modifiedAt:
+          type: string
+        name:
+          type: string
+        source:
+          type: string
+        tagId:
+          type: string
+        type:
+          type: string
+      required:
+      - name
+    PrivateLabelRelToMany:
       type: object
       properties:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/UserRelData'
+            $ref: '#/components/schemas/PrivateLabelRelData'
         links:
-          $ref: '#/components/schemas/UserRelLinks'
-    TagLabel:
-      type: object
-      properties:
-        value:
-          type: string
-    JobReferenceRelLinks:
-      type: object
-      properties:
-        related:
-          type: string
-        self:
-          type: string
-    PrivateLabelRelData:
+          $ref: '#/components/schemas/PrivateLabelRelLinks'
+    DocumentRelData:
       type: object
       properties:
         id:
           type: string
         type:
           type: string
-    MessageSingleLinks:
+    JobReferenceLinks:
       type: object
       properties:
         self:
           type: string
-    JobReferenceRelationships:
+    CategoryTagResource:
       type: object
       properties:
-        company:
-          $ref: '#/components/schemas/Company'
-        tag:
-          $ref: '#/components/schemas/Tag'
+        attributes:
+          $ref: '#/components/schemas/CategoryTagAttributes'
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/CategoryTagLinks'
+        relationships:
+          $ref: '#/components/schemas/CategoryTagRelationships'
+        type:
+          type: string
+          description: the type of the resource
+          enum:
+          - category-tag
+    MessageRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    EventCollection:
+      type: object
+      description: A collection of resources
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventResource'
+        links:
+          $ref: '#/components/schemas/EventCollectionLinks'
+    CategoryTagRelationships:
+      type: object
+      properties:
         team:
           $ref: '#/components/schemas/TeamRelToMany'
-        user:
-          $ref: '#/components/schemas/UserRelToMany'
-    EventId:
+    UserRelData:
       type: object
       properties:
         id:
-          type: integer
-          format: int64
+          type: string
+        type:
+          type: string
     EventLinks:
       type: object
       properties:
         self:
           type: string
-    EventSingle:
+    Sender:
       type: object
-      description: The resource
       properties:
         data:
-          $ref: '#/components/schemas/EventResource'
+          $ref: '#/components/schemas/ResourceObjectIdentifier'
+        meta:
+          $ref: '#/components/schemas/MetaObject'
+    MessageTag:
+      type: object
+      properties:
+        assignedToUserId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        eventId:
+          $ref: '#/components/schemas/EventId'
+        messageId:
+          type: string
+        messageTagId:
+          $ref: '#/components/schemas/MessageTagId'
+        removedAt:
+          type: string
+          format: date-time
+        removedByUserId:
+          type: string
+        tag:
+          $ref: '#/components/schemas/Tag'
+        tagId:
+          $ref: '#/components/schemas/TagId'
+        userId:
+          type: string
+    EventSingleLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    CategoryTagRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoryTagRelData'
         links:
-          $ref: '#/components/schemas/EventSingleLinks'
+          $ref: '#/components/schemas/CategoryTagRelLinks'
+    UserRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    MessageRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    TeamRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
     TeamRelToMany:
       type: object
       properties:
@@ -814,24 +690,82 @@ components:
             $ref: '#/components/schemas/TeamRelData'
         links:
           $ref: '#/components/schemas/TeamRelLinks'
-    CategoryTagLinks:
+    MessageLinks:
       type: object
       properties:
         self:
           type: string
-    TagId:
+    CategoryTagRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    MessageThreadSummary:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceObjectIdentifier'
+    DocumentRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    JobReferenceRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    ResourceObjectIdentifier:
+      type: object
+      properties:
+        id:
+          type: string
+        meta:
+          $ref: '#/components/schemas/MetaObject'
+        type:
+          type: string
+    MessageSingleMeta:
+      type: object
+      properties:
+        composeUrl:
+          type: string
+    EventRelationships:
+      type: object
+      properties:
+        category-tag:
+          $ref: '#/components/schemas/CategoryTagRelToOne'
+        job-reference:
+          $ref: '#/components/schemas/JobReferenceRelToOne'
+        message:
+          $ref: '#/components/schemas/MessageRelToOne'
+    MessageRelToOne:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/MessageRelData'
+        links:
+          $ref: '#/components/schemas/MessageRelLinks'
+    EventId:
       type: object
       properties:
         id:
           type: integer
           format: int64
-    CategoryTagRelToOne:
+    DocumentRelToMany:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/CategoryTagRelData'
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentRelData'
         links:
-          $ref: '#/components/schemas/CategoryTagRelLinks'
+          $ref: '#/components/schemas/DocumentRelLinks'
     Tag:
       type: object
       properties:
@@ -844,10 +778,76 @@ components:
         tagTypeId:
           type: integer
           format: int32
-    CategoryTagSingleLinks:
+    JobReferenceRelationships:
+      type: object
+      properties:
+        company:
+          $ref: '#/components/schemas/Company'
+        tag:
+          $ref: '#/components/schemas/Tag'
+        team:
+          $ref: '#/components/schemas/TeamRelToMany'
+        user:
+          $ref: '#/components/schemas/UserRelToMany'
+    JobReferenceSingleLinks:
       type: object
       properties:
         self:
+          type: string
+    CategoryTagRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        messageTag:
+          $ref: '#/components/schemas/MessageTag'
+        type:
+          type: string
+    UserRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRelData'
+        links:
+          $ref: '#/components/schemas/UserRelLinks'
+    MessageSingle:
+      type: object
+      description: The resource
+      properties:
+        data:
+          $ref: '#/components/schemas/MessageReadResource'
+        included:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceObjectResponse'
+        links:
+          $ref: '#/components/schemas/MessageSingleLinks'
+        meta:
+          $ref: '#/components/schemas/MessageSingleMeta'
+    ResourceObjectResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    TagId:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+    CategoryTagLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    TagName:
+      type: object
+      properties:
+        value:
           type: string
   securitySchemes:
     Basic:
