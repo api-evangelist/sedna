@@ -508,30 +508,58 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    TeamCreate:
+    UserDeactivationPeriodRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    TeamToManyUserRelationshipWriteRepresentation:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/TeamCreateResource'
-    TeamAttributeAutoBccEmail:
-      type: object
-      properties:
-        email:
-          type: string
-        name:
-          type: string
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRelationshipWriteData'
       required:
-      - email
-    TeamCreateResource:
+      - data
+    PrivateLabelRelToMany:
       type: object
       properties:
-        attributes:
-          $ref: '#/components/schemas/TeamCreateAttributes'
-        type:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PrivateLabelRelData'
+        links:
+          $ref: '#/components/schemas/PrivateLabelRelLinks'
+    TagName:
+      type: object
+      properties:
+        value:
           type: string
-          description: the type of the resource
-          enum:
-          - team
+    UserDeactivationPeriodRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserDeactivationPeriodRelData'
+    TeamUserRelationshipsReadMeta:
+      type: object
+      description: Document-level metadata for team ↔ user relationship collection reads
+    TeamRelationships:
+      type: object
+      properties:
+        categoryTag:
+          $ref: '#/components/schemas/CategoryTagRelToMany'
+        user:
+          $ref: '#/components/schemas/UserRelToMany'
+    UserLinks:
+      type: object
+      properties:
+        self:
+          type: string
     UserRelationships:
       type: object
       properties:
@@ -549,110 +577,6 @@ components:
           $ref: '#/components/schemas/TeamRelToMany'
         watchedTeams:
           $ref: '#/components/schemas/TeamRelToMany'
-    CategoryTagAttributes:
-      type: object
-      properties:
-        archived:
-          type: boolean
-        disableFollow:
-          type: boolean
-        label:
-          type: string
-        name:
-          type: string
-    PrivateLabelRelLinks:
-      type: object
-      properties:
-        related:
-          type: string
-        self:
-          type: string
-    TeamSingle:
-      type: object
-      description: The resource
-      properties:
-        data:
-          $ref: '#/components/schemas/TeamResource'
-    NotificationDeviceRelLinks:
-      type: object
-      properties:
-        related:
-          type: string
-        self:
-          type: string
-    TeamRelData:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-    TeamToManyUserRelationshipReadRepresentation:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserRelationshipReadData'
-        links:
-          $ref: '#/components/schemas/UserRelationshipLinks'
-        meta:
-          $ref: '#/components/schemas/TeamUserRelationshipsReadMeta'
-    TeamRelationship:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/TeamRelData'
-        links:
-          $ref: '#/components/schemas/TeamRelLinks'
-    MessageTagId:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-    UserRelationshipLinks:
-      type: object
-      properties:
-        first:
-          type: string
-        last:
-          type: string
-        next:
-          type: string
-        prev:
-          type: string
-        self:
-          type: string
-    CategoryTagCollection:
-      type: object
-      description: A collection of resources
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CategoryTagResource'
-        links:
-          $ref: '#/components/schemas/CategoryTagCollectionLinks'
-    TeamRelationships:
-      type: object
-      properties:
-        categoryTag:
-          $ref: '#/components/schemas/CategoryTagRelToMany'
-        user:
-          $ref: '#/components/schemas/UserRelToMany'
-    TagLabel:
-      type: object
-      properties:
-        value:
-          type: string
-    PrivateLabelRelData:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
     UserRelationshipWriteData:
       type: object
       properties:
@@ -662,81 +586,15 @@ components:
           $ref: '#/components/schemas/UserRelationshipMeta'
         type:
           type: string
-    UserLinks:
+    TeamLinks:
       type: object
       properties:
         self:
           type: string
-    TeamUpdateResource:
+    TagLabel:
       type: object
       properties:
-        attributes:
-          $ref: '#/components/schemas/TeamUpdateAttributes'
-        type:
-          type: string
-          description: the type of the resource
-          enum:
-          - team
-    TeamToUserCountReadRepresentation:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/UserCountData'
-    PrivateLabelRelToMany:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/PrivateLabelRelData'
-        links:
-          $ref: '#/components/schemas/PrivateLabelRelLinks'
-    TeamUpdate:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/TeamUpdateResource'
-    UserCountData:
-      type: object
-      properties:
-        count:
-          type: string
-    TeamToManyUserRelationshipWriteRepresentation:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserRelationshipWriteData'
-      required:
-      - data
-    CategoryTagResource:
-      type: object
-      properties:
-        attributes:
-          $ref: '#/components/schemas/CategoryTagAttributes'
-        id:
-          type: string
-        links:
-          $ref: '#/components/schemas/CategoryTagLinks'
-        relationships:
-          $ref: '#/components/schemas/CategoryTagRelationships'
-        type:
-          type: string
-          description: the type of the resource
-          enum:
-          - category-tag
-    CategoryTagRelationships:
-      type: object
-      properties:
-        team:
-          $ref: '#/components/schemas/TeamRelToMany'
-    UserRelData:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
+        value:
           type: string
     NotificationDeviceRelData:
       type: object
@@ -745,29 +603,72 @@ components:
           type: string
         type:
           type: string
-    UserDeactivationPeriodRelData:
+    TagId:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+    EventId:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+    UserRelationshipMeta:
+      type: object
+      properties:
+        default:
+          type: boolean
+        disableSend:
+          type: boolean
+        watched:
+          type: boolean
+    TeamCollectionLinks:
+      type: object
+      properties:
+        first:
+          type: string
+        next:
+          type: string
+        self:
+          type: string
+    PrivateLabelRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    NotificationDeviceRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    UserCountData:
+      type: object
+      properties:
+        count:
+          type: string
+    TeamRelData:
       type: object
       properties:
         id:
           type: string
         type:
           type: string
-    UserCollection:
+    UserReadMeta:
+      type: object
+      description: Document-level metadata for user collection/single reads
+    TeamRelationship:
       type: object
       properties:
         data:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserResource'
-        included:
-          type: array
-          items:
-            type: object
-          uniqueItems: true
+          $ref: '#/components/schemas/TeamRelData'
         links:
-          $ref: '#/components/schemas/UserCollectionLinks'
-        meta:
-          $ref: '#/components/schemas/UserReadMeta'
+          $ref: '#/components/schemas/TeamRelLinks'
     UserAttributes:
       type: object
       properties:
@@ -807,6 +708,145 @@ components:
           type: string
         username:
           type: string
+    MessageTagId:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+    CategoryTagCollectionLinks:
+      type: object
+      properties:
+        first:
+          type: string
+        next:
+          type: string
+        self:
+          type: string
+    CategoryTagAttributes:
+      type: object
+      properties:
+        archived:
+          type: boolean
+        disableFollow:
+          type: boolean
+        label:
+          type: string
+        name:
+          type: string
+    CategoryTagRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    UserResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/UserAttributes'
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/UserLinks'
+        relationships:
+          $ref: '#/components/schemas/UserRelationships'
+        type:
+          type: string
+          description: the type of the resource
+          enum:
+          - user
+    TeamUpdateAttributes:
+      type: object
+      properties:
+        additionalEmailAddresses:
+          type: array
+          items:
+            type: string
+        archived:
+          type: boolean
+        autoBccEmails:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamAttributeAutoBccEmail'
+        disableSend:
+          type: boolean
+        emailAddress:
+          type: string
+        emailSignature:
+          type: string
+        foreignKey:
+          type: string
+        inboxAssignedToUserId:
+          type: string
+        name:
+          type: string
+        public:
+          type: boolean
+        purpose:
+          type: string
+        sendingName:
+          type: string
+        soloInbox:
+          type: boolean
+    TeamSingle:
+      type: object
+      description: The resource
+      properties:
+        data:
+          $ref: '#/components/schemas/TeamResource'
+    MessageTag:
+      type: object
+      properties:
+        assignedToUserId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        eventId:
+          $ref: '#/components/schemas/EventId'
+        messageId:
+          type: string
+        messageTagId:
+          $ref: '#/components/schemas/MessageTagId'
+        removedAt:
+          type: string
+          format: date-time
+        removedByUserId:
+          type: string
+        tag:
+          $ref: '#/components/schemas/Tag'
+        tagId:
+          $ref: '#/components/schemas/TagId'
+        userId:
+          type: string
+    CategoryTagCollection:
+      type: object
+      description: A collection of resources
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoryTagResource'
+        links:
+          $ref: '#/components/schemas/CategoryTagCollectionLinks'
+    PrivateLabelRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    UserCollectionLinks:
+      type: object
+      properties:
+        first:
+          type: string
+        next:
+          type: string
+        self:
+          type: string
     TeamCreateAttributes:
       type: object
       properties:
@@ -840,63 +880,130 @@ components:
           type: string
       required:
       - name
-    UserResource:
+    TeamUpdateResource:
       type: object
       properties:
         attributes:
-          $ref: '#/components/schemas/UserAttributes'
-        id:
-          type: string
-        links:
-          $ref: '#/components/schemas/UserLinks'
-        relationships:
-          $ref: '#/components/schemas/UserRelationships'
+          $ref: '#/components/schemas/TeamUpdateAttributes'
         type:
           type: string
           description: the type of the resource
           enum:
-          - user
-    MessageTag:
+          - team
+    TeamCreateResource:
       type: object
       properties:
-        assignedToUserId:
+        attributes:
+          $ref: '#/components/schemas/TeamCreateAttributes'
+        type:
           type: string
-        createdAt:
+          description: the type of the resource
+          enum:
+          - team
+    TeamResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/TeamAttributes'
+        id:
           type: string
-          format: date-time
-        eventId:
-          $ref: '#/components/schemas/EventId'
-        messageId:
+        links:
+          $ref: '#/components/schemas/TeamLinks'
+        relationships:
+          $ref: '#/components/schemas/TeamRelationships'
+        type:
           type: string
-        messageTagId:
-          $ref: '#/components/schemas/MessageTagId'
-        removedAt:
+          description: the type of the resource
+          enum:
+          - team
+        uuid:
           type: string
-          format: date-time
-        removedByUserId:
+    UserRelLinks:
+      type: object
+      properties:
+        related:
           type: string
-        tag:
-          $ref: '#/components/schemas/Tag'
-        tagId:
-          $ref: '#/components/schemas/TagId'
-        userId:
+        self:
           type: string
-    UpdateUserRelToMany:
+    UserRelationshipLinks:
+      type: object
+      properties:
+        first:
+          type: string
+        last:
+          type: string
+        next:
+          type: string
+        prev:
+          type: string
+        self:
+          type: string
+    UserRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    TeamToManyUserRelationshipReadRepresentation:
       type: object
       properties:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/UserRelData'
-    UserRelationshipReadData:
+            $ref: '#/components/schemas/UserRelationshipReadData'
+        links:
+          $ref: '#/components/schemas/UserRelationshipLinks'
+        meta:
+          $ref: '#/components/schemas/TeamUserRelationshipsReadMeta'
+    TeamCreate:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/TeamCreateResource'
+    CategoryTagRelData:
       type: object
       properties:
         id:
           type: string
-        meta:
-          $ref: '#/components/schemas/UserRelationshipMeta'
+        messageTag:
+          $ref: '#/components/schemas/MessageTag'
         type:
           type: string
+    TeamAttributeAutoBccEmail:
+      type: object
+      properties:
+        email:
+          type: string
+        name:
+          type: string
+      required:
+      - email
+    NotificationDeviceRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/NotificationDeviceRelData'
+        links:
+          $ref: '#/components/schemas/NotificationDeviceRelLinks'
+    UserCollection:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserResource'
+        included:
+          type: array
+          items:
+            type: object
+          uniqueItems: true
+        links:
+          $ref: '#/components/schemas/UserCollectionLinks'
+        meta:
+          $ref: '#/components/schemas/UserReadMeta'
     CategoryTagRelToMany:
       type: object
       properties:
@@ -906,18 +1013,98 @@ components:
             $ref: '#/components/schemas/CategoryTagRelData'
         links:
           $ref: '#/components/schemas/CategoryTagRelLinks'
-    UserRelLinks:
+    UpdateUserRelToMany:
       type: object
       properties:
-        related:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRelData'
+    TeamToUserCountReadRepresentation:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/UserCountData'
+    CategoryTagRelationships:
+      type: object
+      properties:
+        team:
+          $ref: '#/components/schemas/TeamRelToMany'
+    TeamUpdate:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/TeamUpdateResource'
+    UserRelationshipReadData:
+      type: object
+      properties:
+        id:
           type: string
-        self:
+        meta:
+          $ref: '#/components/schemas/UserRelationshipMeta'
+        type:
           type: string
-    TeamLinks:
+    TeamRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamRelData'
+        links:
+          $ref: '#/components/schemas/TeamRelLinks'
+    CategoryTagLinks:
       type: object
       properties:
         self:
           type: string
+    UserRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRelData'
+        links:
+          $ref: '#/components/schemas/UserRelLinks'
+    TeamCollection:
+      type: object
+      description: A collection of resources
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamResource'
+        links:
+          $ref: '#/components/schemas/TeamCollectionLinks'
+    CategoryTagResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/CategoryTagAttributes'
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/CategoryTagLinks'
+        relationships:
+          $ref: '#/components/schemas/CategoryTagRelationships'
+        type:
+          type: string
+          description: the type of the resource
+          enum:
+          - category-tag
+    Tag:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/TagId'
+        name:
+          $ref: '#/components/schemas/TagName'
+        tagLabel:
+          $ref: '#/components/schemas/TagLabel'
+        tagTypeId:
+          type: integer
+          format: int32
     TeamAttributes:
       type: object
       properties:
@@ -956,199 +1143,12 @@ components:
           type: string
         soloInbox:
           type: boolean
-    CategoryTagCollectionLinks:
-      type: object
-      properties:
-        first:
-          type: string
-        next:
-          type: string
-        self:
-          type: string
-    TeamCollection:
-      type: object
-      description: A collection of resources
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/TeamResource'
-        links:
-          $ref: '#/components/schemas/TeamCollectionLinks'
-    TeamCollectionLinks:
-      type: object
-      properties:
-        first:
-          type: string
-        next:
-          type: string
-        self:
-          type: string
-    TeamRelToMany:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/TeamRelData'
-        links:
-          $ref: '#/components/schemas/TeamRelLinks'
     TeamRelLinks:
       type: object
       properties:
         related:
           type: string
         self:
-          type: string
-    CategoryTagRelLinks:
-      type: object
-      properties:
-        related:
-          type: string
-        self:
-          type: string
-    TeamUserRelationshipsReadMeta:
-      type: object
-      description: Document-level metadata for team ↔ user relationship collection reads
-    NotificationDeviceRelToMany:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/NotificationDeviceRelData'
-        links:
-          $ref: '#/components/schemas/NotificationDeviceRelLinks'
-    EventId:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-    UserRelationshipMeta:
-      type: object
-      properties:
-        default:
-          type: boolean
-        disableSend:
-          type: boolean
-        watched:
-          type: boolean
-    UserCollectionLinks:
-      type: object
-      properties:
-        first:
-          type: string
-        next:
-          type: string
-        self:
-          type: string
-    UserDeactivationPeriodRelToMany:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserDeactivationPeriodRelData'
-    Tag:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/TagId'
-        name:
-          $ref: '#/components/schemas/TagName'
-        tagLabel:
-          $ref: '#/components/schemas/TagLabel'
-        tagTypeId:
-          type: integer
-          format: int32
-    UserReadMeta:
-      type: object
-      description: Document-level metadata for user collection/single reads
-    TeamUpdateAttributes:
-      type: object
-      properties:
-        additionalEmailAddresses:
-          type: array
-          items:
-            type: string
-        archived:
-          type: boolean
-        autoBccEmails:
-          type: array
-          items:
-            $ref: '#/components/schemas/TeamAttributeAutoBccEmail'
-        disableSend:
-          type: boolean
-        emailAddress:
-          type: string
-        emailSignature:
-          type: string
-        foreignKey:
-          type: string
-        inboxAssignedToUserId:
-          type: string
-        name:
-          type: string
-        public:
-          type: boolean
-        purpose:
-          type: string
-        sendingName:
-          type: string
-        soloInbox:
-          type: boolean
-    CategoryTagRelData:
-      type: object
-      properties:
-        id:
-          type: string
-        messageTag:
-          $ref: '#/components/schemas/MessageTag'
-        type:
-          type: string
-    UserRelToMany:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserRelData'
-        links:
-          $ref: '#/components/schemas/UserRelLinks'
-    TeamResource:
-      type: object
-      properties:
-        attributes:
-          $ref: '#/components/schemas/TeamAttributes'
-        id:
-          type: string
-        links:
-          $ref: '#/components/schemas/TeamLinks'
-        relationships:
-          $ref: '#/components/schemas/TeamRelationships'
-        type:
-          type: string
-          description: the type of the resource
-          enum:
-          - team
-        uuid:
-          type: string
-    TagId:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-    CategoryTagLinks:
-      type: object
-      properties:
-        self:
-          type: string
-    TagName:
-      type: object
-      properties:
-        value:
           type: string
   securitySchemes:
     Basic:

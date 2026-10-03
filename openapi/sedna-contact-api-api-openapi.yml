@@ -630,31 +630,33 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    CommentAttributes:
+    ContactResource:
       type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ContactResourceAttributes'
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/ContactResourceLinks'
+        relationships:
+          $ref: '#/components/schemas/ContactRelationships'
+        type:
+          type: string
+          description: the type of the resource
+          enum:
+          - contact
+    CommentCreateResource:
+      type: object
+      description: Data in contact comment
       properties:
         content:
           type: string
-        createdAt:
-          type: string
-          format: date-time
+          description: content of the contact comment
+          maxLength: 500
+          minLength: 0
       required:
       - content
-      - createdAt
-    ContactRelationships:
-      type: object
-      properties:
-        team:
-          $ref: '#/components/schemas/TeamRelToMany'
-    ContactGroupCollectionLinks:
-      type: object
-      properties:
-        first:
-          type: string
-        next:
-          type: string
-        self:
-          type: string
     CommentResource:
       type: object
       description: Data related to a single comment
@@ -667,21 +669,26 @@ components:
           $ref: '#/components/schemas/CommentRelationships'
         type:
           type: string
-    ContactSingle:
+    ContactGroupRelationships:
+      type: object
+      properties:
+        contact:
+          $ref: '#/components/schemas/ContactRelToMany'
+    ContactGroupSingle:
       type: object
       description: The resource
       properties:
         data:
-          $ref: '#/components/schemas/ContactResource'
-    ContactCollectionLinks:
+          $ref: '#/components/schemas/ContactGroupResource'
+        included:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactResource'
+    ContactCreateRepresentation:
       type: object
       properties:
-        first:
-          type: string
-        next:
-          type: string
-        self:
-          type: string
+        data:
+          $ref: '#/components/schemas/ContactCreateResource'
     ContactGroupCollection:
       type: object
       description: A collection of resources
@@ -692,13 +699,12 @@ components:
             $ref: '#/components/schemas/ContactGroupResource'
         links:
           $ref: '#/components/schemas/ContactGroupCollectionLinks'
-    TeamRelData:
+    ContactSingle:
       type: object
+      description: The resource
       properties:
-        id:
-          type: string
-        type:
-          type: string
+        data:
+          $ref: '#/components/schemas/ContactResource'
     CommentReadResource:
       type: object
       properties:
@@ -713,16 +719,62 @@ components:
       required:
       - id
       - type
-    ContactCollection:
+    TeamRelData:
       type: object
-      description: A collection of resources
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    ContactRelationships:
+      type: object
+      properties:
+        team:
+          $ref: '#/components/schemas/TeamRelToMany'
+    MessageRelToOne:
+      type: object
       properties:
         data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContactResource'
+          $ref: '#/components/schemas/MessageRelData'
         links:
-          $ref: '#/components/schemas/ContactCollectionLinks'
+          $ref: '#/components/schemas/MessageRelLinks'
+    ContactGroupCreateRelationships:
+      type: object
+      properties:
+        contact:
+          $ref: '#/components/schemas/ContactRelToMany'
+    ContactGroupCreateAttributes:
+      type: object
+      properties:
+        foreignKey:
+          type: string
+        name:
+          type: string
+    ContactResourceLinks:
+      type: object
+      properties:
+        self:
+          type: string
+          format: uri
+    ContactRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    UserRelToOne:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/UserRelData'
+    MessageRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
     ContactCreateAttributes:
       type: object
       properties:
@@ -788,22 +840,6 @@ components:
           type: string
           maxLength: 254
           minLength: 0
-    ContactGroupLinks:
-      type: object
-      properties:
-        self:
-          type: string
-    CommentCreateResource:
-      type: object
-      description: Data in contact comment
-      properties:
-        content:
-          type: string
-          description: content of the contact comment
-          maxLength: 500
-          minLength: 0
-      required:
-      - content
     ContactCreateResource:
       type: object
       properties:
@@ -813,142 +849,25 @@ components:
           $ref: '#/components/schemas/ContactRelationships'
         type:
           type: string
-    ContactGroupResource:
-      type: object
-      properties:
-        attributes:
-          $ref: '#/components/schemas/ContactGroupAttributes'
-        id:
-          type: string
-        links:
-          $ref: '#/components/schemas/ContactGroupLinks'
-        relationships:
-          $ref: '#/components/schemas/ContactGroupRelationships'
-        type:
-          type: string
-          description: the type of the resource
-          enum:
-          - contact-group
-    ContactGroupCreateAttributes:
-      type: object
-      properties:
-        foreignKey:
-          type: string
-        name:
-          type: string
-    ContactGroupSingle:
-      type: object
-      description: The resource
-      properties:
-        data:
-          $ref: '#/components/schemas/ContactGroupResource'
-        included:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContactResource'
-    CommentSingle:
-      type: object
-      description: Response containing single comment
-      properties:
-        data:
-          $ref: '#/components/schemas/CommentResource'
-    UserRelToOne:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/UserRelData'
-    ContactGroupRelToMany:
+    ContactRelToMany:
       type: object
       properties:
         data:
           type: array
           items:
             $ref: '#/components/schemas/ContactRelData'
-    ContactGroupCreateResource:
+    ContactGroupCreateRepresentation:
       type: object
       properties:
-        attributes:
-          $ref: '#/components/schemas/ContactGroupCreateAttributes'
-        relationships:
-          $ref: '#/components/schemas/ContactGroupCreateRelationships'
-        type:
-          type: string
-    ContactGroupAttributes:
-      type: object
-      properties:
-        createdAt:
-          type: string
-          format: date-time
-        foreignKey:
-          type: string
-        modifiedAt:
-          type: string
-          format: date-time
-        name:
-          type: string
-    ContactGroupRelationships:
-      type: object
-      properties:
-        contact:
-          $ref: '#/components/schemas/ContactRelToMany'
-    MessageRelLinks:
-      type: object
-      properties:
-        related:
-          type: string
-        self:
-          type: string
-    ContactResource:
-      type: object
-      properties:
-        attributes:
-          $ref: '#/components/schemas/ContactResourceAttributes'
-        id:
-          type: string
-        links:
-          $ref: '#/components/schemas/ContactResourceLinks'
-        relationships:
-          $ref: '#/components/schemas/ContactRelationships'
-        type:
-          type: string
-          description: the type of the resource
-          enum:
-          - contact
-    UserRelData:
+        data:
+          $ref: '#/components/schemas/ContactGroupCreateResource'
+    MessageRelData:
       type: object
       properties:
         id:
           type: string
         type:
           type: string
-    ContactCreateRepresentation:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/ContactCreateResource'
-    ContactPhone:
-      type: object
-      properties:
-        countryCode:
-          type: string
-        number:
-          type: string
-          maxLength: 254
-          minLength: 0
-        type:
-          type: string
-          enum:
-          - OFFICE
-          - HOME
-          - MOBILE
-          - SATELLITE
-    CommentCollection:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CommentReadResource'
     ContactResourceAttributes:
       type: object
       properties:
@@ -998,38 +917,101 @@ components:
           type: string
         yahooId:
           type: string
-    ContactRelData:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
     CommentCreateRepresentation:
       type: object
       description: Request for contact comment creation
       properties:
         data:
           $ref: '#/components/schemas/CommentCreateResource'
-    ContactGroupCreateRepresentation:
+    ContactGroupRelToMany:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/ContactGroupCreateResource'
-    MessageRelData:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactRelData'
+    CommentRelationships:
+      type: object
+      properties:
+        message:
+          $ref: '#/components/schemas/MessageRelToOne'
+        user:
+          $ref: '#/components/schemas/UserRelToOne'
+    UserRelData:
       type: object
       properties:
         id:
           type: string
         type:
           type: string
-    TeamRelLinks:
+    ContactGroupLinks:
       type: object
       properties:
-        related:
+        self:
+          type: string
+    ContactCollection:
+      type: object
+      description: A collection of resources
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactResource'
+        links:
+          $ref: '#/components/schemas/ContactCollectionLinks'
+    CommentSingle:
+      type: object
+      description: Response containing single comment
+      properties:
+        data:
+          $ref: '#/components/schemas/CommentResource'
+    ContactGroupCreateResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ContactGroupCreateAttributes'
+        relationships:
+          $ref: '#/components/schemas/ContactGroupCreateRelationships'
+        type:
+          type: string
+    ContactGroupCollectionLinks:
+      type: object
+      properties:
+        first:
+          type: string
+        next:
           type: string
         self:
           type: string
+    ContactGroupAttributes:
+      type: object
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+        foreignKey:
+          type: string
+        modifiedAt:
+          type: string
+          format: date-time
+        name:
+          type: string
+    ContactPhone:
+      type: object
+      properties:
+        countryCode:
+          type: string
+        number:
+          type: string
+          maxLength: 254
+          minLength: 0
+        type:
+          type: string
+          enum:
+          - OFFICE
+          - HOME
+          - MOBILE
+          - SATELLITE
     TeamRelToMany:
       type: object
       properties:
@@ -1039,38 +1021,56 @@ components:
             $ref: '#/components/schemas/TeamRelData'
         links:
           $ref: '#/components/schemas/TeamRelLinks'
-    ContactResourceLinks:
-      type: object
-      properties:
-        self:
-          type: string
-          format: uri
-    CommentRelationships:
-      type: object
-      properties:
-        message:
-          $ref: '#/components/schemas/MessageRelToOne'
-        user:
-          $ref: '#/components/schemas/UserRelToOne'
-    MessageRelToOne:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/MessageRelData'
-        links:
-          $ref: '#/components/schemas/MessageRelLinks'
-    ContactRelToMany:
+    CommentCollection:
       type: object
       properties:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/ContactRelData'
-    ContactGroupCreateRelationships:
+            $ref: '#/components/schemas/CommentReadResource'
+    ContactCollectionLinks:
       type: object
       properties:
-        contact:
-          $ref: '#/components/schemas/ContactRelToMany'
+        first:
+          type: string
+        next:
+          type: string
+        self:
+          type: string
+    ContactGroupResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ContactGroupAttributes'
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/ContactGroupLinks'
+        relationships:
+          $ref: '#/components/schemas/ContactGroupRelationships'
+        type:
+          type: string
+          description: the type of the resource
+          enum:
+          - contact-group
+    CommentAttributes:
+      type: object
+      properties:
+        content:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+      required:
+      - content
+      - createdAt
+    TeamRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
   securitySchemes:
     Basic:
       description: The basic auth scheme only requires the API-Specific username/password to be set.

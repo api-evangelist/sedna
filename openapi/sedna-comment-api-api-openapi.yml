@@ -96,13 +96,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    UserRelData:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
     CommentAttributes:
       type: object
       properties:
@@ -121,6 +114,13 @@ components:
           $ref: '#/components/schemas/MessageRelData'
         links:
           $ref: '#/components/schemas/MessageRelLinks'
+    MessageRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
     CommentRelationships:
       type: object
       properties:
@@ -135,6 +135,25 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CommentReadResource'
+    UserRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    UserRelToOne:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/UserRelData'
+    MessageRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
     CommentReadResource:
       type: object
       properties:
@@ -149,25 +168,6 @@ components:
       required:
       - id
       - type
-    UserRelToOne:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/UserRelData'
-    MessageRelData:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-    MessageRelLinks:
-      type: object
-      properties:
-        related:
-          type: string
-        self:
-          type: string
   securitySchemes:
     Basic:
       description: The basic auth scheme only requires the API-Specific username/password to be set.

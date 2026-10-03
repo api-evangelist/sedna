@@ -48,19 +48,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    DocumentResource:
-      type: object
-      properties:
-        attributes:
-          $ref: '#/components/schemas/DocumentAttributes'
-        id:
-          type: string
-        meta:
-          $ref: '#/components/schemas/DocumentMeta'
-        type:
-          type: string
-          description: the type of the resource
-          example: '127'
     DocumentAttributes:
       type: object
       properties:
@@ -81,6 +68,19 @@ components:
           type: string
         publicDownload:
           type: string
+    DocumentResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/DocumentAttributes'
+        id:
+          type: string
+        meta:
+          $ref: '#/components/schemas/DocumentMeta'
+        type:
+          type: string
+          description: the type of the resource
+          example: '127'
   securitySchemes:
     Basic:
       description: The basic auth scheme only requires the API-Specific username/password to be set.

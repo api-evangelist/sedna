@@ -46,6 +46,24 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    FlowCustomColumnData:
+      type: object
+      properties:
+        link:
+          type: string
+        popover:
+          type: string
+        value:
+          type: object
+    Link:
+      type: object
+    Meta:
+      type: object
+      properties:
+        disableSend:
+          type: boolean
+        watched:
+          type: boolean
     Error:
       type: object
       properties:
@@ -65,75 +83,6 @@ components:
           type: string
         title:
           type: string
-    Link:
-      type: object
-    JsonApiObject:
-      type: object
-      properties:
-        ext:
-          type: array
-          items:
-            type: string
-        meta:
-          $ref: '#/components/schemas/Meta'
-        profile:
-          type: array
-          items:
-            type: string
-        version:
-          type: string
-    FlowCustomColumnData:
-      type: object
-      properties:
-        link:
-          type: string
-        popover:
-          type: string
-        value:
-          type: object
-    Links:
-      type: object
-      properties:
-        empty:
-          type: boolean
-        members:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/Link'
-    Source:
-      type: object
-      properties:
-        header:
-          type: string
-        parameter:
-          type: string
-        pointer:
-          type: string
-    DocumentFlowVesselResource:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/FlowVesselResource'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        included:
-          type: array
-          items:
-            type: object
-        includedSerialization$jsonapi_adapters:
-          type: string
-          enum:
-          - NONE
-          - DOCUMENT
-          - PROCESSED
-        jsonapi:
-          $ref: '#/components/schemas/JsonApiObject'
-        links:
-          $ref: '#/components/schemas/Links'
-        meta:
-          $ref: '#/components/schemas/Meta'
     FlowVesselResource:
       type: object
       properties:
@@ -338,13 +287,64 @@ components:
           - Upper Conv LNG
           - Q-Flex
           - Q-Max
-    Meta:
+    Links:
       type: object
       properties:
-        disableSend:
+        empty:
           type: boolean
-        watched:
-          type: boolean
+        members:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Link'
+    JsonApiObject:
+      type: object
+      properties:
+        ext:
+          type: array
+          items:
+            type: string
+        meta:
+          $ref: '#/components/schemas/Meta'
+        profile:
+          type: array
+          items:
+            type: string
+        version:
+          type: string
+    Source:
+      type: object
+      properties:
+        header:
+          type: string
+        parameter:
+          type: string
+        pointer:
+          type: string
+    DocumentFlowVesselResource:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/FlowVesselResource'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        included:
+          type: array
+          items:
+            type: object
+        includedSerialization$jsonapi_adapters:
+          type: string
+          enum:
+          - NONE
+          - DOCUMENT
+          - PROCESSED
+        jsonapi:
+          $ref: '#/components/schemas/JsonApiObject'
+        links:
+          $ref: '#/components/schemas/Links'
+        meta:
+          $ref: '#/components/schemas/Meta'
   securitySchemes:
     Basic:
       description: The basic auth scheme only requires the API-Specific username/password to be set.

@@ -112,24 +112,11 @@ components:
             $ref: '#/components/schemas/RelationshipObject'
         type:
           type: string
-    RelationshipObject:
-      type: object
     TemplateSingle:
       type: object
       properties:
         data:
           $ref: '#/components/schemas/TemplateResource'
-        included:
-          type: array
-          items:
-            $ref: '#/components/schemas/ResourceObjectResponse'
-    TemplateCollection:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/TemplateResource'
         included:
           type: array
           items:
@@ -141,6 +128,19 @@ components:
           type: string
         type:
           type: string
+    RelationshipObject:
+      type: object
+    TemplateCollection:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateResource'
+        included:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceObjectResponse'
     TemplateReadAttributes:
       type: object
       properties:
