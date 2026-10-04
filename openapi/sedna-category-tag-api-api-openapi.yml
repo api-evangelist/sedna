@@ -585,215 +585,28 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    UpdateTeamRelToMany:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/TeamRelData'
-    MessageRelGetData:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
     CategoryTagSingleLinks:
       type: object
       properties:
         self:
           type: string
-    WithNextPageCursorMessageCollection:
+    MessageRelationships:
       type: object
       properties:
-        nextPageCursor:
-          type: string
-        response:
-          $ref: '#/components/schemas/MessageCollection'
-    MessageThreadSummary:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceObjectIdentifier'
-    DocumentRelData:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-    TagName:
-      type: object
-      properties:
-        value:
-          type: string
-    PrivateLabelRelToMany:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/PrivateLabelRelData'
-        links:
-          $ref: '#/components/schemas/PrivateLabelRelLinks'
-    MessageCollectionLinks:
-      type: object
-      properties:
-        first:
-          type: string
-        next:
-          type: string
-        self:
-          type: string
-    MessageRelGetToMany:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/MessageRelGetData'
-        links:
-          $ref: '#/components/schemas/MessageRelLinks'
-    TeamRelationships:
-      type: object
-      properties:
-        categoryTag:
+        category-tag:
           $ref: '#/components/schemas/CategoryTagRelToMany'
-        user:
-          $ref: '#/components/schemas/UserRelToMany'
-    TeamLinks:
-      type: object
-      properties:
-        self:
-          type: string
-    TagLabel:
-      type: object
-      properties:
-        value:
-          type: string
-    TagId:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-    EventId:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-    TeamCollectionLinks:
-      type: object
-      properties:
-        first:
-          type: string
-        next:
-          type: string
-        self:
-          type: string
-    PrivateLabelRelLinks:
-      type: object
-      properties:
-        related:
-          type: string
-        self:
-          type: string
-    TeamRelData:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-    MessageTagId:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-    CategoryTagCreateAttributes:
-      type: object
-      properties:
-        archived:
-          type: boolean
-        disableFollow:
-          type: boolean
-        label:
-          type: string
-        name:
-          type: string
-      required:
-      - label
-      - name
-    CategoryTagCollectionLinks:
-      type: object
-      properties:
-        first:
-          type: string
-        next:
-          type: string
-        self:
-          type: string
-    MessageLinks:
-      type: object
-      properties:
-        self:
-          type: string
-    CategoryTagAttributes:
-      type: object
-      properties:
-        archived:
-          type: boolean
-        disableFollow:
-          type: boolean
-        label:
-          type: string
-        name:
-          type: string
-    CategoryTagCreateRelationships:
-      type: object
-      properties:
+        document:
+          $ref: '#/components/schemas/DocumentRelToMany'
+        job-reference:
+          $ref: '#/components/schemas/JobReferenceRelToMany'
+        message_thread_summary:
+          $ref: '#/components/schemas/MessageThreadSummary'
+        private-label:
+          $ref: '#/components/schemas/PrivateLabelRelToMany'
+        sender:
+          $ref: '#/components/schemas/Sender'
         team:
-          $ref: '#/components/schemas/UpdateTeamRelToMany'
-    CategoryTagUpdate:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/CategoryTagUpdateResource'
-    CategoryTagRelLinks:
-      type: object
-      properties:
-        related:
-          type: string
-        self:
-          type: string
-    MessageRelUpdateData:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-    MessageCollectionMeta:
-      type: object
-      properties:
-        count:
-          type: integer
-          format: int32
-    MessageMeta:
-      type: object
-      properties:
-        download:
-          type: string
-    JobReferenceRelLinks:
-      type: object
-      properties:
-        related:
-          type: string
-        self:
-          type: string
+          $ref: '#/components/schemas/TeamRelToMany'
     MessageTag:
       type: object
       properties:
@@ -819,55 +632,62 @@ components:
           $ref: '#/components/schemas/TagId'
         userId:
           type: string
-    CategoryTagUpdateResource:
+    MessageMeta:
       type: object
       properties:
-        attributes:
-          $ref: '#/components/schemas/CategoryTagUpdateAttributes'
-        type:
+        download:
           type: string
-    CategoryTagCollection:
-      type: object
-      description: A collection of resources
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CategoryTagResource'
-        links:
-          $ref: '#/components/schemas/CategoryTagCollectionLinks'
-    MessageRelLinks:
+    TeamLinks:
       type: object
       properties:
-        related:
-          type: string
         self:
           type: string
-    MetaObject:
+    EventId:
       type: object
-    PrivateLabelRelData:
+      properties:
+        id:
+          type: integer
+          format: int64
+    TeamRelData:
       type: object
       properties:
         id:
           type: string
         type:
           type: string
-    UpdateMessageRelToMany:
+    MetaObject:
+      type: object
+    TeamRelationships:
+      type: object
+      properties:
+        categoryTag:
+          $ref: '#/components/schemas/CategoryTagRelToMany'
+        user:
+          $ref: '#/components/schemas/UserRelToMany'
+    MessageLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    CategoryTagUpdate:
       type: object
       properties:
         data:
-          type: array
-          items:
-            $ref: '#/components/schemas/MessageRelUpdateData'
-    JobReferenceRelToMany:
+          $ref: '#/components/schemas/CategoryTagUpdateResource'
+    JobReferenceRelData:
       type: object
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/JobReferenceRelData'
-        links:
-          $ref: '#/components/schemas/JobReferenceRelLinks'
+        id:
+          type: string
+        messageTag:
+          $ref: '#/components/schemas/MessageTag'
+        type:
+          type: string
+    TagLabel:
+      type: object
+      properties:
+        value:
+          type: string
     TeamResource:
       type: object
       properties:
@@ -886,44 +706,82 @@ components:
           - team
         uuid:
           type: string
-    UserRelLinks:
-      type: object
-      properties:
-        related:
-          type: string
-        self:
-          type: string
-    MessageRelData:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-    TeamRelLinks:
-      type: object
-      properties:
-        related:
-          type: string
-        self:
-          type: string
-    Sender:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/ResourceObjectIdentifier'
-        meta:
-          $ref: '#/components/schemas/MetaObject'
-    MessageRelToMany:
+    UserRelToMany:
       type: object
       properties:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/MessageRelData'
+            $ref: '#/components/schemas/UserRelData'
         links:
-          $ref: '#/components/schemas/MessageRelLinks'
-    UserRelData:
+          $ref: '#/components/schemas/UserRelLinks'
+    TeamAttributeAutoBccEmail:
+      type: object
+      properties:
+        email:
+          type: string
+        name:
+          type: string
+      required:
+      - email
+    CategoryTagRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        messageTag:
+          $ref: '#/components/schemas/MessageTag'
+        type:
+          type: string
+    CategoryTagAttributes:
+      type: object
+      properties:
+        archived:
+          type: boolean
+        disableFollow:
+          type: boolean
+        label:
+          type: string
+        name:
+          type: string
+    CategoryTagLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    TagId:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+    CategoryTagCreate:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/CategoryTagCreateResource'
+    TeamCollectionLinks:
+      type: object
+      properties:
+        first:
+          type: string
+        next:
+          type: string
+        self:
+          type: string
+    CategoryTagRelationships:
+      type: object
+      properties:
+        team:
+          $ref: '#/components/schemas/TeamRelToMany'
+    UpdateTeamRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamRelData'
+    PrivateLabelRelData:
       type: object
       properties:
         id:
@@ -939,86 +797,35 @@ components:
           $ref: '#/components/schemas/MetaObject'
         type:
           type: string
-    CategoryTagCreateResource:
+    UserRelLinks:
       type: object
       properties:
-        attributes:
-          $ref: '#/components/schemas/CategoryTagCreateAttributes'
-        relationships:
-          $ref: '#/components/schemas/CategoryTagCreateRelationships'
-        type:
+        related:
           type: string
-    CategoryTagCreate:
+        self:
+          type: string
+    CategoryTagRelLinks:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/CategoryTagCreateResource'
-    CategoryTagRelData:
+        related:
+          type: string
+        self:
+          type: string
+    CategoryTagCollectionLinks:
+      type: object
+      properties:
+        first:
+          type: string
+        next:
+          type: string
+        self:
+          type: string
+    MessageRelGetData:
       type: object
       properties:
         id:
           type: string
-        messageTag:
-          $ref: '#/components/schemas/MessageTag'
         type:
-          type: string
-    CategoryTagResource:
-      type: object
-      properties:
-        attributes:
-          $ref: '#/components/schemas/CategoryTagAttributes'
-        id:
-          type: string
-        links:
-          $ref: '#/components/schemas/CategoryTagLinks'
-        relationships:
-          $ref: '#/components/schemas/CategoryTagRelationships'
-        type:
-          type: string
-          description: the type of the resource
-          enum:
-          - category-tag
-    TeamAttributeAutoBccEmail:
-      type: object
-      properties:
-        email:
-          type: string
-        name:
-          type: string
-      required:
-      - email
-    CategoryTagRelToMany:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CategoryTagRelData'
-        links:
-          $ref: '#/components/schemas/CategoryTagRelLinks'
-    CategoryTagSingle:
-      type: object
-      description: The resource
-      properties:
-        data:
-          $ref: '#/components/schemas/CategoryTagResource'
-        links:
-          $ref: '#/components/schemas/CategoryTagSingleLinks'
-    CategoryTagRelationships:
-      type: object
-      properties:
-        team:
-          $ref: '#/components/schemas/TeamRelToMany'
-    CategoryTagUpdateAttributes:
-      type: object
-      properties:
-        archived:
-          type: boolean
-        disableFollow:
-          type: boolean
-        label:
-          type: string
-        name:
           type: string
     TeamRelToMany:
       type: object
@@ -1029,19 +836,51 @@ components:
             $ref: '#/components/schemas/TeamRelData'
         links:
           $ref: '#/components/schemas/TeamRelLinks'
-    DocumentRelToMany:
+    Tag:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/TagId'
+        name:
+          $ref: '#/components/schemas/TagName'
+        tagLabel:
+          $ref: '#/components/schemas/TagLabel'
+        tagTypeId:
+          type: integer
+          format: int32
+    TeamRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    MessageCollectionLinks:
+      type: object
+      properties:
+        first:
+          type: string
+        next:
+          type: string
+        self:
+          type: string
+    JobReferenceRelToMany:
       type: object
       properties:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/DocumentRelData'
+            $ref: '#/components/schemas/JobReferenceRelData'
         links:
-          $ref: '#/components/schemas/DocumentRelLinks'
-    CategoryTagLinks:
+          $ref: '#/components/schemas/JobReferenceRelLinks'
+    CategoryTagCreateResource:
       type: object
       properties:
-        self:
+        attributes:
+          $ref: '#/components/schemas/CategoryTagCreateAttributes'
+        relationships:
+          $ref: '#/components/schemas/CategoryTagCreateRelationships'
+        type:
           type: string
     TeamCollection:
       type: object
@@ -1053,15 +892,182 @@ components:
             $ref: '#/components/schemas/TeamResource'
         links:
           $ref: '#/components/schemas/TeamCollectionLinks'
-    UserRelToMany:
+    WithNextPageCursorMessageCollection:
+      type: object
+      properties:
+        nextPageCursor:
+          type: string
+        response:
+          $ref: '#/components/schemas/MessageCollection'
+    UpdateMessageRelToMany:
       type: object
       properties:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/UserRelData'
+            $ref: '#/components/schemas/MessageRelUpdateData'
+    DocumentRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    MessageRelGetToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageRelGetData'
         links:
-          $ref: '#/components/schemas/UserRelLinks'
+          $ref: '#/components/schemas/MessageRelLinks'
+    CategoryTagCreateRelationships:
+      type: object
+      properties:
+        team:
+          $ref: '#/components/schemas/UpdateTeamRelToMany'
+    TeamAttributes:
+      type: object
+      properties:
+        additionalEmailAddresses:
+          type: array
+          items:
+            type: string
+        archived:
+          type: boolean
+        autoBccEmails:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamAttributeAutoBccEmail'
+        createdAt:
+          type: string
+          format: date-time
+        disableSend:
+          type: boolean
+        emailAddress:
+          type: string
+        emailSignature:
+          type: string
+        foreignKey:
+          type: string
+        inboxAssignedToUserId:
+          type: string
+        internalEmailAddress:
+          type: string
+        name:
+          type: string
+        public:
+          type: boolean
+        purpose:
+          type: string
+        sendingName:
+          type: string
+        soloInbox:
+          type: boolean
+    MessageRelUpdateData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    PrivateLabelRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    DocumentRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    MessageCollection:
+      type: object
+      description: The resource
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageReadResource'
+        included:
+          type: array
+          items:
+            type: object
+        links:
+          $ref: '#/components/schemas/MessageCollectionLinks'
+        meta:
+          $ref: '#/components/schemas/MessageCollectionMeta'
+    UserRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    CategoryTagUpdateAttributes:
+      type: object
+      properties:
+        archived:
+          type: boolean
+        disableFollow:
+          type: boolean
+        label:
+          type: string
+        name:
+          type: string
+    CategoryTagUpdateResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/CategoryTagUpdateAttributes'
+        type:
+          type: string
+    MessageRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageRelData'
+        links:
+          $ref: '#/components/schemas/MessageRelLinks'
+    MessageThreadSummary:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceObjectIdentifier'
+    Sender:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ResourceObjectIdentifier'
+        meta:
+          $ref: '#/components/schemas/MetaObject'
+    CategoryTagRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoryTagRelData'
+        links:
+          $ref: '#/components/schemas/CategoryTagRelLinks'
+    MessageTagId:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+    TagName:
+      type: object
+      properties:
+        value:
+          type: string
     MessageReadAttributes:
       type: object
       properties:
@@ -1116,7 +1122,93 @@ components:
           type: array
           items:
             type: string
-    DocumentRelLinks:
+    DocumentRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentRelData'
+        links:
+          $ref: '#/components/schemas/DocumentRelLinks'
+    MessageRelLinks:
+      type: object
+      properties:
+        related:
+          type: string
+        self:
+          type: string
+    CategoryTagSingle:
+      type: object
+      description: The resource
+      properties:
+        data:
+          $ref: '#/components/schemas/CategoryTagResource'
+        links:
+          $ref: '#/components/schemas/CategoryTagSingleLinks'
+    MessageCollectionMeta:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+    CategoryTagCreateAttributes:
+      type: object
+      properties:
+        archived:
+          type: boolean
+        disableFollow:
+          type: boolean
+        label:
+          type: string
+        name:
+          type: string
+      required:
+      - label
+      - name
+    PrivateLabelRelToMany:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PrivateLabelRelData'
+        links:
+          $ref: '#/components/schemas/PrivateLabelRelLinks'
+    MessageRelData:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    CategoryTagCollection:
+      type: object
+      description: A collection of resources
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoryTagResource'
+        links:
+          $ref: '#/components/schemas/CategoryTagCollectionLinks'
+    CategoryTagResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/CategoryTagAttributes'
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/CategoryTagLinks'
+        relationships:
+          $ref: '#/components/schemas/CategoryTagRelationships'
+        type:
+          type: string
+          description: the type of the resource
+          enum:
+          - category-tag
+    JobReferenceRelLinks:
       type: object
       properties:
         related:
@@ -1138,98 +1230,6 @@ components:
           $ref: '#/components/schemas/MessageRelationships'
         type:
           type: string
-    JobReferenceRelData:
-      type: object
-      properties:
-        id:
-          type: string
-        messageTag:
-          $ref: '#/components/schemas/MessageTag'
-        type:
-          type: string
-    Tag:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/TagId'
-        name:
-          $ref: '#/components/schemas/TagName'
-        tagLabel:
-          $ref: '#/components/schemas/TagLabel'
-        tagTypeId:
-          type: integer
-          format: int32
-    MessageRelationships:
-      type: object
-      properties:
-        category-tag:
-          $ref: '#/components/schemas/CategoryTagRelToMany'
-        document:
-          $ref: '#/components/schemas/DocumentRelToMany'
-        job-reference:
-          $ref: '#/components/schemas/JobReferenceRelToMany'
-        message_thread_summary:
-          $ref: '#/components/schemas/MessageThreadSummary'
-        private-label:
-          $ref: '#/components/schemas/PrivateLabelRelToMany'
-        sender:
-          $ref: '#/components/schemas/Sender'
-        team:
-          $ref: '#/components/schemas/TeamRelToMany'
-    TeamAttributes:
-      type: object
-      properties:
-        additionalEmailAddresses:
-          type: array
-          items:
-            type: string
-        archived:
-          type: boolean
-        autoBccEmails:
-          type: array
-          items:
-            $ref: '#/components/schemas/TeamAttributeAutoBccEmail'
-        createdAt:
-          type: string
-          format: date-time
-        disableSend:
-          type: boolean
-        emailAddress:
-          type: string
-        emailSignature:
-          type: string
-        foreignKey:
-          type: string
-        inboxAssignedToUserId:
-          type: string
-        internalEmailAddress:
-          type: string
-        name:
-          type: string
-        public:
-          type: boolean
-        purpose:
-          type: string
-        sendingName:
-          type: string
-        soloInbox:
-          type: boolean
-    MessageCollection:
-      type: object
-      description: The resource
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/MessageReadResource'
-        included:
-          type: array
-          items:
-            type: object
-        links:
-          $ref: '#/components/schemas/MessageCollectionLinks'
-        meta:
-          $ref: '#/components/schemas/MessageCollectionMeta'
   securitySchemes:
     Basic:
       description: The basic auth scheme only requires the API-Specific username/password to be set.

@@ -156,23 +156,29 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    Action:
+      type: object
+      discriminator:
+        propertyName: type
+      properties:
+        type:
+          type: string
+      required:
+      - type
     WorkflowUpdate:
       type: object
       properties:
         data:
           $ref: '#/components/schemas/WorkflowUpdateResource'
-    DataSourceResultContext:
+    WorkflowDefinition:
       type: object
-      allOf:
-      - $ref: '#/components/schemas/Context'
-      - type: object
-        properties:
-          attributes:
-            type: object
-            additionalProperties:
-              type: string
-          id:
-            type: string
+      properties:
+        rule:
+          $ref: '#/components/schemas/RuleNode'
+        triggerActions:
+          type: array
+          items:
+            $ref: '#/components/schemas/TriggerAction'
     Trigger:
       type: object
       discriminator:
@@ -182,16 +188,26 @@ components:
           type: string
       required:
       - type
-    DataSourceAdapter:
-      type: object
-    WorkflowResourceAttributes:
+    ResourceObjectResponse:
       type: object
       properties:
-        createdAt:
+        id:
           type: string
-          format: date-time
-        createdBy:
+        type:
           type: string
+    WorkflowResourceLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    WorkflowCollectionLinks:
+      type: object
+      properties:
+        self:
+          type: string
+    WorkflowUpsertAttributes:
+      type: object
+      properties:
         definition:
           $ref: '#/components/schemas/WorkflowDefinition'
         description:
@@ -210,109 +226,8 @@ components:
           type: string
         teamInfo:
           $ref: '#/components/schemas/TeamInfo'
-    Context:
-      type: object
-      discriminator:
-        propertyName: type
-      properties:
-        description:
-          type: string
-        triggers:
-          type: array
-          items:
-            $ref: '#/components/schemas/Trigger'
-        type:
-          type: string
       required:
-      - type
-    WorkflowSingle:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/WorkflowResource'
-        included:
-          type: array
-          items:
-            $ref: '#/components/schemas/ResourceObjectResponse'
-        links:
-          $ref: '#/components/schemas/WorkflowSingleLinks'
-    WorkflowMessage:
-      type: object
-      properties:
-        attachmentNames:
-          type: array
-          items:
-            type: string
-        ccEmails:
-          type: array
-          items:
-            type: string
-        fromEmail:
-          type: string
-        htmlBody:
-          type: string
-        id:
-          type: string
-        subject:
-          type: string
-        textBody:
-          type: string
-        toEmails:
-          type: array
-          items:
-            type: string
-    RelationshipObject:
-      type: object
-    Action:
-      type: object
-      discriminator:
-        propertyName: type
-      properties:
-        type:
-          type: string
-      required:
-      - type
-    RuleNode:
-      type: object
-      discriminator:
-        propertyName: op
-      properties:
-        dataSources:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/DataSource'
-          writeOnly: true
-        messageNodes:
-          $ref: '#/components/schemas/WorkflowMessage'
-        op:
-          type: string
-      required:
-      - op
-    WorkflowResource:
-      type: object
-      properties:
-        attributes:
-          $ref: '#/components/schemas/WorkflowResourceAttributes'
-        id:
-          type: string
-        links:
-          $ref: '#/components/schemas/WorkflowResourceLinks'
-        relationships:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/RelationshipObject'
-        type:
-          type: string
-    WorkflowSingleLinks:
-      type: object
-      properties:
-        self:
-          type: string
-    WorkflowResourceLinks:
-      type: object
-      properties:
-        self:
-          type: string
+      - name
     TriggerAction:
       type: object
       properties:
@@ -335,50 +250,60 @@ components:
             $ref: '#/components/schemas/ResourceObjectResponse'
         links:
           $ref: '#/components/schemas/WorkflowCollectionLinks'
-    WorkflowUpdateResource:
+    RuleNode:
       type: object
+      discriminator:
+        propertyName: op
       properties:
-        attributes:
-          $ref: '#/components/schemas/WorkflowUpsertAttributes'
-        id:
+        dataSources:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/DataSource'
+          writeOnly: true
+        messageNodes:
+          $ref: '#/components/schemas/WorkflowMessage'
+        op:
           type: string
+      required:
+      - op
+    DataSourceAdapter:
+      type: object
+    DataSourceResultContext:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/Context'
+      - type: object
+        properties:
+          attributes:
+            type: object
+            additionalProperties:
+              type: string
+          id:
+            type: string
+    Context:
+      type: object
+      discriminator:
+        propertyName: type
+      properties:
+        description:
+          type: string
+        triggers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Trigger'
         type:
           type: string
       required:
-      - id
-    WorkflowCollectionLinks:
+      - type
+    TeamInfo:
       type: object
+      discriminator:
+        propertyName: type
       properties:
-        self:
-          type: string
-    WorkflowCreateResource:
-      type: object
-      properties:
-        attributes:
-          $ref: '#/components/schemas/WorkflowUpsertAttributes'
         type:
           type: string
-    ResourceObjectResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-    WorkflowCreate:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/WorkflowCreateResource'
-    WorkflowDefinition:
-      type: object
-      properties:
-        rule:
-          $ref: '#/components/schemas/RuleNode'
-        triggerActions:
-          type: array
-          items:
-            $ref: '#/components/schemas/TriggerAction'
+      required:
+      - type
     DataSource:
       type: object
       properties:
@@ -408,9 +333,77 @@ components:
             $ref: '#/components/schemas/Trigger'
         username:
           type: string
-    WorkflowUpsertAttributes:
+    WorkflowMessage:
       type: object
       properties:
+        attachmentNames:
+          type: array
+          items:
+            type: string
+        ccEmails:
+          type: array
+          items:
+            type: string
+        fromEmail:
+          type: string
+        htmlBody:
+          type: string
+        id:
+          type: string
+        subject:
+          type: string
+        textBody:
+          type: string
+        toEmails:
+          type: array
+          items:
+            type: string
+    WorkflowUpdateResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/WorkflowUpsertAttributes'
+        id:
+          type: string
+        type:
+          type: string
+      required:
+      - id
+    WorkflowResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/WorkflowResourceAttributes'
+        id:
+          type: string
+        links:
+          $ref: '#/components/schemas/WorkflowResourceLinks'
+        relationships:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/RelationshipObject'
+        type:
+          type: string
+    WorkflowCreate:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/WorkflowCreateResource'
+    WorkflowCreateResource:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/WorkflowUpsertAttributes'
+        type:
+          type: string
+    WorkflowResourceAttributes:
+      type: object
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+        createdBy:
+          type: string
         definition:
           $ref: '#/components/schemas/WorkflowDefinition'
         description:
@@ -429,17 +422,24 @@ components:
           type: string
         teamInfo:
           $ref: '#/components/schemas/TeamInfo'
-      required:
-      - name
-    TeamInfo:
+    WorkflowSingleLinks:
       type: object
-      discriminator:
-        propertyName: type
       properties:
-        type:
+        self:
           type: string
-      required:
-      - type
+    RelationshipObject:
+      type: object
+    WorkflowSingle:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/WorkflowResource'
+        included:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceObjectResponse'
+        links:
+          $ref: '#/components/schemas/WorkflowSingleLinks'
   securitySchemes:
     Basic:
       description: The basic auth scheme only requires the API-Specific username/password to be set.

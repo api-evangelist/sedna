@@ -70,13 +70,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    CompanyUpdate:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/CompanyUpdateResource'
-    RelationshipObject:
-      type: object
     CompanyUpdateResource:
       type: object
       properties:
@@ -87,6 +80,11 @@ components:
           description: the type of the resource
           enum:
           - company
+    CompanyUpdate:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/CompanyUpdateResource'
     CompanyReadAttributes:
       type: object
       properties:
@@ -99,11 +97,18 @@ components:
           type: string
         name:
           type: string
+    CompanyUpdateAttributes:
+      type: object
+      properties:
+        emailSignature:
+          type: string
     CompanyReadRepresentation:
       type: object
       properties:
         data:
           $ref: '#/components/schemas/CompanyResource'
+    RelationshipObject:
+      type: object
     CompanyResource:
       type: object
       properties:
@@ -116,11 +121,6 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/RelationshipObject'
         type:
-          type: string
-    CompanyUpdateAttributes:
-      type: object
-      properties:
-        emailSignature:
           type: string
   securitySchemes:
     Basic:

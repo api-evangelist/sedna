@@ -48,6 +48,13 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    DocumentMeta:
+      type: object
+      properties:
+        download:
+          type: string
+        publicDownload:
+          type: string
     DocumentAttributes:
       type: object
       properties:
@@ -60,13 +67,6 @@ components:
         size:
           type: number
         type:
-          type: string
-    DocumentMeta:
-      type: object
-      properties:
-        download:
-          type: string
-        publicDownload:
           type: string
     DocumentResource:
       type: object
